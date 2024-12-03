@@ -27,7 +27,7 @@ function Feature({title, Img, description}: FeatureItem) {
   return (
     <div className={clsx('col')}>
       <div className="text--center">
-        <img src={useBaseUrl(Img)} />
+        <img src={useBaseUrl(Img)} className={styles.wideLogoImage} />
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
