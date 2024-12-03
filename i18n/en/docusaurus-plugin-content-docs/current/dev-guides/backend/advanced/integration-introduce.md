@@ -1,0 +1,306 @@
+---
+sidebar_position: 1
+toc_min_heading_level: 2
+toc_max_heading_level: 5
+---
+
+import { DevProjectRepoHttps } from '/src/consts';
+import { ProjectName } from '/src/consts';
+
+# Building Integration
+
+## Overview
+
+**Integration** is the primary means by which {ProjectName} achieves device connectivity, device control, and functionality extension. It enables {ProjectName} to interact with other software, devices, and third-party platforms. {ProjectName} integrations fostering community co-creation and promoting system expansion and integration.
+<p>In this chapter, we will introduce the entire process of using our provided integration development repository and environment for project construction, development, debugging, and release.</p>
+
+## Project Construction
+
+### Code Repository
+
+We provide an integration development repository that includes all released integrations, sample code, and debugging environments. You can download the <a href={DevProjectRepoHttps} target="_blank" rel="noopener noreferrer">beaver-iot-integrations code repository</a> to experience integration development.
+
+### pom.xml Configuration
+- **Dependency References**
+
+For integration development, we provide the `context` dependency package for basic integration development functions. Typically, we do not need to package `context` into the integration, so we set its `scope` to `provided`. Developers can introduce other dependency packages (not included in the {ProjectName}) as needed for integration development.
+
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>com.milesight.beaveriot</groupId>
+            <artifactId>context</artifactId>
+            <version>${project.version}</version>
+            // highlight-next-line
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+```
+:::warning
+Please note, to avoid dependency conflicts and duplicate package imports, we recommend developers choose dependency packages already included in the {ProjectName} platform. For packages already included in the platform, developers can set the `scope` to `provided`.
+:::
+- **Unified Dependency Versions**
+To unify dependency versions, the {ProjectName} platform defines a `beaver-iot-parent` POM dependency. Developers can define dependency versions in `dependencyManagement`.
+```xml
+    <dependencyManagement>
+        <dependencies>
+          <dependency>
+              <groupId>com.milesight.beaveriot</groupId>
+              <artifactId>beaver-iot-parent</artifactId>
+              <version>${beaver-iot.version}</version>
+              <type>pom</type>
+              <scope>import</scope>
+          </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
+:::info
+In the beaver-iot-integrations project, we have already defined the version number of `beaver-iot-parent`, so developers do not need to define it specifically during integration development.
+:::
+- **Integration Packaging**
+  The integration needs to be packaged into jar packages to be deployed for use at {ProjectName}. We recommend that developers use the `maven-assembly-plugin` plugin for packaging.
+```xml
+    <build>
+        <plugins>
+            <!-- in case you have your own dependencies to be packaged -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+```
+## Integration Development
+### Integration Configuration
+#### Parameter Description
+Integration configuration is the foundation of the integration, containing basic information, devices, entities, and other metadata. Developers need to create an `integration.yaml` file in the `resources` directory to define the integration configuration.
+|Parameter Name               |Default Value   |Required  |Description          |
+|---                          |---             |---       |---                  |
+|id                           |None            |Yes       |Integration ID       |
+|name                         |None            |Yes       |Integration Name     |
+|icon-url                     |None            |No        |Integration Icon URL, supports relative and absolute paths|
+|description                  |None            |No        |Integration Description|
+|enabled                      |true            |No        |Whether Enabled      |
+|entity-identifier-add-device |None            |No        |Entity Identifier for adding devices, indicating the integration supports adding devices|
+|entity-identifier-delete-device |None         |No        |Entity Identifier for deleting devices, indicating the integration supports deleting devices|
+|initial-devices              |None            |No        |Initial device entities, see [Device/Entity Construction Chapter](entity-definition.md)|
+|initial-entities             |None            |No        |Initial integration entities, see [Device/Entity Construction Chapter](entity-definition.md)|
+
+:::warning
+Please note, the `id` field in the integration configuration file is the unique identifier of the integration and cannot be duplicated.
+:::
+
+#### `icon-url` Configuration
+The icon-url supports **relative paths** and **absolute paths**. **Relative paths** are relative to the root directory of the integration, while **absolute paths** refer to external image URLs.
+- **Relative Path** Example: `icon-url: /public/my-integration.png`
+- **Absolute Path** Example: `icon-url: https://www.example.com/my-integration.png`
+
+When using a **relative path**, developers need to place the image file in the `/resources/static/public` directory of the integration, for example:
+```yaml
+  my-integration/
+  ├── src/
+  │ ├── main/
+  │ │ └── resources/
+  │ │ └──── static/
+  │ │ └────── public/
+  │ │ └──────── my-integration.png
+```
+
+:::tip
+To avoid resource file conflicts, it is recommended that developers use image file names that include the `integration-id`.
+:::
+
+#### Code Example
+- **Simple Integration Configuration Example**
+```yaml
+integration:
+  my-integration: # integration identifier
+    name: My Integration Name # integration name
+    description: "My Demo Integration" # integration description
+```
+
+- **Complete Integration Configuration Example**
+```yaml
+integration:
+  my-integration: # integration identifier
+    name: My Integration Name # integration name
+    icon-url: /public/my-integration.png # integration icon url
+    description: "My Demo Integration" # integration description
+    enabled: true # whether enable this integration. Must be "true" for now
+    entity-identifier-add-device: addDevice # entity identifier for adding device
+    entity-identifier-delete-device: deleteDevice # entity identifier for deleting device
+    initial-entities: # initial entities
+      - identifier: 'connect' # entity identifier
+        name: connect         # entity name
+        value_type: string    # entity value type
+        type: service         # entity type
+        children:             # children entities
+          - identifier: 'url'
+            name: connectUrl    
+            value_type: string
+            type: service
+```
+
+### Integration Lifecycle
+#### Lifecycle Description
+The {ProjectName} platform provides the `IntegrationBootstrap` interface for managing the lifecycle of platform integrations. Developers need to implement the `IntegrationBootstrap` interface and override the `onPrepared`, `onStarted`, and `onDestroyed` methods to manage the integration lifecycle.
+
+![General Architecture](/img/en/integration-lifecycle.svg)
+
+* After {ProjectName} starts, it first initializes the application environment
+  * Loads all integration configurations into memory
+  * Calls the `onPrepared` function for each integration
+
+* Persists the devices and entities of the integration
+  * Calls the `onStarted` function for each integration
+  * The {ProjectName} program then officially starts running.
+* The `onDestroyed` function is called when the integration is destroyed
+
+#### Code Example
+
+- **A Simple Integration Lifecycle Example**
+```java
+@Component
+public class MyIntegrationBootstrap implements IntegrationBootstrap {
+    @Override
+    public void onPrepared(Integration integration) {
+      // todo: actions when prepared
+    }
+
+    @Override
+    public void onStarted(Integration integrationConfig) {
+      // todo: actions when started
+    }
+
+    @Override
+    public void onDestroy(Integration integration) {
+      // todo: actions when destroyed
+    }
+}
+```
+:::tip
+The {ProjectName} platform discovers platform integrations based on the implementation of the `IntegrationBootstrap` interface. Therefore, integration developers must implement the `IntegrationBootstrap` interface and inject it into the Spring container.
+The integration package path should be under the `com.milesight.beaveriot` directory to ensure that the integration can be discovered by the {ProjectName} platform. It is strongly recommended that developers use the `com.milesight.beaveriot.{integration-identifier}` package path.
+:::
+
+- **Complete Integration Lifecycle Example**
+  
+The following example demonstrates adding an initial device in the `onPrepared` method, enabling a timer in the `onStarted` method to periodically fetch device status data from the integration platform, and stopping the timer in the `onDestroyed` method.
+```java
+@Component
+public class MyIntegrationBootstrap implements IntegrationBootstrap {
+
+    // in this example, we use MyIntegrationDataSyncService to sync data
+    @Autowired
+    private MyIntegrationDataSyncService myIntegrationDataSyncService;
+    
+    @Override
+    public void onPrepared(Integration integrationConfig) {
+        // add initial device
+        // highlight-next-line
+        Device device = new DeviceBuilder(integrationConfig.getId())
+            .name("demoDevice")
+            .identifier("demoDeviceIdentifier")
+            // highlight-next-line
+            .entity(() -> new EntityBuilder()
+                .property("parentProperty", AccessMod.W)
+                .valueType(EntityValueType.OBJECT)
+                .children()
+                  .valueType(EntityValueType.STRING)
+                  .property("childrenProperty", AccessMod.W)
+                  .end()
+                .build())
+            .build();
+      // highlight-next-line
+        integrationConfig.addInitialDevice(device);
+    }
+
+    @Override
+    public void onStarted(Integration integrationConfig) {
+        // start the timer for periodic tasks
+        myIntegrationDataSyncService.startTimer();
+    }
+
+    @Override
+    public void onDestroy(Integration integrationConfig) {
+        // stop the timer
+        myIntegrationDataSyncService.stopTimer();
+    }
+}
+```
+:::tip
+The above example uses the Builder pattern to construct devices and entities, which will be described in detail in the [Device/Entity Construction](entity-definition.md) chapter.
+:::
+## Integration Debugging
+
+### Running the Debug Application
+To facilitate integration developers in debugging integrations, we provide the `application-dev` module, where developers can debug integrations.
+
+Simply add the integration that needs to be debugged to the dependencies, for example:
+```xml
+
+<!-- ... -->
+    <dependencies>
+        <!-- ... -->
+        <dependency>
+            <groupId>com.milesight.beaveriot</groupId>
+            <!-- highlight-next-line -->
+            <artifactId>my-integration</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- ... -->
+    </dependencies>
+<!-- ... -->
+</project>
+```
+
+Then start *beaver-iot-integrations/application-dev/src/main/java/com/milesight/beaveriot/DevelopApplication.java*
+
+### More Customization
+  By default, the `application-dev` module will load all {ProjectName} platform services and start using H2 as the built-in database. Developers can customize the integration debugging environment by configuring the `pom.xml` and `application-dev` files.
+- **Removing User and Authentication Modules**
+
+To make it easier for integration developers to debug the integration, you can remove the authentication module: comment out the `authentication-service` dependency package in `pom.xml`.
+
+```xml
+<dependencies>
+   <!-- 
+    <dependency>
+      <groupId>com.milesight.beaveriot</groupId>
+      <artifactId>authentication-service</artifactId>
+      </dependency>
+    -->
+</dependencies>
+```
+- **Custom Database**
+
+By default, the `application-dev` module uses H2 as the built-in database. Developers can configure the PostgreSQL database in the `application-dev` file (or via environment variables), for example:
+```shell
+DB_TYPE=postgres;
+SPRING_DATASOURCE_URL=jdbc:postgresql://<DB_SERVER_HOSTNAME>:<DB_SERVER_PORT>/<DB_NAME>;
+SPRING_DATASOURCE_PASSWORD=postgres;
+SPRING_DATASOURCE_USERNAME=postgres;
+SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+```
+
+:::tip
+By default, the platform uses H2 as the built-in database. For development convenience, we have enabled the H2 console, and developers can access the H2 console via the `/public/h2-console` context path for database operations.
+:::
+
+## Integration Installation
+Integrations are released to the {ProjectName} in the form of jar files. Developers can package the integration into a jar file using the `maven` `install` command and then upload it to the {ProjectName} for release.
+- **Integration Packaging**
+```shell
+mvn package -pl integrations/my-integration -am -Dmaven.test.skip=true
+```
+- **Integration Installation**
+
+Add the packaged integration jar to the `/plugins` directory under the installation directory of {ProjectName}, then restart the {ProjectName} platform.
