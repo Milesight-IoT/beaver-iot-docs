@@ -1,0 +1,2611 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "IAB",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "登录认证"
+    },
+    {
+      "name": "集成"
+    },
+    {
+      "name": "集成/IntegrationController"
+    },
+    {
+      "name": "设备"
+    },
+    {
+      "name": "设备/DeviceController"
+    },
+    {
+      "name": "实体"
+    },
+    {
+      "name": "实体/EntityController"
+    },
+    {
+      "name": "Dashboard"
+    },
+    {
+      "name": "Dashboard/DashboardController"
+    }
+  ],
+  "paths": {
+    "/oauth2/token": {
+      "post": {
+        "summary": "令牌刷新",
+        "x-apifox-folder": "登录认证",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "登录认证"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refresh_token": {
+                    "type": "string"
+                  },
+                  "grant_type": {
+                    "type": "string",
+                    "example": "password"
+                  },
+                  "client_id": {
+                    "type": "string",
+                    "example": "iab"
+                  },
+                  "client_secret": {
+                    "type": "string",
+                    "example": "milesight*iab"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476410-run",
+        "security": []
+      }
+    },
+    "/user/register": {
+      "post": {
+        "summary": "用户注册",
+        "x-apifox-folder": "登录认证",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "登录认证"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "nickname": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "email",
+                  "nickname",
+                  "password"
+                ],
+                "required": [
+                  "email",
+                  "nickname",
+                  "password"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476411-run",
+        "security": []
+      }
+    },
+    "/integration/search": {
+      "post": {
+        "summary": "searchIntegration",
+        "x-apifox-folder": "集成/IntegrationController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "集成/IntegrationController"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchIntegrationRequest",
+                "description": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyListSearchIntegrationResponseData"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": [
+                        {
+                          "id": "",
+                          "icon": "",
+                          "name": "",
+                          "description": "",
+                          "addDeviceServiceKey": "",
+                          "deviceCount": 0,
+                          "entityCount": 0
+                        }
+                      ],
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476525-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/integration/{integrationId}": {
+      "get": {
+        "summary": "getIntegrationDetail",
+        "x-apifox-folder": "集成/IntegrationController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "集成/IntegrationController"
+        ],
+        "parameters": [
+          {
+            "name": "integrationId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyIntegrationDetailData"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "id": "",
+                        "icon": "",
+                        "name": "",
+                        "description": "",
+                        "addDeviceServiceKey": "",
+                        "deviceCount": 0,
+                        "entityCount": 0,
+                        "deleteDeviceServiceKey": "",
+                        "integrationEntities": [
+                          {
+                            "id": "",
+                            "key": "",
+                            "name": "",
+                            "type": "",
+                            "valueAttribute": {
+                              "": {}
+                            },
+                            "valueType": "",
+                            "accessMod": "",
+                            "parent": "",
+                            "value": {}
+                          }
+                        ]
+                      },
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476526-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/entity/{entityId}/children": {
+      "get": {
+        "summary": "getChildren",
+        "x-apifox-folder": "实体/EntityController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "实体/EntityController"
+        ],
+        "parameters": [
+          {
+            "name": "entityId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyListEntityResponse"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": [
+                        {
+                          "deviceName": "",
+                          "integrationName": "",
+                          "entityId": "",
+                          "entityAccessMod": "",
+                          "entityKey": "",
+                          "entityType": "",
+                          "entityName": "",
+                          "entityValueAttribute": {
+                            "": {}
+                          },
+                          "entityValueType": ""
+                        }
+                      ],
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476527-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/entity/history/aggregate": {
+      "post": {
+        "summary": "historyAggregate",
+        "x-apifox-folder": "实体/EntityController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "实体/EntityController"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EntityAggregateQuery",
+                "description": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyEntityAggregateResponse"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "value": {},
+                        "valueType": "",
+                        "countResult": [
+                          {
+                            "value": {},
+                            "valueType": "",
+                            "count": 0
+                          }
+                        ]
+                      },
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476528-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/entity/{entityId}/status": {
+      "get": {
+        "summary": "getEntityStatus",
+        "x-apifox-folder": "实体/EntityController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "实体/EntityController"
+        ],
+        "parameters": [
+          {
+            "name": "entityId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyEntityLatestResponse"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "value": {},
+                        "updatedAt": "",
+                        "valueType": ""
+                      },
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476529-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/entity/{entityId}/meta": {
+      "get": {
+        "summary": "getEntityMeta",
+        "x-apifox-folder": "实体/EntityController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "实体/EntityController"
+        ],
+        "parameters": [
+          {
+            "name": "entityId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyEntityMetaResponse"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "key": "",
+                        "name": "",
+                        "type": "",
+                        "accessMod": "",
+                        "valueAttribute": {
+                          "": {}
+                        },
+                        "valueType": ""
+                      },
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476530-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/device": {
+      "post": {
+        "summary": "createDevice",
+        "x-apifox-folder": "设备/DeviceController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "设备/DeviceController"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDeviceRequest",
+                "description": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyString"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": "",
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476531-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/device/{deviceId}": {
+      "put": {
+        "summary": "updateDevice",
+        "x-apifox-folder": "设备/DeviceController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "设备/DeviceController"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeviceRequest",
+                "description": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyVoid"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": null,
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476532-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "getDeviceDetail",
+        "x-apifox-folder": "设备/DeviceController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "设备/DeviceController"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyDeviceDetailResponse"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "id": "",
+                        "key": "",
+                        "name": "",
+                        "integration": "",
+                        "additionalData": {
+                          "": {}
+                        },
+                        "createdAt": 0,
+                        "updatedAt": 0,
+                        "integrationName": "",
+                        "deletable": false,
+                        "identifier": "",
+                        "entities": [
+                          {
+                            "id": "",
+                            "key": "",
+                            "name": "",
+                            "type": "",
+                            "valueAttribute": {
+                              "": {}
+                            },
+                            "valueType": ""
+                          }
+                        ]
+                      },
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476534-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/device/batch-delete": {
+      "post": {
+        "summary": "batchDeleteDevices",
+        "x-apifox-folder": "设备/DeviceController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "设备/DeviceController"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchDeleteDeviceRequest",
+                "description": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyVoid"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": null,
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476533-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/dashboard": {
+      "post": {
+        "summary": "createDashboard",
+        "x-apifox-folder": "Dashboard/DashboardController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Dashboard/DashboardController"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDashboardRequest",
+                "description": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyCreateDashboardResponse"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": {
+                        "dashboardId": ""
+                      },
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476535-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/dashboard/{dashboardId}": {
+      "put": {
+        "summary": "updateDashboard",
+        "x-apifox-folder": "Dashboard/DashboardController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Dashboard/DashboardController"
+        ],
+        "parameters": [
+          {
+            "name": "dashboardId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDashboardRequest",
+                "description": ""
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyVoid"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": null,
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476536-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "deleteDashboard",
+        "x-apifox-folder": "Dashboard/DashboardController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Dashboard/DashboardController"
+        ],
+        "parameters": [
+          {
+            "name": "dashboardId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyVoid"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": null,
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476537-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/dashboard/dashboards": {
+      "get": {
+        "summary": "getDashboards",
+        "x-apifox-folder": "Dashboard/DashboardController",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Dashboard/DashboardController"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseBodyListDashboardResponse"
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "data": [
+                        {
+                          "dashboardId": "",
+                          "name": "",
+                          "widgets": [
+                            {
+                              "widgetId": "",
+                              "data": {
+                                "": {}
+                              }
+                            }
+                          ],
+                          "createdAt": ""
+                        }
+                      ],
+                      "status": "",
+                      "requestId": "",
+                      "errorCode": "",
+                      "errorMessage": "",
+                      "detailMessage": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/345172/apis/api-3476538-run",
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResponseBodyListDashboardResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DashboardResponse",
+              "description": ""
+            },
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "DashboardResponse": {
+        "type": "object",
+        "properties": {
+          "dashboardId": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "widgets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DashboardWidgetDTO",
+              "description": ""
+            },
+            "description": ""
+          },
+          "createdAt": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "dashboardId",
+          "name",
+          "widgets",
+          "createdAt"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "DashboardWidgetDTO": {
+        "type": "object",
+        "properties": {
+          "widgetId": {
+            "type": "string",
+            "description": ""
+          },
+          "data": {
+            "$ref": "#/components/schemas/MapObject",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "widgetId",
+          "data"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "MapObject": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "$ref": "#/components/schemas/key"
+          }
+        },
+        "x-apifox-orders": [
+          "key"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "key": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "UpdateDashboardRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "widgets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DashboardWidgetDTO",
+              "description": ""
+            },
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "widgets"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyCreateDashboardResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CreateDashboardResponse",
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "CreateDashboardResponse": {
+        "type": "object",
+        "properties": {
+          "dashboardId": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "dashboardId"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "CreateDashboardRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyDeviceDetailResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DeviceDetailResponse",
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "DeviceDetailResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": ""
+          },
+          "key": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "integration": {
+            "type": "string",
+            "description": ""
+          },
+          "additionalData": {
+            "$ref": "#/components/schemas/MapObject",
+            "description": ""
+          },
+          "createdAt": {
+            "type": "integer",
+            "description": ""
+          },
+          "updatedAt": {
+            "type": "integer",
+            "description": ""
+          },
+          "integrationName": {
+            "type": "string",
+            "description": ""
+          },
+          "deletable": {
+            "type": "boolean",
+            "description": ""
+          },
+          "identifier": {
+            "type": "string",
+            "description": ""
+          },
+          "entities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceEntityData",
+              "description": "com.milesight.beaveriot.device.model.response.DeviceEntityData"
+            },
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "key",
+          "name",
+          "integration",
+          "additionalData",
+          "createdAt",
+          "updatedAt",
+          "integrationName",
+          "deletable",
+          "identifier",
+          "entities"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "DeviceEntityData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": ""
+          },
+          "key": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "type": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "PROPERTY",
+              "SERVICE",
+              "EVENT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "PROPERTY",
+                "name": "PROPERTY",
+                "description": "PROPERTY"
+              },
+              {
+                "value": "SERVICE",
+                "name": "SERVICE",
+                "description": "SERVICE"
+              },
+              {
+                "value": "EVENT",
+                "name": "EVENT",
+                "description": "EVENT"
+              }
+            ]
+          },
+          "valueAttribute": {
+            "$ref": "#/components/schemas/MapObject",
+            "description": ""
+          },
+          "valueType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "STRING",
+              "LONG",
+              "DOUBLE",
+              "BOOLEAN",
+              "BINARY",
+              "OBJECT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "STRING",
+                "name": "STRING",
+                "description": "STRING"
+              },
+              {
+                "value": "LONG",
+                "name": "LONG",
+                "description": "LONG"
+              },
+              {
+                "value": "DOUBLE",
+                "name": "DOUBLE",
+                "description": "DOUBLE"
+              },
+              {
+                "value": "BOOLEAN",
+                "name": "BOOLEAN",
+                "description": "BOOLEAN"
+              },
+              {
+                "value": "BINARY",
+                "name": "BINARY",
+                "description": "BINARY"
+              },
+              {
+                "value": "OBJECT",
+                "name": "OBJECT",
+                "description": "OBJECT"
+              }
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "key",
+          "name",
+          "type",
+          "valueAttribute",
+          "valueType"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "BatchDeleteDeviceRequest": {
+        "type": "object",
+        "properties": {
+          "deviceIdList": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "deviceIdList"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyVoid": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "Response Data",
+            "type": "null"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "UpdateDeviceRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyString": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "CreateDeviceRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "integration": {
+            "type": "string",
+            "description": ""
+          },
+          "paramEntities": {
+            "$ref": "#/components/schemas/ExchangePayload",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "integration",
+          "paramEntities"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ExchangePayload": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "$ref": "#/components/schemas/key1"
+          }
+        },
+        "x-apifox-orders": [
+          "key"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "key1": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyEntityMetaResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/EntityMetaResponse",
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "EntityMetaResponse": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "type": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "PROPERTY",
+              "SERVICE",
+              "EVENT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "PROPERTY",
+                "name": "PROPERTY",
+                "description": "PROPERTY"
+              },
+              {
+                "value": "SERVICE",
+                "name": "SERVICE",
+                "description": "SERVICE"
+              },
+              {
+                "value": "EVENT",
+                "name": "EVENT",
+                "description": "EVENT"
+              }
+            ]
+          },
+          "accessMod": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "R",
+              "W",
+              "RW"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "R",
+                "name": "R",
+                "description": "R"
+              },
+              {
+                "value": "W",
+                "name": "W",
+                "description": "W"
+              },
+              {
+                "value": "RW",
+                "name": "RW",
+                "description": "RW"
+              }
+            ]
+          },
+          "valueAttribute": {
+            "$ref": "#/components/schemas/MapObject",
+            "description": ""
+          },
+          "valueType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "STRING",
+              "LONG",
+              "DOUBLE",
+              "BOOLEAN",
+              "BINARY",
+              "OBJECT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "STRING",
+                "name": "STRING",
+                "description": "STRING"
+              },
+              {
+                "value": "LONG",
+                "name": "LONG",
+                "description": "LONG"
+              },
+              {
+                "value": "DOUBLE",
+                "name": "DOUBLE",
+                "description": "DOUBLE"
+              },
+              {
+                "value": "BOOLEAN",
+                "name": "BOOLEAN",
+                "description": "BOOLEAN"
+              },
+              {
+                "value": "BINARY",
+                "name": "BINARY",
+                "description": "BINARY"
+              },
+              {
+                "value": "OBJECT",
+                "name": "OBJECT",
+                "description": "OBJECT"
+              }
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "key",
+          "name",
+          "type",
+          "accessMod",
+          "valueAttribute",
+          "valueType"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyEntityLatestResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/EntityLatestResponse",
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "EntityLatestResponse": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/Object",
+            "description": ""
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": ""
+          },
+          "valueType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "STRING",
+              "LONG",
+              "DOUBLE",
+              "BOOLEAN",
+              "BINARY",
+              "OBJECT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "STRING",
+                "name": "STRING",
+                "description": "STRING"
+              },
+              {
+                "value": "LONG",
+                "name": "LONG",
+                "description": "LONG"
+              },
+              {
+                "value": "DOUBLE",
+                "name": "DOUBLE",
+                "description": "DOUBLE"
+              },
+              {
+                "value": "BOOLEAN",
+                "name": "BOOLEAN",
+                "description": "BOOLEAN"
+              },
+              {
+                "value": "BINARY",
+                "name": "BINARY",
+                "description": "BINARY"
+              },
+              {
+                "value": "OBJECT",
+                "name": "OBJECT",
+                "description": "OBJECT"
+              }
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "value",
+          "updatedAt",
+          "valueType"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "Object": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyEntityAggregateResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/EntityAggregateResponse",
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "EntityAggregateResponse": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/Object",
+            "description": ""
+          },
+          "valueType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "STRING",
+              "LONG",
+              "DOUBLE",
+              "BOOLEAN",
+              "BINARY",
+              "OBJECT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "STRING",
+                "name": "STRING",
+                "description": "STRING"
+              },
+              {
+                "value": "LONG",
+                "name": "LONG",
+                "description": "LONG"
+              },
+              {
+                "value": "DOUBLE",
+                "name": "DOUBLE",
+                "description": "DOUBLE"
+              },
+              {
+                "value": "BOOLEAN",
+                "name": "BOOLEAN",
+                "description": "BOOLEAN"
+              },
+              {
+                "value": "BINARY",
+                "name": "BINARY",
+                "description": "BINARY"
+              },
+              {
+                "value": "OBJECT",
+                "name": "OBJECT",
+                "description": "OBJECT"
+              }
+            ]
+          },
+          "countResult": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountResult",
+              "description": "com.milesight.beaveriot.entity.model.response.EntityAggregateResponse.CountResult"
+            },
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "value",
+          "valueType",
+          "countResult"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "CountResult": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/Object",
+            "description": ""
+          },
+          "valueType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "STRING",
+              "LONG",
+              "DOUBLE",
+              "BOOLEAN",
+              "BINARY",
+              "OBJECT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "STRING",
+                "name": "STRING",
+                "description": "STRING"
+              },
+              {
+                "value": "LONG",
+                "name": "LONG",
+                "description": "LONG"
+              },
+              {
+                "value": "DOUBLE",
+                "name": "DOUBLE",
+                "description": "DOUBLE"
+              },
+              {
+                "value": "BOOLEAN",
+                "name": "BOOLEAN",
+                "description": "BOOLEAN"
+              },
+              {
+                "value": "BINARY",
+                "name": "BINARY",
+                "description": "BINARY"
+              },
+              {
+                "value": "OBJECT",
+                "name": "OBJECT",
+                "description": "OBJECT"
+              }
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "value",
+          "valueType",
+          "count"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "EntityAggregateQuery": {
+        "type": "object",
+        "properties": {
+          "entityId": {
+            "type": "integer",
+            "description": ""
+          },
+          "aggregateType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "LAST",
+              "MIN",
+              "MAX",
+              "AVG",
+              "SUM",
+              "COUNT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "LAST",
+                "name": "LAST",
+                "description": "LAST"
+              },
+              {
+                "value": "MIN",
+                "name": "MIN",
+                "description": "MIN"
+              },
+              {
+                "value": "MAX",
+                "name": "MAX",
+                "description": "MAX"
+              },
+              {
+                "value": "AVG",
+                "name": "AVG",
+                "description": "AVG"
+              },
+              {
+                "value": "SUM",
+                "name": "SUM",
+                "description": "SUM"
+              },
+              {
+                "value": "COUNT",
+                "name": "COUNT",
+                "description": "COUNT"
+              }
+            ]
+          },
+          "startTimestamp": {
+            "type": "integer",
+            "description": ""
+          },
+          "endTimestamp": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "entityId",
+          "aggregateType",
+          "startTimestamp",
+          "endTimestamp"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyListEntityResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntityResponse",
+              "description": ""
+            },
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "EntityResponse": {
+        "type": "object",
+        "properties": {
+          "deviceName": {
+            "type": "string",
+            "description": ""
+          },
+          "integrationName": {
+            "type": "string",
+            "description": ""
+          },
+          "entityId": {
+            "type": "string",
+            "description": ""
+          },
+          "entityAccessMod": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "R",
+              "W",
+              "RW"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "R",
+                "name": "R",
+                "description": "R"
+              },
+              {
+                "value": "W",
+                "name": "W",
+                "description": "W"
+              },
+              {
+                "value": "RW",
+                "name": "RW",
+                "description": "RW"
+              }
+            ]
+          },
+          "entityKey": {
+            "type": "string",
+            "description": ""
+          },
+          "entityType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "PROPERTY",
+              "SERVICE",
+              "EVENT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "PROPERTY",
+                "name": "PROPERTY",
+                "description": "PROPERTY"
+              },
+              {
+                "value": "SERVICE",
+                "name": "SERVICE",
+                "description": "SERVICE"
+              },
+              {
+                "value": "EVENT",
+                "name": "EVENT",
+                "description": "EVENT"
+              }
+            ]
+          },
+          "entityName": {
+            "type": "string",
+            "description": ""
+          },
+          "entityValueAttribute": {
+            "$ref": "#/components/schemas/MapObject",
+            "description": ""
+          },
+          "entityValueType": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "deviceName",
+          "integrationName",
+          "entityId",
+          "entityAccessMod",
+          "entityKey",
+          "entityType",
+          "entityName",
+          "entityValueAttribute",
+          "entityValueType"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyIntegrationDetailData": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/IntegrationDetailData",
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "IntegrationDetailData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": ""
+          },
+          "icon": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "description": {
+            "type": "string",
+            "description": ""
+          },
+          "addDeviceServiceKey": {
+            "type": "string",
+            "description": ""
+          },
+          "deviceCount": {
+            "type": "integer",
+            "description": ""
+          },
+          "entityCount": {
+            "type": "integer",
+            "description": ""
+          },
+          "deleteDeviceServiceKey": {
+            "type": "string",
+            "description": ""
+          },
+          "integrationEntities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IntegrationEntityData",
+              "description": "com.milesight.beaveriot.integration.model.response.IntegrationEntityData"
+            },
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "icon",
+          "name",
+          "description",
+          "addDeviceServiceKey",
+          "deviceCount",
+          "entityCount",
+          "deleteDeviceServiceKey",
+          "integrationEntities"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "IntegrationEntityData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": ""
+          },
+          "key": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "type": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "PROPERTY",
+              "SERVICE",
+              "EVENT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "PROPERTY",
+                "name": "PROPERTY",
+                "description": "PROPERTY"
+              },
+              {
+                "value": "SERVICE",
+                "name": "SERVICE",
+                "description": "SERVICE"
+              },
+              {
+                "value": "EVENT",
+                "name": "EVENT",
+                "description": "EVENT"
+              }
+            ]
+          },
+          "valueAttribute": {
+            "$ref": "#/components/schemas/MapObject",
+            "description": ""
+          },
+          "valueType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "STRING",
+              "LONG",
+              "DOUBLE",
+              "BOOLEAN",
+              "BINARY",
+              "OBJECT"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "STRING",
+                "name": "STRING",
+                "description": "STRING"
+              },
+              {
+                "value": "LONG",
+                "name": "LONG",
+                "description": "LONG"
+              },
+              {
+                "value": "DOUBLE",
+                "name": "DOUBLE",
+                "description": "DOUBLE"
+              },
+              {
+                "value": "BOOLEAN",
+                "name": "BOOLEAN",
+                "description": "BOOLEAN"
+              },
+              {
+                "value": "BINARY",
+                "name": "BINARY",
+                "description": "BINARY"
+              },
+              {
+                "value": "OBJECT",
+                "name": "OBJECT",
+                "description": "OBJECT"
+              }
+            ]
+          },
+          "accessMod": {
+            "type": "string",
+            "description": "",
+            "enum": [
+              "R",
+              "W",
+              "RW"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "R",
+                "name": "R",
+                "description": "R"
+              },
+              {
+                "value": "W",
+                "name": "W",
+                "description": "W"
+              },
+              {
+                "value": "RW",
+                "name": "RW",
+                "description": "RW"
+              }
+            ]
+          },
+          "parent": {
+            "type": "string",
+            "description": ""
+          },
+          "value": {
+            "$ref": "#/components/schemas/Object",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "key",
+          "name",
+          "type",
+          "valueAttribute",
+          "valueType",
+          "accessMod",
+          "parent",
+          "value"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "ResponseBodyListSearchIntegrationResponseData": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchIntegrationResponseData",
+              "description": "com.milesight.beaveriot.integration.model.response.SearchIntegrationResponseData"
+            },
+            "description": "Response Data"
+          },
+          "status": {
+            "type": "string",
+            "description": "response status"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "request id"
+          },
+          "errorCode": {
+            "type": "string",
+            "description": "Error code (returned only when the response status is Failed)"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message (returned only when the response status is Failed)"
+          },
+          "detailMessage": {
+            "type": "string",
+            "description": "Detailed error description information"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "status",
+          "requestId",
+          "errorCode",
+          "errorMessage",
+          "detailMessage"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "SearchIntegrationResponseData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": ""
+          },
+          "icon": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "description": {
+            "type": "string",
+            "description": ""
+          },
+          "addDeviceServiceKey": {
+            "type": "string",
+            "description": ""
+          },
+          "deviceCount": {
+            "type": "integer",
+            "description": ""
+          },
+          "entityCount": {
+            "type": "integer",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "icon",
+          "name",
+          "description",
+          "addDeviceServiceKey",
+          "deviceCount",
+          "entityCount"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "SearchIntegrationRequest": {
+        "type": "object",
+        "properties": {
+          "deviceAddable": {
+            "type": "boolean",
+            "description": ""
+          },
+          "deviceDeletable": {
+            "type": "boolean",
+            "description": ""
+          }
+        },
+        "x-apifox-orders": [
+          "deviceAddable",
+          "deviceDeletable"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9200"
+    }
+  ]
+}
