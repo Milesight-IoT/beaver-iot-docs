@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Container Configuration
 
-## beaver-iot/web
+## beaver-iot-web
 
 ### Environment Variables
 
@@ -29,7 +29,7 @@ sidebar_position: 2
 | /etc/nginx/conf.d/             | Directory for additional Nginx configuration files        |
 | /etc/nginx/conf.d/default.conf | Default HTTP server configuration file for Nginx |
 
-## beaver-iot/server
+## beaver-iot-server
 
 ### Environment Variables
 
@@ -60,7 +60,7 @@ sidebar_position: 2
 | /root/beaver-iot/plugins/ | Directory for Java plugins     |
 | /root/beaver-iot/h2/      | Directory for H2 database storage    |
 
-## beaver-iot/monolith
+## beaver-iot
 
 ### Environment Variables
 
