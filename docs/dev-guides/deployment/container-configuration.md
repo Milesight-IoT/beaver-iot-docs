@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 容器配置
 
-## beaver-iot/web
+## beaver-iot-web
 
 ### 环境变量
 
@@ -29,7 +29,7 @@ sidebar_position: 2
 | /etc/nginx/conf.d/             | nginx 额外配置文件目录        |
 | /etc/nginx/conf.d/default.conf | nginx 默认 http 服务器配置文件 |
 
-## beaver-iot/server
+## beaver-iot-server
 
 ### 环境变量
 
@@ -60,7 +60,7 @@ sidebar_position: 2
 | /root/beaver-iot/plugins/ | Java 插件目录     |
 | /root/beaver-iot/h2/      | h2 数据库存储目录    |
 
-## beaver-iot/monolith
+## beaver-iot
 
 ### 环境变量
 

@@ -12,7 +12,7 @@ sidebar_position: 1
 services:
   monolith:
     container_name: beaver-iot
-    image: ${DOCKER_REPO:-beaver-iot}/monolith:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: ${DOCKER_REPO:-milesight}/beaver-iot:${BEAVER_IOT_IMAGE_TAG:-latest}
     ports:
       - "80:80"
     environment:
@@ -47,10 +47,10 @@ services:
       - "./nginx/conf.d/:/etc/nginx/conf.d/"
   web:
     container_name: beaver-iot-web
-    image: ${DOCKER_REPO:-beaver-iot}/web:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: ${DOCKER_REPO:-milesight}/beaver-iot-web:${BEAVER_IOT_IMAGE_TAG:-latest}
   server:
     container_name: beaver-iot-server
-    image: ${DOCKER_REPO:-beaver-iot}/server:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: ${DOCKER_REPO:-milesight}/beaver-iot-server:${BEAVER_IOT_IMAGE_TAG:-latest}
     environment:
       # Configure database connection (using h2 as default)
       - "DB_TYPE=h2"
@@ -88,12 +88,12 @@ services:
       - "./nginx/conf.d/:/etc/nginx/conf.d/"
   web:
     container_name: beaver-iot-web
-    image: ${DOCKER_REPO:-beaver-iot}/web:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: ${DOCKER_REPO:-milesight}/beaver-iot-web:${BEAVER_IOT_IMAGE_TAG:-latest}
     ports:
       - "80:80"
   server:
     container_name: beaver-iot-server
-    image: ${DOCKER_REPO:-beaver-iot}/server:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: ${DOCKER_REPO:-milesight}/beaver-iot-server:${BEAVER_IOT_IMAGE_TAG:-latest}
     environment:
       # Configure database connection
       - "DB_TYPE=postgres"
