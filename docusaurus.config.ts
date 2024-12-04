@@ -94,6 +94,11 @@ const config: Config = {
           position: 'right',
         },
         {
+          href: 'https://discord.gg/vNFxbwfErm',
+          label: 'Discord',
+          position: 'right',
+        },
+        {
           href: OrgGitURL,
           label: 'GitHub',
           position: 'right',
