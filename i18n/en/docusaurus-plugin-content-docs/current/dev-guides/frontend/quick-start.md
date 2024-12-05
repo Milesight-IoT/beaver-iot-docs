@@ -10,10 +10,6 @@ import { DevFrontEndRepoSSH, DevFrontEndRepoHttps } from '/src/consts';
 
 # Quick Start
 
-## Online Experience
-
-Demo URL: [Beaver IoT Demo](https://demo.beaver-iot.com/)
-
 ## Prerequisites
 
 - Pnpm version 8 or above;
