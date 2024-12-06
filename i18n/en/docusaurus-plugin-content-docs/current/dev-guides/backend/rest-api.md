@@ -49,6 +49,7 @@ client_id: iab
 client_secret: milesight*iab
 username: string
 password: string
+
 ```
 
 #### Response
@@ -65,7 +66,7 @@ password: string
 {
   "access_token": "string",
   "expires_in": 0,
-  "refresh_token": "string"
+  "refresh_token:":"string"
 }
 ```
 
@@ -106,8 +107,46 @@ POST /user/register
 {}
 ```
 
-### GET User Status Information
+### GET User Information
+GET /user
 
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "tenant_id": "string",
+    "user_id": "string",
+    "nickname": "string",
+    "email": "string",
+    "created_at": "string",
+    "roles": [{
+      "role_id": "string",
+      "role_name": "string"
+    }],
+    "menus": [
+      {
+        "menu_id": "",
+        "code": "",
+        "name": "",
+        "type": "",
+        "parent_id":""
+      }
+    ],
+    "is_super_admin": true
+  }
+}
+```
+
+### GET User Status Information
 GET /user/status
 
 #### Response
@@ -127,6 +166,1110 @@ GET /user/status
   }
 }
 ```
+
+### GET user list (page)
+GET /user/members
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+|body|body| Object | NO | none                |
+|» keyword|body|string| NO |  nickname or email  |
+
+> Body Request
+```json
+{
+  "keyword": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": {
+    "tenant_id": "string",
+    "user_id": "string",
+    "nickname": "string",
+    "email": "string",
+    "created_at": "string",
+    "roles": [{
+      "role_id": "string",
+      "role_name": "string"
+    }]
+  }
+}
+```
+
+### POST create user
+POST /user/members
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+|body|body|object| NO |none|
+|» email|body|string| YES |none|
+|» nickname|body|string| YES |none|
+|» password|body|string| YES |none|
+
+> Body REQUEST
+
+```json
+{
+  "email": "string",
+  "nickname": "string",
+  "password": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{}
+```
+
+### PUT edit user
+PUT /user/members/\{userId\}
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+|userId|path|string| YES |none|
+|body|body|object| NO |none|
+|» email|body|string| YES |none|
+|» nickname|body|string| YES |none|
+
+> Body REQUEST
+
+```json
+{
+  "email": "string",
+  "nickname": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{}
+```
+
+### PUT RESET password
+PUT /user/members/\{userId\}/change-password
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+|userId|path|string| YES |none|
+|body|body|object| NO |none|
+|» password|body|string| NO |none|
+
+> Body Request
+
+```json
+{
+  "password": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{}
+```
+
+### DELETE delete user
+
+DELETE /user/members/\{user_id\}
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+|---------|---|---|---|---|
+| user_id |path|string| YES |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### PUT edit password（self）
+PUT /user/password
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| body           |body|object| NO |none|
+| » old_password |body|string| YES |none|
+| » new_password |body|string| YES |none|
+
+> Body Request
+
+```json
+{
+  "old_password": "string",
+  "new_password": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{}
+```
+
+### GET user menu list
+
+GET /user/members/\{user_id\}/menus
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| user_id |path|string| YES |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "menu_id": "",
+      "code": "",
+      "name": "",
+      "type": "",
+      "parent_id":""
+    }
+  ]
+}
+```
+
+### GET is has some resource permission
+GET /user/members/\{userId\}/permission
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| userId          |path|string| YES |none|
+| body            |body|object| NO |none|
+| » resource_type |body|string| YES |none|
+| » resource_id   |body|string| YES |none|
+
+> Body REQUEST
+
+```json
+{
+  "resource_type": "string",
+  "resource_id": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "is_has_permission": true
+}
+```
+
+### POST create role
+POST /user/roles
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| body   |body| Object | NO  |none|
+| » name |body|string| YES  |none|
+| » description |body|string| NO  |none|
+
+> Body REQUEST
+
+```json
+{
+  "name": "string",
+  "description": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    "role_id": ""
+  }
+}
+```
+
+### PUT update role
+
+PUT /user/roles/\{role_id\}
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id      |path| string | YES |none|
+| body         |body| Object | NO |none|
+| » name       |body|string| YES |none|
+| » description |body|string| NO |none|
+
+> Body Request
+
+```json
+{
+  "name": "string",
+  "description": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### DELETE delete role
+
+DELETE /user/roles/\{role_id\}
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id |path|string| YES |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### GET role list(page)
+
+GET /user/roles
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "role_id": "",
+      "name": "",
+      "description": "",
+      "created_at": "",
+      "user_role_count": "",
+      "role_integration_count": ""
+    }
+  ]
+}
+```
+
+### GET user list in role
+
+GET /user/roles/\{role_id\}/members
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id |path|string| YES |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "user_id": "",
+      "user_email": "",
+      "user_nickname": "",
+      "role_id":""
+    }
+  ]
+}
+```
+
+### GET menu list in role
+
+GET /user/roles/\{role_id\}/menus
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id |path|string| YES |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "menu_id": "",
+      "code": "",
+      "name": "",
+      "type": "",
+      "parent_id":""
+    }
+  ]
+}
+```
+
+### GET resource list in role
+
+GET /user/roles/\{role_id\}/resources
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id         |path|string| Yes |none|
+| body            |body| Object | NO |none|
+| » resource_type |body|string| NO |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "resource_id": "",
+      "resource_type":""
+    }
+  ]
+}
+```
+
+### GET Integration list in role
+
+GET /user/roles/\{role_id\}/integrations
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id         |path|string| Yes |none|
+| body            |body| Object | NO |none|
+| » keyword |body|string| NO |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "integration_id": "",
+      "integration_name":"",
+      "device_num":"",
+      "entity_num": ""
+    }
+  ]
+}
+```
+
+### GET device list in role
+
+GET /user/roles/\{role_id\}/devices
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id         |path|string| Yes |none|
+| body            |body| Object | no |none|
+| » keyword |body|string| no |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "device_id": "",
+      "device_name":"",
+      "created_at": "",
+      "integration_id": "",
+      "integration_name":"",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":"",
+      "is_role_integration": "boolean"
+    }
+  ]
+}
+```
+
+### GET dashboard list in role
+
+GET /user/roles/\{role_id\}/dashboards
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id         |path|string| yes |none|
+| body            |body| Object | no |none|
+| » keyword |body|string| no |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "dashboard_id": "",
+      "dashboard_name":"",
+      "created_at": "",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":""
+    }
+  ]
+}
+```
+
+### GET undistributed dashboard list
+
+GET /user/roles/\{role_id\}/undistributed-dashboards
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id   |path|string| yes |none|
+| body      |body| Object | no |none|
+| » keyword |body|string| no |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "dashboard_id": "",
+      "dashboard_name":"",
+      "created_at": "",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":""
+    }
+  ]
+}
+```
+
+### GET undistributed user list
+
+GET /user/roles/\{role_id\}/undistributed-users
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id   |path|string| yes |none|
+| body      |body| Object | no |none|
+| » keyword |body|string| no |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "email": "",
+      "nickname":"",
+      "user_id":""
+    }
+  ]
+}
+```
+
+### GET undistributed integration list
+
+GET /user/roles/\{role_id\}/undistributed-integrations
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id         |path|string| yes |none|
+| body            |body| Object | no |none|
+| » keyword |body|string| no |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "integration_id": "",
+      "integration_name":""
+    }
+  ]
+}
+```
+
+### GET undistributed device list
+
+GET /user/roles/\{role_id\}/undistributed-devices
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id         |path|string| yes |none|
+| body            |body| Object | no |none|
+| » keyword |body|string| no |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "device_id": "",
+      "device_name":"",
+      "created_at": "",
+      "integration_id": "",
+      "integration_name":"",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":""
+    }
+  ]
+}
+```
+
+### POST add user to role
+
+POST /user/roles/\{role_id\}/associate-user
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id    |path| string | yes | none |
+| body       |body| Object | no | none |
+| » user_ids |body| Array | no | none |
+
+```json
+{
+  "user_ids": ["",""]
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### POST add resource to role
+
+POST /user/roles/\{role_id\}/associate-resource
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id     |path| string | yes | none |
+| body        |body| Object | no | none |
+| » resources |body| Array  | no | none |
+| »» id       |body| String | no | none |
+| »» type     |body| String[ENTITY, DEVICE, INTEGRATION, DASHBOARD, WORKFLOW] | 否 | none |
+
+```json
+{
+  "resources": [
+    {
+      "id": "String",
+      "type": "String" 
+    }
+  ]
+}
+```
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### POST disassociate user from role
+
+POST /user/roles/\{role_id\}/disassociate-user
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id    |path| string | YES | none |
+| body       |body| Object | NO | none |
+| » user_ids |body| Array | NO | none |
+
+```json
+{
+  "user_ids": ["",""]
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### POST disassociate resource from role
+
+POST /user/roles/\{role_id\}/disassociate-resource
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id     |path| string | YES | none |
+| body        |body| Object | no | none |
+| » resources |body| Array  | no | none |
+| »» id       |body| String | no | none |
+| »» type     |body| String[ENTITY, DEVICE, INTEGRATION, DASHBOARD, WORKFLOW] | 否 | none |
+
+```json
+{
+  "resources": [
+    {
+      "id": "String",
+      "type": "String" 
+    }
+  ]
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### POST create menu
+POST /user/menus
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| body        |body| Object | no |none|
+| » code      |body|string| yes |none|
+| » name      |body|string| yes |none|
+| » type      |body|string| yes |none|
+| » parent_id |body|string| no |none|
+
+> Body Request
+
+```json
+{
+  "code": "string",
+  "name": "string",
+  "type": "string",
+  "parent_id":"string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    "menu_id": ""
+  }
+}
+```
+
+### PUT update menu
+
+PUT /user/menus/\{menu_id\}
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| menu_id |path| string               | yes |none|
+| body    |body| Object               | no |none|
+| » name  |body| string               | yes |none|
+| » type  |body| string [MENU,FUNCTION] | yes |none|
+
+> Body request
+
+```json
+{
+  "name": "string",
+  "type": "string"
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### DELETE delete menu
+
+DELETE /user/menus/\{menu_id\}
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| menu_id |path|string| yes |none|
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### GET menu list
+
+GET /user/menus
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data": [
+    {
+      "menu_id": "",
+      "code": "",
+      "name": "",
+      "type": "",
+      "parent_id": "",
+      "children": []
+    }
+  ]
+}
+```
+
+### POST add menu to role
+
+POST /user/roles/\{role_id\}/associate-menu
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| role_id    |path| string | yes | none |
+| body       |body| Object | no | none |
+| » menu_ids |body| Array | no | none |
+
+```json
+{
+  "menu_ids": ["",""]
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
 
 ## Integration
 
@@ -152,20 +1295,13 @@ POST /integration/search
 
 #### Response
 
-| Field Name                | Field Type | Description                       |
-|---------------------------|------------|-----------------------------------|
-| $                         | object     | Integration information list item |
-| $.id                      | string     | Integration ID                    |
-| $.icon                    | string     | Integration icon URL              |
-| $.name                    | string     | Integration name                  |
-| $.description             | string     | Integration description           |
-| $.add_device_service_key  | string     | Add device service entity key     |
-| $.device_count            | number     | Number of devices                 |
-| $.entity_count            | number     | Number of entities (including device and integration entities) |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
@@ -195,30 +1331,13 @@ GET /integration/\{integration_id\}
 
 #### Response
 
-| Field Name                     | Field Type | Description                       |
-|--------------------------------|------------|-----------------------------------|
-| id                             | string     | Integration ID                    |
-| icon                           | string     | Integration icon URL              |
-| name                           | string     | Integration name                  |
-| description                    | string     | Integration description           |
-| add_device_service_key         | string     | Add device service entity key     |
-| entity_count                   | number     | Number of entities (including device and integration entities) |
-| delete_device_service_key      | string     | Delete device service entity key  |
-| integration_entities           | array      | List of integration entities      |
-| integration_entities.$         | object     | Integration entity list item      |
-| integration_entities.$.id      | string     | Entity ID                         |
-| integration_entities.$.key     | string     | Entity key                        |
-| integration_entities.$.name    | string     | Entity name                       |
-| integration_entities.$.type    | string     | Entity type (PROPERTY / SERVICE / EVENT) |
-| integration_entities.$.value_attribute | object | Entity attribute                  |
-| integration_entities.$.value_type | string  | Data type (STRING / LONG / DOUBLE / BOOLEAN / BINARY / OBJECT) |
-| integration_entities.$.access_mod | string  | Read/Write (R / W / RW) - only for property type entities |
-| integration_entities.$.parent  | string     | Parent entity key                 |
-| integration_entities.$.value   | string     | Current value of the entity       |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
@@ -278,9 +1397,13 @@ POST /device
 
 #### Response
 
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {}
@@ -310,9 +1433,13 @@ POST /device/search
 
 #### Response
 
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
@@ -358,9 +1485,13 @@ PUT /device/\{device_id\}
 
 #### Response
 
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {}
@@ -378,30 +1509,13 @@ GET /device/\{device_id\}
 
 #### Response
 
-| Field Name        | Field Type | Description                |
-|-------------------|------------|----------------------------|
-| id                | string     | Device ID                  |
-| key               | string     | Device key                 |
-| name              | string     | Device name                |
-| integration       | string     | Integration ID             |
-| integration_name  | string     | Integration name           |
-| additional_data   | object     | Additional data            |
-| created_at        | number     | Creation timestamp         |
-| updated_at        | number     | Update timestamp           |
-| deletable         | boolean    | Deletable flag             |
-| identifier        | string     | Identifier                 |
-| entities          | array      | List of device entities    |
-| entities.$        | object     | Device entity list item    |
-| entities.$.id     | string     | Entity ID                  |
-| entities.$.key    | string     | Entity key                 |
-| entities.$.name   | string     | Entity name                |
-| entities.$.type   | string     | Entity type                |
-| entities.$.value_attribute | object | Entity attribute     |
-| entities.$.value_type | string | Entity value type          |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
@@ -457,9 +1571,13 @@ POST /device/batch-delete
 
 #### Response
 
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {}
@@ -482,10 +1600,10 @@ POST /entity/search
 ```json
 {
   "keyword": "string",
-  "entityType": ["PROPERTY", "SERVICE", "EVENT"],
-  "excludeChildren": "Boolean",
-  "entityValueType": ["STRING", "LONG", "DOUBLE", "BOOLEAN", "BINARY", "OBJECT"],
-  "entityAccessMod": ["R", "W", "RW"]
+  "entity_type": "Array[PROPERTY, SERVICE, EVENT]",
+  "exclude_children": "Boolean",
+  "entity_value_type": "Array[STRING, LONG, DOUBLE, BOOLEAN, BINARY, OBJECT]",
+  "entity_access_mod": "Array[R, W, RW]"
 }
 ```
 
@@ -493,82 +1611,62 @@ POST /entity/search
 
 | Status Code | Description                                                                 | Data Model |
 |-------------|-----------------------------------------------------------------------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Object    |
-| » entityId  | string     | none        | none        |
-| » entityName | string    | none        | none        |
-| » entityType | string    | none        | none        |
-| » entityValueType | string | none      | none        |
-| » entityValueAttribute | object | none | none        |
-| » entityAccessMod | string | none      | none        |
-| » entityKey | string     | none        | none        |
-| » deviceName | string    | none        | none        |
-| » integrationName | string | none      | none        |
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
 > Response Example
 
-> Success
-
+> 200 Response
 ```json
 {
   "data": {
-    "deviceName": "String",
-    "integrationName": "String",
-    "entityId": "String",
-    "entityAccessMod": "String",
-    "entityKey": "String",
-    "entityName": "String",
-    "entityType": "String",
-    "entityValueAttribute": {},
-    "entityValueType": "String"
+    "device_name": "String",
+    "integration_name": "String",
+    "entity_id": "String",
+    "entity_access_mod": "String",
+    "entity_key": "String",
+    "entity_name": "String",
+    "entity_type": "String",
+    "entity_value_attribute": {},
+    "entity_value_type": "String"
   }
 }
 ```
 
 ### GET Get Child Entities
 
-GET /entity/\{entityId\}/children
+GET /entity/\{entity_id\}/children
 
 #### Request Parameters
 
 | Name      | Location | Type   | Required | Description |
 |-----------|----------|--------|----------|-------------|
-| entityId  | path     | string | Yes      | none        |
+| entity_id  | path     | string | Yes      | none        |
 
 #### Response
 
 | Status Code | Description                                                                 | Data Model |
 |-------------|-----------------------------------------------------------------------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Object    |
-| data        | array      | none        | Array       |
-| » entityId  | string     | none        | none        |
-| » entityName| string     | none        | none        |
-| » entityType| string     | none        | none        |
-| » entityValueType | string | none      | none        |
-| » entityValueAttribute | object | none | none        |
-| » entityAccessMod | string | none      | none        |
-| » integrationName | string | none      | none        |
-| » deviceName | string    | none        | none        |
-| » entityKey | string     | none        | none        |
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
   "data": [
     {
-      "deviceName": "",
-      "integrationName": "",
-      "entityId": "",
-      "entityAccessMod": "",
-      "entityKey": "",
-      "entityType": "",
-      "entityName": "",
-      "entityValueAttribute": {
+      "device_name": "",
+      "integration_name": "",
+      "entity_id": "",
+      "entity_access_mod": "",
+      "entity_key": "",
+      "entity_type": "",
+      "entity_name": "",
+      "entity_value_attribute": {
         "": {}
       },
-      "entityValueType": ""
+      "entity_value_type": ""
     }
   ]
 }
@@ -580,17 +1678,12 @@ POST /entity/history/search
 
 #### Request Parameters
 
-| Name             | Location | Type    | Required | Description |
-|------------------|----------|---------|----------|-------------|
-| body             | body     | object  | No       | none        |
-
-> Body Request Parameters
-
+> Body REQUEST
 ```json
 {
-  "entityId": 0,
-  "startTimestamp": 0,
-  "endTimestamp": 0
+  "entity_id": 0,
+  "start_timestamp": 0,
+  "end_timestamp": 0
 }
 ```
 
@@ -598,20 +1691,16 @@ POST /entity/history/search
 
 | Status Code | Description                                                                 | Data Model |
 |-------------|-----------------------------------------------------------------------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Object    |
-| » timestamp | integer    | none        | none        |
-| » value     | object     | none        | none        |
-| » valueType | string     | none        | none        |
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
 > Response Example
 
-> Success
-
+> 200 Response
 ```json
 {
   "timestamp": 0,
   "value": "Object",
-  "valueType": "String[STRING, LONG, DOUBLE, BOOLEAN, BINARY, OBJECT]"
+  "value_type": "String[STRING, LONG, DOUBLE, BOOLEAN, BINARY, OBJECT]"
 }
 ```
 
@@ -625,14 +1714,14 @@ POST /entity/history/aggregate
 |------------------|----------|---------|----------|-------------|
 | body             | body     | object  | No       | none        |
 
-> Body Request Parameters
+> Body 请求参数
 
 ```json
 {
-  "entityId": 0,
-  "aggregateType": "LAST",
-  "startTimestamp": 0,
-  "endTimestamp": 0
+  "entity_id": 0,
+  "aggregate_type": "LAST",
+  "start_timestamp": 0,
+  "end_timestamp": 0
 }
 ```
 
@@ -640,27 +1729,21 @@ POST /entity/history/aggregate
 
 | Status Code | Description                                                                 | Data Model |
 |-------------|-----------------------------------------------------------------------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Object    |
-| » value     | object     | none        | none        |
-| » valueType | string     | none        | none        |
-| » countResult | array    | none        | Array       |
-| »» value    | object     | none        | none        |
-| »» valueType | string    | none        | none        |
-| »» count    | integer    | none        | none        |
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
 > Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
   "data":{
     "value": {},
-    "valueType": "",
-    "countResult": [
+    "value_type": "",
+    "count_result": [
       {
         "value": {},
-        "valueType": "",
+        "value_type": "",
         "count": 0
       }
     ]
@@ -670,74 +1753,65 @@ POST /entity/history/aggregate
 
 ### GET Retrieve the Latest Value of an Entity
 
-GET /entity/\{entityId\}/status
+GET /entity/\{entity_id\}/status
 
 #### Request Parameters
 
 | Name      | Location | Type   | Required | Description |
 |-----------|----------|--------|----------|-------------|
-| entityId  | path     | string | Yes      | none        |
+| entity_id  | path     | string | Yes      | none        |
 
 #### Response
 
-| Status Code | Meaning | Description | Data Model |
-|-------------|---------|-------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success     | Object     |
-| » value     | object  | none        | none       |
-| » updatedAt | string  | none        | none       |
-| » valueType | string  | none        | none       |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
-> Example Response
+> Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
-  "data": {
+  "data":{
     "value": {},
-    "updatedAt": "",
-    "valueType": ""
+    "updated_at": "",
+    "value_type": ""
   }
 }
 ```
 
 ### GET Retrieve Entity Metadata
 
-GET /entity/\{entityId\}/meta
+GET /entity/\{entity_id\}/meta
 
 #### Request Parameters
 
 | Name      | Location | Type   | Required | Description |
 |-----------|----------|--------|----------|-------------|
-| entityId  | path     | string | Yes      | none        |
+| entity_id  | path     | string | Yes      | none        |
 
 #### Response
 
-| Status Code | Meaning | Description | Data Model |
-|-------------|---------|-------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success     | Object     |
-| » key       | string  | none        | none       |
-| » name      | string  | none        | none       |
-| » type      | string  | none        | none       |
-| » accessMod | string  | none        | none       |
-| » valueAttribute | object | none    | none       |
-| » valueType | string  | none        | none       |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
-> Example Response
+> Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
-  "data": {
+  "data":{
     "key": "",
     "name": "",
     "type": "",
-    "accessMod": "",
-    "valueAttribute": {
+    "access_mod": "",
+    "value_attribute": {
       "": {}
     },
-    "valueType": ""
+    "value_type": ""
   }
 }
 ```
@@ -765,45 +1839,45 @@ POST /dashboard
 
 #### Response
 
-| Status Code | Meaning | Description | Data Model |
-|-------------|---------|-------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success     | Object     |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
-> Example Response
+> Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
-  "data": {
-    "dashboardId": ""
+  "data":{
+    "dashboard_id": ""
   }
 }
 ```
 
 ### PUT Update Dashboard
 
-PUT /dashboard/\{dashboardId\}
+PUT /dashboard/\{dashboard_id\}
 
 #### Request Parameters
 
 | Name         | Location | Type   | Required | Description |
 |--------------|----------|--------|----------|-------------|
-| dashboardId  | path     | string | Yes      | none        |
+| dashboard_id  | path     | string | Yes      | none        |
 | body         | body     | Object | No       | none        |
 | » name       | body     | string | Yes      | none        |
 | » widgets    | body     | Array  | Yes      | none        |
-| »» widgetId  | body     | string | Yes      | none        |
+| »» widget_id  | body     | string | Yes      | none        |
 | »» data      | body     | Object | Yes      | none        |
 
-> Body Request Example
+> Body 请求参数
 
 ```json
 {
   "name": "string",
   "widgets": [
     {
-      "widgetId": "string",
+      "widget_id": "string",
       "data": {
       }
     }
@@ -813,17 +1887,17 @@ PUT /dashboard/\{dashboardId\}
 
 #### Response
 
-| Status Code | Meaning | Description | Data Model |
-|-------------|---------|-------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success     | Object     |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
-> Example Response
+> Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
-  "data": {
+  "data":{
     
   }
 }
@@ -831,7 +1905,7 @@ PUT /dashboard/\{dashboardId\}
 
 ### DELETE Delete Dashboard
 
-DELETE /dashboard/\{dashboardId\}
+DELETE /dashboard/\{dashboard_id\}
 
 #### Request Parameters
 
@@ -841,17 +1915,17 @@ DELETE /dashboard/\{dashboardId\}
 
 #### Response
 
-| Status Code | Meaning | Description | Data Model |
-|-------------|---------|-------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success     | Object     |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
-> Example Response
+> Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
-  "data": {
+  "data":{
     
   }
 }
@@ -863,36 +1937,30 @@ GET /dashboard/dashboards
 
 #### Response
 
-| Status Code | Meaning | Description | Data Model |
-|-------------|---------|-------------|------------|
-| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success     | Object     |
-| data        | Array   | none        | Array      |
-| » dashboardId | string | none       | String     |
-| » name      | string  | none        | String     |
-| » widgets   | Array   | none        | Array      |
-| »» widgetId | string  | none        | String     |
-| »» data     | Object  | none        | Object     |
-| » createdAt | string  | none        | String     |
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
 
-> Example Response
+> Response Example
 
-> Success
+> 200 Response
 
 ```json
 {
   "data": [
     {
-      "dashboardId": "",
+      "dashboard_id": "",
+      "user_id":"",
       "name": "",
       "widgets": [
         {
-          "widgetId": "",
+          "widget_id": "",
           "data": {
             "": {}
           }
         }
       ],
-      "createdAt": ""
+      "created_at": ""
     }
   ]
 }

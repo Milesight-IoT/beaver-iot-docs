@@ -126,11 +126,21 @@ GET /user
     "user_id": "string",
     "nickname": "string",
     "email": "string",
-    "create_at": "string",
+    "created_at": "string",
     "roles": [{
       "role_id": "string",
       "role_name": "string"
-    }]
+    }],
+    "menus": [
+      {
+        "menu_id": "",
+        "code": "",
+        "name": "",
+        "type": "",
+        "parent_id":""
+      }
+    ],
+    "is_super_admin": true
   }
 }
 ```
@@ -157,7 +167,7 @@ GET /user/status
 ```
 
 ### GET 获取用户列表(分页)
-GET /user/users
+GET /user/members
 
 #### 请求参数
 |名称|位置| 类型     |必选| 说明                  |
@@ -188,7 +198,7 @@ GET /user/users
     "user_id": "string",
     "nickname": "string",
     "email": "string",
-    "create_at": "string",
+    "created_at": "string",
     "roles": [{
       "role_id": "string",
       "role_name": "string"
@@ -198,7 +208,7 @@ GET /user/users
 ```
 
 ### POST 创建用户
-POST /user
+POST /user/members
 
 #### 请求参数
 
@@ -233,8 +243,8 @@ POST /user
 {}
 ```
 
-### POST 修改用户信息
-PUT /user/\{userId\}
+### PUT 修改用户信息
+PUT /user/members/\{userId\}
 
 #### 请求参数
 
@@ -244,14 +254,45 @@ PUT /user/\{userId\}
 |body|body|object| 否 |none|
 |» email|body|string| 是 |none|
 |» nickname|body|string| 是 |none|
-|» password|body|string| 是 |none|
 
 > Body 请求参数
 
 ```json
 {
   "email": "string",
-  "nickname": "string",
+  "nickname": "string"
+}
+```
+
+#### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+> 返回示例
+
+> 200 Response
+
+```json
+{}
+```
+
+### PUT 重置用户密码
+PUT /user/members/\{userId\}/change-password
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|userId|path|string| 是 |none|
+|body|body|object| 否 |none|
+|» password|body|string| 是 |none|
+
+> Body 请求参数
+
+```json
+{
   "password": "string"
 }
 ```
@@ -272,7 +313,7 @@ PUT /user/\{userId\}
 
 ### DELETE 删除用户
 
-DELETE /user/\{user_id\}
+DELETE /user/members/\{user_id\}
 
 #### 请求参数
 
@@ -298,7 +339,7 @@ DELETE /user/\{user_id\}
 }
 ```
 
-### POST 修改密码（自己）
+### PUT 修改密码（自己）
 PUT /user/password
 
 #### 请求参数
@@ -334,7 +375,7 @@ PUT /user/password
 
 ### GET 获取用户下的菜单列表
 
-GET /user/\{user_id\}/menus
+GET /user/members/\{user_id\}/menus
 
 #### 请求参数
 
@@ -366,8 +407,45 @@ GET /user/\{user_id\}/menus
 }
 ```
 
+### GET 获取是否包含某个资源权限
+GET /user/members/\{userId\}/permission
+
+#### 请求参数
+
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| userId          |path|string| 是 |none|
+| body            |body|object| 否 |none|
+| » resource_type |body|string| 是 |none|
+| » resource_id   |body|string| 是 |none|
+
+> Body 请求参数
+
+```json
+{
+  "resource_type": "string",
+  "resource_id": "string"
+}
+```
+
+#### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+> 返回示例
+
+> 200 Response
+
+```json
+{
+  "is_has_permission": true
+}
+```
+
 ### POST 创建角色
-POST /role
+POST /user/roles
 
 #### 请求参数
 
@@ -406,7 +484,7 @@ POST /role
 
 ### PUT 更新角色
 
-PUT /role/\{role_id\}
+PUT /user/roles/\{role_id\}
 
 #### 请求参数
 
@@ -446,7 +524,7 @@ PUT /role/\{role_id\}
 
 ### DELETE 删除role
 
-DELETE /role/\{role_id\}
+DELETE /user/roles/\{role_id\}
 
 #### 请求参数
 
@@ -474,7 +552,7 @@ DELETE /role/\{role_id\}
 
 ### GET 获取角色列表(分页)
 
-GET /role/roles
+GET /user/roles
 
 #### 返回结果
 
@@ -511,7 +589,7 @@ GET /role/roles
 
 ### GET 获取角色下的用户列表
 
-GET /role/\{role_id\}/users
+GET /user/roles/\{role_id\}/members
 
 #### 请求参数
 
@@ -544,7 +622,7 @@ GET /role/\{role_id\}/users
 
 ### GET 获取角色下的菜单列表
 
-GET /role/\{role_id\}/menus
+GET /user/roles/\{role_id\}/menus
 
 #### 请求参数
 
@@ -578,7 +656,7 @@ GET /role/\{role_id\}/menus
 
 ### GET 获取角色下的资源列表
 
-GET /role/\{role_id\}/resources
+GET /user/roles/\{role_id\}/resources
 
 #### 请求参数
 
@@ -609,9 +687,264 @@ GET /role/\{role_id\}/resources
 }
 ```
 
+### GET 获取角色下的集成列表
+
+GET /user/roles/\{role_id\}/integrations
+
+#### 请求参数
+
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| role_id         |path|string| 是 |none|
+| body            |body| Object | 否 |none|
+| » keyword |body|string| 否 |none|
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "integration_id": "",
+      "integration_name":"",
+      "device_num":"",
+      "entity_num": ""
+    }
+  ]
+}
+```
+
+### GET 获取角色下的设备列表
+
+GET /user/roles/\{role_id\}/devices
+
+#### 请求参数
+
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| role_id         |path|string| 是 |none|
+| body            |body| Object | 否 |none|
+| » keyword |body|string| 否 |none|
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "device_id": "",
+      "device_name":"",
+      "created_at": "",
+      "integration_id": "",
+      "integration_name":"",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":"",
+      "is_role_integration": "boolean"
+    }
+  ]
+}
+```
+
+### GET 获取角色下的dashboard列表
+
+GET /user/roles/\{role_id\}/dashboards
+
+#### 请求参数
+
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| role_id         |path|string| 是 |none|
+| body            |body| Object | 否 |none|
+| » keyword |body|string| 否 |none|
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "dashboard_id": "",
+      "dashboard_name":"",
+      "created_at": "",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":""
+    }
+  ]
+}
+```
+
+### GET 获取所有未分配的dashboard（用于分配资源）
+
+GET /user/roles/\{role_id\}/undistributed-dashboards
+
+#### 请求参数
+
+| 名称        |位置|类型|必选|说明|
+|-----------|---|---|---|---|
+| role_id   |path|string| 是 |none|
+| body      |body| Object | 否 |none|
+| » keyword |body|string| 否 |none|
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "dashboard_id": "",
+      "dashboard_name":"",
+      "created_at": "",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":""
+    }
+  ]
+}
+```
+
+### GET 获取所有未分配的用户列表（用于分配资源）
+
+GET /user/roles/\{role_id\}/undistributed-users
+
+#### 请求参数
+
+| 名称        |位置|类型|必选|说明|
+|-----------|---|---|---|---|
+| role_id   |path|string| 是 |none|
+| body      |body| Object | 否 |none|
+| » keyword |body|string| 否 |none|
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "email": "",
+      "nickname":"",
+      "user_id":""
+    }
+  ]
+}
+```
+
+### GET 获取未分配的集成列表
+
+GET /user/roles/\{role_id\}/undistributed-integrations
+
+#### 请求参数
+
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| role_id         |path|string| 是 |none|
+| body            |body| Object | 否 |none|
+| » keyword |body|string| 否 |none|
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "integration_id": "",
+      "integration_name":""
+    }
+  ]
+}
+```
+
+### GET 获取未分配的设备列表
+
+GET /user/roles/\{role_id\}/undistributed-devices
+
+#### 请求参数
+
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| role_id         |path|string| 是 |none|
+| body            |body| Object | 否 |none|
+| » keyword |body|string| 否 |none|
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "device_id": "",
+      "device_name":"",
+      "created_at": "",
+      "integration_id": "",
+      "integration_name":"",
+      "user_id":"",
+      "user_email": "",
+      "user_nickname":""
+    }
+  ]
+}
+```
+
 ### POST 添加用户到角色
 
-POST /role/\{role_id\}/associate-user
+POST /user/roles/\{role_id\}/associate-user
 
 #### 请求参数
 
@@ -619,7 +952,7 @@ POST /role/\{role_id\}/associate-user
 |------------|---|--------|---|------|
 | role_id    |path| string | 是 | none |
 | body       |body| Object | 否 | none |
-| » user_ids |body| Array | 否 | 全量的用户id(不包含在其中的将被删除)  |
+| » user_ids |body| Array | 否 | none |
 
 ```json
 {
@@ -647,17 +980,96 @@ POST /role/\{role_id\}/associate-user
 
 ### POST 添加资源到角色
 
-POST /role/\{role_id\}/associate-resource
+POST /user/roles/\{role_id\}/associate-resource
 
 #### 请求参数
 
-| 名称          |位置| 类型     |必选| 说明                |
-|-------------|---|--------|---|-------------------|
-| role_id     |path| string | 是 | none              |
-| body        |body| Object | 否 | none              |
-| » resources |body| Array  | 否 | 对应type的全量资源数据(不包含在该type下的其它数据将被删除) |
-| »» id       |body| String | 否 | none              |
-| »» type     |body| String[ENTITY, DEVICE, INTEGRATION, DASHBOARD] | 否 | none              |
+| 名称          |位置| 类型     |必选| 说明   |
+|-------------|---|--------|---|------|
+| role_id     |path| string | 是 | none |
+| body        |body| Object | 否 | none |
+| » resources |body| Array  | 否 | none |
+| »» id       |body| String | 否 | none |
+| »» type     |body| String[ENTITY, DEVICE, INTEGRATION, DASHBOARD, WORKFLOW] | 否 | none |
+
+```json
+{
+  "resources": [
+    {
+      "id": "String",
+      "type": "String" 
+    }
+  ]
+}
+```
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### POST 取消角色用户绑定
+
+POST /user/roles/\{role_id\}/disassociate-user
+
+#### 请求参数
+
+| 名称         |位置| 类型     |必选| 说明   |
+|------------|---|--------|---|------|
+| role_id    |path| string | 是 | none |
+| body       |body| Object | 否 | none |
+| » user_ids |body| Array | 否 | none |
+
+```json
+{
+  "user_ids": ["",""]
+}
+```
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data":{
+    
+  }
+}
+```
+
+### POST 取消角色资源绑定
+
+POST /user/roles/\{role_id\}/disassociate-resource
+
+#### 请求参数
+
+| 名称          |位置| 类型     |必选| 说明   |
+|-------------|---|--------|---|------|
+| role_id     |path| string | 是 | none |
+| body        |body| Object | 否 | none |
+| » resources |body| Array  | 否 | none |
+| »» id       |body| String | 否 | none |
+| »» type     |body| String[ENTITY, DEVICE, INTEGRATION, DASHBOARD, WORKFLOW] | 否 | none |
 
 ```json
 {
@@ -689,7 +1101,7 @@ POST /role/\{role_id\}/associate-resource
 ```
 
 ### POST 创建菜单
-POST /menu
+POST /user/menus
 
 #### 请求参数
 
@@ -732,7 +1144,7 @@ POST /menu
 
 ### PUT 更新菜单
 
-PUT /menu/\{menu_id\}
+PUT /user/menus/\{menu_id\}
 
 #### 请求参数
 
@@ -741,7 +1153,7 @@ PUT /menu/\{menu_id\}
 | menu_id |path| string               | 是 |none|
 | body    |body| Object               | 否 |none|
 | » name  |body| string               | 是 |none|
-| » type  |body| string [MENU,BUTTON] | 是 |none|
+| » type  |body| string [MENU,FUNCTION] | 是 |none|
 
 > Body 请求参数
 
@@ -772,7 +1184,7 @@ PUT /menu/\{menu_id\}
 
 ### DELETE 删除菜单
 
-DELETE /menu/\{menu_id\}
+DELETE /user/menus/\{menu_id\}
 
 #### 请求参数
 
@@ -800,7 +1212,7 @@ DELETE /menu/\{menu_id\}
 
 ### GET 获取菜单列表
 
-GET /menu/menus
+GET /user/menus
 
 #### 返回结果
 
@@ -836,7 +1248,7 @@ GET /menu/menus
 
 ### POST 添加菜单到角色
 
-POST /role/\{role_id\}/associate-menu
+POST /user/roles/\{role_id\}/associate-menu
 
 #### 请求参数
 
