@@ -9,10 +9,6 @@ import { DevFrontEndRepoSSH, DevFrontEndRepoHttps } from '/src/consts';
 
 # 快速开始
 
-## 在线体验
-
-体验地址： [Beaver IoT Demo](https://demo.beaver-iot.com/) 。
-
 ## 前置准备
 
 - Pnpm 8 及以上版本；
