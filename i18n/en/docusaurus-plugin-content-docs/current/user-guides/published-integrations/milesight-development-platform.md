@@ -1,6 +1,3 @@
----
-sidebar_position: 1
----
 # Milesight Development Platform Integration
 
 Beaver IoT has equipped with Milesight Development Platform integration to get device information and achieve the device control quickly.
