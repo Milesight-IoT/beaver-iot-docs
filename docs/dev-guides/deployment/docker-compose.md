@@ -16,11 +16,10 @@ services:
     ports:
       - "80:80"
     environment:
+      # Tell the nginx where to find the api server
+      - "SERVER_HOST=localhost"
       # Configure database connection (using h2 as default)
       - "DB_TYPE=h2"
-      # Allow remote access to h2 console
-      - "SPRING_H2_CONSOLE_ENABLED=true"
-      - "SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true"
       - "SPRING_DATASOURCE_URL=jdbc:h2:file:~/beaver-iot/h2/beaver;AUTO_SERVER=TRUE"
       - "SPRING_DATASOURCE_USERNAME=sa"
       - "SPRING_DATASOURCE_PASSWORD="
@@ -54,9 +53,6 @@ services:
     environment:
       # Configure database connection (using h2 as default)
       - "DB_TYPE=h2"
-      # Allow remote access to h2 console
-      - "SPRING_H2_CONSOLE_ENABLED=true"
-      - "SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true"
       - "SPRING_DATASOURCE_URL=jdbc:h2:file:~/beaver-iot/h2/beaver;AUTO_SERVER=TRUE"
       - "SPRING_DATASOURCE_USERNAME=sa"
       - "SPRING_DATASOURCE_PASSWORD="
@@ -89,8 +85,6 @@ services:
   web:
     container_name: beaver-iot-web
     image: ${DOCKER_REPO:-milesight}/beaver-iot-web:${BEAVER_IOT_IMAGE_TAG:-latest}
-    ports:
-      - "80:80"
   server:
     container_name: beaver-iot-server
     image: ${DOCKER_REPO:-milesight}/beaver-iot-server:${BEAVER_IOT_IMAGE_TAG:-latest}
