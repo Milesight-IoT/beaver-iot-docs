@@ -167,17 +167,16 @@ GET /user/status
 }
 ```
 
-### GET user list (page)
-GET /user/members
+### Post user list (page)
+Post /user/members/search
 
-#### Request Parameters
+#### 请求参数
+|名称|位置| 类型     |必选| 说明                  |
+|---|---|--------|---|---------------------|
+|body|body| Object | 否 | none                |
+|» keyword|body|string| 否 | 模糊匹配nickname或email  |
 
-| Name           | Location | Type   | Required | Description |
-|----------------|----------|--------|----------|-------------|
-|body|body| Object | NO | none                |
-|» keyword|body|string| NO |  nickname or email  |
-
-> Body Request
+> Body 请求参数
 ```json
 {
   "keyword": "string"
@@ -411,19 +410,19 @@ GET /user/members/\{user_id\}/menus
 }
 ```
 
-### GET is has some resource permission
-GET /user/members/\{userId\}/permission
+### Post is has some resource permission
+Post /user/members/\{userId\}/permission
 
-#### Request Parameters
+#### 请求参数
 
-| Name           | Location | Type   | Required | Description |
-|----------------|----------|--------|----------|-------------|
-| userId          |path|string| YES |none|
-| body            |body|object| NO |none|
-| » resource_type |body|string| YES |none|
-| » resource_id   |body|string| YES |none|
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| userId          |path|string| 是 |none|
+| body            |body|object| 否 |none|
+| » resource_type |body|string| 是 |none|
+| » resource_id   |body|string| 是 |none|
 
-> Body REQUEST
+> Body 请求参数
 
 ```json
 {
@@ -431,6 +430,12 @@ GET /user/members/\{userId\}/permission
   "resource_id": "string"
 }
 ```
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| userId          |path|string| YES |none|
 
 #### Response
 
@@ -556,7 +561,7 @@ DELETE /user/roles/\{role_id\}
 
 ### GET role list(page)
 
-GET /user/roles
+Post /user/roles/search
 
 #### Response
 
@@ -650,9 +655,9 @@ GET /user/roles/\{role_id\}/menus
 }
 ```
 
-### GET resource list in role
+### Post resource list in role
 
-GET /user/roles/\{role_id\}/resources
+Post /user/roles/\{role_id\}/resources
 
 #### Request Parameters
 
@@ -683,9 +688,9 @@ GET /user/roles/\{role_id\}/resources
 }
 ```
 
-### GET Integration list in role
+### Post Integration list in role
 
-GET /user/roles/\{role_id\}/integrations
+Post /user/roles/\{role_id\}/integrations
 
 #### Request Parameters
 
@@ -718,9 +723,9 @@ GET /user/roles/\{role_id\}/integrations
 }
 ```
 
-### GET device list in role
+### Post device list in role
 
-GET /user/roles/\{role_id\}/devices
+Post /user/roles/\{role_id\}/devices
 
 #### Request Parameters
 
@@ -758,9 +763,9 @@ GET /user/roles/\{role_id\}/devices
 }
 ```
 
-### GET dashboard list in role
+### Post dashboard list in role
 
-GET /user/roles/\{role_id\}/dashboards
+Post /user/roles/\{role_id\}/dashboards
 
 #### Request Parameters
 
@@ -795,9 +800,9 @@ GET /user/roles/\{role_id\}/dashboards
 }
 ```
 
-### GET undistributed dashboard list
+### Post undistributed dashboard list
 
-GET /user/roles/\{role_id\}/undistributed-dashboards
+Post /user/roles/\{role_id\}/undistributed-dashboards
 
 #### Request Parameters
 
@@ -832,9 +837,9 @@ GET /user/roles/\{role_id\}/undistributed-dashboards
 }
 ```
 
-### GET undistributed user list
+### Post undistributed user list
 
-GET /user/roles/\{role_id\}/undistributed-users
+Post /user/roles/\{role_id\}/undistributed-users
 
 #### Request Parameters
 
@@ -866,9 +871,9 @@ GET /user/roles/\{role_id\}/undistributed-users
 }
 ```
 
-### GET undistributed integration list
+### Post undistributed integration list
 
-GET /user/roles/\{role_id\}/undistributed-integrations
+Post /user/roles/\{role_id\}/undistributed-integrations
 
 #### Request Parameters
 
@@ -899,9 +904,9 @@ GET /user/roles/\{role_id\}/undistributed-integrations
 }
 ```
 
-### GET undistributed device list
+### Post undistributed device list
 
-GET /user/roles/\{role_id\}/undistributed-devices
+Post /user/roles/\{role_id\}/undistributed-devices
 
 #### Request Parameters
 
