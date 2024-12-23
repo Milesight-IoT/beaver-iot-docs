@@ -166,8 +166,8 @@ GET /user/status
 }
 ```
 
-### GET 获取用户列表(分页)
-GET /user/members
+### Post 获取用户列表(分页)
+Post /user/members/search
 
 #### 请求参数
 |名称|位置| 类型     |必选| 说明                  |
@@ -407,8 +407,8 @@ GET /user/members/\{user_id\}/menus
 }
 ```
 
-### GET 获取是否包含某个资源权限
-GET /user/members/\{userId\}/permission
+### Post 获取是否包含某个资源权限
+Post /user/members/\{userId\}/permission
 
 #### 请求参数
 
@@ -427,6 +427,13 @@ GET /user/members/\{userId\}/permission
   "resource_id": "string"
 }
 ```
+
+#### 请求参数
+
+| 名称              |位置|类型|必选|说明|
+|-----------------|---|---|---|---|
+| userId          |path|string| 是 |none|
+
 
 #### 返回结果
 
@@ -550,9 +557,9 @@ DELETE /user/roles/\{role_id\}
 }
 ```
 
-### GET 获取角色列表(分页)
+### Post 获取角色列表(分页)
 
-GET /user/roles
+Post /user/roles/search
 
 #### 返回结果
 
@@ -587,9 +594,9 @@ GET /user/roles
 }
 ```
 
-### GET 获取角色下的用户列表
+### Post 获取角色下的用户列表
 
-GET /user/roles/\{role_id\}/members
+Post /user/roles/\{role_id\}/members
 
 #### 请求参数
 
@@ -654,9 +661,9 @@ GET /user/roles/\{role_id\}/menus
 }
 ```
 
-### GET 获取角色下的资源列表
+### Post 获取角色下的资源列表
 
-GET /user/roles/\{role_id\}/resources
+Post /user/roles/\{role_id\}/resources
 
 #### 请求参数
 
@@ -687,9 +694,9 @@ GET /user/roles/\{role_id\}/resources
 }
 ```
 
-### GET 获取角色下的集成列表
+### Post 获取角色下的集成列表
 
-GET /user/roles/\{role_id\}/integrations
+Post /user/roles/\{role_id\}/integrations
 
 #### 请求参数
 
@@ -722,9 +729,9 @@ GET /user/roles/\{role_id\}/integrations
 }
 ```
 
-### GET 获取角色下的设备列表
+### Post 获取角色下的设备列表
 
-GET /user/roles/\{role_id\}/devices
+Post /user/roles/\{role_id\}/devices
 
 #### 请求参数
 
@@ -762,9 +769,9 @@ GET /user/roles/\{role_id\}/devices
 }
 ```
 
-### GET 获取角色下的dashboard列表
+### Post 获取角色下的dashboard列表
 
-GET /user/roles/\{role_id\}/dashboards
+Post /user/roles/\{role_id\}/dashboards
 
 #### 请求参数
 
@@ -799,9 +806,9 @@ GET /user/roles/\{role_id\}/dashboards
 }
 ```
 
-### GET 获取所有未分配的dashboard（用于分配资源）
+### Post 获取所有未分配的dashboard（用于分配资源）
 
-GET /user/roles/\{role_id\}/undistributed-dashboards
+Post /user/roles/\{role_id\}/undistributed-dashboards
 
 #### 请求参数
 
@@ -836,9 +843,9 @@ GET /user/roles/\{role_id\}/undistributed-dashboards
 }
 ```
 
-### GET 获取所有未分配的用户列表（用于分配资源）
+### Post 获取所有未分配的用户列表（用于分配资源）
 
-GET /user/roles/\{role_id\}/undistributed-users
+Post /user/roles/\{role_id\}/undistributed-users
 
 #### 请求参数
 
@@ -870,9 +877,9 @@ GET /user/roles/\{role_id\}/undistributed-users
 }
 ```
 
-### GET 获取未分配的集成列表
+### Post 获取未分配的集成列表
 
-GET /user/roles/\{role_id\}/undistributed-integrations
+Post /user/roles/\{role_id\}/undistributed-integrations
 
 #### 请求参数
 
@@ -903,9 +910,9 @@ GET /user/roles/\{role_id\}/undistributed-integrations
 }
 ```
 
-### GET 获取未分配的设备列表
+### Post 获取未分配的设备列表
 
-GET /user/roles/\{role_id\}/undistributed-devices
+Post /user/roles/\{role_id\}/undistributed-devices
 
 #### 请求参数
 
