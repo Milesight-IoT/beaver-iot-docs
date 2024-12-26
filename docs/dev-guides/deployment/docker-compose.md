@@ -12,53 +12,55 @@ sidebar_position: 1
 services:
   monolith:
     container_name: beaver-iot
-    image: ${DOCKER_REPO:-milesight}/beaver-iot:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: milesight/beaver-iot:latest
+    restart: always
     ports:
       - "80:80"
     environment:
-      # Tell the nginx where to find the api server
-      - "SERVER_HOST=localhost"
-      # Configure database connection (using h2 as default)
+      # 配置数据库文件 (默认使用H2)
       - "DB_TYPE=h2"
       - "SPRING_DATASOURCE_URL=jdbc:h2:file:~/beaver-iot/h2/beaver;AUTO_SERVER=TRUE"
       - "SPRING_DATASOURCE_USERNAME=sa"
       - "SPRING_DATASOURCE_PASSWORD="
       - "SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.h2.Driver"
     volumes:
-      # Persist database data and log files
+      # 持久化存储数据
       - "./beaver-iot/:/root/beaver-iot/"
 ```
 
 ## 前后端分离部署
 
-如果您需要分别部署前端和后端容器, 那么可以参考如下 docker-compose 配置, 分别部署 nginx, web 和 server 容器:
+如果您需要分别部署前端和后端容器, 那么可以参考如下 docker-compose 配置, 分别部署 nginx, web 和 api 容器:
 
 ```yaml
 services:
   nginx:
     container_name: beaver-iot-nginx
     image: nginx:stable-alpine3.20-slim
+    restart: always
     ports:
       - "80:80"
     volumes:
-      # Nginx config files should be prepared by yourself
+      # 您需要自行准备Nginx配置文件
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
       - "./nginx/conf.d/:/etc/nginx/conf.d/"
   web:
     container_name: beaver-iot-web
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-web:${BEAVER_IOT_IMAGE_TAG:-latest}
-  server:
-    container_name: beaver-iot-server
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-server:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: milesight/beaver-iot-web:latest
+    restart: always
+  api:
+    container_name: beaver-iot-api
+    image: milesight/beaver-iot-api:latest
+    restart: always
     environment:
-      # Configure database connection (using h2 as default)
+      # 配置数据库文件 (默认使用H2)
       - "DB_TYPE=h2"
       - "SPRING_DATASOURCE_URL=jdbc:h2:file:~/beaver-iot/h2/beaver;AUTO_SERVER=TRUE"
       - "SPRING_DATASOURCE_USERNAME=sa"
       - "SPRING_DATASOURCE_PASSWORD="
       - "SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.h2.Driver"
     volumes:
-      # Persist database data and log files
+      # 持久化存储数据
       - "./beaver-iot/:/root/beaver-iot/"
 ```
 
@@ -68,41 +70,45 @@ services:
 
 ## 使用 Postgres 数据库
 
-如果您希望使用 Postgres 数据库来替代 H2 数据库, 那么只需要对上述配置中 monolith/server 容器的环境变量稍作修改:
+如果您希望使用 Postgres 数据库来替代 H2 数据库, 那么只需要对上述配置中`monolith`或`api`容器的环境变量稍作修改:
 
 ```yaml
 services:
   nginx:
     container_name: beaver-iot-nginx
     image: nginx:stable-alpine3.20-slim
+    restart: always
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      # Nginx config files should be prepared by yourself
+      # 您需要自行准备Nginx配置文件
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
       - "./nginx/conf.d/:/etc/nginx/conf.d/"
   web:
     container_name: beaver-iot-web
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-web:${BEAVER_IOT_IMAGE_TAG:-latest}
-  server:
-    container_name: beaver-iot-server
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-server:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: milesight/beaver-iot-web:latest
+    restart: always
+  api:
+    container_name: beaver-iot-api
+    image: milesight/beaver-iot-api:latest
+    restart: always
     environment:
-      # Configure database connection
+      # 配置数据库连接
       - "DB_TYPE=postgres"
       - "SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver"
       - "SPRING_DATASOURCE_USERNAME=postgres"
       - "SPRING_DATASOURCE_PASSWORD=postgres"
       - "SPRING_DATASOURCE_URL=jdbc:postgresql://beaver-iot-postgresql:5432/postgres"
     volumes:
-      # Persist log files
+      # 保存日志文件
       - "./beaver-iot/logs/:/root/beaver-iot/logs/"
-      # Load plugins
-      - "./beaver-iot/plugins/:/root/beaver-iot/plugins/"
+      # 加载集成
+      - "./beaver-iot/integrations/:/root/beaver-iot/integrations/"
   postgresql:
     container_name: beaver-iot-postgresql
     image: postgres:17.0-alpine3.20
+    restart: always
     ports:
       - "5432:5432"
     environment:

@@ -12,12 +12,11 @@ If you prefer not to deploy any additional containers, you can use the following
 services:
   monolith:
     container_name: beaver-iot
-    image: ${DOCKER_REPO:-milesight}/beaver-iot:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: milesight/beaver-iot:latest
+    restart: always
     ports:
       - "80:80"
     environment:
-      # Tell the nginx where to find the api server
-      - "SERVER_HOST=localhost"
       # Configure database connection (using h2 as default)
       - "DB_TYPE=h2"
       - "SPRING_DATASOURCE_URL=jdbc:h2:file:~/beaver-iot/h2/beaver;AUTO_SERVER=TRUE"
@@ -31,13 +30,14 @@ services:
 
 ## Separate Frontend and Backend Deployment
 
-If you need to deploy frontend and backend containers separately, you can use the following docker-compose configuration to deploy nginx, web, and server containers:
+If you need to deploy frontend and backend containers separately, you can use the following docker-compose configuration to deploy `nginx`, `web`, and `api` containers:
 
 ```yaml
 services:
   nginx:
     container_name: beaver-iot-nginx
     image: nginx:stable-alpine3.20-slim
+    restart: always
     ports:
       - "80:80"
     volumes:
@@ -46,10 +46,12 @@ services:
       - "./nginx/conf.d/:/etc/nginx/conf.d/"
   web:
     container_name: beaver-iot-web
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-web:${BEAVER_IOT_IMAGE_TAG:-latest}
-  server:
-    container_name: beaver-iot-server
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-server:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: milesight/beaver-iot-web:latest
+    restart: always
+  api:
+    container_name: beaver-iot-api
+    image: milesight/beaver-iot-api:latest
+    restart: always
     environment:
       # Configure database connection (using h2 as default)
       - "DB_TYPE=h2"
@@ -68,13 +70,14 @@ You can also extract the page files from the `/web` path in the web container an
 
 ## Using Postgres Database
 
-If you wish to use a Postgres database instead of an H2 database, simply modify the environment variables for the monolith/server container in the above configurations:
+If you wish to use a Postgres database instead of an H2 database, simply modify the environment variables for the `monolith` or `api` container in the above configurations:
 
 ```yaml
 services:
   nginx:
     container_name: beaver-iot-nginx
     image: nginx:stable-alpine3.20-slim
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -84,10 +87,12 @@ services:
       - "./nginx/conf.d/:/etc/nginx/conf.d/"
   web:
     container_name: beaver-iot-web
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-web:${BEAVER_IOT_IMAGE_TAG:-latest}
-  server:
-    container_name: beaver-iot-server
-    image: ${DOCKER_REPO:-milesight}/beaver-iot-server:${BEAVER_IOT_IMAGE_TAG:-latest}
+    image: milesight/beaver-iot-web:latest
+    restart: always
+  api:
+    container_name: beaver-iot-api
+    image: milesight/beaver-iot-api:latest
+    restart: always
     environment:
       # Configure database connection
       - "DB_TYPE=postgres"
@@ -98,11 +103,12 @@ services:
     volumes:
       # Persist log files
       - "./beaver-iot/logs/:/root/beaver-iot/logs/"
-      # Load plugins
-      - "./beaver-iot/plugins/:/root/beaver-iot/plugins/"
+      # Load integrations
+      - "./beaver-iot/integrations/:/root/beaver-iot/integrations/"
   postgresql:
     container_name: beaver-iot-postgresql
     image: postgres:17.0-alpine3.20
+    restart: always
     ports:
       - "5432:5432"
     environment:
