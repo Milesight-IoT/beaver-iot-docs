@@ -1,7 +1,6 @@
 ---
 sidebar_position: 6
-toc_min_heading_level: 2
-toc_max_heading_level: 5
+toc_max_heading_level: 3
 ---
 
 import { ProjectName } from '/src/consts';
@@ -2057,3 +2056,537 @@ WebSocket连接地址为：ws://\{host\}:\{port\}/websocket
 |名称|位置|类型|必选|说明|
 |---|---|---|---|---|
 |Authorization|query|string| 是 |none|
+
+
+## 工作流
+
+### POST 查询工作流
+
+POST /workflow/flows/search
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| name |body|string| 否 |搜索名称|
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| id |string|流程id|
+| name |string|流程名称|
+| remark |string|流程描述|
+| enabled |boolean|流程是否启用|
+| user_nickname |string|用户名称|
+| created_at |number|创建时间戳|
+| updated_at |number|修改时间戳|
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": {
+    "id": "",
+    "name": "",
+    "remark": "",
+    "enabled": false,
+    "user_nickname": "",
+    "created_at": 0,
+    "updated_at": 0
+  }
+}
+```
+
+### PUT 编辑工作流基本信息
+
+PUT /workflow/flows/\{flowId\}
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| flowId |path|string| 是 |流程id|
+| name |body|string| 是 |流程名称|
+| remark |body|string| 是 |流程描述|
+
+#### 返回结果
+
+无
+
+### POST 删除工作流
+
+POST /workflow/flows/batch-delete
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| workflow_id_list |body|array of strings| 是 |流程id列表|
+
+#### 返回结果
+
+无
+
+### GET 启用工作流
+
+GET /workflow/flows/\{flowId\}/enable
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| flowId |path|string| 是 |流程id|
+
+#### 返回结果
+
+无
+
+### GET 禁用工作流
+
+GET /workflow/flows/\{flowId\}/disable
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| flowId |path|string| 是 |流程id|
+
+#### 返回结果
+
+无
+
+### POST 查询工作流日志
+
+POST /workflow/flows/\{flowId\}/logs/search
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| flowId |path|string| 是 |流程id|
+| status |body|string| 否 |状态 SUCCESS / ERROR|
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| id |string|日志id|
+| start_time |number|开始时间戳|
+| time_cost |number|耗时(ms)|
+| status |string|状态 SUCCESS / ERROR|
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": [
+    {
+      "id": "",
+      "start_time": 0,
+      "time_cost": 0,
+      "status": "SUCCESS"
+    }
+  ]
+}
+```
+
+### GET 查询日志详细信息
+
+GET /workflow/flows/logs/\{logId\}
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| logId |path|string| 是 |日志id|
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| trace_info |array|节点跟踪信息|
+| trace_info.$ |object|节点跟踪信息项|
+| trace_info.$.message_id |string|消息id|
+| trace_info.$.node_id |string|节点id|
+| trace_info.$.node_label |string|节点标签|
+| trace_info.$.status |string|状态 SUCCESS / ERROR|
+| trace_info.$.start_time |number|节点开始时间戳|
+| trace_info.$.time_cost |number|节点耗时(ms)|
+| trace_info.$.error_message |string|错误信息|
+| trace_info.$.input |string|输入参数(JSON格式字符串)|
+| trace_info.$.output |string|输出(JSON格式字符串)|
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": {
+    "trace_info": [
+      {
+        "message_id": "",
+        "node_id": "",
+        "node_label": "",
+        "status": "SUCCESS",
+        "start_time": 0,
+        "time_cost": 0,
+        "error_message": "",
+        "input": "",
+        "output": ""
+      }
+    ]
+  }
+}
+```
+
+### GET 获取流程设计
+
+GET /workflow/flows/\{flowId\}/design?version=\{versionId\}
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| flowId |path|string| 是 |流程id|
+| versionId |query|string| 否 |版本id，不传表示获取最新版本|
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| id |string|流程id|
+| name |string|流程名称|
+| remark |string|流程描述|
+| enabled |boolean|流程是否启用|
+| version |number|流程版本|
+| design_data |string|流程数据(JSON格式字符串)|
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": {
+    "id": "",
+    "name": "",
+    "remark": "",
+    "enabled": false,
+    "version": 0,
+    "design_data": ""
+  }
+}
+```
+
+### POST 校验工作流设计
+
+POST /workflow/flows/design/validate
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| design_data |body|string| 是 |流程数据(JSON格式字符串)|
+
+#### 返回结果
+
+无
+
+### POST 保存流程设计
+
+POST /workflow/flows/design
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| id |body|string| 否 |流程id，不传入表示新建|
+| version |body|number| 否 |当前版本|
+| name |body|string| 是 |流程名称|
+| enabled |body|boolean| 是 |是否启用|
+| remark |body|string| 是 |流程描述|
+| design_data |body|string| 是 |流程数据(JSON格式字符串)|
+
+:::info
+如果id和version不传入，表示新建一个流程，否则表示更新流程id对应的数据。
+
+也就是说，在用户新建一个流程并且保存后，页面应当存下这个接口返回的id和version。用户若在当前页面多次点击保存，每次调用都需要使用到上一次调用返回的id和version。
+:::
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| id |string|流程id|
+| version |number|当前版本|
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": {
+    "id": "",
+    "version": 0
+  }
+}
+```
+
+### POST 工作流整体测试
+
+POST /workflow/flows/test
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| input |body|object| 是 |输入参数|
+| design_data |body|string| 是 |流程数据(JSON格式字符串)|
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| status |string|状态 SUCCESS / ERROR|
+| flow_id |string|流程id|
+| start_time |number|开始时间戳|
+| time_cost |number|耗时(ms)|
+| trace_infos |array|节点跟踪信息|
+| trace_infos.$ |object|节点跟踪信息项|
+| trace_infos.$.message_id |string|消息id|
+| trace_infos.$.node_id |string|节点id|
+| trace_infos.$.node_label |string|节点标签|
+| trace_infos.$.status |string|状态 SUCCESS / ERROR|
+| trace_infos.$.start_time |number|节点开始时间戳|
+| trace_infos.$.time_cost |number|节点耗时(ms)|
+| trace_infos.$.error_message |string|错误信息|
+| trace_infos.$.input |string|输入参数(JSON格式字符串)|
+| trace_infos.$.output |string|输出(JSON格式字符串)|
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": {
+    "status": "SUCCESS",
+    "flow_id": "",
+    "start_time": 0,
+    "time_cost": 0,
+    "trace_infos": [
+      {
+        "message_id": "",
+        "node_id": "",
+        "node_label": "",
+        "status": "SUCCESS",
+        "start_time": 0,
+        "time_cost": 0,
+        "error_message": "",
+        "input": "",
+        "output": ""
+      }
+    ]
+  }
+}
+```
+
+### POST 工作流单节点测试
+
+POST /workflow/flows/node/test
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| node_config |body|string| 是 |节点数据(JSON格式字符串)|
+| input |body|object| 是 |传入参数|
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| message_id |string|消息id|
+| node_id |string|节点id|
+| node_label |string|节点标签|
+| status |string|状态 SUCCESS / ERROR|
+| start_time |number|节点开始时间戳|
+| time_cost |number|节点耗时(ms)|
+| error_message |string|错误信息|
+| input |string|输入参数(JSON格式字符串)|
+| output |string|输出(JSON格式字符串)|
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data": {
+    "message_id": "",
+    "node_id": "",
+    "node_label": "",
+    "status": "SUCCESS",
+    "start_time": 0,
+    "time_cost": 0,
+    "error_message": "",
+    "input": "",
+    "output": ""
+  }
+}
+```
+
+### GET 返回工作流所有分组
+
+GET /workflow/components
+
+#### 请求参数
+
+无
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| [section_name] |array|某组节点|
+| [section_name].$ |object|节点项|
+| [section_name].$.name |string|节点名称|
+| [section_name].$.title |string|节点标题|
+| [section_name].$.data |string|节点定义数据|
+
+> 返回示例
+
+> 成功
+
+
+```json
+{
+  "data": {
+    "entry": [
+      {
+        "name": "timer",
+        "title": "timer",
+        "data": ""
+      },
+      {
+        "name": "direct",
+        "title": "input",
+        "data": ""
+      },
+      {
+        "name": "eventListener",
+        "title": "Event Listener",
+        "data": ""
+      }
+    ],
+    "control": [
+      {
+        "name": "choice",
+        "title": "IF/ELSE",
+        "data": ""
+      }
+    ],
+    "action": [
+      {
+        "name": "serviceInvocation",
+        "title": "Service Invocation",
+        "data": ""
+      },
+      {
+        "name": "entityAssigner",
+        "title": "Entity Assigner",
+        "data": ""
+      }
+    ],
+    "external": [
+      {
+        "name": "email",
+        "title": "Email",
+        "data": ""
+      },
+      {
+        "name": "webhook",
+        "title": "Webhook",
+        "data": ""
+      }
+    ]
+  }
+}
+```
+
+### GET 获取工作流组件数据
+
+GET /workflow/components/\{componentName\}
+
+#### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+| componentName |path|string| 是 | 工作流组件名称 |
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| / | string | 工作流组件数据 |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "component": {
+      "name": "timer",
+      "description": "Generate messages in specified intervals using java.util.Timer.",
+      "scheme": "timer",
+      "syntax":"timer:timerName"
+      // ...
+  },
+  "componentProperties":{/*...*/},
+  "headers":{
+     "CamelTimerFiredTime":{/*...*/}
+     // ...
+  },
+  "properties":{
+     "timerName": { "index": 0, "kind": "path", "displayName": "Timer Name", "group": "consumer", "label": "", "required": true, "type": "string", "javaType": "java.lang.String", "deprecated": false, "deprecationNote": "", "autowired": false, "secret": false, "description": "The name of the timer" },
+     // ...
+  }
+}
+```
+
+
+### GET 获取支持的脚本语言
+
+GET /workflow/components/languages
+
+#### 请求参数
+
+无
+
+#### 返回结果
+
+| 字段名       |字段类型|说明|
+|-----------|---|---|
+| code | array | 脚本编程语言 |
+| code.$ | string | 语言项 |
+| expression | array | 表达式编程语言 |
+| expression.$ | string | 语言项 |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+    "code": ["groovy","javascript","python","mvel"],
+    "expression": ["groovy","javascript","python","mvel","jsonPath"]
+}
+```

@@ -1,7 +1,6 @@
 ---
 sidebar_position: 6
-toc_min_heading_level: 2
-toc_max_heading_level: 5
+toc_max_heading_level: 3
 ---
 
 import { ProjectName } from '/src/consts';
@@ -1980,3 +1979,532 @@ WebSocket connection URL: ws://\{host\}:\{port\}/websocket
 | Name         | Location | Type   | Required | Description |
 |--------------|----------|--------|----------|-------------|
 | Authorization | query    | string | Yes      | none        |
+
+## Workflow
+
+### POST Search Workflow
+
+POST /workflow/flows/search
+
+#### Request Parameters
+
+| Name | Location | Type | Required | Description |
+|------|----------|------|----------|-------------|
+| name | body     | string | No       | Search name |
+
+#### Response
+
+| Field Name   | Field Type | Description       |
+|--------------|-------------|-------------------|
+| id           | string      | Workflow ID       |
+| name         | string      | Workflow name     |
+| remark       | string      | Workflow description |
+| enabled      | boolean     | Is workflow enabled |
+| user_nickname| string      | User name         |
+| created_at   | number      | Creation timestamp |
+| updated_at   | number      | Update timestamp  |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": {
+    "id": "",
+    "name": "",
+    "remark": "",
+    "enabled": false,
+    "user_nickname": "",
+    "created_at": 0,
+    "updated_at": 0
+  }
+}
+```
+
+### PUT Edit Workflow Information
+
+PUT /workflow/flows/\{flowId\}
+
+#### Request Parameters
+
+| Name   | Location | Type   | Required | Description      |
+|--------|----------|--------|----------|------------------|
+| flowId | path     | string | Yes      | Workflow ID      |
+| name   | body     | string | Yes      | Workflow name    |
+| remark | body     | string | Yes      | Workflow description |
+
+#### Response
+
+None
+
+### POST Delete Workflow
+
+POST /workflow/flows/batch-delete
+
+#### Request Parameters
+
+| Name            | Location | Type              | Required | Description          |
+|-----------------|----------|-------------------|----------|----------------------|
+| workflow_id_list| body     | array of strings  | Yes      | List of workflow IDs |
+
+#### Response
+
+None
+
+### GET Enable Workflow
+
+GET /workflow/flows/\{flowId\}/enable
+
+#### Request Parameters
+
+| Name   | Location | Type   | Required | Description |
+|--------|----------|--------|----------|-------------|
+| flowId | path     | string | Yes      | Workflow ID |
+
+#### Response
+
+None
+
+### GET Disable Workflow
+
+GET /workflow/flows/\{flowId\}/disable
+
+#### Request Parameters
+
+| Name   | Location | Type   | Required | Description |
+|--------|----------|--------|----------|-------------|
+| flowId | path     | string | Yes      | Workflow ID |
+
+#### Response
+
+None
+
+### POST Search Workflow Logs
+
+POST /workflow/flows/\{flowId\}/logs/search
+
+#### Request Parameters
+
+| Name   | Location | Type   | Required | Description |
+|--------|----------|--------|----------|-------------|
+| flowId | path     | string | Yes      | Workflow ID |
+| status | body     | string | No       | Status (SUCCESS / ERROR) |
+
+#### Response
+
+| Field Name | Field Type | Description       |
+|------------|------------|-------------------|
+| id         | string     | Log ID            |
+| start_time | number     | Start timestamp   |
+| time_cost  | number     | Time cost (ms)    |
+| status     | string     | Status (SUCCESS / ERROR) |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": [
+    {
+      "id": "",
+      "start_time": 0,
+      "time_cost": 0,
+      "status": "SUCCESS"
+    }
+  ]
+}
+```
+
+### GET Query Log Details
+
+GET /workflow/flows/logs/\{logId\}
+
+#### Request Parameters
+
+| Name  | Location | Type   | Required | Description |
+|-------|----------|--------|----------|-------------|
+| logId | path     | string | Yes      | Log ID      |
+
+#### Response
+
+| Field Name      | Field Type | Description                 |
+|-----------------|------------|-----------------------------|
+| trace_info      | array      | Node trace information      |
+| trace_info.$    | object     | Node trace information item |
+| trace_info.$.message_id | string | Message ID        |
+| trace_info.$.node_id    | string | Node ID           |
+| trace_info.$.node_label | string | Node label        |
+| trace_info.$.status     | string | Status (SUCCESS / ERROR) |
+| trace_info.$.start_time | number | Node start timestamp |
+| trace_info.$.time_cost  | number | Node time cost (ms) |
+| trace_info.$.error_message | string | Error message  |
+| trace_info.$.input      | string | Input parameters (JSON format) |
+| trace_info.$.output     | string | Output (JSON format) |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": {
+    "trace_info": [
+      {
+        "message_id": "",
+        "node_id": "",
+        "node_label": "",
+        "status": "SUCCESS",
+        "start_time": 0,
+        "time_cost": 0,
+        "error_message": "",
+        "input": "",
+        "output": ""
+      }
+    ]
+  }
+}
+```
+
+### GET Retrieve Workflow Design
+
+GET /workflow/flows/\{flowId\}/design?version=\{versionId\}
+
+#### Request Parameters
+
+| Name      | Location | Type   | Required | Description |
+|-----------|----------|--------|----------|-------------|
+| flowId    | path     | string | Yes      | Workflow ID |
+| versionId | query    | string | No       | Version ID (if not provided, fetch the latest version) |
+
+#### Response
+
+| Field Name | Field Type | Description       |
+|------------|------------|-------------------|
+| id         | string     | Workflow ID       |
+| name       | string     | Workflow name     |
+| remark     | string     | Workflow description |
+| enabled    | boolean    | Is workflow enabled |
+| version    | number     | Workflow version  |
+| design_data| string     | Workflow data (JSON format) |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": {
+    "id": "",
+    "name": "",
+    "remark": "",
+    "enabled": false,
+    "version": 0,
+    "design_data": ""
+  }
+}
+```
+
+### POST Validate Workflow Design
+
+POST /workflow/flows/design/validate
+
+#### Request Parameters
+
+| Name       | Location | Type   | Required | Description         |
+|------------|----------|--------|----------|---------------------|
+| design_data| body     | string | Yes      | Workflow data (JSON format) |
+
+#### Response
+
+None
+
+### POST Save Workflow Design
+
+POST /workflow/flows/design
+
+#### Request Parameters
+
+| Name       | Location | Type   | Required | Description                      |
+|------------|----------|--------|----------|----------------------------------|
+| id         | body     | string | No       | Workflow ID (if not provided, create new) |
+| version    | body     | number | No       | Current version                  |
+| name       | body     | string | Yes      | Workflow name                    |
+| enabled    | body     | boolean| Yes      | Enable workflow                  |
+| remark     | body     | string | Yes      | Workflow description             |
+| design_data| body     | string | Yes      | Workflow data (JSON format)      |
+
+:::info
+If `id` and `version` are not provided, a new workflow is created. Otherwise, the data for the workflow ID is updated. When a user creates a new workflow and saves it, the returned `id` and `version` should be stored. If the user clicks save multiple times on the same page, the `id` and `version` from the previous call should be used.
+:::
+
+#### Response
+
+| Field Name | Field Type | Description  |
+|------------|------------|--------------|
+| id         | string     | Workflow ID  |
+| version    | number     | Current version |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": {
+    "id": "",
+    "version": 0
+  }
+}
+```
+
+### POST Test Entire Workflow
+
+POST /workflow/flows/test
+
+#### Request Parameters
+
+| Name       | Location | Type   | Required | Description         |
+|------------|----------|--------|----------|---------------------|
+| input      | body     | object | Yes      | Input parameters    |
+| design_data| body     | string | Yes      | Workflow data (JSON format) |
+
+#### Response
+
+| Field Name    | Field Type | Description                 |
+|---------------|------------|-----------------------------|
+| status        | string     | Status (SUCCESS / ERROR)    |
+| flow_id       | string     | Workflow ID                 |
+| start_time    | number     | Start timestamp             |
+| time_cost     | number     | Time cost (ms)              |
+| trace_infos   | array      | Node trace information      |
+| trace_infos.$ | object     | Node trace information item |
+| trace_infos.$.message_id | string | Message ID        |
+| trace_infos.$.node_id    | string | Node ID           |
+| trace_infos.$.node_label | string | Node label        |
+| trace_infos.$.status     | string | Status (SUCCESS / ERROR) |
+| trace_infos.$.start_time | number | Node start timestamp |
+| trace_infos.$.time_cost  | number | Node time cost (ms) |
+| trace_infos.$.error_message | string | Error message  |
+| trace_infos.$.input      | string | Input parameters (JSON format) |
+| trace_infos.$.output     | string | Output (JSON format) |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": {
+    "status": "SUCCESS",
+    "flow_id": "",
+    "start_time": 0,
+    "time_cost": 0,
+    "trace_infos": [
+      {
+        "message_id": "",
+        "node_id": "",
+        "node_label": "",
+        "status": "SUCCESS",
+        "start_time": 0,
+        "time_cost": 0,
+        "error_message": "",
+        "input": "",
+        "output": ""
+      }
+    ]
+  }
+}
+```
+
+### POST Test Single Node in Workflow
+
+POST /workflow/flows/node/test
+
+#### Request Parameters
+
+| Name        | Location | Type   | Required | Description         |
+|-------------|----------|--------|----------|---------------------|
+| node_config | body     | string | Yes      | Node data (JSON format) |
+| input       | body     | object | Yes      | Input parameters    |
+
+#### Response
+
+| Field Name    | Field Type | Description                 |
+|---------------|------------|-----------------------------|
+| message_id    | string     | Message ID                  |
+| node_id       | string     | Node ID                     |
+| node_label    | string     | Node label                  |
+| status        | string     | Status (SUCCESS / ERROR)    |
+| start_time    | number     | Node start timestamp        |
+| time_cost     | number     | Node time cost (ms)         |
+| error_message | string     | Error message               |
+| input         | string     | Input parameters (JSON format) |
+| output        | string     | Output (JSON format)        |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": {
+    "message_id": "",
+    "node_id": "",
+    "node_label": "",
+    "status": "SUCCESS",
+    "start_time": 0,
+    "time_cost": 0,
+    "error_message": "",
+    "input": "",
+    "output": ""
+  }
+}
+```
+
+### GET Retrieve All Workflow Groups
+
+GET /workflow/components
+
+#### Request Parameters
+
+None
+
+#### Response
+
+| Field Name | Field Type | Description        |
+|------------|------------|--------------------|
+| [section_name]      | array      | Components Group Name      |
+| [section_name].$    | object     | Component items    |
+| [section_name].$.name | string   | Component name          |
+| [section_name].$.title | string  | Component title         |
+| [section_name].$.data | string  | Component definition data         |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "data": {
+    "entry": [
+      {
+        "name": "timer",
+        "title": "timer",
+        "data": ""
+      },
+      {
+        "name": "direct",
+        "title": "input",
+        "data": ""
+      },
+      {
+        "name": "eventListener",
+        "title": "Event Listener",
+        "data": ""
+      }
+    ],
+    "control": [
+      {
+        "name": "choice",
+        "title": "IF/ELSE",
+        "data": ""
+      }
+    ],
+    "action": [
+      {
+        "name": "serviceInvocation",
+        "title": "Service Invocation",
+        "data": ""
+      },
+      {
+        "name": "entityAssigner",
+        "title": "Entity Assigner",
+        "data": ""
+      }
+    ],
+    "external": [
+      {
+        "name": "email",
+        "title": "Email",
+        "data": ""
+      },
+      {
+        "name": "webhook",
+        "title": "Webhook",
+        "data": ""
+      }
+    ]
+  }
+}
+```
+
+### GET Retrieve Workflow Component Data
+
+GET /workflow/components/\{componentName\}
+
+#### Request Parameters
+
+| Name          | Location | Type   | Required | Description          |
+|---------------|----------|--------|----------|----------------------|
+| componentName | path     | string | Yes      | Workflow component name |
+
+#### Response
+
+| Field Name        | Field Type | Description          |
+|-------------------|------------|----------------------|
+| /                 | string     | Workflow component data |
+
+> Response Example
+
+> Success
+
+```json
+{
+  "component": {
+      "name": "timer",
+      "description": "Generate messages in specified intervals using java.util.Timer.",
+      "scheme": "timer",
+      "syntax":"timer:timerName"
+      // ...
+  },
+  "componentProperties":{/*...*/},
+  "headers":{
+     "CamelTimerFiredTime":{/*...*/}
+     // ...
+  },
+  "properties":{
+     "timerName": { "index": 0, "kind": "path", "displayName": "Timer Name", "group": "consumer", "label": "", "required": true, "type": "string", "javaType": "java.lang.String", "deprecated": false, "deprecationNote": "", "autowired": false, "secret": false, "description": "The name of the timer" },
+     // ...
+  }
+}
+```
+
+### GET Retrieve Supported Scripting Languages
+
+GET /workflow/components/languages
+
+#### Request Parameters
+
+None
+
+#### Response
+
+| Field Name | Field Type | Description         |
+|------------|------------|---------------------|
+| code       | array      | Scripting languages |
+| code.$     | string     | Language item       |
+| expression | array      | Expression languages|
+| expression.$| string    | Language item       |
+
+> Response Example
+
+> Success
+
+```json
+{
+    "code": ["groovy","javascript","python","mvel"],
+    "expression": ["groovy","javascript","python","mvel","jsonPath"]
+}
+```
