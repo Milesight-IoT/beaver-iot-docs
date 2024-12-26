@@ -300,6 +300,3 @@ SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
 ```shell
 mvn package -pl integrations/my-integration -am -Dmaven.test.skip=true
 ```
-- **集成安装**
-
-  将集成打包好的jar添加到{ProjectName}的安装目录下的`/plugins`目录下，然后重启{ProjectName}平台即可。

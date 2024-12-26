@@ -54,11 +54,11 @@ sidebar_position: 2
 
 ### 文件
 
-| Path                      | Description  |
-|---------------------------|--------------|
-| /root/beaver-iot/logs/    | API 服务日志文件目录 |
-| /root/beaver-iot/plugins/ | API 服务插件目录   |
-| /root/beaver-iot/h2/      | h2 数据库存储目录   |
+| Path                           | Description     |
+|--------------------------------|-----------------|
+| /root/beaver-iot/logs/         | API 服务日志文件目录    |
+| /root/beaver-iot/integrations/ | Beaver IoT 集成目录 |
+| /root/beaver-iot/h2/           | H2 数据库存储目录      |
 
 ## beaver-iot
 
@@ -96,5 +96,5 @@ sidebar_position: 2
 | /etc/nginx/conf.d/             | nginx 额外配置文件目录        |
 | /etc/nginx/conf.d/default.conf | nginx 默认 http 服务器配置文件 |
 | /root/beaver-iot/logs/         | API 服务日志文件目录          |
-| /root/beaver-iot/plugins/      | API 服务插件目录            |
-| /root/beaver-iot/h2/           | h2 数据库存储目录            |
+| /root/beaver-iot/integrations/ | Beaver IoT 集成目录       |
+| /root/beaver-iot/h2/           | H2 数据库存储目录            |

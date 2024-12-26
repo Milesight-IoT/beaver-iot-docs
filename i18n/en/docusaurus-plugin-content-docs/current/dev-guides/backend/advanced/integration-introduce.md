@@ -301,6 +301,3 @@ Integrations are released to the {ProjectName} in the form of jar files. Develop
 ```shell
 mvn package -pl integrations/my-integration -am -Dmaven.test.skip=true
 ```
-- **Integration Installation**
-
-Add the packaged integration jar to the `/plugins` directory under the installation directory of {ProjectName}, then restart the {ProjectName} platform.

@@ -54,11 +54,11 @@ sidebar_position: 2
 
 ### Files
 
-| Path                      | Description                         |
-|---------------------------|-------------------------------------|
-| /root/beaver-iot/logs/    | Directory for API service log files |
-| /root/beaver-iot/plugins/ | Directory for API service plugins   |
-| /root/beaver-iot/h2/      | Directory for H2 database storage   |
+| Path                           | Description                           |
+|--------------------------------|---------------------------------------|
+| /root/beaver-iot/logs/         | Directory for API service log files   |
+| /root/beaver-iot/integrations/ | Directory for Beaver IoT integrations |
+| /root/beaver-iot/h2/           | Directory for H2 database storage     |
 
 ## beaver-iot
 
@@ -96,5 +96,5 @@ sidebar_position: 2
 | /etc/nginx/conf.d/             | Directory for additional Nginx configuration files |
 | /etc/nginx/conf.d/default.conf | Default HTTP server configuration file for Nginx   |
 | /root/beaver-iot/logs/         | Directory for API service log files                |
-| /root/beaver-iot/plugins/      | Directory for API service plugins                  |
+| /root/beaver-iot/integrations/ | Directory for Beaver IoT integrations              |
 | /root/beaver-iot/h2/           | Directory for H2 database storage                  |

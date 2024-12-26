@@ -103,8 +103,8 @@ services:
     volumes:
       # Persist log files
       - "./beaver-iot/logs/:/root/beaver-iot/logs/"
-      # Load plugins
-      - "./beaver-iot/plugins/:/root/beaver-iot/plugins/"
+      # Load integrations
+      - "./beaver-iot/integrations/:/root/beaver-iot/integrations/"
   postgresql:
     container_name: beaver-iot-postgresql
     image: postgres:17.0-alpine3.20

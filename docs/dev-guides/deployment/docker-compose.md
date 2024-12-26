@@ -103,8 +103,8 @@ services:
     volumes:
       # 保存日志文件
       - "./beaver-iot/logs/:/root/beaver-iot/logs/"
-      # 加载插件
-      - "./beaver-iot/plugins/:/root/beaver-iot/plugins/"
+      # 加载集成
+      - "./beaver-iot/integrations/:/root/beaver-iot/integrations/"
   postgresql:
     container_name: beaver-iot-postgresql
     image: postgres:17.0-alpine3.20
