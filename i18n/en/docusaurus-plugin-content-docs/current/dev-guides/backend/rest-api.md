@@ -756,7 +756,7 @@ Post /user/roles/\{role_id\}/devices
       "user_id":"",
       "user_email": "",
       "user_nickname":"",
-      "is_role_integration": "boolean"
+      "role_integration": "boolean"
     }
   ]
 }
