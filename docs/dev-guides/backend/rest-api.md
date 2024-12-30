@@ -139,7 +139,7 @@ GET /user
         "parent_id":""
       }
     ],
-    "is_super_admin": true
+    "super_admin": true
   }
 }
 ```
@@ -338,6 +338,42 @@ DELETE /user/members/\{user_id\}
 }
 ```
 
+### POST 批量删除用户
+POST /user/batch-delete
+
+#### 请求参数
+
+| 名称      |位置|类型| 必选 |说明|
+|----------------|----------|--------|----|-------------|
+| body           |body| object | 否  |none|
+| » user_id_list |body| Array  | 是  |none|
+
+> Body 请求参数
+
+```json
+{
+  "user_id_list": []
+}
+```
+
+#### 返回结果
+
+|状态码|状态码含义|说明| 数据模型   |
+|---|---|---|--------|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功| Object |
+
+> 返回示例
+
+> 成功
+
+```json
+{
+  "data":{
+
+  }
+}
+```
+
 ### PUT 修改密码（自己）
 PUT /user/password
 
@@ -446,7 +482,7 @@ Post /user/members/\{userId\}/permission
 
 ```json
 {
-  "is_has_permission": true
+  "has_permission": true
 }
 ```
 

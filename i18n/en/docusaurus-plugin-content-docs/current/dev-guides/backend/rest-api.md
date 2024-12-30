@@ -140,7 +140,7 @@ GET /user
         "parent_id":""
       }
     ],
-    "is_super_admin": true
+    "super_admin": true
   }
 }
 ```
@@ -341,6 +341,38 @@ DELETE /user/members/\{user_id\}
 }
 ```
 
+### POST batch delete user
+POST /user/batch-delete
+
+#### Request Parameters
+
+| Name           | Location | Type   | Required | Description |
+|----------------|----------|--------|----------|-------------|
+| body           |body| object | NO |none|
+| » user_id_list |body| Array  | YES |none|
+
+> Body REQUEST
+
+```json
+{
+  "user_id_list": []
+}
+```
+
+#### Response
+
+| Status Code | Description                                                                 | Data Model |
+|-------------|-----------------------------------------------------------------------------|------------|
+| 200         | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | Success | Inline    |
+
+> Response Example
+
+> 200 Response
+
+```json
+{}
+```
+
 ### PUT edit password（self）
 PUT /user/password
 
@@ -448,7 +480,7 @@ Post /user/members/\{userId\}/permission
 
 ```json
 {
-  "is_has_permission": true
+  "has_permission": true
 }
 ```
 
