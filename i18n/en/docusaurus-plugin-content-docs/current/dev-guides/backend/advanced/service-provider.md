@@ -9,271 +9,375 @@ import { ProjectName } from '/src/consts';
 # API Reference
 
 ## Overview
-{ProjectName} offers a range of versatile service interfaces for developers to integrate and implement their business logic. These include integration services, device services, entity services, and entity value services.
 
-## IntegrationServiceProvider Interface Documentation
+The {ProjectName} platform provides a set of common service interfaces for integration developers to implement their business logic. These services include integration services, device services, entity services, and entity value services.
 
-The `IntegrationServiceProvider` interface defines methods related to integration configuration operations.
+## DeviceServiceProvider API Documentation
 
-### save 
-Save Integration
-#### Method Signature
-```java
-void save(Integration integrationConfig);
-```
+The {ProjectName} platform offers the `DeviceServiceProvider` interface, which provides common methods for device operations.
 
-### batchSave 
-Save Integrations in Bulk
-#### Method Signature
-```java
-void save(Integration integrationConfig);
-```
+### save <a id="device-service-provider-save"></a>
 
-### getIntegration 
-Retrieve Integration Instance by ID (Including Disabled)
-#### Method Signature
-```java
-Integration getIntegration(String integrationId);
-```
+Save a device (including the entities under the device).
 
-### getActiveIntegration 
-Retrieve Active Integration Instance by ID
-#### Method Signature
-```java
-Integration getActiveIntegration(String integrationId);
-```
-
-### findIntegrations 
-Find All Integrations
-#### Method Signature
-```java
-Collection<Integration> findIntegrations();
-```
-#### Code Example
-
-### findActiveIntegrations 
-Find All Active Integrations
-#### Method Signature
-```java
-List<Integration> findActiveIntegrations();
-```
-#### Code Example
-
-### findIntegrationsWithPredicate 
-Find Integrations by Condition
-#### Method Signature
-```java
-List<Integration> findIntegrations(Predicate<Integration> predicate);
-```
-#### Code Example
-```java
-// Find all integrations that include the entityKeyAddDevice field
-List<Integration> integrations = integrationServiceProvider.findIntegrations(f -> StringUtils.hasText(f.getEntityKeyAddDevice()));
-```
-
-## DeviceServiceProvider Interface Documentation
-{ProjectName} provides the `DeviceServiceProvider` interface, offering common device operation methods.
-
-### save 
-Save Device
 #### Method Signature
 ```java
 void save(Device device);
 ```
 
-### deleteById 
-Delete Device by ID
+### deleteById
+
+Delete a device by its ID.
+
 #### Method Signature
 ```java
 void deleteById(Long id);
 ```
 
-### findById 
-Find Device by ID
+### findById
+
+Find a device by its ID.
+
 #### Method Signature
 ```java
 Device findById(Long id);
 ```
 
-### findByKey 
-Find Device by Key
+### findByKey
+
+Find a device by its key.
+
 #### Method Signature
 ```java
 Device findByKey(String deviceKey);
 ```
 
-### findByIdentifier 
-Find Device by Identifier
+### findByIdentifier
+
+Find a device by its identifier.
+
 #### Method Signature
 ```java
 Device findByIdentifier(String identifier, String integrationId);
 ```
 
-### findAll 
-Find All Devices by Integration ID
+### findAll
+
+Find all devices by integration ID.
+
 #### Method Signature
 ```java
-    List<Device> findAll(String integrationId);
+List<Device> findAll(String integrationId);
 ```
 
-### findByIdentifier 
-Find Device by Identifier and Integration ID
+### countByIntegrationIds
+
+Count the number of devices by a list of integration IDs.
+
 #### Method Signature
 ```java
-   Device findByIdentifier(String identifier, String integrationId);
+Map<String, Long> countByIntegrationIds(List<String> integrationIds);
 ```
 
-### findAll 
-Find Device List by Integration ID
+### countByIntegrationId
+
+Count the number of devices by integration ID.
+
 #### Method Signature
 ```java
-   List<Device> findAll(String integrationId);
+Long countByIntegrationId(String integrationId);
 ```
 
-### countByIntegrationIds 
-Count Devices by Integration ID List
+## EntityServiceProvider API Documentation
+
+The {ProjectName} platform offers the `EntityServiceProvider` interface, which provides common methods for entity operations.
+
+### findByTargetId <a id="entity-target"></a>
+
+Find a list of entities by target type and target ID.
+
+:::info **Target**
+**Target** includes **Device** `AttachTargetType.DEVICE` and **Integration** `AttachTargetType.INTEGRATION`.
+:::
+
 #### Method Signature
 ```java
-    Map<String, Long> countByIntegrationIds(List<String> integrationIds);
-```
-
-### countByIntegrationIds 
-Count Devices by Integration ID
-#### Method Signature
-```java
-   Long countByIntegrationId(String integrationId);
-```
-
-## EntityServiceProvider Interface Documentation
-{ProjectName} provides the `EntityServiceProvider` interface, offering common entity operation methods.
-
-### findByTargetId
-Retrieve Entity List by Target Type and Target ID
-#### Method Signature
-```java
-    List<Entity> findByTargetId(AttachTargetType targetType, String targetId);
+List<Entity> findByTargetId(AttachTargetType targetType, String targetId);
 ```
 
 ### findByTargetIds
-Retrieve Entity List by Target Type and Target ID List
+
+Find a list of entities by target type and a list of target IDs.
+
 #### Method Signature
 ```java
-    List<Entity> findByTargetIds(AttachTargetType targetType, List<String> targetIds);
+List<Entity> findByTargetIds(AttachTargetType targetType, List<String> targetIds);
 ```
 
-### save
-Save Entity
+### save <a id="entity-service-provider-save"></a>
+
+Save an entity.
+
 #### Method Signature
 ```java
-    void save(Entity entity);
+void save(Entity entity);
 ```
 
 ### batchSave
-Save Entities in Bulk
+
+Save a list of entities in batch.
+
 #### Method Signature
 ```java
-    void batchSave(List<Entity> entityList);
+void batchSave(List<Entity> entityList);
 ```
 
 ### deleteByTargetId
-Delete Entity by Target ID
+
+Delete entities by [target](#entity-target) ID.
+
 #### Method Signature
 ```java
-    void deleteByTargetId(String targetId);
+void deleteByTargetId(String targetId);
 ```
 
 ### countAllEntitiesByIntegrationId
-Count All Entities by Integration ID (Including Device Entities)
+
+Count all entities by integration ID (including entities under the devices of the integration).
+
 #### Method Signature
 ```java
-    long countAllEntitiesByIntegrationId(String integrationId);
+long countAllEntitiesByIntegrationId(String integrationId);
+```
+
+### countAllEntitiesByIntegrationIds
+
+Count all entities by a list of integration IDs (including entities under the devices of the integrations).
+
+#### Method Signature
+```java
+Map<String, Long> countAllEntitiesByIntegrationIds(List<String> integrationIds);
 ```
 
 ### countIntegrationEntitiesByIntegrationId
-Count Integration Entities by Integration ID List (Including Device Entities)
-#### Method Signature
-```java
-    Map<String, Long> countAllEntitiesByIntegrationIds(List<String> integrationIds);
-```
 
-### countIntegrationEntitiesByIntegrationId
-Count Integration Entities by Integration ID (Excluding Device Entities)
+Count integration entities by integration ID (excluding entities under the devices of the integration).
+
 #### Method Signature
 ```java
-    long countIntegrationEntitiesByIntegrationId(String integrationId);
+long countIntegrationEntitiesByIntegrationId(String integrationId);
 ```
 
 ### countIntegrationEntitiesByIntegrationIds
-Count Integration Entities by Integration ID List (Excluding Device Entities)
+
+Count integration entities by a list of integration IDs (excluding entities under the devices of the integrations).
+
 #### Method Signature
 ```java
-    Map<String, Long> countIntegrationEntitiesByIntegrationIds(List<String> integrationIds);
+Map<String, Long> countIntegrationEntitiesByIntegrationIds(List<String> integrationIds);
 ```
 
 ### findByKey
-Find Entity by Key
+
+Find an entity by its key.
+
 #### Method Signature
 ```java
-    Entity findByKey(String entityKey);
+Entity findByKey(String entityKey);
 ```
 
 ### findByKeys
-Find Entities by Key Collection
+
+Find entities by a list of keys.
+
 #### Method Signature
 ```java
-    Map<String, Entity> findByKeys(String... entityKeys);
+Map<String, Entity> findByKeys(String... entityKeys);
 ```
 
-## EntityValueServiceProvider Interface Documentation
-{ProjectName} provides the `EntityValueServiceProvider` interface, offering common methods for the latest and historical entity values.
+### findById
 
-### saveValues
-Save Latest Entity Values
+Find an entity by its ID.
+
 #### Method Signature
 ```java
-    void saveValues(Map<String, Object> values, long timestamp);
+Entity findById(Long entityId);
+```
+
+### findByIds
+
+Find entities by a list of IDs.
+
+#### Method Signature
+```java
+List<Entity> findByIds(List<Long> ids);
+```
+
+## EntityValueServiceProvider API Documentation
+
+The {ProjectName} platform offers the `EntityValueServiceProvider` interface, which provides common methods for operating on the latest and historical values of entities.
+
+### saveValuesAndPublishSync
+
+Save entity values and publish events synchronously.
+
+#### Method Signature
+Using [default event type](./eventbus.md#exchange-event):
+```java
+EventResponse saveValuesAndPublishSync(ExchangePayload exchangePayload);
+```
+Custom event type:
+```java
+EventResponse saveValuesAndPublishSync(ExchangePayload exchangePayload, String eventType);
+```
+
+### saveValuesAndPublishAsync
+
+Save entity values and publish events asynchronously.
+
+#### Method Signature
+Using [default event type](./eventbus.md#exchange-event):
+```java
+EventResponse saveValuesAndPublishAsync(ExchangePayload exchangePayload);
+```
+Custom event type:
+```java
+EventResponse saveValuesAndPublishAsync(ExchangePayload exchangePayload, String eventType);
 ```
 
 ### saveValues
-Save Latest Entity Values (Current Time)
+
+Save the latest values of entities.
+
 #### Method Signature
 ```java
-    void saveValues(Map<String, Object> values);
+void saveValues(Map<String, Object> values, long timestamp);
+```
+
+### saveValues
+
+Save the latest values of entities (with the current time as the reporting time).
+
+#### Method Signature
+```java
+void saveValues(Map<String, Object> values);
 ```
 
 ### saveHistoryRecord
-Save Historical Entity Values
+
+Save historical values of entities.
+
 #### Method Signature
 ```java
-    void saveHistoryRecord(Map<String, Object> recordValues, long timestamp);
+void saveHistoryRecord(Map<String, Object> recordValues, long timestamp);
 ```
 
 ### saveHistoryRecord
-Save Historical Entity Values (Current Time)
+
+Save historical values of entities (with the current time as the reporting time).
+
 #### Method Signature
 ```java
-    void saveHistoryRecord(Map<String, Object> recordValues);
+void saveHistoryRecord(Map<String, Object> recordValues);
 ```
 
 ### findValueByKey
-Find Latest Value by Entity Key
+
+Find the latest value of an entity by its key.
+
 #### Method Signature
 ```java
-    JsonNode findValueByKey(String key);
+JsonNode findValueByKey(String key);
 ```
 
 ### findValuesByKeys
-Find Latest Values by Entity Key List
+
+Find the latest values of entities by a list of keys.
+
 #### Method Signature
 ```java
-    Map<String, JsonNode> findValuesByKeys(List<String> keys);
+Map<String, JsonNode> findValuesByKeys(List<String> keys);
 ```
 
-### findValuesByKeys
-Find Latest Values by Entity Key List
+### findValuesByKey
+
+Find the latest values of entities by a list of keys.
+
 #### Method Signature
 ```java
-    @NonNull <T extends ExchangePayload> T findValuesByKey(String key, Class<T> entitiesClazz);
+@NonNull <T extends ExchangePayload> T findValuesByKey(String key, Class<T> entitiesClazz);
 ```
 
+## IntegrationServiceProvider API Documentation
 
+The `IntegrationServiceProvider` interface defines operations related to integration configurations.
+
+### save
+
+Save an integration (including the entities under the integration).
+
+#### Method Signature
+```java
+void save(Integration integrationConfig);
+```
+
+### batchSave
+
+Save integrations in batch.
+
+#### Method Signature
+```java
+void batchSave(Collection<Integration> integrationConfig);
+```
+
+### getIntegration
+
+Get an integration instance by its ID (including disabled instances).
+
+#### Method Signature
+```java
+Integration getIntegration(String integrationId);
+```
+
+### getActiveIntegration
+
+Get an active integration instance by its ID.
+
+#### Method Signature
+```java
+Integration getActiveIntegration(String integrationId);
+```
+
+### findIntegrations
+
+Find all integration instances.
+
+#### Method Signature
+```java
+Collection<Integration> findIntegrations();
+```
+
+### findActiveIntegrations
+
+Find all active integration instances.
+
+#### Method Signature
+```java
+List<Integration> findActiveIntegrations();
+```
+
+### findIntegrationsWithPredicate
+
+Find integration instances based on a condition.
+
+#### Method Signature
+```java
+List<Integration> findIntegrations(Predicate<Integration> predicate);
+```
+
+#### Code Example
+
+Find all integrations that can add devices:
+```java
+List<Integration> integrations = integrationServiceProvider.findIntegrations(f -> StringUtils.hasText(f.getEntityKeyAddDevice()));
+```

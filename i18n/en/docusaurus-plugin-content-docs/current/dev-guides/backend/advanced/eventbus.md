@@ -9,60 +9,77 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Event Bus
+
 ## Overview
 
-The {ProjectName} provides an event bus for communication between various services and integrations within the system. Developers can subscribe to events to implement their business logic. The platform's event bus supports key expression-based event subscriptions for more granular control.
+The {ProjectName} platform provides an event bus for communication between various services and integrations within the system. Developers can subscribe to events to implement their business logic. The platform's event bus supports key expression-based event subscriptions for finer-grained subscriptions.
 
-Currently supported event types include device events, entity events, and entity value data exchange events (Exchange). Developers can also define custom event types.
+The current platform supports the following event types: Device Events, Entity Events, and Entity Value Data Exchange Events (Exchange). The first two types are generally not sent by developers, as the system automatically sends them when devices or entities are updated. If an integration is interested in these events, it can directly subscribe to the relevant events.
 
-## Event Definition
+## Event Definitions
+
 ### Event
 
-When certain resources on the {ProjectName} platform change, related **events** (`Event`) are triggered, and the methods subscribed to these events are activated. This forms the foundation of the system's operation.
+When certain resources in {ProjectName} change, related **events** `Event` are triggered. The methods that subscribe to these events are then executed, forming the basis of the system's operation.
 
-Events are categorized into: **Device Events** (`DeviceEvent`), **Entity Events** (`EntityEvent`), and **Entity Value Data Exchange Events** (`ExchangeEvent`).
+Events are classified into: **Device Events** `DeviceEvent`, **Entity Events** `EntityEvent`, and **Entity Value Data Exchange Events** `ExchangeEvent`.
 
 #### DeviceEvent
-Represents events related to **device metadata**, with types (`DeviceEvent.EventType`) such as: create (`CREATED`), update (`UPDATED`), and delete (`DELETED`). These events carry the device that has changed. *These events are automatically triggered when device metadata is saved, and generally do not require integration developers to send events.*
+
+Represents events related to **device metadata**. The event types (`DeviceEvent.EventType`) include: Created `CREATED`, Updated `UPDATED`, and Deleted `DELETED`. This event carries the device that has changed. *This event is automatically triggered when device metadata is saved, and generally, integration developers do not need to send this event.*
 
 The payload for `DeviceEvent` is a `Device` object.
 
 #### EntityEvent
 
-Represents events related to **entity metadata**, with types (`EntityEvent.EventType`) such as: create (`CREATED`), update (`UPDATED`), and delete (`DELETED`). These events carry the entity that has changed. *These events are automatically triggered when entity metadata is saved, and generally do not require integration developers to send events.*
+Represents events related to **entity metadata**. The event types (`EntityEvent.EventType`) include: Created `CREATED`, Updated `UPDATED`, and Deleted `DELETED`. This event carries the entity that has changed. *This event is automatically triggered when entity metadata is saved, and generally, integration developers do not need to send this event.*
 
 The payload for `EntityEvent` is an `Entity` object.
 
-#### ExchangeEvent
-Represents events related to **entity value data**, with types (`ExchangeEvent.EventType`) such as: downlink (`DOWN`) and uplink (`UP`).
+#### ExchangeEvent <a id="exchange-event"></a>
 
-The payload for `ExchangeEvent` is an `ExchangePayload` object. If the payload is defined using [annotated entities](./entity-definition.md#build-with-annotation), the entity class must extend `ExchangePayload`.
+Represents events related to **entity value data**. The event types (`ExchangeEvent.EventType`) include:
+* Service Call `CALL_SERVICE`
+* Property Update `UPDATE_PROPERTY`
+* Event Report `REPORT_EVENT`
+* Custom types defined by other senders
 
-:::tip
-The {ProjectName} platform provides an event bus, allowing developers to define custom event types by implementing custom Event and Payload classes. The Event class must implement the `Event` interface, and the Payload class must implement the `IdentityKey` interface.
-:::
+The payload for `ExchangeEvent` is an `ExchangePayload` object. If the payload is an [annotation-defined entity](./entity-definition.md#build-with-annotation), the entity class needs to inherit from `ExchangePayload`.
 
-### Event Payload
+### ExchangeEvent Payload
 
-#### ExchangePayload
+#### ExchangePayload <a id="build-exchange-payload"></a>
 
-`ExchangePayload` is the payload for `ExchangeEvent` events, used to carry data for entities moving uplink or downlink. It is widely used in the {ProjectName}. `ExchangePayload` is a Map structure containing **key-value data** for Exchange events, where the key is a string and the value is an object. It also includes a **Context object** for carrying additional parameters needed during the exchange process.
+`ExchangePayload` is the payload for `ExchangeEvent`, used to carry up and down data for entities. `ExchangePayload` is widely used in the {ProjectName} platform. It is a Map structure that contains **key-value data for Exchange events**, where the key is a string and the value is an object. It also contains a **context object** for carrying additional parameters needed during the Exchange process.
 
 ##### Constructing ExchangePayload
 
+<Tabs>
+  <TabItem value="Method 1" label="Method 1" default>
+Constructing a single-value `ExchangePayload`
 ```java
-// Method 1: Construct a single-value ExchangePayload
 ExchangePayload payload = ExchangePayload.create(key, value);
-
-// Method 2: Construct a multi-value ExchangePayload (passing a Map)
+```
+</TabItem>
+<TabItem value="Method 2" label="Method 2">
+Constructing a multi-value `ExchangePayload` (passing a Map)
+```java
 ExchangePayload payload = ExchangePayload.create(Map.of("key1", value1));
-
-// Method 3: Construct an ExchangePayload from an existing ExchangePayload (copies both values and context)
+```
+</TabItem>
+<TabItem value="Method 3" label="Method 3">
+Constructing `ExchangePayload` from an existing `ExchangePayload` (copying both values and context)
+```java
 ExchangePayload payload = ExchangePayload.createFrom(exchangePayload);
-
-// Method 4: Construct an empty ExchangePayload
+```
+</TabItem>
+<TabItem value="Method 4" label="Method 4">
+Constructing an empty `ExchangePayload`
+```java
 ExchangePayload payload = ExchangePayload.empty();
 ```
+</TabItem>
+</Tabs>
 
 ##### Common Methods for ExchangePayload
 
@@ -74,17 +91,15 @@ ExchangePayload payload = ExchangePayload.empty();
     // Get all payloads
     Map<String, Object> getAllPayloads();
 
-    // Get payloads by specified EntityType
+    // Get payloads by specified entity type
     Map<String, Object> getPayloadsByEntityType(EntityType entityType);
 
     // Get corresponding entities
     Map<String, Entity> getExchangeEntities();
-
 ```
 
 - **Context-related methods**
 ```java
-
     // Get context
     Map<String, Object> getContext();
 
@@ -100,171 +115,87 @@ ExchangePayload payload = ExchangePayload.empty();
     // Set context
     void putContext(String key, Object value);
 ```
-##### Extending ExchangePayload to Implement Custom Annotated Entities
-In the previous sections, we introduced how to [build entities based on annotations](entity-definition.md).
 
-In entity definitions, we can extend ExchangePayload to implement custom annotated entity objects. These objects can be used to **receive ExchangePayload data** and create a proxy object using `ExchangePayload.createProxy(...)`, allowing direct manipulation of entity properties to **construct ExchangePayload objects**.
+##### Extending ExchangePayload to Implement Custom Entity Annotation Objects
+
+In previous sections, we introduced how to [build entities based on annotations](entity-definition.md). In entity definitions, we can extend `ExchangePayload` to implement custom entity annotation objects, which can **receive ExchangePayload data**.
 
 - Example of receiving ExchangePayload data
 ```java
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.*", eventType = ExchangeEvent.EventType.DOWN)
+    @EventSubscribe(payloadKeyExpression = "my-integration.integration.*")
     public void onAddDevice(Event<MyIntegrationEntities> event) {
+        // highlight-next-line
         MyIntegrationEntities myIntegrationEntities = event.getPayload();
-        // Child entity
+        // highlight-next-line
+        // Can also get sub-entity objects
         String ip = myIntegrationEntities.getAddDevice().getIp();
         ...
     }
 ```
 
-- Example of constructing ExchangePayload objects
-```java
+## Publishing Entity ExchangePayload Events
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.*", eventType = ExchangeEvent.EventType.DOWN)
-    public void onAddDevice(Event<MyIntegrationEntities> event) {
+The {ProjectName} platform provides a process executor for publishing `ExchangePayload` events. Developers can publish `ExchangeEvent` events by calling the `EntityValueServiceProvider` service. Both synchronous and asynchronous publishing are supported.
+* Synchronous events generally end with `Sync`, such as `saveValuesAndPublishSync`.
+* Asynchronous events generally end with `Async`, such as `saveValuesAndPublishAsync`.
 
-      // mark benchmark done
-      MyIntegrationEntities myIntegrationEntities = ExchangePayload.createProxy(MyIntegrationEntities.class);
-      myIntegrationEntities.setDetectStatus(MyIntegrationEntities.DetectStatus.STANDBY.ordinal());
-      myIntegrationEntities.setDetectReport(null);
-      // Child entity
-      MyIntegrationEntities.DetectReport detectReport = myIntegrationEntities.getDetectReport();
-      detectReport.setConsumedTime(endTimestamp - startTimestamp);
-      detectReport.setOnlineCount(activeCount.get());
-      detectReport.setOfflineCount(inactiveCount.get());
-      exchangeFlowExecutor.syncExchangeUp(donePayload);
-      ...
-    }
+### Event Publishing Process
 
-```
-
-:::warning
-When constructing ExchangePayload objects, use `ExchangePayload.createProxy(MyIntegrationEntities.class)` to create a proxy object. The proxy object's properties will be mapped to the ExchangePayload object.
-:::
-
-## Event Publishing
-The {ProjectName} provides an ExchangePayload event publishing flow executor. Developers can use the `ExchangeFlowExecutor` service to publish `ExchangeEvent` events, supporting both synchronous and asynchronous publishing, as well as specifying EventType (uplink or downlink).
-
-
-### Event Publishing Flow
-:::info
-Entity data **downlink** and **uplink** refer to the entity's owner. **Downlink** indicates data flowing towards the owner, while **uplink** indicates data flowing out from the owner. *When the owner of the data flow in and out is the same, it is treated as uplink.*
-
-##### Downlink Examples
-* A user updates a device or integration's properties or service entity from the frontend.
-* An integration's scheduled task triggers a device's service entity.
-
-##### Uplink Examples
-* A device uploads updated property entity values.
-* A device uploads an event.
-* *An integration updates its own entity.*
-:::
-
-The `ExchangeEvent` triggers a **general built-in flow** that includes entity **data validation**, **current value saving** (for property entities), and **historical value saving**, followed by triggering the relevant subscription methods.
+`ExchangeEvent` events trigger a **general built-in process** that includes **data validation**, **current value saving** (for property entities), and **historical value saving** before triggering the related subscription methods.
 
 ![Exchange Event Flow](/img/en/exchange-flow.svg)
 
-Both synchronous and asynchronous requests will invoke the relevant listeners.
+Whether it is a synchronous or asynchronous request, the relevant listeners will be called.
 
-For synchronous requests, if any listener throws an exception, it will be captured and collected, then thrown after all synchronous listeners have executed. If no exceptions are thrown, the results of all synchronous listeners are returned.
-
-### Code Examples
-
-<Tabs>
-<TabItem value="Synchronous" label="Synchronous" default>
-
-```java
-    @Service
-    public class ExchangeDemoService {
-    
-        @Autowired
-        private ExchangeFlowExecutor exchangeFlowExecutor;
-        
-        public EventResponse exchangeUp(ExchangePayload payload){
-            // Uplink
-            //highlight-next-line
-            return exchangeFlowExecutor.syncExchangeUp(payload);
-        }
-    
-        public EventResponse exchangeDown(ExchangePayload payload){
-            // Downlink
-            //highlight-next-line
-            return exchangeFlowExecutor.syncExchangeDown(payload);
-         }
-}
-```
-  </TabItem>
- <TabItem value="Asynchronous" label="Asynchronous" default>
-
-```java
-    @Service
-    public class ExchangeDemoService {
-    
-        @Autowired
-        private ExchangeFlowExecutor exchangeFlowExecutor;
-        
-        public void exchangeUp(ExchangePayload payload){
-            // Uplink
-            //highlight-next-line
-            exchangeFlowExecutor.asyncExchangeUp(payload);
-    }
-    
-        public void exchangeDown(ExchangePayload payload){
-            // Downlink
-            //highlight-next-line
-            exchangeFlowExecutor.asyncExchangeDown(payload);
-    }
-}
-```
-
-</TabItem>
-</Tabs>
+For synchronous requests, if any listener throws an exception, the exception will be caught and collected, and then an exception will be thrown after all synchronous listeners have been executed. If no exception is thrown, the results of all synchronous listeners will be returned.
 
 :::info
-{ProjectName} supports synchronous calls with response returns and multiple listener executions, returning an `EventResponse` object.
+The {ProjectName} platform supports returning responses for synchronous calls and executing multiple listeners, returning an `EventResponse` response object.
 :::
 
 ## Event Subscription
-The platform provides the @**EventSubscribe annotation** for subscribing to events. Currently supported event types include device events, entity events, and entity value data exchange events (Exchange). Key wildcard expressions are also supported.
-### Annotation Description
-- @EventSubscribe annotation
-    - eventType: Event type, refer to the event definition section.
-    - payloadKeyExpression: Key expression for matching the event's Payload object, supporting wildcards, e.g., `my-integration.*` matches all keys starting with `my-integration.`.
 
+The platform provides the `@EventSubscribe` annotation for subscribing to events. The currently supported event types are Device Events, Entity Events, and Entity Value Data Exchange Events (Exchange). Wildcard expressions are also supported for key matching.
+
+### Annotation Description
+
+- `@EventSubscribe` annotation
+    - `eventType`: Event type, refer to the event definitions section.
+    - `payloadKeyExpression`: Key expression for matching the event's payload object, supports wildcards, e.g., `my-integration.*` matches all keys starting with `my-integration.`
 
 ### Event Subscription
-#### Subscribing to ExchangeEvent
+
+#### Subscribing to ExchangeEvent Events
 
 ```java
 @Service
 public class MyDeviceService {
     
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.DOWN)
+    @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     // highlight-next-line
     public void onAddDevice(Event<MyIntegrationEntities.AddDevice> event) {
-        MyIntegrationEntities.AddDevice addDevice = event.getPayload();
-        String ip = addDevice.getIp();
+        MyIntegrationEntities.AddDevice addDevice = event.getPayload();  // Can use entity annotation objects to receive ExchangePayload requests
+        String ip = addDevice.getIp(); 
         // ...
     }
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.delete_device", eventType = ExchangeEvent.EventType.DOWN)
+    @EventSubscribe(payloadKeyExpression = "my-integration.integration.xxxx", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     // highlight-next-line
     public EventResponse onDeleteDevice(ExchangeEvent event) {
-        Device device = (Device) event.getPayload().getContext("device");
-        deviceServiceProvider.deleteById(device.getId());
-        // Return the response status synchronously
-        return EventResponse.of("connectResult", device.getId());
+        Object ctxValue = event.getPayload().getContext("<Something in context>");
+        // Return response status synchronously
+        return EventResponse.of("<responseKey>", "<responseValue>");
     }
 }
-
 ```
 
 :::info
-- Annotated entity objects can be used to receive ExchangePayload requests, such as MyIntegrationEntities.AddDevice.
-- The `@EventSubscribe` annotation subscribes to events, where eventType is the event type (optional). If empty, it subscribes to all event types.
-- The {ProjectName} platform executes asynchronous subscriptions asynchronously and synchronous subscriptions synchronously. Developers can add the @Async annotation for asynchronous execution to isolate business logic in an asynchronous thread pool.
+- Entity annotation objects can be used as parameters to receive ExchangePayload requests, such as `MyIntegrationEntities.AddDevice`.
+- The `@EventSubscribe` annotation subscribes to events, where `eventType` is the event type. It is optional, and if not specified, it subscribes to all event types.
+- The {ProjectName} platform executes asynchronous subscriptions asynchronously and synchronous subscriptions synchronously. Developers can add the `@Async` annotation to execute asynchronously, implementing business logic with isolated asynchronous thread pools.
 :::
 
-#### Subscribing to DeviceEvent
+#### Subscribing to DeviceEvent Events
 
 ```java
 @Service
@@ -275,16 +206,14 @@ public class MyDeviceService {
     public void onSaveDevice(DeviceEvent event) {
         ...
     }
-
 }
-
 ```
 
 :::tip
-The {ProjectName} exposes events for adding, deleting, and modifying devices. Developers can subscribe to these events to implement their business logic. Generally, developers do not need to focus on these events.
+The {ProjectName} platform exposes events for adding, deleting, and updating devices. Developers can subscribe to these events to implement their business logic. Generally, developers do not need to focus on these events.
 :::
 
-#### Subscribing to EntityEvent
+#### Subscribing to EntityEvent Events
 
 ```java
 @Service
@@ -295,11 +224,9 @@ public class MyEntityService {
     public void onSaveEntity(EntityEvent event) {
         ...
     }
-
 }
-
 ```
 
 :::tip
-The {ProjectName} platform exposes events for adding, deleting, and modifying entities. Developers can subscribe to these events to implement their business logic. Generally, developers do not need to focus on these events.
+The {ProjectName} platform exposes events for adding, deleting, and updating entities. Developers can subscribe to these events to implement their business logic. Generally, developers do not need to focus on these events.
 :::

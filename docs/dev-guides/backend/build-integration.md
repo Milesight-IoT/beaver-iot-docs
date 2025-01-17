@@ -3,14 +3,19 @@ sidebar_position: 3
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import { DevProjectRepoSSH, DevProjectRepoHttps } from '/src/consts';
-import { ProjectName } from '/src/consts';
+import {
+    IntegrationProjectRepoSSH,
+    IntegrationProjectRepoHttps,
+    ProjectRepoSSH,
+    ProjectRepoHttps,
+} from '/src/consts';
+import { ProjectName, SampleBackendIntegration } from '/src/consts';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 快速入门
 
-快速实现一个自定义集成的后端部分
+快速实现一个自定义集成的后端部分，<a href={SampleBackendIntegration} target="_blank" rel="noopener noreferrer">代码示例</a>
 
 ## 前置条件
 
@@ -29,41 +34,55 @@ import TabItem from '@theme/TabItem';
 * Maven
 * Git CLI
 
-在准备这些完成后，运行以下git命令，获取集成开发的项目
+在准备这些完成后，运行以下git命令，获取集成开发的项目源码 `beaver-iot-integrations`
 <Tabs>
   <TabItem value="SSH" label="SSH" default>
-    <CodeBlock language="bash">git clone {DevProjectRepoSSH}</CodeBlock>
+    <CodeBlock language="bash">git clone {IntegrationProjectRepoSSH}</CodeBlock>
   </TabItem>
   <TabItem value="Https" label="Https">
-    <CodeBlock language="bash">git clone {DevProjectRepoHttps}</CodeBlock>
+    <CodeBlock language="bash">git clone {IntegrationProjectRepoHttps}</CodeBlock>
   </TabItem>
 </Tabs>
 
-代码拉取完成后，使用IDE打开项目文件夹*beaver-iot-integrations*，您会发现两个模块，分别是`application-dev`和`integrations`。
+*(可选)* 获取 {ProjectName} 后端项目源码 `beaver-iot` ，用于集成开发完成后的测试
+<Tabs>
+  <TabItem value="SSH" label="SSH" default>
+    <CodeBlock language="bash">git clone {ProjectRepoSSH}</CodeBlock>
+  </TabItem>
+  <TabItem value="Https" label="Https">
+    <CodeBlock language="bash">git clone {ProjectRepoHttps}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+使用Java IDE打开这两个项目后就可以开始尝试开发一个集成了。
 
 ## 写一个Hello world
 
 ### 创建集成元数据
-在项目的`integrations`模块下新建一个作为这个集成的模块，命名为
-> **my-integration**
+在项目的`integrations`模块下新建一个作为这个集成的模块，并为这个模块起一个名字，作为集成的id
+> **[integration-id]**
 
-在模块下创建这个集成的pom文件`pom.xml`
+:::tip
+请用你刚刚生成的id替换以下所有示例代码中的`[integration-id]`
+:::
 
-```xml title="beaver-iot-integrations/integrations/my-integration/pom.xml"
+在模块的pom文件如下
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.milesight.beaveriot</groupId>
+        <groupId>com.milesight.beaveriot.integrations</groupId>
         <artifactId>integrations</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
 <!-- highlight-next-line -->
-    <artifactId>my-integration</artifactId>
+    <artifactId>[integration-id]</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -100,25 +119,26 @@ import TabItem from '@theme/TabItem';
 ```
 :::warning
 `scope`为`provided`的依赖不会被打包到集成中，而是由{ProjectName}提供，通过`maven-shade-plugin`插件将依赖包打包至一个jar包中。
-另外，`context`模块是{ProjectName}的核心模块，提供了集成开发的基础功能。
+`context`模块是{ProjectName}的核心模块，提供了集成开发的基础功能。
 :::
 
 
-在这个新建的模块下新建一个资源文件`integration.yaml`
-```yaml title="beaver-iot-integrations/integrations/my-integration/src/main/resources/integration.yaml"
+新建一个资源文件`integration.yaml`
+
+```yaml
 integration:
-   my-integration: # integration identifier
+   [integration-id]: # integration identifier
       name: My Integration Name # integration name
       description: "My Demo Integration" # integration description
       enabled: true # whether enable this integration. Must be "true" for now
 ```
 
 ### 创建Bootstrap类
-新建包`com.milesight.beaveriot.myintegration`
+新建包`com.milesight.beaveriot.integrations.[integration-id]`
 
 内含一个Java类文件`MyIntegrationBootstrap.java`
-```java title="beaver-iot-integrations/integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyIntegrationBootstrap.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id];
 
 import com.milesight.beaveriot.context.integration.bootstrap.IntegrationBootstrap;
 import com.milesight.beaveriot.context.integration.model.Integration;
@@ -128,7 +148,7 @@ import org.springframework.stereotype.Component;
 public class MyIntegrationBootstrap implements IntegrationBootstrap {
     @Override
     public void onPrepared(Integration integration) {
-        
+        // do nothing
     }
 
     @Override
@@ -139,42 +159,52 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 
     @Override
     public void onDestroy(Integration integration) {
-
+        // do nothing
     }
 }
 ```
 
-### 启动你的第一个集成
+这样，你就完成了你的第一个最简单的集成，他可以在{ProjectName}启动初始化集成时打印
+> Hello, world!
 
-在`application-dev`模块下，将你的集成加入依赖列表dependencies中
-```xml title="beaver-iot-integrations/application/application-dev/pom.xml"
+### (可选) 启动你的第一个集成<a id="start-app-with-dev-integration"></a>
+
+将你的集成install后，在`beaver-iot`项目下，将你的集成加入`application/application-standard`依赖列表dependencies中
+
+```xml
 
 <!-- ... -->
+    <artifactId>application-standard</artifactId>
+    <name>application-standard</name>
+    <!-- ... -->
+
     <dependencies>
         <!-- ... -->
+
+        <!-- default integrations -->
+        <!-- ... -->
+
+        <!-- highlight-start -->
         <dependency>
-            <groupId>com.milesight.beaveriot</groupId>
-            <!-- highlight-next-line -->
-            <artifactId>my-integration</artifactId>
+            <groupId>com.milesight.beaveriot.integrations</groupId>
+            <artifactId>[integration-id]</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- highlight-end -->
         <!-- ... -->
     </dependencies>
 <!-- ... -->
 </project>
 ```
 
-然后启动*beaver-iot-integrations/application-dev/src/main/java/com/milesight/beaveriot/DevelopApplication.java*
-
-可以看到控制台输出
+从`application-standard`启动，程序加载完成后可以看到控制台输出
 > Hello, world!
 
 ## 实现一个有用的集成
 
 你现在已经实现了一个最简单的集成，但是它的功能只有控制台输出文字，我们接下来将实现一个有用的集成。
 
-这个新的集成能够检测某个ip地址的设备是否在线，其功能包括：
-* 本机(Localhost)作为**默认设备**
+这个新的集成能够**检测某个ip地址的设备是否在线**，其功能包括：
 * 支持**触发检测**所有设备是否在线功能
 * 每次检测完成时**发送报告事件**
 * 支持**添加**需要被监控的设备
@@ -198,9 +228,11 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 
 新建一个Java类文件`MyIntegrationEntities.java`，以注解的方式定义集成的以上5个实体以及其子实体
 
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyIntegrationEntities.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id].entity;
 
+import com.milesight.beaveriot.context.integration.context.AddDeviceAware;
+import com.milesight.beaveriot.context.integration.context.DeleteDeviceAware;
 import com.milesight.beaveriot.context.integration.entity.annotation.Attribute;
 import com.milesight.beaveriot.context.integration.entity.annotation.Entities;
 import com.milesight.beaveriot.context.integration.entity.annotation.Entity;
@@ -216,23 +248,18 @@ import lombok.EqualsAndHashCode;
 @IntegrationEntities
 public class MyIntegrationEntities extends ExchangePayload {
     @Entity(type = EntityType.SERVICE, name = "Device Connection Benchmark", identifier = "benchmark")
-    // highlight-next-line
     private String benchmark;
 
     @Entity(type = EntityType.PROPERTY, name = "Detect Status", identifier = "detect_status", attributes = @Attribute(enumClass = DetectStatus.class), accessMod = AccessMod.R)
-    // highlight-next-line
     private Long detectStatus;
 
     @Entity(type = EntityType.EVENT, name = "Detect Report", identifier = "detect_report")
-    // highlight-next-line
     private DetectReport detectReport;
 
-    @Entity(type = EntityType.SERVICE, identifier = "add_device")
-    // highlight-next-line
+    @Entity(type = EntityType.SERVICE, identifier = "add_device", visible = false)
     private AddDevice addDevice;
 
-    @Entity(type = EntityType.SERVICE, identifier = "delete_device")
-    // highlight-next-line
+    @Entity(type = EntityType.SERVICE, identifier = "delete_device", visible = false)
     private DeleteDevice deleteDevice;
 
 
@@ -264,7 +291,7 @@ public class MyIntegrationEntities extends ExchangePayload {
     @Entities
     public static class DeleteDevice extends ExchangePayload implements DeleteDeviceAware {
     }
-  
+
     public enum DetectStatus {
         STANDBY, DETECTING;
     }
@@ -272,12 +299,21 @@ public class MyIntegrationEntities extends ExchangePayload {
 
 ```
 
-这个类中，我们定义了**增加设备**和**删除设备**的实体，我们需要将这个他们的`identifier`同步到元数据中，让{ProjectName}知道这个集成支持添加和删除设备。
+:::warning
+
+删除设备服务实体不能有子实体。
+
+添加设备和删除设备是通用功能是属于集成和{ProjectName}交互的内部功能，无法让用户直接使用，因此在`MyIntegrationEntities`类中，将`visible`设置为`false`。
+
+:::
+
+这个类中，我们定义了**增加设备**和**删除设备**的实体，我们需要将这个他们的`identifier`同步到元数据中，用于指示{ProjectName}：这个集成支持添加和删除设备。
 
 更新资源文件`integration.yaml`
-```yaml title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/resources/integration.yaml"
+
+```yaml
 integration:
-   my-integration: # integration identifier
+   [integration-id]: # integration identifier
       # ...
       # highlight-next-line
       entity-identifier-add-device: add_device
@@ -286,25 +322,16 @@ integration:
       entity-identifier-delete-device: delete_device
 ```
 
-:::warning
-删除设备服务实体不能有子实体。
-
-添加设备和删除设备是通用功能，需要每个集成显式地定义出来告诉用户和{ProjectName}：这个集成是支持动态添加或删除设备的。
-:::
-
 ### 约定设备
 
-我们这里定义一个本地设备为集成添加后的默认初始设备，设备包含一个实体——设备状态。
+我们这里定义这个集成的设备模板，模板内容是，每台设备包含一个实体——设备状态。
 
-新建一个Java类文件`MyDeviceEntities.java`，以注解的方式定义设备和其实体。
+新建一个Java类文件`MyDeviceEntities.java`，以注解的方式定义设备`MyDeviceEntities`和其实体`status`。
 
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceEntities.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id].entity;
 
-import com.milesight.beaveriot.context.integration.entity.annotation.Attribute;
-import com.milesight.beaveriot.context.integration.entity.annotation.DeviceEntities;
-import com.milesight.beaveriot.context.integration.entity.annotation.Entity;
-import com.milesight.beaveriot.context.integration.entity.annotation.KeyValue;
+import com.milesight.beaveriot.context.integration.entity.annotation.*;
 import com.milesight.beaveriot.context.integration.enums.AccessMod;
 import com.milesight.beaveriot.context.integration.enums.EntityType;
 import com.milesight.beaveriot.context.integration.model.ExchangePayload;
@@ -313,10 +340,9 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@DeviceEntities(name="Default Device", identifier = "localhost", additional = {@KeyValue(key = "ip", value = "localhost")})
+@DeviceTemplateEntities(name = "Ping Device")
 public class MyDeviceEntities extends ExchangePayload {
     @Entity(type = EntityType.PROPERTY, name = "Device Connection Status", accessMod = AccessMod.R, attributes = @Attribute(enumClass = DeviceStatus.class))
-    // highlight-next-line
     private Long status;
 
     public enum DeviceStatus {
@@ -325,36 +351,31 @@ public class MyDeviceEntities extends ExchangePayload {
 }
 ```
 
-:::warning
-以这种静态的方式添加的设备在每次重启后名称和属性都会恢复默认。如果用户主动删掉了这台设备，下次重启后还会出现，但设备实体的值会丢失。
-:::
-
 ### 监听事件 - 新增设备 / 删除设备
-上面演示了如何用注解来创建默认设备，这是一个简单明了的方式，但是这样的设备是静态的，很多时候我们需要根据用户的需求动态地创建或者删除设备。
+我们定义了添加/删除设备服务实体。当用户调用添加/删除设备服务，会发送相应事件，因此我们只需要通过[key](../key-dev-concept.md#key)监听这个事件，然后在处理方法中实现对应功能即可。
 
-在这之前，我们定义了添加/删除设备服务实体。当用户调用添加/删除设备服务，会发送相应事件，因此我们只需要通过[key](../key-dev-concept.md#key)监听这个事件，然后在处理方法中实现对应功能即可。
+新增设备事件的上下文中有用户指定的设备名称（示例中采用实现`AddDeviceAware`接口方式来获取新增设备名）。我们限定`identifier`的[字符](../key-dev-concept.md#identifier)不能包含ip地址中的`.`，因此我们做了一层转换。
 
-新增设备事件的上下文中有用户指定的设备名称`device_name`（示例中采用实现AddDeviceAware接口方式来获取新增设备名）。这里添加设备的代码的作用相当于动态实现上面定义设备的注解。由于我们限定`identifier`的[字符](../key-dev-concept.md#identifier)不能包含ip地址中的`.`，因此我们做了一层转换。
-
-删除设备事件的上下文中有设备的实例`device`（示例中采用实现DeleteDeviceAware接口方式来获取删除的设备）。
+删除设备事件的上下文中有设备的实例`device`（示例中采用实现`DeleteDeviceAware`接口方式来获取删除的设备）。
 
 新建一个Java类文件`MyDeviceService.java`，在这个类中实现添加和删除设备的方法
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceService.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id].service;
 
 import com.milesight.beaveriot.context.api.DeviceServiceProvider;
-import com.milesight.beaveriot.context.api.ExchangeFlowExecutor;
-import com.milesight.beaveriot.context.integration.enums.AccessMod;
-import com.milesight.beaveriot.context.integration.enums.EntityValueType;
+import com.milesight.beaveriot.context.api.EntityValueServiceProvider;
 import com.milesight.beaveriot.context.integration.model.*;
 import com.milesight.beaveriot.context.integration.model.event.ExchangeEvent;
+import com.milesight.beaveriot.context.integration.wrapper.AnnotatedEntityWrapper;
+import com.milesight.beaveriot.context.integration.wrapper.AnnotatedTemplateEntityWrapper;
 import com.milesight.beaveriot.eventbus.annotations.EventSubscribe;
 import com.milesight.beaveriot.eventbus.api.Event;
+import com.milesight.beaveriot.integrations.[integration-id].entity.MyDeviceEntities;
+import com.milesight.beaveriot.integrations.[integration-id].entity.MyIntegrationEntities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.InetAddress;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -365,39 +386,33 @@ public class MyDeviceService {
     private DeviceServiceProvider deviceServiceProvider;
 
     @Autowired
-    private ExchangeFlowExecutor exchangeFlowExecutor;
+    private EntityValueServiceProvider entityValueServiceProvider;
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.DOWN)
+    public static final String INTEGRATION_ID = [integration-id];
+
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.add_device.*", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     // highlight-next-line
     public void onAddDevice(Event<MyIntegrationEntities.AddDevice> event) {
         MyIntegrationEntities.AddDevice addDevice = event.getPayload();
         String deviceName = addDevice.getAddDeviceName();
-        final String integrationId = "my-integration";
-        Device device = new DeviceBuilder(integrationId)
-              .name(deviceName)
-              .identifier(ip.replace(".", "_"))
-              .additional(Map.of("ip", ip))
-              .entity(()->{
-                return new EntityBuilder(integrationId)
-                        .identifier("status")
-                        .property("Device Status", AccessMod.R)
-                        .valueType(EntityValueType.LONG)
-                        .attributes(new AttributeBuilder().enums(MyDeviceEntities.DeviceStatus.class).build())
-                        .build();
-              })
-              .build();
+        String ip = event.getPayload().getIp();
+        Device device = new DeviceBuilder(INTEGRATION_ID)
+                .name(deviceName)
+                .identifier(ip.replace(".", "_"))
+                .additional(Map.of("ip", ip))
+                .entities(()-> new AnnotatedTemplateEntityBuilder(INTEGRATION_ID, ip.replace(".", "_")).build(MyDeviceEntities.class))
+                .build();
 
         deviceServiceProvider.save(device);
     }
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.delete_device", eventType = ExchangeEvent.EventType.DOWN)
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.delete_device", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     // highlight-next-line
     public void onDeleteDevice(Event<MyIntegrationEntities.DeleteDevice> event) {
-      Device device = event.getPayload().getDeletedDevice();
-      deviceServiceProvider.deleteById(device.getId());
+        Device device = event.getPayload().getDeletedDevice();
+        deviceServiceProvider.deleteById(device.getId());
     }
 }
-
 ```
 
 ### 监听事件 - Benchmark
@@ -405,20 +420,22 @@ public class MyDeviceService {
 接下来我们创建方法，监听Benchmark服务实体，并且实现这个方法。
 更新Java类文件`MyDeviceService.java`，在这个类中添加Benchmark服务实体的方法实现。
 
-检测所有设备完成后，会[上行](./advanced/eventbus.md#exchangeevent)一个`detect_report`报告事件。
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceService.java"
+检测所有设备完成后，会发送一个`detect_report`报告事件。
+```java
 @Service
 public class MyDeviceService {
     // ...
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.benchmark", eventType = ExchangeEvent.EventType.DOWN)
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.benchmark", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     // highlight-next-line
     public void doBenchmark(Event<MyIntegrationEntities> event) {
         // mark benchmark starting
-        exchangeFlowExecutor.syncExchangeDown(new ExchangePayload(Map.of("my-integration.integration.detect_status", MyIntegrationEntities.DetectStatus.DETECTING.ordinal())));
-        int timeout = 5000;
+        new AnnotatedEntityWrapper<MyIntegrationEntities>()
+                .saveValue(MyIntegrationEntities::getDetectStatus, (long) MyIntegrationEntities.DetectStatus.DETECTING.ordinal())
+                .publishSync();
 
         // start pinging
-        List<Device> devices = deviceServiceProvider.findAll("my-integration");
+        final int timeout = 5000;
+        List<Device> devices = deviceServiceProvider.findAll(INTEGRATION_ID);
         AtomicReference<Long> activeCount = new AtomicReference<>(0L);
         AtomicReference<Long> inactiveCount = new AtomicReference<>(0L);
         Long startTimestamp = System.currentTimeMillis();
@@ -443,28 +460,25 @@ public class MyDeviceService {
             }
 
             // Device have only one entity
-            String deviceStatusKey = device.getEntities().get(0).getKey();
-            exchangeFlowExecutor.asyncExchangeDown(new ExchangePayload(Map.of(deviceStatusKey, (long) deviceStatus)));
+            new AnnotatedTemplateEntityWrapper<MyDeviceEntities>(device.getIdentifier()).saveValue(MyDeviceEntities::getStatus, (long) deviceStatus);
         });
         Long endTimestamp = System.currentTimeMillis();
 
         // mark benchmark done
-        MyIntegrationEntities myIntegrationEntities = ExchangePayload.createProxy(MyIntegrationEntities.class);
-        myIntegrationEntities.setDetectStatus(MyIntegrationEntities.DetectStatus.STANDBY.ordinal());
-        myIntegrationEntities.setDetectReport(null);
-        MyIntegrationEntities.DetectReport detectReport = myIntegrationEntities.getDetectReport();
-        detectReport.setConsumedTime(endTimestamp - startTimestamp);
-        detectReport.setOnlineCount(activeCount.get());
-        detectReport.setOfflineCount(inactiveCount.get());
-        exchangeFlowExecutor.syncExchangeUp(donePayload);
+        new AnnotatedEntityWrapper<MyIntegrationEntities>()
+                .saveValue(MyIntegrationEntities::getDetectStatus, (long) MyIntegrationEntities.DetectStatus.STANDBY.ordinal())
+                .publishSync();
+
+        // send report event
+        new AnnotatedEntityWrapper<MyIntegrationEntities.DetectReport>().saveValues(Map.of(
+                MyIntegrationEntities.DetectReport::getConsumedTime, endTimestamp - startTimestamp,
+                MyIntegrationEntities.DetectReport::getOnlineCount, activeCount.get(),
+                MyIntegrationEntities.DetectReport::getOfflineCount, inactiveCount.get()
+        )).publishSync();
     }
-// ...
+    // ...
 }
 ```
-
-:::tip
-上面示例中，我们可以利用实体注解对象来接收ExchangePayload数据，也可以采用`ExchangePayload.createProxy(...)`来创建一个实体注解的代理对象，这样我们就可以直接操作实体对象的属性来构建ExchangePayload对象了。
-:::
 
 ### 监听事件 - 检测报告事件
 
@@ -472,43 +486,44 @@ public class MyDeviceService {
 
 更新Java类文件`MyDeviceService.java`，在这个类中添加报告的监听方法，并且打印。
 
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceService.java"
+```java
 @Service
 public class MyDeviceService {
     // ...
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.detect_report.*", eventType = ExchangeEvent.EventType.UP)
-    // highlight-next-line
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.detect_report.*", eventType = ExchangeEvent.EventType.REPORT_EVENT)
     public void listenDetectReport(Event<MyIntegrationEntities.DetectReport> event) {
         System.out.println("[Get-Report] " + event.getPayload()); // do something with this report
     }
-// ...
+    // ...
 }
 ```
 ### 创建Http API
 
 我们允许集成设置自己的Http路由，用于自定义的前端调用，或者作为Webhook的入口。
 
-这里我们实现一个返回在线设备数量的Http接口 `GET /my-integration/active-count`。
+这里我们实现一个返回在线设备数量的Http接口 `GET /[integration-id]/active-count`。
 
 
 :::warning
 为了防止不同集成和系统的路由冲突，集成的URL地址应该以集成名开头，如：
-* **/my-integration**/foo
-* **/my-integration**/foo/bar
-* **/my-integration**/bar
+* **/[integration-id]**/foo
+* **/[integration-id]**/foo/bar
+* **/[integration-id]**/bar
 :::
 
 
 创建一个Java类`MyIntegrationController.java`，在这个类中添加Controller，接收请求。
 
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyIntegrationController.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id].controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.milesight.beaveriot.base.response.ResponseBody;
 import com.milesight.beaveriot.base.response.ResponseBuilder;
 import com.milesight.beaveriot.context.api.DeviceServiceProvider;
 import com.milesight.beaveriot.context.api.EntityValueServiceProvider;
+import com.milesight.beaveriot.integrations.[integration-id].entity.MyDeviceEntities;
+import com.milesight.beaveriot.integrations.[integration-id].service.MyDeviceService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -519,7 +534,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/my-integration") // Should use integration identifier
+@RequestMapping("/" + MyDeviceService.INTEGRATION_ID) // Should use integration identifier
 public class MyIntegrationController {
     @Autowired
     private DeviceServiceProvider deviceServiceProvider;
@@ -528,10 +543,9 @@ public class MyIntegrationController {
     private EntityValueServiceProvider entityValueServiceProvider;
 
     @GetMapping("/active-count")
-    // highlight-next-line
     public ResponseBody<CountResponse> getActiveDeviceCount() {
         List<String> statusEntityKeys = new ArrayList<>();
-        deviceServiceProvider.findAll("my-integration").forEach(device -> statusEntityKeys.add(device.getEntities().get(0).getKey()));
+        deviceServiceProvider.findAll(MyDeviceService.INTEGRATION_ID).forEach(device -> statusEntityKeys.add(device.getEntities().get(0).getKey()));
         Long count = entityValueServiceProvider
                 .findValuesByKeys(statusEntityKeys)
                 .values()
@@ -549,37 +563,61 @@ public class MyIntegrationController {
         private Long count;
     }
 }
-
 ```
 
 
-## 测试你的集成
+## （可选）测试你的集成
 
-由于{ProjectName}是有用户验证模块的，因此在请求时会要求请求头携带登录Token，这样不方便调试。
-因此我们建议在开发时，如果和用户无关的集成，将用户验证模块注释。
+将你的集成本地重新install之后，重新启动`beaver-iot`项目。
 
-在`application-dev`模块下，将pom文件依赖列表的`authentication-service`注释掉。
-```xml title="beaver-iot-integrations/application/application-dev/pom.xml"
-
-<!-- ... -->
-    <dependencies>
-        <!-- ... -->
-        <!-- highlight-start -->
-<!--        <dependency>-->
-<!--            <groupId>com.milesight.beaveriot</groupId>-->
-<!--            <artifactId>authentication-service</artifactId>-->
-<!--        </dependency>-->
-        <!-- highlight-end -->
-        <!-- ... -->
-    <dependencies>
-<!-- ... -->
+### 注册用户
+```shell
+curl --location 'http://localhost:9200/user/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "john.doe@example.com",
+    "nickname": "JohnDoe",
+    "password": "12#$qwER"
+}'
 ```
-然后刷新Maven后重新启动项目。
+
+### 登陆用户
+```shell
+curl --location 'http://192.168.43.46:9200/oauth2/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'username=john.doe@example.com' \
+--data-urlencode 'password=12#$qwER' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_id=iab' \
+--data-urlencode 'client_secret=milesight*iab'
+```
+
+返回的数据如下
+```json
+{
+    "data": {
+        // highlight-next-line
+        "access_token":"***.****.***",
+        "refresh_token":"***",
+        "token_type":"Bearer",
+        "expires_in":86399
+    },
+    "status":"Success"
+}
+```
+
+将其中的`access_token`记录下来
+```shell
+access_token=***.****.***
+```
 
 ### 获取集成信息
 ```shell
-curl --location --request GET 'http://localhost:9200/integration/my-integration' \
---header 'Content-Type: application/json'
+curl --location --request GET 'http://localhost:9200/integration/[integration-id]' \
+--header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
+--data '{
+}'
 ```
 
 ### 添加设备
@@ -589,11 +627,12 @@ curl --location --request GET 'http://localhost:9200/integration/my-integration'
 ```shell
 curl --location 'http://localhost:9200/device' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "name": "Test Device",
-    "integration": "my-integration",
+    "integration": "[integration-id]",
     "param_entities": {
-        "my-integration.integration.add_device.ip": "8.8.8.8"
+        "[integration-id].integration.add_device.ip": "8.8.8.8"
     }
 }'
 ```
@@ -602,6 +641,7 @@ curl --location 'http://localhost:9200/device' \
 ```shell
 curl --location 'http://localhost:9200/device/search' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "name": ""
 }'
@@ -611,22 +651,24 @@ curl --location 'http://localhost:9200/device/search' \
 ```shell
 curl --location 'http://localhost:9200/entity/service/call' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "exchange": {
-        "my-integration.integration.benchmark": ""
+        "[integration-id].integration.benchmark": ""
     }
 }'
 ```
 
 看到控制台有日志输出
 ```
-[Get-Report] {my-integration.integration.detect_report.offline_count=1, my-integration.integration.detect_report.consumed_time=5099, my-integration.integration.detect_report.online_count=1}
+[Get-Report] {[integration-id].integration.detect_report.offline_count=1, [integration-id].integration.detect_report.consumed_time=5099, [integration-id].integration.detect_report.online_count=1}
 ```
 
 ### 搜索实体
 ```shell
 curl --location 'http://localhost:9200/entity/search' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "keyword": "",
     "page_size": 100
@@ -635,24 +677,26 @@ curl --location 'http://localhost:9200/entity/search' \
 
 ### 获取实体值
 
-例如，搜索实体获取到列表，其中`entity_key`为`my-integration.device.8_8_8_8.status`的id为`1853700374977695745`。
+例如，搜索实体获取到列表，其中`entity_key`为`[integration-id].device.8_8_8_8.status`的id为`1879410769126817793`。
 
 获取这个实体的值：
 ```shell
-curl --location --request GET 'http://localhost:9200/entity/1853700374977695745/status' \
+curl --location --request GET 'http://localhost:9200/entity/1879410769126817793/status' \
+--header "Authorization: Bearer $access_token" \
 --header 'Content-Type: application/json'
 ```
 
 ### 删除设备
 
-例如，搜索设备获取到列表，其中刚刚添加的设备id为`1853676674098151426`
+例如，搜索设备获取到列表，其中刚刚添加的设备id为`1879410769026154498`
 
 删除这个设备
 ```shell
 curl --location 'http://localhost:9200/device/batch-delete' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
-    "device_id_list": ["1853676674098151426"]
+    "device_id_list": ["1879410769026154498"]
 }'
 ```
 

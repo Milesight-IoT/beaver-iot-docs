@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import { DevProjectRepoHttps } from '/src/consts';
+import { IntegrationProjectRepoHttps } from '/src/consts';
 import { ProjectName } from '/src/consts';
 
 # 集成构建
@@ -19,7 +19,7 @@ import { ProjectName } from '/src/consts';
 ### 代码仓库
 
 我们提供了一个集成开发的仓库，包含所有已经发布的集成、示例代码以及调试环境，
-你可以通过下载<a href={DevProjectRepoHttps} target="_blank" rel="noopener noreferrer">beaver-iot-integrations代码仓库</a>来体验集成开发。
+你可以通过下载<a href={IntegrationProjectRepoHttps} target="_blank" rel="noopener noreferrer">beaver-iot-integrations代码仓库</a>来体验集成开发。
 
 ### pom.xml配置 
 - **依赖包引入**
@@ -114,7 +114,7 @@ icon-url支持**相对路径**和**绝对路径**，**相对路径**是相对于
   │ │ └──────── my-integration.png
 ```
 :::tip
-为避免资源文件冲突，建议开发者使用包含`integration-id`的图片文件名
+为避免资源文件冲突，建议开发者使用包含`integration-id`的名称作为图片文件名
 :::
 
 #### 代码示例
@@ -187,7 +187,7 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 ```
 :::tip
 {ProjectName}平台根据`IntegrationBootstrap`接口的实现类来发现平台的集成，因此集成开发者必须要实现`IntegrationBootstrap`接口，并将其注入到Spring容器中。
-集成包路径需在`com.milesight.beaveriot`目录下，以确保集成能够被{ProjectName}平台发现，强烈建议开发者使用`com.milesight.beaveriot.集成标识`包路径。
+集成包路径需在`com.milesight.beaveriot.integrations`目录下，以确保集成能够被{ProjectName}平台发现，强烈建议开发者使用`com.milesight.beaveriot.integrations.集成标识`作为包路径。
 :::
 
 - **完整的集成生命周期示例**
@@ -241,47 +241,13 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 ## 集成调试
 
 ### 运行调试应用
-为方便集成开发者调试集成，我们提供了`application-dev`模块，开发者可以在该模块中进行集成的调试。
 
-只需将需要调试的集成pom加入依赖dependencies中即可，例如：
-```xml
-
-<!-- ... -->
-    <dependencies>
-        <!-- ... -->
-        <dependency>
-            <groupId>com.milesight.beaveriot</groupId>
-            <!-- highlight-next-line -->
-            <artifactId>my-integration</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <!-- ... -->
-    </dependencies>
-<!-- ... -->
-</project>
-```
-
-然后启动*beaver-iot-integrations/application-dev/src/main/java/com/milesight/beaveriot/DevelopApplication.java*
+见[测试集成启动](../build-integration.md#start-app-with-dev-integration)
 
 ### 更多自定义
-  默认情况下，`application-dev`模块会加载所有{ProjectName}平台服务，并采用H2作为内置数据库方式启动，开发者可以通过配置`pom.xml`、`application-dev`文件，自定义集成的调试环境。
-- **去掉用户、认证模块**
-
-  为了方便集成开发者调试集成，可以去掉认证模块：在`pom.xml`中注释掉`authentication-service`依赖包。
-
-```xml
-<dependencies>
-   <!-- 
-    <dependency>
-      <groupId>com.milesight.beaveriot</groupId>
-      <artifactId>authentication-service</artifactId>
-    </dependency>
-    -->
-</dependencies>
-```
 - **自定义数据库**
 
-  默认情况下，`application-dev`模块会使用H2作为内置数据库，开发者可以在`application-dev`文件中配置postgres数据库（或以环境变量配置方式），例如：
+  默认情况下，{ProjectName}使用H2作为内置数据库，开发者可以在环境变量中配置postgres数据库（或直接修改资源文件`application.yml`），例如：
 ```shell
 DB_TYPE=postgres;
 SPRING_DATASOURCE_URL=jdbc:postgresql://<DB_SERVER_HOSTNAME>:<DB_SERVER_PORT>/<DB_NAME>;
@@ -291,7 +257,7 @@ SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
 ```
 
 :::tip
-默认情况下平台采用H2作为内置数据库。为方便开发，我们开启了h2-console，开发者可以通过`/public/h2-console`上下文路径来访问h2-console进行数据库操作。
+默认情况下平台采用H2作为内置数据库。为方便开发，可以将`SPRING_H2_CONSOLE_ENABLED`设置为`true`。然后开发者就可以通过`/public/h2-console`路径来访问h2-console进行数据库操作。
 :::
 
 ## 集成安装

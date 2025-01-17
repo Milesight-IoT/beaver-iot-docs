@@ -11,71 +11,11 @@ import { ProjectName } from '/src/consts';
 ## 概述
 {ProjectName} 平台提供了一些通用的服务接口，用于集成开发者实现集成的业务逻辑。包括集成服务、设备服务、实体服务、实体值服务等。
 
-## IntegrationServiceProvider 接口文档
-
-`IntegrationServiceProvider` 接口定义了与集成配置相关的操作方法。
-
-### save 
-保存集成
-#### 方法签名
-```java
-void save(Integration integrationConfig);
-```
-
-### batchSave 
-批量保存集成
-#### 方法签名
-```java
-void save(Integration integrationConfig);
-```
-
-### getIntegration 
-根据集成id获取集成实例（包含未启用）
-#### 方法签名
-```java
-Integration getIntegration(String integrationId);
-```
-
-### getActiveIntegration 
-根据集成id获取启用的集成实例
-#### 方法签名
-```java
-Integration getActiveIntegration(String integrationId);
-```
-
-### findIntegrations 
-查找所有集成列表
-#### 方法签名
-```java
-Collection<Integration> findIntegrations();
-```
-#### 代码示例
-
-### findActiveIntegrations 
-查找所有启用的集成列表
-#### 方法签名
-```java
-List<Integration> findActiveIntegrations();
-```
-#### 代码示例
-
-### findIntegrationsWithPredicate 
-根据条件查找集成列表
-#### 方法签名
-```java
-List<Integration> findIntegrations(Predicate<Integration> predicate);
-```
-#### 代码示例
-```java
-//查找所有集成中包含entityKeyAddDevice字段的集成
-List<Integration> integrations = integrationServiceProvider.findIntegrations(f -> StringUtils.hasText(f.getEntityKeyAddDevice()));
-```
-
 ## DeviceServiceProvider 接口文档
 {ProjectName} 平台提供了`DeviceServiceProvider`接口，提供常用的设备操作方法。
 
-### save 
-保存设备
+### save <a id="device-service-provider-save"></a>
+保存设备(包括保存设备下的实体)
 #### 方法签名
 ```java
 void save(Device device);
@@ -147,21 +87,26 @@ Device findByIdentifier(String identifier, String integrationId);
 ## EntityServiceProvider 接口文档
 {ProjectName} 平台提供了`EntityServiceProvider`接口，提供常用的entity操作方法。
 
-### findByTargetId
+### findByTargetId <a id="entity-target"></a>
 根据目标类型和目标ID获取实体列表
+
+:::info **目标** 
+ **目标**包括**设备**`AttachTargetType.DEVICE`和**集成**`AttachTargetType.INTEGRATION`
+:::
+
 #### 方法签名
 ```java
     List<Entity> findByTargetId(AttachTargetType targetType, String targetId);
 ```
 
 ### findByTargetIds
-根据目标类型和目标ID集合获取实体列表
+根据目标类型和目标ID集合获取实体列表 
 #### 方法签名
 ```java
     List<Entity> findByTargetIds(AttachTargetType targetType, List<String> targetIds);
 ```
 
-### save
+### save <a id="entity-service-provider-save"></a>
 保存实体
 #### 方法签名
 ```java
@@ -176,7 +121,7 @@ Device findByIdentifier(String identifier, String integrationId);
 ```
 
 ### deleteByTargetId
-根据目标ID删除实体
+根据[目标](#entity-target)的ID删除实体
 #### 方法签名
 ```java
     void deleteByTargetId(String targetId);
@@ -224,8 +169,46 @@ Device findByIdentifier(String identifier, String integrationId);
     Map<String, Entity> findByKeys(String... entityKeys);
 ```
 
+### findById
+根据实体id查找实体
+#### 方法签名
+```java
+    Entity findById(Long entityId);
+```
+
+### findByIds
+根据实体id集合查找实体
+#### 方法签名
+```java
+List<Entity> findByIds(List<Long> ids);
+```
+
 ## EntityValueServiceProvider 接口文档
 {ProjectName} 平台提供了`EntityValueServiceProvider`接口，提供常用的entity最新值和历史值的操作方法。
+
+### saveValuesAndPublishSync
+保存实体值并且同步发布事件
+#### 方法签名
+使用[默认事件类型](./eventbus.md#exchange-event)
+```java
+EventResponse saveValuesAndPublishSync(ExchangePayload exchangePayload);
+```
+可自定义事件类型
+```java
+EventResponse saveValuesAndPublishSync(ExchangePayload exchangePayload, String eventType);
+```
+
+### saveValuesAndPublishAsync
+保存实体值并且异步发布事件
+#### 方法签名
+使用[默认事件类型](./eventbus.md#exchange-event)
+```java
+EventResponse saveValuesAndPublishAsync(ExchangePayload exchangePayload);
+```
+可自定义事件类型
+```java
+EventResponse saveValuesAndPublishAsync(ExchangePayload exchangePayload, String eventType);
+```
 
 ### saveValues
 保存实体最新值
@@ -276,4 +259,63 @@ Device findByIdentifier(String identifier, String integrationId);
     @NonNull <T extends ExchangePayload> T findValuesByKey(String key, Class<T> entitiesClazz);
 ```
 
+## IntegrationServiceProvider 接口文档
 
+`IntegrationServiceProvider` 接口定义了与集成配置相关的操作方法。
+
+### save
+保存集成（包括保存集成下的实体）
+#### 方法签名
+```java
+void save(Integration integrationConfig);
+```
+
+### batchSave 
+批量保存集成
+#### 方法签名
+```java
+void batchSave(Collection<Integration> integrationConfig);
+```
+
+### getIntegration 
+根据集成id获取集成实例（包含未启用）
+#### 方法签名
+```java
+Integration getIntegration(String integrationId);
+```
+
+### getActiveIntegration 
+根据集成id获取启用的集成实例
+#### 方法签名
+```java
+Integration getActiveIntegration(String integrationId);
+```
+
+### findIntegrations 
+查找所有集成列表
+#### 方法签名
+```java
+Collection<Integration> findIntegrations();
+```
+#### 代码示例
+
+### findActiveIntegrations 
+查找所有启用的集成列表
+#### 方法签名
+```java
+List<Integration> findActiveIntegrations();
+```
+#### 代码示例
+
+### findIntegrationsWithPredicate 
+根据条件查找集成列表
+#### 方法签名
+```java
+List<Integration> findIntegrations(Predicate<Integration> predicate);
+```
+#### 代码示例
+查找所有能够添加设备的集成
+
+```java
+List<Integration> integrations = integrationServiceProvider.findIntegrations(f -> StringUtils.hasText(f.getEntityKeyAddDevice()));
+```
