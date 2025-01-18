@@ -67,12 +67,13 @@ import TabItem from '@theme/TabItem';
 - `@Entities`：标识当前类为子实体类
 
 ##### 字段注解
-- `@Entity`：标识当前属性为实体属性
+- `@Entity`：标识当前属性为实体
     - `type`：实体类型`EntityType`，包括：属性实体, 事件实体, 服务实体
     - `name`：实体名称
     - `identifier`：实体identifier
     - `attributes`：`@Attribute`注解声明实体属性，包括如单位, 精度, 最大值, 最小值, 最大长度, 最小长度, 枚举格式等
     - `accessMod`：实体访问方式`AccessMod`，只对Property类型的实体有意义，包括：只读, 只写, 读写
+    - `visible`：实体是否对用户可见`visible`。部分集成内部管理使用的实体，包括添加和删除设备的服务实体等，不需要对用户可见
 - `@Attribute`：实体属性注解
   - `enumClass`：枚举类
   - `unit`：单位
@@ -518,7 +519,7 @@ integration:
 * 保存实体会保存**实体**本身的数据和其**子实体**的数据
 * 保存实体并不会保存实体的值，只保存实体的元数据
 
-### 保存实体的值
+### 保存/获取实体的值
 
 #### 通过实体Wrapper保存
 
@@ -529,7 +530,7 @@ integration:
 
 可以通过`AnnotatedEntityWrapper`来更新相应实体的值
 
-比如，我们定义了集成的实体`MyIntegrationEntities`包含一个实体`entity1`，类型是`String`
+比如，我们定义了集成的实体`MyIntegrationEntities`如下所示
 ```java
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -537,13 +538,37 @@ integration:
 public class MyIntegrationEntities extends ExchangePayload {
     @Entity
     private String entity1;
+
+    @Entity
+    private String entity2;
 }
 ```
-如果要更新实体`entity1`的值为`beaver-iot`，做法是
+然后就可以创建相应的Wrapper
 ```java
-new AnnotatedEntityWrapper<MyIntegrationEntities>()
-        .saveValue(MyIntegrationEntities::getEntity1, "beaver-iot")
-        .publishSync();
+AnnotatedEntityWrapper<MyIntegrationEntities> wrapper = new AnnotatedEntityWrapper<>();
+```
+
+如果要更新实体`entity1`的值为`sample`，可以使用`saveValue`方法
+```java
+wrapper.saveValue(MyIntegrationEntities::getEntity1, "sample").publishSync();
+```
+
+如果要更新实体`entity1`和`entity2`的值为`sample`，可以使用`saveValues`方法
+```java
+wrapper.saveValues(Map.of(
+                MyIntegrationEntities::getEntity1, "sample",
+                MyIntegrationEntities::getEntity2, "sample"
+        )).publishSync();
+```
+
+如果要获取`entity1`的值，可以使用`getValue`方法
+```java
+String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1);
+```
+
+如果要获取`entity1`和`entity2`的值，可以使用`getValues`方法
+```java
+Map<String, Object> values = wrapper.getValues(MyIntegrationEntities::getEntity1, MyIntegrationEntities::getEntity2);
 ```
 
 ##### 设备模板实体类
@@ -559,12 +584,21 @@ public class MyDeviceEntities extends ExchangePayload {
     private String entity1;
 }
 ```
-如果要更新设备实体`entity1`的值为`sample`，做法是
+
+可以创建相应的Wrapper
 ```java
-new AnnotatedTemplateEntityWrapper<MyDeviceEntities>(device.getIdentifier())
+AnnotatedTemplateEntityWrapper<MyDeviceEntities> wrapper = new AnnotatedEntityWrapper<>(device.getIdentifier());
+```
+
+如果要更新设备实体`entity1`的值为`sample`，可以使用`saveValue`方法
+```java
+wrapper
         .saveValue(MyDeviceEntities::getEntity1, "sample")
         .publishSync();
 ```
+和`AnnotatedEntityWrapper`相似：
+* 同时更新多个值可以使用`saveValues`方法
+* 获取单个或者多个值可以使用`getValue`和`getValues`方法
 
 ##### 实体类实例
 如果要更新实体的实例`entity`的值为`sample`，做法是
@@ -574,7 +608,7 @@ new EntityWrapper(entity)
         .publishSync();
 ```
 
-#### 通过实体key构建Exchange保存
+#### 通过实体key构建Exchange
 
 另一种更加灵活的方式是直接根据实体的key来构建[ExchangePayload](./eventbus.md#build-exchange-payload)最后保存，`ExchangePayload`提供了`create`方法，可以从一个Map对象中直接创建实例。
 
@@ -596,4 +630,25 @@ ExchangePayload exchangePayload = ExchangePayload.create(Map.of(
 最后保存
 ```java
 entityValueServiceProvider.saveValuesAndPublishSync(exchangePayload)
+```
+
+#### 通过实体key获取值
+
+获取单个实体的值
+```java
+entityValueServiceProvider.findValueByKey("<entityKey>")
+```
+
+获取多个实体的值
+```java
+entityValueServiceProvider.findValuesByKeys(List.of("<entityKey1>", "<entityKey2>"))
+```
+
+:::warning
+`findValueByKey`和`findValuesByKeys`这两个方法只会获取当前实体的值，如果有子实体并不会获取子实体的值
+:::
+
+获取父实体的子实体的值
+```java
+entityValueServiceProvider.findValuesByKey("<parentEntityKey>", ParentEntity.class)
 ```

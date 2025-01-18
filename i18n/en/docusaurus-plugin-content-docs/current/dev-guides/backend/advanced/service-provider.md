@@ -70,24 +70,6 @@ Find all devices by integration ID.
 List<Device> findAll(String integrationId);
 ```
 
-### countByIntegrationIds
-
-Count the number of devices by a list of integration IDs.
-
-#### Method Signature
-```java
-Map<String, Long> countByIntegrationIds(List<String> integrationIds);
-```
-
-### countByIntegrationId
-
-Count the number of devices by integration ID.
-
-#### Method Signature
-```java
-Long countByIntegrationId(String integrationId);
-```
-
 ## EntityServiceProvider API Documentation
 
 The {ProjectName} platform offers the `EntityServiceProvider` interface, which provides common methods for entity operations.
@@ -139,42 +121,6 @@ Delete entities by [target](#entity-target) ID.
 #### Method Signature
 ```java
 void deleteByTargetId(String targetId);
-```
-
-### countAllEntitiesByIntegrationId
-
-Count all entities by integration ID (including entities under the devices of the integration).
-
-#### Method Signature
-```java
-long countAllEntitiesByIntegrationId(String integrationId);
-```
-
-### countAllEntitiesByIntegrationIds
-
-Count all entities by a list of integration IDs (including entities under the devices of the integrations).
-
-#### Method Signature
-```java
-Map<String, Long> countAllEntitiesByIntegrationIds(List<String> integrationIds);
-```
-
-### countIntegrationEntitiesByIntegrationId
-
-Count integration entities by integration ID (excluding entities under the devices of the integration).
-
-#### Method Signature
-```java
-long countIntegrationEntitiesByIntegrationId(String integrationId);
-```
-
-### countIntegrationEntitiesByIntegrationIds
-
-Count integration entities by a list of integration IDs (excluding entities under the devices of the integrations).
-
-#### Method Signature
-```java
-Map<String, Long> countIntegrationEntitiesByIntegrationIds(List<String> integrationIds);
 ```
 
 ### findByKey
@@ -282,27 +228,21 @@ void saveHistoryRecord(Map<String, Object> recordValues);
 ```
 
 ### findValueByKey
-
-Find the latest value of an entity by its key.
-
+Retrieve the current value based on the entity key
 #### Method Signature
 ```java
-JsonNode findValueByKey(String key);
+Object findValueByKey(String key);
 ```
 
 ### findValuesByKeys
-
-Find the latest values of entities by a list of keys.
-
+Retrieve the current values based on a collection of entity keys
 #### Method Signature
 ```java
-Map<String, JsonNode> findValuesByKeys(List<String> keys);
+Map<String, Object> findValuesByKeys(List<String> keys);
 ```
 
 ### findValuesByKey
-
-Find the latest values of entities by a list of keys.
-
+Retrieve the current values of child entities under a parent entity based on the entity key
 #### Method Signature
 ```java
 @NonNull <T extends ExchangePayload> T findValuesByKey(String key, Class<T> entitiesClazz);

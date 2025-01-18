@@ -67,12 +67,13 @@ This section will introduce methods for constructing devices and entities.
 - `@Entities`: Indicates that the current class is a sub-entity class.
 
 ##### Field Annotations
-- `@Entity`: Indicates that the current attribute is an entity attribute.
-    - `type`: Entity type `EntityType`, including: Property entity, Event entity, Service entity
+- `@Entity`: Indicates the current property as an entity
+    - `type`: Entity type `EntityType`, including: Property Entity, Event Entity, Service Entity
     - `name`: Entity name
     - `identifier`: Entity identifier
-    - `attributes`: Declares entity attributes through the `@Attribute` annotation, including unit, precision, maximum value, minimum value, maximum length, minimum length, enumeration format, etc.
-    - `accessMod`: Entity access mode `AccessMod`, relevant only for Property type entities, including: read-only, write-only, read-write
+    - `attributes`: `@Attribute` annotation declares entity attributes, including units, precision, maximum value, minimum value, maximum length, minimum length, enumeration format, etc.
+    - `accessMod`: Entity access mode `AccessMod`, meaningful only for Property type entities, including: Read-only, Write-only, Read-Write
+    - `visible`: Specifies whether the entity is visible to the user. Some entities used for internal integration management, such as service entities for adding and deleting devices, do not need to be visible to the user.
 - `@Attribute`: Entity attribute annotation
   - `enumClass`: Enumeration class
   - `unit`: Unit
@@ -518,18 +519,18 @@ Some construction methods will **automatically save** to the database when {Proj
 * Saving an entity will save both the entity's own data and its sub-entities' data.
 * Saving an entity does not save the entity's value, only the entity's metadata.
 
-### Saving Entity Values
+### Saving/Retrieving Entity Values
 
 #### Saving via Entity Wrapper
 
-##### Regular Entity Classes
-* Integration entities defined with `@IntegrationEntities`.
-* Device entities defined with `@DeviceEntities`.
-* Sub-entities defined with `@Entities` under the above two methods.
+##### Standard Entity Classes
+* Integration entity classes defined with `@IntegrationEntities`
+* Device entity classes defined with `@DeviceEntities`
+* Sub-entity classes defined with `@Entities` under the above two definitions
 
-Entity values can be updated using `AnnotatedEntityWrapper`.
+You can use `AnnotatedEntityWrapper` to update the values of these entities.
 
-For example, if we have defined an integration entity `MyIntegrationEntities` containing an entity `entity1` of type `String`:
+For example, if we have defined an integration entity `MyIntegrationEntities` as follows:
 ```java
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -537,19 +538,44 @@ For example, if we have defined an integration entity `MyIntegrationEntities` co
 public class MyIntegrationEntities extends ExchangePayload {
     @Entity
     private String entity1;
+
+    @Entity
+    private String entity2;
 }
 ```
-To update the value of `entity1` to `beaver-iot`, use:
+
+You can then create the corresponding Wrapper:
 ```java
-new AnnotatedEntityWrapper<MyIntegrationEntities>()
-        .saveValue(MyIntegrationEntities::getEntity1, "beaver-iot")
-        .publishSync();
+AnnotatedEntityWrapper<MyIntegrationEntities> wrapper = new AnnotatedEntityWrapper<>();
+```
+
+To update the value of `entity1` to `sample`, you can use the `saveValue` method:
+```java
+wrapper.saveValue(MyIntegrationEntities::getEntity1, "sample").publishSync();
+```
+
+To update the values of both `entity1` and `entity2` to `sample`, use the `saveValues` method:
+```java
+wrapper.saveValues(Map.of(
+                MyIntegrationEntities::getEntity1, "sample",
+                MyIntegrationEntities::getEntity2, "sample"
+        )).publishSync();
+```
+
+To retrieve the value of `entity1`, use the `getValue` method:
+```java
+String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1);
+```
+
+To retrieve the values of both `entity1` and `entity2`, use the `getValues` method:
+```java
+Map<String, Object> values = wrapper.getValues(MyIntegrationEntities::getEntity1, MyIntegrationEntities::getEntity2);
 ```
 
 ##### Device Template Entity Classes
-* Integration entities defined with `@DeviceTemplateEntities`.
+* Integration entity classes defined with `@DeviceTemplateEntities`
 
-For example, if we have defined a device entity template:
+For example, if we define a device entity template:
 ```java
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -559,14 +585,24 @@ public class MyDeviceEntities extends ExchangePayload {
     private String entity1;
 }
 ```
-To update the value of the device entity `entity1` to `sample`, use:
+
+You can create the corresponding Wrapper:
 ```java
-new AnnotatedTemplateEntityWrapper<MyDeviceEntities>(device.getIdentifier())
+AnnotatedTemplateEntityWrapper<MyDeviceEntities> wrapper = new AnnotatedEntityWrapper<>(device.getIdentifier());
+```
+
+To update the value of the device entity `entity1` to `sample`, use the `saveValue` method:
+```java
+wrapper
         .saveValue(MyDeviceEntities::getEntity1, "sample")
         .publishSync();
 ```
 
-##### Entity Class Instances
+Similar to `AnnotatedEntityWrapper`:
+* Use the `saveValues` method to update multiple values simultaneously.
+* Use the `getValue` and `getValues` methods to retrieve single or multiple values.
+
+##### Entity Instance
 To update the value of an entity instance `entity` to `sample`, use:
 ```java
 new EntityWrapper(entity)
@@ -574,16 +610,16 @@ new EntityWrapper(entity)
         .publishSync();
 ```
 
-#### Saving via Entity Key in Exchange
+#### Building Exchange via Entity Key
 
-Another flexible way is to directly construct the [ExchangePayload](./eventbus.md#build-exchange-payload) based on the entity key and then save it. `ExchangePayload` provides a `create` method that can create an instance from a Map object.
+Another flexible approach is to directly build an [ExchangePayload](./eventbus.md#build-exchange-payload) using the entity key and then save it. `ExchangePayload` provides a `create` method to instantiate from a Map object.
 
-To construct a payload for updating a single entity:
+To build a payload for updating a single entity:
 ```java
 ExchangePayload exchangePayload = ExchangePayload.create("<entityKey>", "<entityValue>");
 ```
 
-To construct a payload for updating multiple entities:
+To build a payload for updating multiple entities:
 ```java
 ExchangePayload exchangePayload = ExchangePayload.create(Map.of(
   "<entityKey1>", "<entityValue1>",
@@ -593,7 +629,28 @@ ExchangePayload exchangePayload = ExchangePayload.create(Map.of(
 ));
 ```
 
-Finally, save it:
+Finally, save the payload:
 ```java
-entityValueServiceProvider.saveValuesAndPublishSync(exchangePayload);
+entityValueServiceProvider.saveValuesAndPublishSync(exchangePayload)
+```
+
+#### Retrieving Values via Entity Key
+
+To retrieve the value of a single entity:
+```java
+entityValueServiceProvider.findValueByKey("<entityKey>")
+```
+
+To retrieve the values of multiple entities:
+```java
+entityValueServiceProvider.findValuesByKeys(List.of("<entityKey1>", "<entityKey2>"))
+```
+
+:::warning
+`findValueByKey` and `findValuesByKeys` methods only retrieve the current values of the entities. They do not retrieve the values of any child entities.
+:::
+
+To retrieve the values of child entities under a parent entity:
+```java
+entityValueServiceProvider.findValuesByKey("<parentEntityKey>", ParentEntity.class)
 ```

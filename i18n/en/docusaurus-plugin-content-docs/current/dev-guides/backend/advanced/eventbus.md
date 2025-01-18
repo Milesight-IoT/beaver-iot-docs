@@ -164,35 +164,31 @@ The platform provides the `@EventSubscribe` annotation for subscribing to events
     - `payloadKeyExpression`: Key expression for matching the event's payload object, supports wildcards, e.g., `my-integration.*` matches all keys starting with `my-integration.`
 
 ### Event Subscription
-
-#### Subscribing to ExchangeEvent Events
+#### Subscribe to ExchangeEvent
 
 ```java
 @Service
 public class MyDeviceService {
     
     @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.CALL_SERVICE)
-    // highlight-next-line
-    public void onAddDevice(Event<MyIntegrationEntities.AddDevice> event) {
-        MyIntegrationEntities.AddDevice addDevice = event.getPayload();  // Can use entity annotation objects to receive ExchangePayload requests
-        String ip = addDevice.getIp(); 
+    public void onServiceCall(Event<MyIntegrationEntities.ServiceEntity> event) {
+        MyIntegrationEntities.ServiceEntity serviceEntity = event.getPayload();  // Entity annotated object can be used as a parameter to receive ExchangePayload requests
         // ...
     }
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.xxxx", eventType = ExchangeEvent.EventType.CALL_SERVICE)
-    // highlight-next-line
-    public EventResponse onDeleteDevice(ExchangeEvent event) {
+    @EventSubscribe(payloadKeyExpression = "my-integration.integration.xxxx", eventType = {ExchangeEvent.EventType.CALL_SERVICE, ExchangeEvent.EventType.UPDATE_PROPERTY})
+    public EventResponse onMultiEventType(ExchangeEvent event) {
         Object ctxValue = event.getPayload().getContext("<Something in context>");
-        // Return response status synchronously
+        // Synchronously return response status
         return EventResponse.of("<responseKey>", "<responseValue>");
     }
 }
 ```
 
 :::info
-- Entity annotation objects can be used as parameters to receive ExchangePayload requests, such as `MyIntegrationEntities.AddDevice`.
-- The `@EventSubscribe` annotation subscribes to events, where `eventType` is the event type. It is optional, and if not specified, it subscribes to all event types.
-- The {ProjectName} platform executes asynchronous subscriptions asynchronously and synchronous subscriptions synchronously. Developers can add the `@Async` annotation to execute asynchronously, implementing business logic with isolated asynchronous thread pools.
+- Entity annotated objects can be used as parameters to receive ExchangePayload requests, such as: MyIntegrationEntities.ServiceEntity.
+- The @EventSubscribe annotation subscribes to events, where eventType denotes the event type, which is optional and can include multiple values. If left empty, it subscribes to all event types.
+- The {ProjectName} platform executes asynchronously for asynchronous subscriptions and synchronously for synchronous subscriptions. Developers can add the @Async annotation to execute asynchronously, achieving business asynchronous thread pool isolation.
 :::
 
 #### Subscribing to DeviceEvent Events

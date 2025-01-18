@@ -162,27 +162,25 @@ public class MyDeviceService {
     
     @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     // highlight-next-line
-    public void onAddDevice(Event<MyIntegrationEntities.AddDevice> event) {
-        MyIntegrationEntities.AddDevice addDevice = event.getPayload();  //可使用实体注解对象作为入参接收ExchangePayload请求
-        String ip = addDevice.getIp(); 
+    public void onServiceCall(Event<MyIntegrationEntities.ServiceEntity> event) {
+        MyIntegrationEntities.ServiceEntity serviceEntity = event.getPayload();  //可使用实体注解对象作为入参接收ExchangePayload请求
         // ...
     }
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.xxxx", eventType = ExchangeEvent.EventType.CALL_SERVICE)
+    @EventSubscribe(payloadKeyExpression = "my-integration.integration.xxxx", eventType = {ExchangeEvent.EventType.CALL_SERVICE, ExchangeEvent.EventType.UPDATE_PROPERTY})
     // highlight-next-line
-    public EventResponse onDeleteDevice(ExchangeEvent event) {
+    public EventResponse onMultiEventType(ExchangeEvent event) {
         Object ctxValue = event.getPayload().getContext("<Something in context>");
         //同步返回响应状态
         return EventResponse.of("<responseKey>", "<responseValue>");
     }
-
 }
 
 ```
 
 :::info
-- 可使用实体注解对象作为入参接收ExchangePayload请求，如：MyIntegrationEntities.AddDevice
-- @EventSubscribe注解订阅事件，其中eventType为事件类型，非必填，当为空这表示订阅所有事件类型。
+- 可使用实体注解对象作为入参接收ExchangePayload请求，如：MyIntegrationEntities.ServiceEntity
+- @EventSubscribe注解订阅事件，其中eventType为事件类型，非必填，可以填多项。当为空这表示订阅所有事件类型。
 - {ProjectName} 平台异步订阅时将以异步方式执行，同步订阅时将以同步方式执行。开发者可以自行添加@Async注解异步执行，实现业务异步线程池隔离。
 :::
 

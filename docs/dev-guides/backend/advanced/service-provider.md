@@ -70,20 +70,6 @@ Device findByIdentifier(String identifier, String integrationId);
    List<Device> findAll(String integrationId);
 ```
 
-### countByIntegrationIds 
-根据集成ID集合统计设备数量
-#### 方法签名
-```java
-    Map<String, Long> countByIntegrationIds(List<String> integrationIds);
-```
-
-### countByIntegrationIds 
-根据集成ID统计设备数量
-#### 方法签名
-```java
-   Long countByIntegrationId(String integrationId);
-```
-
 ## EntityServiceProvider 接口文档
 {ProjectName} 平台提供了`EntityServiceProvider`接口，提供常用的entity操作方法。
 
@@ -125,34 +111,6 @@ Device findByIdentifier(String identifier, String integrationId);
 #### 方法签名
 ```java
     void deleteByTargetId(String targetId);
-```
-
-### countAllEntitiesByIntegrationId
-根据集成ID统计所有实体数量（包含集成下设备的实体）
-#### 方法签名
-```java
-    long countAllEntitiesByIntegrationId(String integrationId);
-```
-
-### countIntegrationEntitiesByIntegrationId
-根据集成ID集合统计集成实体数量（包含集成下设备的实体）
-#### 方法签名
-```java
-    Map<String, Long> countAllEntitiesByIntegrationIds(List<String> integrationIds);
-```
-
-### countIntegrationEntitiesByIntegrationId
-根据集成ID统计集成实体数量（不包含集成下设备的实体）
-#### 方法签名
-```java
-    long countIntegrationEntitiesByIntegrationId(String integrationId);
-```
-
-### countIntegrationEntitiesByIntegrationIds
-根据集成ID集合统计集成实体数量（不包含集成下设备的实体）
-#### 方法签名
-```java
-    Map<String, Long> countIntegrationEntitiesByIntegrationIds(List<String> integrationIds);
 ```
 
 ### findByKey
@@ -239,21 +197,21 @@ EventResponse saveValuesAndPublishAsync(ExchangePayload exchangePayload, String 
 ```
 
 ### findValueByKey
-根据实体key查找最新值
+根据实体key查找当前值
 #### 方法签名
 ```java
-    JsonNode findValueByKey(String key);
+    Object findValueByKey(String key);
 ```
 
 ### findValuesByKeys
-根据实体key集合查找最新值
+根据实体key集合查找当前值
 #### 方法签名
 ```java
-    Map<String, JsonNode> findValuesByKeys(List<String> keys);
+    Map<String, Object> findValuesByKeys(List<String> keys);
 ```
 
 ### findValuesByKeys
-根据实体key集合查找最新值
+根据实体ke查找父实体下子实体的当前值
 #### 方法签名
 ```java
     @NonNull <T extends ExchangePayload> T findValuesByKey(String key, Class<T> entitiesClazz);
