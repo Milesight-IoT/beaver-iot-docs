@@ -127,10 +127,10 @@ ExchangePayload payload = ExchangePayload.empty();
     }
 ```
 
-## 实体ExchangePayload事件发布
-{ProjectName}平台提供了ExchangePayload事件发布的流程执行器，开发者可以通过调用`EntityValueServiceProvider`服务实现实体ExchangeEvent事件的发布。可支持同步和异步方式发布。
-* 同步发布事件一般以`Sync`结尾，如`saveValuesAndPublishSync`
-* 异步发布事件一般以`Async`结尾，如`saveValuesAndPublishAsync`
+## 实体ExchangePayload事件发布 <a id="exchange-event-publish"></a>
+{ProjectName}平台提供了ExchangePayload事件发布的流程执行器，开发者可以通过调用`EntityValueServiceProvider`服务或者实体的Wrapper的相关方法实现实体ExchangeEvent事件的发布。可支持同步和异步方式发布。
+* 同步发布事件一般以`Sync`结尾，如`EntityValueServiceProvider.saveValuesAndPublishSync`、`AnnotatedEntityWrapper.publishSync`等
+* 异步发布事件一般以`Async`结尾，如`saveValuesAndPublishAsync`、`AnnotatedEntityWrapper.publishAsync`等
 
 ### 事件发布流程
 

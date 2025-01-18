@@ -133,11 +133,12 @@ In previous sections, we introduced how to [build entities based on annotations]
     }
 ```
 
-## Publishing Entity ExchangePayload Events
+## Entity ExchangePayload Event Publishing <a id="exchange-event-publish"></a>
 
-The {ProjectName} platform provides a process executor for publishing `ExchangePayload` events. Developers can publish `ExchangeEvent` events by calling the `EntityValueServiceProvider` service. Both synchronous and asynchronous publishing are supported.
-* Synchronous events generally end with `Sync`, such as `saveValuesAndPublishSync`.
-* Asynchronous events generally end with `Async`, such as `saveValuesAndPublishAsync`.
+The {ProjectName} platform provides an ExchangePayload event publishing executor, enabling developers to publish entity ExchangeEvent events by invoking methods from the `EntityValueServiceProvider` service or the relevant methods of the entity's Wrapper. Both synchronous and asynchronous publishing methods are supported.
+
+* Synchronous event publishing methods typically end with `Sync`, such as `EntityValueServiceProvider.saveValuesAndPublishSync` and `AnnotatedEntityWrapper.publishSync`.
+* Asynchronous event publishing methods typically end with `Async`, such as `saveValuesAndPublishAsync` and `AnnotatedEntityWrapper.publishAsync`.
 
 ### Event Publishing Process
 

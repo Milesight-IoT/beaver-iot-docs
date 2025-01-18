@@ -561,6 +561,12 @@ wrapper.saveValues(Map.of(
         )).publishSync();
 ```
 
+:::info
+`saveValue`和`saveValues`会返回`ExchangeEventPublisher`类。一般情况下，保存一个值都需要发布相应的**事件**，来通知其它订阅者（其它集成、{ProjectName}内部的方法等）实体值的改变。
+
+`ExchangeEventPublisher.publishSync`和`ExchangeEventPublisher.publishAsync`对应事件发布的同步和异步两种方式，具体区别可以[参考文档](./eventbus.md#exchange-event-publish)。
+:::
+
 如果要获取`entity1`的值，可以使用`getValue`方法
 ```java
 String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1);

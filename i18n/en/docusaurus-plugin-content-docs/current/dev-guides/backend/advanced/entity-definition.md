@@ -562,6 +562,12 @@ wrapper.saveValues(Map.of(
         )).publishSync();
 ```
 
+:::info
+Both `saveValue` and `saveValues` return an instance of the `ExchangeEventPublisher` class. Typically, saving a value necessitates the publication of a corresponding **event** to inform other subscribers (including other integrations and internal methods within {ProjectName}) of the change in entity values.
+
+The methods `ExchangeEventPublisher.publishSync` and `ExchangeEventPublisher.publishAsync` pertain to synchronous and asynchronous event publishing, respectively. For detailed distinctions, please refer to the [documentation](./eventbus.md#exchange-event-publish).
+:::
+
 To retrieve the value of `entity1`, use the `getValue` method:
 ```java
 String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1);
