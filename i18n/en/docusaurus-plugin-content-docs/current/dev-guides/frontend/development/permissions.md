@@ -7,7 +7,7 @@ sidebar_position: 17
 Role management is used to maintain and manage the roles that exist in the system, and to set the permissions related to the devices and pages available under each role.   
 Role-Based Access Control can be achieved by defining roles and permissions and then assigning permissions to different roles. Users are granted permissions based on their roles to access specific routes, page components, or operations.
 
-The following describes how the new application module accesses user rights control.
+The following describes how the new application module accesses user permissions control.
 
 ## Overall Process
 
