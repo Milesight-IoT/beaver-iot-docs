@@ -3,67 +3,85 @@ sidebar_position: 3
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import { DevProjectRepoSSH, DevProjectRepoHttps } from '/src/consts';
-import { ProjectName } from '/src/consts';
+import {
+    IntegrationProjectRepoSSH,
+    IntegrationProjectRepoHttps,
+    ProjectRepoSSH,
+    ProjectRepoHttps,
+} from '/src/consts';
+import { ProjectName, SampleBackendIntegration } from '/src/consts';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Quick Start
 
-Quickly implement the backend part of a custom integration.
+Swiftly implement the backend portion of a custom integration with this <a href={SampleBackendIntegration} target="_blank" rel="noopener noreferrer">code example</a>.
 
 ## Prerequisites
 
-Before developing the backend part of the integration, you may need to know:
-* Basic concepts and terminology of {ProjectName}
-* Basic knowledge of Java
-* Basic knowledge of SpringFramework
+Before developing the backend part of the integration, you might need to be familiar with:
+* The fundamental concepts and terminology of {ProjectName}
+* Basic Java syntax
+* Core knowledge of the Spring Framework
 
-If you have some understanding of the above, please continue reading to complete a simple demo step by step.
+If you are acquainted with the above subjects, please proceed to follow along and create a simple demo step by step.
 
 ## Environment Setup
 
-Before starting development, prepare the following environment:
-* Java IDE  (recommended: [IntelliJ IDEA](https://www.jetbrains.com/idea/))
+Before starting development, ensure you have the following environment set up:
+* Java IDE (IntelliJ IDEA recommended)
 * Java Version 17 SDK
 * Maven
 * Git CLI
 
-Once these are ready, run the following git command to get the integration development project:
+Once these are ready, execute the following git command to obtain the source code for the integration project `beaver-iot-integrations`:
 <Tabs>
   <TabItem value="SSH" label="SSH" default>
-    <CodeBlock language="bash">git clone {DevProjectRepoSSH}</CodeBlock>
+    <CodeBlock language="bash">git clone {IntegrationProjectRepoSSH}</CodeBlock>
   </TabItem>
   <TabItem value="Https" label="Https">
-    <CodeBlock language="bash">git clone {DevProjectRepoHttps}</CodeBlock>
+    <CodeBlock language="bash">git clone {IntegrationProjectRepoHttps}</CodeBlock>
   </TabItem>
 </Tabs>
 
-After fetching the code, open the project folder *beaver-iot-integrations* in the IDE. You will find two modules: `application-dev` and `integrations`.
+*(Optional)* Obtain the {ProjectName} backend project source code `beaver-iot` for testing after integration development:
+<Tabs>
+  <TabItem value="SSH" label="SSH" default>
+    <CodeBlock language="bash">git clone {ProjectRepoSSH}</CodeBlock>
+  </TabItem>
+  <TabItem value="Https" label="Https">
+    <CodeBlock language="bash">git clone {ProjectRepoHttps}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+Once you open these projects in your Java IDE, you can begin developing an integration.
 
 ## Writing a Hello World
 
-### Creating Integration Metadata
-Create a new module under the `integrations` module for this integration, named
-> **my-integration**
+### Create Integration Metadata
+Create a new module under the `integrations` module of the project and name it as the integration ID.
+> **[integration-id]**
 
-Create the pom file `pom.xml` in this module:
+:::tip
+Replace `[integration-id]` with the ID you just generated in all the following example codes.
+:::
 
-```xml title="beaver-iot-integrations/integrations/my-integration/pom.xml"
+The `pom.xml` file for the module should be as follows:
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.milesight.beaveriot</groupId>
+        <groupId>com.milesight.beaveriot.integrations</groupId>
         <artifactId>integrations</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-<!-- highlight-next-line -->
-    <artifactId>my-integration</artifactId>
+    <artifactId>[integration-id]</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -100,27 +118,25 @@ Create the pom file `pom.xml` in this module:
 ```
 
 :::warning
-Dependencies with `scope` set to `provided` will not be packaged into the integration but will be provided by {ProjectName}. The `maven-shade-plugin` plugin packages dependencies into a single jar.
-
-The `context` module is the core module of {ProjectName}, providing basic functionalities for integration development.
+Dependencies with `scope` set to `provided` will not be packaged into the integration; they are provided by {ProjectName}. The `maven-shade-plugin` bundles dependencies into a single JAR. The `context` module is the core module of {ProjectName}, offering essential functionalities for integration development.
 :::
 
+Create a new resource file `integration.yaml`:
 
-Create a resource file `integration.yaml` in the new module:
-```yaml title="beaver-iot-integrations/integrations/my-integration/src/main/resources/integration.yaml"
+```yaml
 integration:
-   my-integration: # integration identifier
+   [integration-id]: # integration identifier
       name: My Integration Name # integration name
       description: "My Demo Integration" # integration description
-      enabled: true # whether enable this integration. Must be "true" for now
+      enabled: true # whether to enable this integration. Must be "true" for now
 ```
 
-### Creating the Bootstrap Class
-Create a package `com.milesight.beaveriot.myintegration`
+### Create Bootstrap Class
 
-Create a Java class file `MyIntegrationBootstrap.java` in this package:
-```java title="beaver-iot-integrations/integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyIntegrationBootstrap.java"
-package com.milesight.beaveriot.myintegration;
+Create a new package `com.milesight.beaveriot.integrations.[integration-id]` containing a Java class file `MyIntegrationBootstrap.java`:
+
+```java
+package com.milesight.beaveriot.integrations.[integration-id];
 
 import com.milesight.beaveriot.context.integration.bootstrap.IntegrationBootstrap;
 import com.milesight.beaveriot.context.integration.model.Integration;
@@ -130,7 +146,7 @@ import org.springframework.stereotype.Component;
 public class MyIntegrationBootstrap implements IntegrationBootstrap {
     @Override
     public void onPrepared(Integration integration) {
-        
+        // do nothing
     }
 
     @Override
@@ -141,68 +157,81 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 
     @Override
     public void onDestroy(Integration integration) {
-
+        // do nothing
     }
 }
 ```
 
-### Starting Your First Integration
+Thus, you have completed your first and simplest integration, which will print
+> Hello, world!
 
-In the `application-dev` module, add your integration to the dependencies list in the `pom.xml`:
-```xml title="beaver-iot-integrations/application/application-dev/pom.xml"
+when {ProjectName} initializes the integration at startup.
 
+### (Optional) Launch Your First Integration <a id="start-app-with-dev-integration"></a>
+
+After installing your integration, add it to the `application/application-standard` dependency list in the `beaver-iot` project:
+
+```xml
 <!-- ... -->
+    <artifactId>application-standard</artifactId>
+    <name>application-standard</name>
+    <!-- ... -->
+
     <dependencies>
         <!-- ... -->
+
+        <!-- default integrations -->
+        <!-- ... -->
+
+        <!-- highlight-start -->
         <dependency>
-            <groupId>com.milesight.beaveriot</groupId>
-            <!-- highlight-next-line -->
-            <artifactId>my-integration</artifactId>
+            <groupId>com.milesight.beaveriot.integrations</groupId>
+            <artifactId>[integration-id]</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- highlight-end -->
         <!-- ... -->
     </dependencies>
 <!-- ... -->
 </project>
 ```
 
-Then start the *beaver-iot-integrations/application-dev/src/main/java/com/milesight/beaveriot/DevelopApplication.java*
-
-You should see the console output:
+Upon starting `application-standard`, you can observe the console output:
 > Hello, world!
 
 ## Implementing a Useful Integration
 
-You have now implemented the simplest integration, but it only prints text to the console. Next, we will implement a useful integration.
+You have now created a basic integration that prints a message to the console. Next, let's develop a more functional integration.
 
-This new integration will detect whether devices at specific IP addresses are online, with the following functionalities:
-* Localhost as the **default device**
-* Support for **triggering detection** of all devices' online status
-* **Send report events** after each detection
+This new integration will **detect whether devices at specific IP addresses are online**. It includes the following features:
+* Support for **triggering a check** to see if all devices are online
+* **Sending a report event** each time a check is completed
 * Support for **adding** devices to be monitored
-* Support for **deleting** devices
-* Support for returning the number of online devices via **Http**
+* Support for **removing** devices
+* Returning the number of online devices via **HTTP**
 
 ### Defining Entities
 
-Based on the above requirements, we can determine that this integration needs the following entities:
-* A service entity `benchmark` to execute the detection of all devices' online status
-* A property entity `detect_status` to indicate the detection status (detecting/standby)
-* An event entity `detect_report` for the detection report (including the number of devices detected and detection time)
+Based on the above requirements, the integration needs the following entities:
+* A service entity `benchmark` to check if all devices are online
+* A property entity `detect_status` to indicate the detection status (detecting/pending)
+* An event entity `detect_report` to report the results of the check (including the number of devices checked and the time taken)
 
-Additionally, adding and deleting devices are also service entities:
+Additionally, adding and removing devices are also service entities:
 * Add device service `add_device`
-* Delete device service `delete_device`
+* Remove device service `delete_device`
 
 :::info
-If you have questions about the definition of these entities based on the requirements, please refer to the [Concept Introduction](../../user-guides/introduction/concepts.md)
+If you have any questions about the definitions of these entities based on the above requirements, please refer to the [Concepts Introduction](../../user-guides/introduction/concepts.md).
 :::
 
-Create a Java class file `MyIntegrationEntities.java` to define the above 5 entities and their sub-entities using annotations:
+Create a new Java class file `MyIntegrationEntities.java` to define the above five entities and their sub-entities using annotations:
 
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyIntegrationEntities.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id].entity;
 
+import com.milesight.beaveriot.context.integration.context.AddDeviceAware;
+import com.milesight.beaveriot.context.integration.context.DeleteDeviceAware;
 import com.milesight.beaveriot.context.integration.entity.annotation.Attribute;
 import com.milesight.beaveriot.context.integration.entity.annotation.Entities;
 import com.milesight.beaveriot.context.integration.entity.annotation.Entity;
@@ -218,31 +247,24 @@ import lombok.EqualsAndHashCode;
 @IntegrationEntities
 public class MyIntegrationEntities extends ExchangePayload {
     @Entity(type = EntityType.SERVICE, name = "Device Connection Benchmark", identifier = "benchmark")
-    // highlight-next-line
     private String benchmark;
 
     @Entity(type = EntityType.PROPERTY, name = "Detect Status", identifier = "detect_status", attributes = @Attribute(enumClass = DetectStatus.class), accessMod = AccessMod.R)
-    // highlight-next-line
     private Long detectStatus;
 
     @Entity(type = EntityType.EVENT, name = "Detect Report", identifier = "detect_report")
-    // highlight-next-line
     private DetectReport detectReport;
 
-    @Entity(type = EntityType.SERVICE, identifier = "add_device")
-    // highlight-next-line
+    @Entity(type = EntityType.SERVICE, identifier = "add_device", visible = false)
     private AddDevice addDevice;
 
-    @Entity(type = EntityType.SERVICE, identifier = "delete_device")
-    // highlight-next-line
+    @Entity(type = EntityType.SERVICE, identifier = "delete_device", visible = false)
     private DeleteDevice deleteDevice;
-
 
     @Data
     @EqualsAndHashCode(callSuper = true)
     @Entities
     public static class DetectReport extends ExchangePayload {
-        // Entity type inherits from parent entity (DetectReport)
         @Entity
         private Long consumedTime;
 
@@ -266,47 +288,46 @@ public class MyIntegrationEntities extends ExchangePayload {
     @Entities
     public static class DeleteDevice extends ExchangePayload implements DeleteDeviceAware {
     }
-  
+
     public enum DetectStatus {
         STANDBY, DETECTING;
     }
 }
-
 ```
 
-This class defines the entities for adding and deleting devices. We need to synchronize their `identifier` with the metadata to let {ProjectName} know that this integration supports adding and deleting devices.
+:::warning
+
+The delete device service entity cannot have sub-entities.
+
+Adding and removing devices are common functionalities that represent internal interactions between the integration and {ProjectName}, and are not directly accessible to users. Therefore, in the `MyIntegrationEntities` class, the `visible` attribute for these entities is set to `false`.
+
+:::
+
+In this class, we define the entities for **adding devices** and **removing devices**. We need to sync their `identifier` to the metadata to indicate to {ProjectName} that this integration supports adding and removing devices.
 
 Update the resource file `integration.yaml`:
-```yaml title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/resources/integration.yaml"
+
+```yaml
 integration:
-   my-integration: # integration identifier
+   [integration-id]: # integration identifier
       # ...
       # highlight-next-line
       entity-identifier-add-device: add_device
-      # the same to deleteDevice identifier
+      # the same for deleteDevice identifier
       # highlight-next-line
       entity-identifier-delete-device: delete_device
 ```
 
-:::warning
-The delete device service entity cannot have sub-entities.
+### Define the Device
 
-Adding and deleting devices are common functionalities, and each integration needs to explicitly define them to inform users and {ProjectName} that the integration supports dynamically adding or deleting devices.
-:::
+Let's define the device template for this integration. Each device will include a single entity representing the device status.
 
-### Defining Devices
+Create a new Java class file `MyDeviceEntities.java` to define the device `MyDeviceEntities` and its entity `status` using annotations:
 
-Here, we define a local device as the default initial device for the integration, which includes a property entity for the device status.
+```java
+package com.milesight.beaveriot.integrations.[integration-id].entity;
 
-Create a Java class file `MyDeviceEntities.java` to define the device and its entities using annotations:
-
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceEntities.java"
-package com.milesight.beaveriot.myintegration;
-
-import com.milesight.beaveriot.context.integration.entity.annotation.Attribute;
-import com.milesight.beaveriot.context.integration.entity.annotation.DeviceEntities;
-import com.milesight.beaveriot.context.integration.entity.annotation.Entity;
-import com.milesight.beaveriot.context.integration.entity.annotation.KeyValue;
+import com.milesight.beaveriot.context.integration.entity.annotation.*;
 import com.milesight.beaveriot.context.integration.enums.AccessMod;
 import com.milesight.beaveriot.context.integration.enums.EntityType;
 import com.milesight.beaveriot.context.integration.model.ExchangePayload;
@@ -315,10 +336,9 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@DeviceEntities(name="Default Device", identifier = "localhost", additional = {@KeyValue(key = "ip", value = "localhost")})
+@DeviceTemplateEntities(name = "Ping Device")
 public class MyDeviceEntities extends ExchangePayload {
     @Entity(type = EntityType.PROPERTY, name = "Device Connection Status", accessMod = AccessMod.R, attributes = @Attribute(enumClass = DeviceStatus.class))
-    // highlight-next-line
     private Long status;
 
     public enum DeviceStatus {
@@ -327,37 +347,33 @@ public class MyDeviceEntities extends ExchangePayload {
 }
 ```
 
-:::warning
-Devices added in this static way will revert to their default name and properties after each restart. If the user deletes this device, it will reappear after the next restart, but the entity values will be lost.
-:::
+### Listen to Events - Add Device / Remove Device
 
-### Listening for Events - Adding/Deleting Devices
+We have defined the add/remove device service entities. When a user calls these services, corresponding events are sent. We can listen to these events and implement the corresponding functionality.
 
-The above example shows how to create a default device using annotations, which is straightforward. However, many times we need to dynamically create or delete devices based on user needs.
+The context of the add device event includes the device name specified by the user (in this example, we use the `AddDeviceAware` interface to get the new device name). Since the `identifier` cannot contain the dot character from the IP address, we perform a conversion.
 
-We have defined the add/delete device service entities. When the user calls these services, corresponding events are sent. We only need to listen for these events using [key](../key-dev-concept.md#key) and implement the corresponding functionality in the handler method.
+The context of the remove device event includes the device instance (in this example, we use the `DeleteDeviceAware` interface to get the device to be removed).
 
-The context of the add device event contains the user-specified device name `device_name` (in the example, we use the AddDeviceAware interface to get the added device name). The code for adding a device is equivalent to dynamically implementing the annotated device definition. Since we restrict the `identifier` [characters](../key-dev-concept.md#identifier) to not include the `.` in IP addresses, we add a layer of conversion(`.` -> `_`).
+Create a new Java class file `MyDeviceService.java` to implement the methods for adding and removing devices:
 
-The context of the delete device event contains the device instance `device` (in the example, we use the DeleteDeviceAware interface to get the deleted device).
-
-Create a Java class file `MyDeviceService.java` to implement the methods for adding and deleting devices:
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceService.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id].service;
 
 import com.milesight.beaveriot.context.api.DeviceServiceProvider;
-import com.milesight.beaveriot.context.api.ExchangeFlowExecutor;
-import com.milesight.beaveriot.context.integration.enums.AccessMod;
-import com.milesight.beaveriot.context.integration.enums.EntityValueType;
+import com.milesight.beaveriot.context.api.EntityValueServiceProvider;
 import com.milesight.beaveriot.context.integration.model.*;
 import com.milesight.beaveriot.context.integration.model.event.ExchangeEvent;
+import com.milesight.beaveriot.context.integration.wrapper.AnnotatedEntityWrapper;
+import com.milesight.beaveriot.context.integration.wrapper.AnnotatedTemplateEntityWrapper;
 import com.milesight.beaveriot.eventbus.annotations.EventSubscribe;
 import com.milesight.beaveriot.eventbus.api.Event;
+import com.milesight.beaveriot.integrations.[integration-id].entity.MyDeviceEntities;
+import com.milesight.beaveriot.integrations.[integration-id].entity.MyIntegrationEntities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.InetAddress;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -368,61 +384,53 @@ public class MyDeviceService {
     private DeviceServiceProvider deviceServiceProvider;
 
     @Autowired
-    private ExchangeFlowExecutor exchangeFlowExecutor;
+    private EntityValueServiceProvider entityValueServiceProvider;
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.DOWN)
-    // highlight-next-line
+    public static final String INTEGRATION_ID = "[integration-id]";
+
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.add_device.*", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     public void onAddDevice(Event<MyIntegrationEntities.AddDevice> event) {
         MyIntegrationEntities.AddDevice addDevice = event.getPayload();
         String deviceName = addDevice.getAddDeviceName();
-        final String integrationId = "my-integration";
-        Device device = new DeviceBuilder(integrationId)
-              .name(deviceName)
-              .identifier(ip.replace(".", "_"))
-              .additional(Map.of("ip", ip))
-              .entity(()->{
-                return new EntityBuilder(integrationId)
-                        .identifier("status")
-                        .property("Device Status", AccessMod.R)
-                        .valueType(EntityValueType.LONG)
-                        .attributes(new AttributeBuilder().enums(MyDeviceEntities.DeviceStatus.class).build())
-                        .build();
-              })
-              .build();
+        String ip = event.getPayload().getIp();
+        Device device = new DeviceBuilder(INTEGRATION_ID)
+                .name(deviceName)
+                .identifier(ip.replace(".", "_"))
+                .additional(Map.of("ip", ip))
+                .entities(()-> new AnnotatedTemplateEntityBuilder(INTEGRATION_ID, ip.replace(".", "_")).build(MyDeviceEntities.class))
+                .build();
 
         deviceServiceProvider.save(device);
     }
 
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.delete_device", eventType = ExchangeEvent.EventType.DOWN)
-    // highlight-next-line
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.delete_device", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     public void onDeleteDevice(Event<MyIntegrationEntities.DeleteDevice> event) {
-      Device device = event.getPayload().getDeletedDevice();
-      deviceServiceProvider.deleteById(device.getId());
+        Device device = event.getPayload().getDeletedDevice();
+        deviceServiceProvider.deleteById(device.getId());
     }
 }
-
 ```
 
-### Listening for Events - Benchmark
+### Listen to Events - Benchmark
 
-Next, we create a method to listen for the Benchmark service entity and implement this method.
-Update the Java class file `MyDeviceService.java` to add the implementation for the Benchmark service entity method.
+Next, we create a method to listen to the Benchmark service entity and implement this method. Once all devices have been checked, a `detect_report` event will be sent.
 
-After detecting all devices, an [upstream event](./advanced/eventbus.md#exchangeevent) is sent with the `detect_report` report.
+Update the `MyDeviceService.java` class to add the implementation of the Benchmark service entity method:
 
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceService.java"
+```java
 @Service
 public class MyDeviceService {
     // ...
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.benchmark", eventType = ExchangeEvent.EventType.DOWN)
-    // highlight-next-line
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.benchmark", eventType = ExchangeEvent.EventType.CALL_SERVICE)
     public void doBenchmark(Event<MyIntegrationEntities> event) {
-        // mark benchmark starting
-        exchangeFlowExecutor.syncExchangeDown(new ExchangePayload(Map.of("my-integration.integration.detect_status", MyIntegrationEntities.DetectStatus.DETECTING.ordinal())));
-        int timeout = 5000;
+        // Mark benchmark starting
+        new AnnotatedEntityWrapper<MyIntegrationEntities>()
+                .saveValue(MyIntegrationEntities::getDetectStatus, (long) MyIntegrationEntities.DetectStatus.DETECTING.ordinal())
+                .publishSync();
 
-        // start pinging
-        List<Device> devices = deviceServiceProvider.findAll("my-integration");
+        // Start pinging
+        final int timeout = 5000;
+        List<Device> devices = deviceServiceProvider.findAll(INTEGRATION_ID);
         AtomicReference<Long> activeCount = new AtomicReference<>(0L);
         AtomicReference<Long> inactiveCount = new AtomicReference<>(0L);
         Long startTimestamp = System.currentTimeMillis();
@@ -446,72 +454,70 @@ public class MyDeviceService {
                 inactiveCount.updateAndGet(v -> v + 1);
             }
 
-            // Device have only one entity
-            String deviceStatusKey = device.getEntities().get(0).getKey();
-            exchangeFlowExecutor.asyncExchangeDown(new ExchangePayload(Map.of(deviceStatusKey, (long) deviceStatus)));
+            // Device has only one entity
+            new AnnotatedTemplateEntityWrapper<MyDeviceEntities>(device.getIdentifier()).saveValue(MyDeviceEntities::getStatus, (long) deviceStatus);
         });
         Long endTimestamp = System.currentTimeMillis();
 
-        // mark benchmark done
-        MyIntegrationEntities myIntegrationEntities = ExchangePayload.createProxy(MyIntegrationEntities.class);
-        myIntegrationEntities.setDetectStatus(MyIntegrationEntities.DetectStatus.STANDBY.ordinal());
-        myIntegrationEntities.setDetectReport(null);
-        MyIntegrationEntities.DetectReport detectReport = myIntegrationEntities.getDetectReport();
-        detectReport.setConsumedTime(endTimestamp - startTimestamp);
-        detectReport.setOnlineCount(activeCount.get());
-        detectReport.setOfflineCount(inactiveCount.get());
-        exchangeFlowExecutor.syncExchangeUp(donePayload);
+        // Mark benchmark done
+        new AnnotatedEntityWrapper<MyIntegrationEntities>()
+                .saveValue(MyIntegrationEntities::getDetectStatus, (long) MyIntegrationEntities.DetectStatus.STANDBY.ordinal())
+                .publishSync();
+
+        // Send report event
+        new AnnotatedEntityWrapper<MyIntegrationEntities.DetectReport>().saveValues(Map.of(
+                MyIntegrationEntities.DetectReport::getConsumedTime, endTimestamp - startTimestamp,
+                MyIntegrationEntities.DetectReport::getOnlineCount, activeCount.get(),
+                MyIntegrationEntities.DetectReport::getOfflineCount, inactiveCount.get()
+        )).publishSync();
     }
-// ...
+    // ...
 }
 ```
 
-:::tip
-In the example above, we can use the annotated entity object to receive ExchangePayload data or use `ExchangePayload.createProxy(...)` to create a proxy object of the annotated entity. This allows us to directly manipulate the entity object's properties to construct the ExchangePayload object.
-:::
+### Listen to Events - Detect Report
 
-### Listening for Events - Detection Report
+We can listen to the report event sent after the detection is completed.
 
-We can listen for the report event sent after the detection is complete.
+Update the `MyDeviceService.java` class to add a method to listen to the report and print it:
 
-Update the Java class file `MyDeviceService.java` to add the method for listening to the report and printing it.
-
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyDeviceService.java"
+```java
 @Service
 public class MyDeviceService {
     // ...
-    @EventSubscribe(payloadKeyExpression = "my-integration.integration.detect_report.*", eventType = ExchangeEvent.EventType.UP)
-    // highlight-next-line
+    @EventSubscribe(payloadKeyExpression = INTEGRATION_ID + ".integration.detect_report.*", eventType = ExchangeEvent.EventType.REPORT_EVENT)
     public void listenDetectReport(Event<MyIntegrationEntities.DetectReport> event) {
-        System.out.println("[Get-Report] " + event.getPayload()); // do something with this report
+        System.out.println("[Get-Report] " + event.getPayload()); // Do something with this report
     }
-// ...
+    // ...
 }
 ```
-### Creating an HTTP API
 
-We allow integrations to set up their own HTTP routes for custom frontend calls or as webhook entry points.
+### Create HTTP API
 
-Here, we will implement an HTTP interface that returns the count of online devices: `GET /my-integration/active-count`.
+We will allow the integration to set up its own HTTP routes for custom frontend calls or as a webhook entry point.
+
+Here, we will implement an HTTP interface that returns the count of online devices with the endpoint `GET /[integration-id]/active-count`.
 
 :::warning
-To prevent routing conflicts between different integrations and the system, the URL for an integration should start with the integration name, such as:
-* **/my-integration**/foo
-* **/my-integration**/foo/bar
-* **/my-integration**/bar
+To prevent route conflicts between different integrations and the system, the URL address of the integration should start with the integration name, such as:
+* **/[integration-id]**/foo
+* **/[integration-id]**/foo/bar
+* **/[integration-id]**/bar
 :::
 
+Create a Java class `MyIntegrationController.java` to add a controller that handles the request.
 
-Create a Java class `MyIntegrationController.java` and add a Controller to handle the requests.
-
-```java title="beaver-iot-integrations/integrations/sample-integrations/my-integration/src/main/java/com/milesight/beaveriot/myintegration/MyIntegrationController.java"
-package com.milesight.beaveriot.myintegration;
+```java
+package com.milesight.beaveriot.integrations.[integration-id].controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.milesight.beaveriot.base.response.ResponseBody;
 import com.milesight.beaveriot.base.response.ResponseBuilder;
 import com.milesight.beaveriot.context.api.DeviceServiceProvider;
 import com.milesight.beaveriot.context.api.EntityValueServiceProvider;
+import com.milesight.beaveriot.integrations.[integration-id].entity.MyDeviceEntities;
+import com.milesight.beaveriot.integrations.[integration-id].service.MyDeviceService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -522,7 +528,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/my-integration") // Should use integration identifier
+@RequestMapping("/" + MyDeviceService.INTEGRATION_ID) // Should use integration identifier
 public class MyIntegrationController {
     @Autowired
     private DeviceServiceProvider deviceServiceProvider;
@@ -531,10 +537,9 @@ public class MyIntegrationController {
     private EntityValueServiceProvider entityValueServiceProvider;
 
     @GetMapping("/active-count")
-    // highlight-next-line
     public ResponseBody<CountResponse> getActiveDeviceCount() {
         List<String> statusEntityKeys = new ArrayList<>();
-        deviceServiceProvider.findAll("my-integration").forEach(device -> statusEntityKeys.add(device.getEntities().get(0).getKey()));
+        deviceServiceProvider.findAll(MyDeviceService.INTEGRATION_ID).forEach(device -> statusEntityKeys.add(device.getEntities().get(0).getKey()));
         Long count = entityValueServiceProvider
                 .findValuesByKeys(statusEntityKeys)
                 .values()
@@ -552,85 +557,119 @@ public class MyIntegrationController {
         private Long count;
     }
 }
-
 ```
 
+## (Optional) Test Your Integration
 
+After reinstalling your integration locally, restart the `beaver-iot` project.
 
-## Testing Your Integration
+### Register User
 
-Since {ProjectName} has a user authentication module, requests will require a login token in the request header, which can be inconvenient for debugging. Therefore, we recommend commenting out the user authentication module during development if the integration is unrelated to user data.
-
-In the `application-dev` module, comment out the `authentication-service` dependency in the `pom.xml` file.
-```xml title="beaver-iot-integrations/application/application-dev/pom.xml"
-
-<!-- ... -->
-    <dependencies>
-        <!-- ... -->
-        <!-- highlight-start -->
-<!--        <dependency>-->
-<!--            <groupId>com.milesight.beaveriot</groupId>-->
-<!--            <artifactId>authentication-service</artifactId>-->
-<!--        </dependency>-->
-        <!-- highlight-end -->
-        <!-- ... -->
-    <dependencies>
-<!-- ... -->
-```
-
-Then refresh Maven and restart the project.
-
-### Fetch Integration Information
 ```shell
-curl --location --request GET 'http://localhost:9200/integration/my-integration' \
---header 'Content-Type: application/json'
+curl --location 'http://localhost:9200/user/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "john.doe@example.com",
+    "nickname": "JohnDoe",
+    "password": "12#$qwER"
+}'
 ```
 
-### Add a Device
+### Login User
 
-Add a device with IP `8.8.8.8` and name `Test Device`.
+```shell
+curl --location 'http://192.168.43.46:9200/oauth2/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'username=john.doe@example.com' \
+--data-urlencode 'password=12#$qwER' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_id=iab' \
+--data-urlencode 'client_secret=milesight*iab'
+```
+
+The response data should look like this:
+
+```json
+{
+    "data": {
+        "access_token":"***.****.***",
+        "refresh_token":"***",
+        "token_type":"Bearer",
+        "expires_in":86399
+    },
+    "status":"Success"
+}
+```
+
+Record the `access_token`:
+
+```shell
+access_token=***.****.***
+```
+
+### Get Integration Information
+
+```shell
+curl --location --request GET 'http://localhost:9200/integration/[integration-id]' \
+--header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
+--data '{
+}'
+```
+
+### Add Device
+
+For a device with IP `8.8.8.8` and name `Test Device`:
 
 ```shell
 curl --location 'http://localhost:9200/device' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "name": "Test Device",
-    "integration": "my-integration",
+    "integration": "[integration-id]",
     "param_entities": {
-        "my-integration.integration.add_device.ip": "8.8.8.8"
+        "[integration-id].integration.add_device.ip": "8.8.8.8"
     }
 }'
 ```
 
 ### Search Devices
+
 ```shell
 curl --location 'http://localhost:9200/device/search' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "name": ""
 }'
 ```
 
-### Call the Benchmark Service
+### Call Benchmark Service
+
 ```shell
 curl --location 'http://localhost:9200/entity/service/call' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "exchange": {
-        "my-integration.integration.benchmark": ""
+        "[integration-id].integration.benchmark": ""
     }
 }'
 ```
 
-You should see console log output:
+You should see logs in the console:
+
 ```
-[Get-Report] {my-integration.integration.detect_report.offline_count=1, my-integration.integration.detect_report.consumed_time=5099, my-integration.integration.detect_report.online_count=1}
+[Get-Report] {[integration-id].integration.detect_report.offline_count=1, [integration-id].integration.detect_report.consumed_time=5099, [integration-id].integration.detect_report.online_count=1}
 ```
 
 ### Search Entities
+
 ```shell
 curl --location 'http://localhost:9200/entity/search' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
     "keyword": "",
     "page_size": 100
@@ -639,27 +678,25 @@ curl --location 'http://localhost:9200/entity/search' \
 
 ### Get Entity Value
 
-For example, if the entity key `my-integration.device.8_8_8_8.status` has an ID of `1853700374977695745`, fetch the value of this entity:
+For example, if the `entity_key` for the entity `[integration-id].device.8_8_8_8.status` has the ID `1879410769126817793`, get this entity's value:
 
-例如，搜索实体获取到列表，其中`entity_key`为`my-integration.device.8_8_8_8.status`的id为`1853700374977695745`。
-
-获取这个实体的值：
 ```shell
-curl --location --request GET 'http://localhost:9200/entity/1853700374977695745/status' \
+curl --location --request GET 'http://localhost:9200/entity/1879410769126817793/status' \
+--header "Authorization: Bearer $access_token" \
 --header 'Content-Type: application/json'
 ```
 
+### Delete Device
 
-### Delete a Device
-
-For example, if the device ID of the device added earlier is `1853676674098151426`, delete this device:
+For example, if the device ID is `1879410769026154498`, delete this device:
 
 ```shell
 curl --location 'http://localhost:9200/device/batch-delete' \
 --header 'Content-Type: application/json' \
+--header "Authorization: Bearer $access_token" \
 --data '{
-    "device_id_list": ["1853676674098151426"]
+    "device_id_list": ["1879410769026154498"]
 }'
 ```
 
-You can search for devices again to check if the device has been successfully deleted.
+You can search for devices again to verify if the deletion was successful.

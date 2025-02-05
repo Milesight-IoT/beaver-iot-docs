@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 5
 ---
 
-import { DevProjectRepoHttps } from '/src/consts';
+import { IntegrationProjectRepoHttps } from '/src/consts';
 import { ProjectName } from '/src/consts';
 
 # Building Integration
@@ -18,7 +18,7 @@ import { ProjectName } from '/src/consts';
 
 ### Code Repository
 
-We provide an integration development repository that includes all released integrations, sample code, and debugging environments. You can download the <a href={DevProjectRepoHttps} target="_blank" rel="noopener noreferrer">beaver-iot-integrations code repository</a> to experience integration development.
+We provide an integration development repository that includes all released integrations, sample code, and debugging environments. You can download the <a href={IntegrationProjectRepoHttps} target="_blank" rel="noopener noreferrer">beaver-iot-integrations code repository</a> to experience integration development.
 
 ### pom.xml Configuration
 - **Dependency References**
@@ -188,7 +188,7 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 ```
 :::tip
 The {ProjectName} platform discovers platform integrations based on the implementation of the `IntegrationBootstrap` interface. Therefore, integration developers must implement the `IntegrationBootstrap` interface and inject it into the Spring container.
-The integration package path should be under the `com.milesight.beaveriot` directory to ensure that the integration can be discovered by the {ProjectName} platform. It is strongly recommended that developers use the `com.milesight.beaveriot.{integration-identifier}` package path.
+The integration package path should be under the `com.milesight.beaveriot.integrations` directory to ensure that the integration can be discovered by the {ProjectName} platform. It is strongly recommended that developers use the `com.milesight.beaveriot.integrations.{integration-identifier}` package path.
 :::
 
 - **Complete Integration Lifecycle Example**
@@ -242,47 +242,13 @@ The above example uses the Builder pattern to construct devices and entities, wh
 ## Integration Debugging
 
 ### Running the Debug Application
-To facilitate integration developers in debugging integrations, we provide the `application-dev` module, where developers can debug integrations.
 
-Simply add the integration that needs to be debugged to the dependencies, for example:
-```xml
+Refer to [Test Integration Startup](../build-integration.md#start-app-with-dev-integration)
 
-<!-- ... -->
-    <dependencies>
-        <!-- ... -->
-        <dependency>
-            <groupId>com.milesight.beaveriot</groupId>
-            <!-- highlight-next-line -->
-            <artifactId>my-integration</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <!-- ... -->
-    </dependencies>
-<!-- ... -->
-</project>
-```
+### Further Customization
+- **Custom Database Configuration**
 
-Then start *beaver-iot-integrations/application-dev/src/main/java/com/milesight/beaveriot/DevelopApplication.java*
-
-### More Customization
-  By default, the `application-dev` module will load all {ProjectName} platform services and start using H2 as the built-in database. Developers can customize the integration debugging environment by configuring the `pom.xml` and `application-dev` files.
-- **Removing User and Authentication Modules**
-
-To make it easier for integration developers to debug the integration, you can remove the authentication module: comment out the `authentication-service` dependency package in `pom.xml`.
-
-```xml
-<dependencies>
-   <!-- 
-    <dependency>
-      <groupId>com.milesight.beaveriot</groupId>
-      <artifactId>authentication-service</artifactId>
-      </dependency>
-    -->
-</dependencies>
-```
-- **Custom Database**
-
-By default, the `application-dev` module uses H2 as the built-in database. Developers can configure the PostgreSQL database in the `application-dev` file (or via environment variables), for example:
+  By default, {ProjectName} utilizes H2 as the embedded database. Developers can configure a PostgreSQL database via environment variables (or directly modify the `application.yml` resource file), for example:
 ```shell
 DB_TYPE=postgres;
 SPRING_DATASOURCE_URL=jdbc:postgresql://<DB_SERVER_HOSTNAME>:<DB_SERVER_PORT>/<DB_NAME>;
@@ -292,11 +258,11 @@ SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
 ```
 
 :::tip
-By default, the platform uses H2 as the built-in database. For development convenience, we have enabled the H2 console, and developers can access the H2 console via the `/public/h2-console` context path for database operations.
+By default, the platform uses H2 as the embedded database. For convenience during development, you can set `SPRING_H2_CONSOLE_ENABLED` to `true`. Developers can then access the H2 console via the `/public/h2-console` path for database operations.
 :::
 
 ## Integration Installation
-Integrations are released to the {ProjectName} in the form of jar files. Developers can package the integration into a jar file using the `maven` `install` command and then upload it to the {ProjectName} for release.
+Integrations are published as jar files to the {ProjectName} platform. Developers can use the `maven` `install` command to package the integration into a jar file, which can then be uploaded to the {ProjectName} platform for deployment.
 - **Integration Packaging**
 ```shell
 mvn package -pl integrations/my-integration -am -Dmaven.test.skip=true

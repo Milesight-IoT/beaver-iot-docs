@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 toc_min_heading_level: 2
-toc_max_heading_level: 4
+toc_max_heading_level: 5
 ---
 
 import { ProjectName } from '/src/consts';
@@ -9,10 +9,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-# 设备/实体构建
+# 设备/实体
 
 ## 概述
 本章节主要介绍{ProjectName}平台关键对象: 设备、实体。以及如何基于注解、编程式、YAML构建它们。
+
 ## 关键对象
 
 ### Device
@@ -21,7 +22,7 @@ import TabItem from '@theme/TabItem';
 * **id**
 * **所属集成的id**
 * **名称**
-* **额外数据**: 采用Map结构存储设备的额外信息，如设备的SN等
+* **额外数据**: 采用Map结构存储设备的额外信息，如设备的序列号或者生产日期等其它自定义信息
 * **key**：设备key, key规则详见[关键编码概念介绍](../../key-dev-concept.md)章节
 * **identifier**: 设备identifier, identifier规则详见[关键编码概念介绍](../../key-dev-concept.md)章节
 * **包含的实体**
@@ -37,7 +38,7 @@ import TabItem from '@theme/TabItem';
 * **设备key**: 如果是设备的实体，那么会含有设备的key，规则详见[关键编码概念介绍](../../key-dev-concept.md)章节
 * **集成ID** 
 * **实体名称**
-* **访问权限**: 只读/只写/读写
+* **访问权限**: 只对Property类型的实体有意义，只读/只写/读写
 * **identifier**：实体identifier, identifier规则详见[关键编码概念介绍](../../key-dev-concept.md)章节
 * **实体值类型**：包括：STRING, LONG, DOUBLE, BOOLEAN, BINARY, OBJECT
 * **实体类型**: 包括：属性实体, 事件实体, 服务实体
@@ -49,14 +50,16 @@ import TabItem from '@theme/TabItem';
 实体在保存后，除了**名称**和**实体属性**都不建议再改变其它元数据。
 :::
 
-## 对象构建
-<a id="build-with-annotation"></a>
+## 对象构建 <a id="build-with-annotation"></a>
+本节将会介绍设备和实体的构建方法。
+
 ### 基于注解构建
-{ProjectName}平台提供了基于注解的方式构建设备、实体，开发者只需在设备类、实体类上添加相应的注解即可完成设备、实体的构建。平台将会在集成启动时加载对应的实体、集成并初始化
 
 #### 注解说明
 ##### 类注解
 - `@IntegrationEntities`：标识当前类为集成实体类
+- `@DeviceTemplateEntities`：标识当前类为设备实体模板类
+    - `name`：设备模板名称
 - `@DeviceEntities`：标识当前类为设备实体类
     - `identifier`：设备identifier
     - `name`：设备名称
@@ -64,12 +67,13 @@ import TabItem from '@theme/TabItem';
 - `@Entities`：标识当前类为子实体类
 
 ##### 字段注解
-- `@Entity`：标识当前属性为实体属性
-    - `type`：实体类型，包括：属性实体, 事件实体, 服务实体
+- `@Entity`：标识当前属性为实体
+    - `type`：实体类型`EntityType`，包括：属性实体, 事件实体, 服务实体
     - `name`：实体名称
     - `identifier`：实体identifier
-    - `attributes`：@Attribute注解声明实体属性，包括如单位, 精度, 最大值, 最小值, 最大长度, 最小长度, 枚举格式等
-    - `accessMod`：实体访问权限，包括：只读, 只写, 读写
+    - `attributes`：`@Attribute`注解声明实体属性，包括如单位, 精度, 最大值, 最小值, 最大长度, 最小长度, 枚举格式等
+    - `accessMod`：实体访问方式`AccessMod`，只对Property类型的实体有意义，包括：只读, 只写, 读写
+    - `visible`：实体是否对用户可见`visible`。部分集成内部管理使用的实体，包括添加和删除设备的服务实体等，不需要对用户可见
 - `@Attribute`：实体属性注解
   - `enumClass`：枚举类
   - `unit`：单位
@@ -88,28 +92,29 @@ import TabItem from '@theme/TabItem';
 @EqualsAndHashCode(callSuper = true)
 @IntegrationEntities
 public class MyIntegrationEntities extends ExchangePayload {
-    @Entity(type = EntityType.SERVICE, name = "Device Connection Benchmark", identifier = "benchmark")
+    @Entity(type = EntityType.EVENT, name = "Event Entity Name", identifier = "event_entity")
     // highlight-next-line
-    private String benchmark;
+    private String eventEntity;
 
-    @Entity(type = EntityType.PROPERTY, name = "Detect Status", identifier = "detect_status", attributes = @Attribute(enumClass = DetectStatus.class), accessMod = AccessMod.R)
+    @Entity(type = EntityType.PROPERTY, name = "Property Entity Name", identifier = "property_entity", accessMod = AccessMod.R)
     // highlight-next-line
-    private Long detectStatus;
+    private Boolean propertyEntity;
     
-    @Entity(type = EntityType.SERVICE, identifier = "delete_device")
+    @Entity(type = EntityType.SERVICE, identifier = "service_entity", attributes = @Attribute(enumClass = SampleEnum.class))
     // highlight-next-line
-    private String deleteDevice;
-    
-    public enum DetectStatus {
-        STANDBY, DETECTING;
+    private Long serviceEntity;
+
+    public enum SampleEnum {
+        SAMPLE_ENUM_1, SAMPLE_ENUM_2;
     }
 }
 ```
 
 :::tip
 - 默认情况下，@Entity实体注解采用对象字段(驼峰转下划线)名作为实体name、identifier,开发者可通过name、identifier属性自定义实体名称、identifier
-- 当在消费者端订阅实体时，注解的实体对象同时可用于接收ExchangePayload事件数据，即可通过Getter方法获取到属性值，从而简化代码开发，可参见[事件订阅](eventbus.md)章节。
+- 当订阅实体事件时，注解的实体对象同时可用于接收ExchangePayload事件数据，即可通过Getter方法获取到属性值，从而简化代码开发，可参见[事件订阅](eventbus.md)章节。
 需注意当用于接收事件数据时，实体对象需继承ExchangePayload类，并且实体属性包含对应的Getter方法
+
 :::
 - **定义集成子实体**
 ```java
@@ -118,61 +123,64 @@ public class MyIntegrationEntities extends ExchangePayload {
 @IntegrationEntities
 public class MyIntegrationEntities extends ExchangePayload {
     
-    @Entity(type = EntityType.EVENT, name = "Detect Report", identifier = "detect_report")
+    @Entity(type = EntityType.EVENT, name = "Parent Entity Name", identifier = "parent_entity")
     // highlight-next-line
-    private DetectReport detectReport;
-
-    @Entity(type = EntityType.SERVICE, identifier = "add_device")
-    // highlight-next-line
-    private AddDevice addDevice;
+    private ParentEntity parentEntity;
 
     @Data
     @EqualsAndHashCode(callSuper = true)
     @Entities
-    public static class DetectReport extends ExchangePayload {
-        // Entity type inherits from parent entity (DetectReport)
-        @Entity
-        private Long consumedTime;
+    public static class ParentEntity extends ExchangePayload {
+        // Entity type EVENT inherits from ParentEntity
+        @Entity(name = "Child 1 Name", identifier = "child_1")
+        private Long childEntity1;
 
-        @Entity
-        private Long onlineCount;
-
-        @Entity
-        private Long offlineCount;
-    }
-
-    @Data
-    @EqualsAndHashCode(callSuper = true)
-    // highlight-next-line
-    @Entities
-    public static class AddDevice extends ExchangePayload {
-        @Entity
-        private String ip;
+        @Entity(name = "Child 2 Name", identifier = "child_2")
+        private Long childEntity2;
     }
 }
 ```
 
 :::tip
-当实体类为子实体时，需在子实体类上添加@Entities注解，即可完成子实体的构建。子实体默认继承父实体的属性,即子实体不需要设置type类型
+设备的子实体定义方式相同，需在子实体类上添加@Entities注解，即可完成子实体的构建，**子实体不能再包含子实体**。子实体默认继承父实体的属性,即子实体不需要设置type类型。父实体的数据类型为`OBJECT`。
 :::
+
+
+#### 定义设备实体模板
+在实际场景中，集成下可能会有很多相同类型的设备，因此每个设备都含有相同种类的实体，如：一个集成可以对接多个环境传感器，每个传感器都有属于自己的温度和湿度实体。
+```java
+@Data
+@EqualsAndHashCode(callSuper = true)
+@DeviceTemplateEntities(name="Environment Device Template")
+public class EnvironmentDeviceEntities extends ExchangePayload {
+  @Entity(name = "temperature", identifier = "temperature", accessMod = AccessMod.RW, type = EntityType.PROPERTY)
+  // highlight-next-line
+  private Double temperature;
+
+  @Entity
+  // highlight-next-line
+  private Long humidity;
+}
+```
+
 #### 定义设备实体
 ```java
 @Data
 @EqualsAndHashCode(callSuper = true)
-@DeviceEntities(name="demoDevice", additional = {@KeyValue(key = "sn", value = "demoSN")}, identifier = "demoSN")
+@DeviceEntities(name="Default Device Name", additional = {@KeyValue(key = "seriesNumber", value = "sample_number")}, identifier = "default_device")
 public class MyDeviceEntities extends ExchangePayload {
-    
   @Entity(name = "temperature", identifier = "temperature", accessMod = AccessMod.RW, type = EntityType.PROPERTY)
   // highlight-next-line
-  public Double temperature;
-  
+  private Double temperature;
+
   @Entity
   // highlight-next-line
-  private String humidity;
+  private Long humidity;
 }
 ```
+
 :::tip
-当实体类为设备实体，只需添加@DeviceEntities注解即可，同时{ProjectName}平台会完成设备的初始化构建
+当实体类为设备实体，{ProjectName}平台会初始化这个设备并添加到数据库中。
 :::
 
 ### 编程式构建
@@ -184,9 +192,9 @@ public class MyDeviceEntities extends ExchangePayload {
   // highlight-next-line
   Entity entityConfig = new EntityBuilder(integrationId)    //设置集成标识
           .identifier("webhookStatus")        //设置实体标识
-          .property("webhookStatus", AccessMod.R) //设置实体属性
-//          .service("accessKey")             //设置实体服务
-//          .event("accessKey")               //设置实体事件
+          .property("webhookStatus", AccessMod.R) //设置作为属性实体
+//          .service("accessKey")             //设置作为服务实体
+//          .event("accessKey")               //设置作为事件实体
           .attributes(new AttributeBuilder().maxLength(300).enums(IntegrationStatus.class).build())      //设置实体属性,也可以使用attributes(Supplier<Map<String, Object>> supplier)方法进行构建
           .valueType(EntityValueType.STRING)    //设置实体值类型
           .build();
@@ -257,72 +265,80 @@ public class MyDeviceEntities extends ExchangePayload {
 #### 构建设备及实体
 - **构建设备**
 ```java
-  // highlight-next-line
-  Device device = new DeviceBuilder(integrationConfig.getId())
-          .name("deviceDemo")                   //设置设备名称
-          .identifier("deviceDemoIdentifier")   //设置设备标识
-          .additional(Map.of("sn", "demoSN"))  //设置额外数据
-          .build();
+// highlight-next-line
+Device device = new DeviceBuilder(integrationConfig.getId())
+        .name("deviceDemo")
+        .identifier("deviceDemoIdentifier")
+        .additional(Map.of("sn", "demoSN"))
+        .build();
 ```
 - **构建设备实体**
 
 <Tabs>
   <TabItem value="示例1" label="示例1(推荐)" default>
+
 ```java
-  //highlight-next-line 
-  //示例1： 通过DeviceBuilder构建设备及实体示例：
-  // highlight-next-line
-  Device device = new DeviceBuilder(integrationConfig.getId())
-          .name("deviceDemo")
-          .identifier("deviceDemoIdentifier")
-          .entity(entity)             //设置设备实体，可以是List<Entity>或是单个实体
-          .additional(Map.of("sn", "demoSN"))
-          .entity(()->{
-              return new EntityBuilder(integrationId)    //设置集成标识
-                    .identifier("temperature")        //设置实体标识
-                    .property("temperature", AccessMod.R) //设置实体属性
-                    .valueType(EntityValueType.STRING)    //设置实体值类型
-                    .build();
-            })
-          .build();
+Device device = new DeviceBuilder(integrationConfig.getId())
+    .name("deviceDemo")
+    .identifier("deviceDemoIdentifier")
+    .entity(entity)
+    .additional(Map.of("sn", "demoSN"))
+    .entity(()->{
+        return new EntityBuilder(integrationId)
+              .identifier("temperature")
+              .property("temperature", AccessMod.R)
+              .valueType(EntityValueType.STRING) 
+              .build();
+      })
+    .build();
 ```
   </TabItem>
-  <TabItem value="示例2" label="示例2" default>
+  <TabItem value="示例2" label="示例2">
+
 ```java
-  //highlight-next-line 
-  //示例1： 通过DeviceBuilder构建设备及实体示例：
-  //定义实体
-  Entity entity = new EntityBuilder(integrationId)    //设置集成标识
-        .identifier("temperature")        //设置实体标识
-        .property("temperature", AccessMod.R) //设置实体属性
-        .valueType(EntityValueType.STRING)    //设置实体值类型
+//highlight-next-line 
+Entity entity = new EntityBuilder(integrationId)
+      .identifier("temperature")
+      .property("temperature", AccessMod.R)
+      .valueType(EntityValueType.STRING)
+      .build();
+// highlight-next-line
+Device device = new DeviceBuilder(integrationConfig.getId())
+        .name("deviceDemo")
+        .identifier("deviceDemoIdentifier")
+        .entity(entity)
+        .additional(Map.of("sn", "demoSN"))
         .build();
-  // highlight-next-line
-  Device device = new DeviceBuilder(integrationConfig.getId())
-          .name("deviceDemo")
-          .identifier("deviceDemoIdentifier")
-          .entity(entity)             //设置设备实体，可以是List<Entity>或是单个实体
-          .additional(Map.of("sn", "demoSN"))
-          .build();
 ```
   </TabItem>
   <TabItem value="示例3" label="示例3">
 
 ```java
-    // highlight-next-line
-    Device device = new DeviceBuilder(integrationConfig.getId())
-        .name("deviceDemo")
-        .identifier("deviceDemoIdentifier")
-        .entity(entityConfig)             //设置设备实体，可以是List<Entity>或是单个实体
-        .additional(Map.of("sn", "demoSN"))
-        .build();
+// highlight-next-line
+Device device = new DeviceBuilder(integrationConfig.getId())
+    .name("deviceDemo")
+    .identifier("deviceDemoIdentifier")
+    .entity(entityConfig)
+    .additional(Map.of("sn", "demoSN"))
+    .build();
 s    //highlight-next-line
-    Entity entity = new EntityBuilder(integrationId, device.getKey())    //指定集成标识和设备key
-        .identifier("temperature")        //设置实体标识
-        .property("temperature", AccessMod.R) //设置实体属性
-        .valueType(EntityValueType.STRING)    //设置实体值类型
-        .build();
-    device.setEntities(Collections.singletonList(entity));
+Entity entity = new EntityBuilder(integrationId, device.getKey()) 
+    .identifier("temperature")
+    .property("temperature", AccessMod.R) 
+    .valueType(EntityValueType.STRING)
+    .build();
+device.setEntities(Collections.singletonList(entity));
+```
+  </TabItem>
+  <TabItem value="示例4" label="示例4(@DeviceTemplateEntities)">
+```java
+Device device = new DeviceBuilder(INTEGRATION_ID)
+    .name(deviceName)
+    .identifier("deviceDemoIdentifier")
+    .additional(Map.of("sn", "demoSN"))
+    .entities(()-> new AnnotatedTemplateEntityBuilder(INTEGRATION_ID, "deviceDemoIdentifier")
+      .build(MyDeviceEntities.class))
+    .build();
 ```
   </TabItem>
 </Tabs>
@@ -366,7 +382,7 @@ s    //highlight-next-line
 ```
 - 获取设备名
 ```java
-  @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.DOWN)
+  @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*")
   // highlight-next-line
   public void onAddDevice(Event<MyIntegrationEntities.AddDevice> event) {
       String deviceName = event.getPayload().getAddDeviceName();
@@ -374,10 +390,10 @@ s    //highlight-next-line
   }
 ```
   </TabItem>
-  <TabItem value="方式2" label="方式2" default>
+  <TabItem value="方式2" label="方式2">
 - 获取设备名
 ```java
-  @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*", eventType = ExchangeEvent.EventType.DOWN)
+  @EventSubscribe(payloadKeyExpression = "my-integration.integration.add_device.*")
   // highlight-next-line
   public void onAddDevice(Event<MyIntegrationEntities.AddDevice> event) {
       String deviceName = event.getPayload().getContext().get(ExchangeContextKeys.DEVICE_NAME_ON_ADD);
@@ -410,7 +426,7 @@ s    //highlight-next-line
 :::
 - 获取删除的设备
 ```java
-  @EventSubscribe(payloadKeyExpression = "my-integration.integration.delete_device", eventType = ExchangeEvent.EventType.DOWN)
+  @EventSubscribe(payloadKeyExpression = "my-integration.integration.delete_device")
   // highlight-next-line
   public void onDeleteDevice(Event<MyIntegrationEntities.DeleteDevice> event) {
       Device device = event.getPayload().getDeletedDevice();
@@ -418,10 +434,10 @@ s    //highlight-next-line
   }
 ```
   </TabItem>
-  <TabItem value="方式2" label="方式2" default>
+  <TabItem value="方式2" label="方式2">
 - 获取删除的设备
 ```java
-  @EventSubscribe(payloadKeyExpression = "my-integration.integration.delete_device", eventType = ExchangeEvent.EventType.DOWN)
+  @EventSubscribe(payloadKeyExpression = "my-integration.integration.delete_device")
   // highlight-next-line
   public void onDeleteDevice(Event<MyIntegrationEntities.DeleteDevice> event) {
       Device device = event.getPayload().getContext().get(ExchangeContextKeys.DEVICE_ON_DELETE);
@@ -461,6 +477,184 @@ integration:
             type: property
 ```
 
-:::tip
-通常情况下，基于注解和编程式构建设备、实体方式更加灵活，能够解决绝大多数的需求场景。基于YAML构建，平台旨在提供多种手段，方便开发者快速构建设备、实体
+:::info
+如果场景十分简单则可以选择基于YAML构建，一般情况下不推荐这种方式。逻辑比较复杂时，YAML定义的设备和实体难以和业务代码结合。
 :::
+
+## 选择合适的构建方式
+
+有的构建方式会在{ProjectName}装载这个集成的时候**自动保存**到数据库中，有的构建方式则需要**手动保存**构建完成的设备和实体。
+
+### 构建设备及其实体的方式
+
+| 设备数量 | 设备类型* | 装载时自动保存 | 选择的构建方式 |
+| --- | --- | --- | --- |
+| 有限的 | 有限的 | 是 | @DeviceEntities / YAML |
+| 动态的 | 有限的 | 否 | @DeviceTemplateEntities |
+| 动态的 | 动态的 | 否 | 编程式构建 |
+:::tip
+*设备类型包括设备的基本定义（如设备名称、设备额外数据等），以及设备的实体定义。
+:::
+
+### 构建集成实体的方式
+
+| 当前集成的实体 | 装载时自动保存 | 选择的构建方式 |
+| --- | --- | --- |
+| 有限的 | 是 |  @IntegrationEntities / YAML |
+| 动态的 | 否 | 编程式构建 |
+
+## 设备/实体保存
+
+
+### 保存设备或者实体
+
+#### 保存设备
+
+* 方法见[文档](./service-provider.md#device-service-provider-save)
+* 保存设备会保存**设备**本身的数据和属于这台设备的**实体**的数据
+
+#### 保存实体
+
+* 方法见[文档](./service-provider.md#entity-service-provider-save)
+* 保存实体会保存**实体**本身的数据和其**子实体**的数据
+* 保存实体并不会保存实体的值，只保存实体的元数据
+
+### 保存/获取实体的值
+
+#### 通过实体Wrapper保存
+
+##### 普通实体类
+* `@IntegrationEntities`定义的集成实体类
+* `@DeviceEntities`定义的设备实体类
+* 以上两种方式定义下，用`@Entities`定义的子实体类
+
+可以通过`AnnotatedEntityWrapper`来更新相应实体的值
+
+比如，我们定义了集成的实体`MyIntegrationEntities`如下所示
+```java
+@Data
+@EqualsAndHashCode(callSuper = true)
+@IntegrationEntities
+public class MyIntegrationEntities extends ExchangePayload {
+    @Entity
+    private String entity1;
+
+    @Entity
+    private String entity2;
+}
+```
+然后就可以创建相应的Wrapper
+```java
+AnnotatedEntityWrapper<MyIntegrationEntities> wrapper = new AnnotatedEntityWrapper<>();
+```
+
+如果要更新实体`entity1`的值为`sample`，可以使用`saveValue`方法
+```java
+wrapper.saveValue(MyIntegrationEntities::getEntity1, "sample").publishSync();
+```
+
+如果要更新实体`entity1`和`entity2`的值为`sample`，可以使用`saveValues`方法
+```java
+wrapper.saveValues(Map.of(
+                MyIntegrationEntities::getEntity1, "sample",
+                MyIntegrationEntities::getEntity2, "sample"
+        )).publishSync();
+```
+
+:::info
+`saveValue`和`saveValues`会返回`ExchangeEventPublisher`类。一般情况下，保存一个值都需要发布相应的**事件**，来通知其它订阅者（其它集成、{ProjectName}内部的方法等）实体值的改变。
+
+`ExchangeEventPublisher.publishSync`和`ExchangeEventPublisher.publishAsync`对应事件发布的同步和异步两种方式，具体区别可以[参考文档](./eventbus.md#exchange-event-publish)。
+:::
+
+如果要获取`entity1`的值，可以使用`getValue`方法
+```java
+String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1);
+```
+
+如果要获取`entity1`和`entity2`的值，可以使用`getValues`方法
+```java
+Map<String, Object> values = wrapper.getValues(MyIntegrationEntities::getEntity1, MyIntegrationEntities::getEntity2);
+```
+
+##### 设备模板实体类
+* `@DeviceTemplateEntities`定义的集成实体类
+
+比如，我们定义了一个设备实体模板
+```java
+@Data
+@EqualsAndHashCode(callSuper = true)
+@DeviceTemplateEntities(name = "Template Device")
+public class MyDeviceEntities extends ExchangePayload {
+    @Entity
+    private String entity1;
+}
+```
+
+可以创建相应的Wrapper
+```java
+AnnotatedTemplateEntityWrapper<MyDeviceEntities> wrapper = new AnnotatedEntityWrapper<>(device.getIdentifier());
+```
+
+如果要更新设备实体`entity1`的值为`sample`，可以使用`saveValue`方法
+```java
+wrapper
+        .saveValue(MyDeviceEntities::getEntity1, "sample")
+        .publishSync();
+```
+和`AnnotatedEntityWrapper`相似：
+* 同时更新多个值可以使用`saveValues`方法
+* 获取单个或者多个值可以使用`getValue`和`getValues`方法
+
+##### 实体类实例
+如果要更新实体的实例`entity`的值为`sample`，做法是
+```java
+new EntityWrapper(entity)
+        .saveValue("sample")
+        .publishSync();
+```
+
+#### 通过实体key构建Exchange
+
+另一种更加灵活的方式是直接根据实体的key来构建[ExchangePayload](./eventbus.md#build-exchange-payload)最后保存，`ExchangePayload`提供了`create`方法，可以从一个Map对象中直接创建实例。
+
+构建更新单个实体的的payload
+```java
+ExchangePayload exchangePayload = ExchangePayload.create("<entityKey>", "<entityValue>");
+```
+
+构建更新多个实体的payload
+```java
+ExchangePayload exchangePayload = ExchangePayload.create(Map.of(
+  "<entityKey1>", "<entityValue1>",
+  "<entityKey2>", "<entityValue2>",
+  "<entityKey3>", "<entityValue3>"
+  // ...
+));
+```
+
+最后保存
+```java
+entityValueServiceProvider.saveValuesAndPublishSync(exchangePayload)
+```
+
+#### 通过实体key获取值
+
+获取单个实体的值
+```java
+entityValueServiceProvider.findValueByKey("<entityKey>")
+```
+
+获取多个实体的值
+```java
+entityValueServiceProvider.findValuesByKeys(List.of("<entityKey1>", "<entityKey2>"))
+```
+
+:::warning
+`findValueByKey`和`findValuesByKeys`这两个方法只会获取当前实体的值，如果有子实体并不会获取子实体的值
+:::
+
+获取父实体的子实体的值
+```java
+entityValueServiceProvider.findValuesByKey("<parentEntityKey>", ParentEntity.class)
+```
