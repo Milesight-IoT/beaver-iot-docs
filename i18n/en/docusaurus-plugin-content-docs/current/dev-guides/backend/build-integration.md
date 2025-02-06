@@ -29,7 +29,7 @@ If you are acquainted with the above subjects, please proceed to follow along an
 ## Environment Setup
 
 Before starting development, ensure you have the following environment set up:
-* Java IDE (IntelliJ IDEA recommended)
+* Java IDE ([IntelliJ IDEA](https://www.jetbrains.com/idea/download/) recommended)
 * Java Version 17 SDK
 * Maven
 * Git CLI
@@ -44,6 +44,16 @@ Once these are ready, execute the following git command to obtain the source cod
   </TabItem>
 </Tabs>
 
+
+```
+  beaver-iot-integrations/
+  ├── integrations/                             # integration directory
+  │ ├── sample-integrations/                    # Sample integration directory
+  │ │   └── ...                                 # Sample integrations
+  │ ├── msc-integration
+  │ └── ...                                     # All other integrations
+```
+
 *(Optional)* Obtain the {ProjectName} backend project source code `beaver-iot` for testing after integration development:
 <Tabs>
   <TabItem value="SSH" label="SSH" default>
@@ -57,6 +67,8 @@ Once these are ready, execute the following git command to obtain the source cod
 Once you open these projects in your Java IDE, you can begin developing an integration.
 
 ## Writing a Hello World
+
+First of all, **go to the `beaver-iot-integrations` project**
 
 ### Create Integration Metadata
 Create a new module under the `integrations` module of the project and name it as the integration ID.
@@ -169,7 +181,9 @@ when {ProjectName} initializes the integration at startup.
 
 ### (Optional) Launch Your First Integration <a id="start-app-with-dev-integration"></a>
 
-After installing your integration, add it to the `application/application-standard` dependency list in the `beaver-iot` project:
+**In the `beaver-iot-integrations` project**, install your integration module.
+
+**Go to the `beaver-iot` project** and add your integration to the dependencies list of `application/application-standard`.
 
 ```xml
 <!-- ... -->
@@ -225,6 +239,8 @@ Additionally, adding and removing devices are also service entities:
 If you have any questions about the definitions of these entities based on the above requirements, please refer to the [Concepts Introduction](../../user-guides/introduction/concepts.md).
 :::
 
+First, **go to the `beaver-iot-integrations` project** and find the module you just created
+
 Create a new Java class file `MyIntegrationEntities.java` to define the above five entities and their sub-entities using annotations:
 
 ```java
@@ -247,7 +263,7 @@ import lombok.EqualsAndHashCode;
 @IntegrationEntities
 public class MyIntegrationEntities extends ExchangePayload {
     @Entity(type = EntityType.SERVICE, name = "Device Connection Benchmark", identifier = "benchmark")
-    private String benchmark;
+    private Benchmark benchmark;
 
     @Entity(type = EntityType.PROPERTY, name = "Detect Status", identifier = "detect_status", attributes = @Attribute(enumClass = DetectStatus.class), accessMod = AccessMod.R)
     private Long detectStatus;
@@ -287,6 +303,12 @@ public class MyIntegrationEntities extends ExchangePayload {
     @EqualsAndHashCode(callSuper = true)
     @Entities
     public static class DeleteDevice extends ExchangePayload implements DeleteDeviceAware {
+    }
+
+    @Data
+    @EqualsAndHashCode(callSuper = true)
+    @Entities
+    public static class Benchmark extends ExchangePayload {
     }
 
     public enum DetectStatus {
@@ -511,7 +533,6 @@ Create a Java class `MyIntegrationController.java` to add a controller that hand
 ```java
 package com.milesight.beaveriot.integrations.[integration-id].controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.milesight.beaveriot.base.response.ResponseBody;
 import com.milesight.beaveriot.base.response.ResponseBuilder;
 import com.milesight.beaveriot.context.api.DeviceServiceProvider;
@@ -544,7 +565,7 @@ public class MyIntegrationController {
                 .findValuesByKeys(statusEntityKeys)
                 .values()
                 .stream()
-                .map(JsonNode::asInt)
+                .map(n -> (long) n)
                 .filter(status -> status == MyDeviceEntities.DeviceStatus.ONLINE.ordinal())
                 .count();
         CountResponse resp = new CountResponse();
@@ -561,7 +582,9 @@ public class MyIntegrationController {
 
 ## (Optional) Test Your Integration
 
-After reinstalling your integration locally, restart the `beaver-iot` project.
+**In the `beaver-iot-integrations` project**, reinstall your integration module.
+
+**Go to the `beaver-iot` project** and make sure your integration has been added to the dependencies list of `application/application-standard` and restart it.
 
 ### Register User
 
