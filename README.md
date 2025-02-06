@@ -1,6 +1,6 @@
 # Website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/).
 
 ### Installation
 
@@ -23,3 +23,7 @@ $ yarn build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+# Beaver IoT Document
+
+[Document](https://www.milesight.com/beaver-iot/)

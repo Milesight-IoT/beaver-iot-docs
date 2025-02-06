@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 ## 环境准备
 
 在进行开发前，需要准备以下环境：
-* Java IDE (推荐[IntelliJ IDEA](https://www.jetbrains.com/idea/))
+* Java IDE (推荐[IntelliJ IDEA](https://www.jetbrains.com/idea/download/))
 * Java Version 17 SDK
 * Maven
 * Git CLI
@@ -44,7 +44,16 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-*(可选)* 获取 {ProjectName} 后端项目源码 `beaver-iot` ，用于集成开发完成后的测试
+```
+  beaver-iot-integrations/
+  ├── integrations/                             # 集成目录
+  │ ├── sample-integrations/                    # 示例集成目录
+  │ │   └── ...                                 # 示例集成
+  │ ├── msc-integration
+  │ └── ...                                     # 所有其它集成
+```
+
+*(可选)* 接下来，获取 {ProjectName} 后端项目源码 `beaver-iot` ，用于集成开发完成后的测试
 <Tabs>
   <TabItem value="SSH" label="SSH" default>
     <CodeBlock language="bash">git clone {ProjectRepoSSH}</CodeBlock>
@@ -57,6 +66,8 @@ import TabItem from '@theme/TabItem';
 使用Java IDE打开这两个项目后就可以开始尝试开发一个集成了。
 
 ## 写一个Hello world
+
+首先，**进入`beaver-iot-integrations`项目**
 
 ### 创建集成元数据
 在项目的`integrations`模块下新建一个作为这个集成的模块，并为这个模块起一个名字，作为集成的id
@@ -169,7 +180,9 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 
 ### (可选) 启动你的第一个集成<a id="start-app-with-dev-integration"></a>
 
-将你的集成install后，在`beaver-iot`项目下，将你的集成加入`application/application-standard`依赖列表dependencies中
+**在`beaver-iot-integrations`项目中**，将你的集成模块install。
+
+**进入`beaver-iot`项目**，将你的集成加入`application/application-standard`依赖列表dependencies中
 
 ```xml
 
@@ -226,6 +239,8 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 如果您对以上需求分析几种实体的定义有疑问，请看[概念介绍](../../user-guides/introduction/concepts.md)
 :::
 
+首先，**进入`beaver-iot-integrations`项目**，找到你刚刚创建的模块
+
 新建一个Java类文件`MyIntegrationEntities.java`，以注解的方式定义集成的以上5个实体以及其子实体
 
 ```java
@@ -248,7 +263,7 @@ import lombok.EqualsAndHashCode;
 @IntegrationEntities
 public class MyIntegrationEntities extends ExchangePayload {
     @Entity(type = EntityType.SERVICE, name = "Device Connection Benchmark", identifier = "benchmark")
-    private String benchmark;
+    private Benchmark benchmark;
 
     @Entity(type = EntityType.PROPERTY, name = "Detect Status", identifier = "detect_status", attributes = @Attribute(enumClass = DetectStatus.class), accessMod = AccessMod.R)
     private Long detectStatus;
@@ -290,6 +305,12 @@ public class MyIntegrationEntities extends ExchangePayload {
     @EqualsAndHashCode(callSuper = true)
     @Entities
     public static class DeleteDevice extends ExchangePayload implements DeleteDeviceAware {
+    }
+
+    @Data
+    @EqualsAndHashCode(callSuper = true)
+    @Entities
+    public static class Benchmark extends ExchangePayload {
     }
 
     public enum DetectStatus {
@@ -517,7 +538,6 @@ public class MyDeviceService {
 ```java
 package com.milesight.beaveriot.integrations.[integration-id].controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.milesight.beaveriot.base.response.ResponseBody;
 import com.milesight.beaveriot.base.response.ResponseBuilder;
 import com.milesight.beaveriot.context.api.DeviceServiceProvider;
@@ -550,7 +570,7 @@ public class MyIntegrationController {
                 .findValuesByKeys(statusEntityKeys)
                 .values()
                 .stream()
-                .map(JsonNode::asInt)
+                .map(n -> (long) n)
                 .filter(status -> status == MyDeviceEntities.DeviceStatus.ONLINE.ordinal())
                 .count();
         CountResponse resp = new CountResponse();
@@ -568,7 +588,9 @@ public class MyIntegrationController {
 
 ## （可选）测试你的集成
 
-将你的集成本地重新install之后，重新启动`beaver-iot`项目。
+**在`beaver-iot-integrations`项目中**，将你的集成模块重新install。
+
+**进入`beaver-iot`项目**，确保你的集成已经加入到`application/application-standard`的依赖列表dependencies中，并且重新启动它。
 
 ### 注册用户
 ```shell
