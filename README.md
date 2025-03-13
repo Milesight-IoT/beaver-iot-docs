@@ -1,5 +1,7 @@
 # Website
 
+Beaver IoT online [Document](https://www.milesight.com/beaver-iot/).
+
 This website is built using [Docusaurus](https://docusaurus.io/).
 
 ### Installation
@@ -24,6 +26,6 @@ $ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-# Beaver IoT Document
+### Problems
 
-[Document](https://www.milesight.com/beaver-iot/)
+Using Markdown's '**' for bolding may cause issues in some language characters. Please use the regular expression `\*\*(.*?)\*\*` to replace it with `<b>$1</b>`.
