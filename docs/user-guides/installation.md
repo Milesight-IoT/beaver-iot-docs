@@ -13,13 +13,13 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="shell" label="Shell" default>
     ```shell
-    docker run -d --name beaver-iot -v $(pwd):/root -p 80:80 milesight/beaver-iot
+    docker run -d --name beaver-iot -v $(pwd):/root -p 80:80 -p 1883:1883 milesight/beaver-iot
     ```
   </TabItem>
   <TabItem value="cmd" label="Windows Command Line (CMD)">
 
     ```shell
-    docker run -d --name beaver-iot -v %cd%:/root -p 80:80 milesight/beaver-iot
+    docker run -d --name beaver-iot -v %cd%:/root -p 80:80 -p 1883:1883 milesight/beaver-iot
     ```
   </TabItem>
 </Tabs>

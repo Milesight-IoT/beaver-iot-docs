@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # 星纵物联开放平台集成
 
 Beaver IoT默认内置星纵物联开放平台集成便于快速对接平台获取设备信息以及实现设备控制。
@@ -8,7 +12,7 @@ Beaver IoT默认内置星纵物联开放平台集成便于快速对接平台获�
 
 2. 登录星纵物联开放平台，创建一个[应用](https://www.milesight.com/docs/zh-cn/development-platform/user-guide/create-an-application.html)。
 
-3. 打开Beaver IoT的**Setting**页面选择星纵物联开放平台集成插件，并粘贴星纵物联开放平台里应用的认证信息（服务器地址，客户端ID和客户端密钥），然后点击**Connect**。
+3. 打开Beaver IoT的**Integration**页面选择星纵物联开放平台集成插件，并粘贴星纵物联开放平台里应用的认证信息（服务器地址，客户端ID和客户端密钥），然后点击**Connect**。
 
    ![Integration-1](/img/zh/integration-1.png)
 
