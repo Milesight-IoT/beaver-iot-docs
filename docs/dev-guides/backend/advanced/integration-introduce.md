@@ -150,7 +150,7 @@ integration:
 
 ### 集成生命周期
 #### 生命周期说明
-{ProjectName}平台提供了`IntegrationBootstrap`接口，用于平台集成的生命周期管理。开发者需要实现`IntegrationBootstrap`接口，重写`onPrepared`、`onStarted`、`onDestroyed`方法，以实现集成的生命周期管理。
+{ProjectName}平台提供了`IntegrationBootstrap`接口，用于平台集成的生命周期管理。开发者需要实现`IntegrationBootstrap`接口，重写`onPrepared`、`onStarted`、`onDestroyed`、`onEnabled`方法，以实现集成的生命周期管理。
 
 ![General Architecture](/img/zh/integration-lifecycle.svg)
 
@@ -162,6 +162,12 @@ integration:
   * 调用每个集成的`onStarted`函数
   * 接下来{ProjectName}程序正式启动运行。
 * 集成销毁会调用`onDestroyed`函数
+
+:::tip
+应用启动时，每个集成插件的`onPrepared`和`onStarted`都只会执行一遍。
+
+`onEnabled`和`onDisabled`函数是预留的，没有完全实现其功能。目前的行为是，集成在`onStarted`之后会为每一个租户都执行用一遍`onEnabled`。`onDisabled`暂时没有场景会调用。未来{ ProjectName }会让每个租户能够自定义启用或者禁用某些集成，这两个函数的调用场景就会更加明确。
+:::
 
 #### 代码示例
 
@@ -177,6 +183,11 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
     @Override
     public void onStarted(Integration integrationConfig) {
       // todo: actions when started
+    }
+
+    @Override
+    public void onEnabled(String tenantId, Integration integrationConfig) {
+      // todo: actions when enabled
     }
 
     @Override
@@ -260,9 +271,11 @@ SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
 默认情况下平台采用H2作为内置数据库。为方便开发，可以将`SPRING_H2_CONSOLE_ENABLED`设置为`true`。然后开发者就可以通过`/public/h2-console`路径来访问h2-console进行数据库操作。
 :::
 
-## 集成安装
-集成以jar包的形式发布到{ProjectName}平台，开发者可以通过`maven`的`install`命以将集成打包成jar包，然后上传到{ProjectName}平台进行发布。
-- **集成打包**
-```shell
-mvn package -pl integrations/my-integration -am -Dmaven.test.skip=true
-```
+## 定制集成前端页面
+
+引入集成后，前端会使用默认的集成页面。页面包括基础的数据展示和管理功能：
+* 集成当前实体数据展示
+* 允许用户修改可写的属性实体
+* 允许用户调用集成的服务实体
+
+如果需要定制集成页面，请移步前端[集成定制](../../frontend/advance/integration.md)

@@ -151,7 +151,7 @@ integration:
 
 ### Integration Lifecycle
 #### Lifecycle Description
-The {ProjectName} platform provides the `IntegrationBootstrap` interface for managing the lifecycle of platform integrations. Developers need to implement the `IntegrationBootstrap` interface and override the `onPrepared`, `onStarted`, and `onDestroyed` methods to manage the integration lifecycle.
+The {ProjectName} platform provides the `IntegrationBootstrap` interface for managing the lifecycle of platform integrations. Developers need to implement the `IntegrationBootstrap` interface and override the `onPrepared`, `onStarted`, `onDestroyed`, and `onEnabled` methods to manage the integration lifecycle.
 
 ![General Architecture](/img/en/integration-lifecycle.svg)
 
@@ -163,6 +163,12 @@ The {ProjectName} platform provides the `IntegrationBootstrap` interface for man
   * Calls the `onStarted` function for each integration
   * The {ProjectName} program then officially starts running.
 * The `onDestroyed` function is called when the integration is destroyed
+
+:::tip
+When the application starts, each integration's `onPrepared` and `onStarted` will only execute once.
+
+The `onEnabled` and `onDisabled` functions are reserved and not fully implemented yet. Currently, the behavior is that after `onStarted`, the integration will execute `onEnabled` once for each tenant. The `onDisabled` function is not called in any scenarios for now. In the future, { ProjectName } will allow each tenant to customize the enablement or disablement of certain integrations, at which point the scenarios for calling these two functions will become more defined.
+:::
 
 #### Code Example
 
@@ -178,6 +184,11 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
     @Override
     public void onStarted(Integration integrationConfig) {
       // todo: actions when started
+    }
+
+    @Override
+    public void onEnabled(String tenantId, Integration integrationConfig) {
+      // todo: actions when enabled
     }
 
     @Override
@@ -261,9 +272,11 @@ SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
 By default, the platform uses H2 as the embedded database. For convenience during development, you can set `SPRING_H2_CONSOLE_ENABLED` to `true`. Developers can then access the H2 console via the `/public/h2-console` path for database operations.
 :::
 
-## Integration Installation
-Integrations are published as jar files to the {ProjectName} platform. Developers can use the `maven` `install` command to package the integration into a jar file, which can then be uploaded to the {ProjectName} platform for deployment.
-- **Integration Packaging**
-```shell
-mvn package -pl integrations/my-integration -am -Dmaven.test.skip=true
-```
+## Customizing Integration Frontend Pages
+
+After introducing an integration, the frontend will use the default integration page. This page includes basic data display and management functionalities:
+* Displaying the current entity data of the integration
+* Allowing users to modify writable entity attributes
+* Allowing users to invoke the service entities of the integration
+
+If you need to customize the integration page, please refer to the frontend [Integration Customization](../../frontend/advance/integration.md).

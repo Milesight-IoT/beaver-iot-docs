@@ -105,7 +105,6 @@ import TabItem from '@theme/TabItem';
         <dependency>
             <groupId>com.milesight.beaveriot</groupId>
             <artifactId>context</artifactId>
-            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -138,6 +137,7 @@ import TabItem from '@theme/TabItem';
 
 ```yaml
 integration:
+    <!-- highlight-next-line -->
    [integration-id]: # integration identifier
       name: My Integration Name # integration name
       description: "My Demo Integration" # integration description
