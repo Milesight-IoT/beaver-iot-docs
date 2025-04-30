@@ -93,6 +93,7 @@ The `pom.xml` file for the module should be as follows:
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <!-- highlight-next-line -->
     <artifactId>[integration-id]</artifactId>
 
     <properties>
@@ -105,7 +106,6 @@ The `pom.xml` file for the module should be as follows:
         <dependency>
             <groupId>com.milesight.beaveriot</groupId>
             <artifactId>context</artifactId>
-            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -137,6 +137,7 @@ Create a new resource file `integration.yaml`:
 
 ```yaml
 integration:
+    <!-- highlight-next-line -->
    [integration-id]: # integration identifier
       name: My Integration Name # integration name
       description: "My Demo Integration" # integration description
