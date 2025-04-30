@@ -1,2 +1,3 @@
 position: 20
-collapsible: false
+collapsed: false
+collapsible: true
