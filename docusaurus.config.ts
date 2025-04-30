@@ -113,6 +113,29 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   themes: ["docusaurus-theme-openapi-docs"],
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        'http-equiv': 'Cache-Control',
+        content: 'no-cache, no-store, must-revalidate',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        'http-equiv': 'Pragma',
+        content: 'no-cache',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        'http-equiv': 'Expires',
+        content: '0',
+      },
+    },
+  ],
 };
 
 export default config;
