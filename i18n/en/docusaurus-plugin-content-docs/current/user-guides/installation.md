@@ -4,6 +4,10 @@ sidebar_position: 2
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {
+    CodeShellName,
+    CodeWinCmdName,
+} from '/src/consts';
 
 # Installation
 
@@ -11,12 +15,12 @@ import TabItem from '@theme/TabItem';
 2. Download and push image:
 
 <Tabs>
-  <TabItem value="shell" label="Shell" default>
+  <TabItem value={CodeShellName} default>
     ```shell
     docker run -d --name beaver-iot -v $(pwd):/root -p 80:80 -p 1883:1883 milesight/beaver-iot
     ```
   </TabItem>
-  <TabItem value="cmd" label="Windows Command Line (CMD)">
+  <TabItem value={CodeWinCmdName}>
 
     ```shell
     docker run -d --name beaver-iot -v %cd%:/root -p 80:80 -p 1883:1883 milesight/beaver-iot

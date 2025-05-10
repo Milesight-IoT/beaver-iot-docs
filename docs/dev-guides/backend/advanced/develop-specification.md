@@ -16,7 +16,7 @@ import { ProjectName } from '/src/consts';
 
 **2. 集成类包命名规范**
     
-集成类包路径需要遵循`com.milesight.beaveriot.integration.{integration标识}`规范，如`com.milesight.beaveriot.integration.msc`。其中`com.milesight.beaveriot`包路径方便可被框架扫描到，`integration`是固定的，`msc`是集成标识。
+集成类包路径需要遵循`com.milesight.beaveriot.integrations.{integration标识}`规范，如`com.milesight.beaveriot.integrations.msc`。其中`com.milesight.beaveriot`包路径方便可被框架扫描到，`integrations`是固定的，`msc`是集成标识。
 
 **3. 集成icon命名规范**
 
@@ -31,6 +31,13 @@ import { ProjectName } from '/src/consts';
 
 对于集成开发，我们提供了context依赖包，用于集成开发的基础功能。对于{ProjectName}平台已经包含的依赖包，我们将其scope设置为provided。
 开发者可引入其他依赖包（{ProjectName}平台未引入的包），以满足集成开发的需求,但尽可能以平台beaver-iot-parent中定义的版本为准，避免依赖冲突。
+
+:::warning
+无论是**beaver-iot**项目还是**beaver-iot-integrations**项目，在本地安装的命令都是:
+```shell
+mvn install -DskipTests -Ddeploy.skip
+```
+:::
 
 ## REST API规范
 

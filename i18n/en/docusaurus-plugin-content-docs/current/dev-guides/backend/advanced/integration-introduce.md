@@ -135,12 +135,12 @@ integration:
     icon-url: /public/my-integration.png # integration icon url
     description: "My Demo Integration" # integration description
     enabled: true # whether enable this integration. Must be "true" for now
-    entity-identifier-add-device: addDevice # entity identifier for adding device
-    entity-identifier-delete-device: deleteDevice # entity identifier for deleting device
+    entity-identifier-add-device: add_device # entity identifier for adding device
+    entity-identifier-delete-device: delete_device # entity identifier for deleting device
     initial-entities: # initial entities
       - identifier: 'connect' # entity identifier
         name: connect         # entity name
-        value_type: string    # entity value type
+        value_type: object    # entity value type
         type: service         # entity type
         children:             # children entities
           - identifier: 'url'

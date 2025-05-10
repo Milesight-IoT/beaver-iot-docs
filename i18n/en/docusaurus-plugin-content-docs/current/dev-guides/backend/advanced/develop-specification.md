@@ -17,7 +17,7 @@ It is recommended to name the Maven module artifactId the same as the integratio
 
 **2. Integration Class Package Naming Conventions**
 
-The integration class package path should adhere to the `com.milesight.beaveriot.integration.{integration_identifier}` convention, such as `com.milesight.beaveriot.integration.msc`. The `com.milesight.beaveriot` package path allows for framework scanning, `integration` is fixed, and `msc` is the integration identifier.
+The integration class package path should adhere to the `com.milesight.beaveriot.integrations.{integration_identifier}` convention, such as `com.milesight.beaveriot.integrations.msc`. The `com.milesight.beaveriot` package path allows for framework scanning, `integration` is fixed, and `msc` is the integration identifier.
 
 **3. Integration Icon Naming Conventions**
 
@@ -31,6 +31,13 @@ Devices and entities in the {ProjectName} platform contain Identifiers, preferab
 **1.Project Construction**
 
 For integration development, we provide a context dependency package for basic integration functions. Dependencies already included in {ProjectName} are set to scope as provided. Developers may introduce other dependency packages (not included in {ProjectName}) to meet integration development needs, but should preferably use the versions defined in the platform's beaver-iot-parent to avoid dependency conflicts.
+
+:::warning
+For either the **beaver-iot** project or the **beaver-iot-integrations** project, the command to install locally is.
+```shell
+mvn install -DskipTests -Ddeploy.skip
+```
+:::
 
 ## REST API Standards
 

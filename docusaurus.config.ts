@@ -109,7 +109,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['java', 'bash'],
+      additionalLanguages: ['java', 'bash', 'batch', 'powershell'], // https://prismjs.com/#supported-languages
     },
   } satisfies Preset.ThemeConfig,
   themes: ["docusaurus-theme-openapi-docs"],

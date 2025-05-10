@@ -9,3 +9,6 @@ export const IntegrationProjectRepoHttps = 'https://github.com/Milesight-IoT/bea
 export const DevFrontEndRepoHttps = 'https://github.com/Milesight-IoT/beaver-iot-web.git';
 export const DevFrontEndRepoSSH = 'git@github.com:Milesight-IoT/beaver-iot-web.git';
 export const SampleBackendIntegration = 'https://github.com/beaver-iot/beaver-iot-integrations/tree/main/integrations/sample-integrations/my-integration';
+
+export const CodeShellName = 'Shell';
+export const CodeWinCmdName = 'Windows Command Line (CMD)';
