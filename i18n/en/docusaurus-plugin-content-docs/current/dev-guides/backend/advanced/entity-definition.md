@@ -208,7 +208,7 @@ Entity entityConfig = new EntityBuilder(integrationId)    // Set integration ide
 Entity entityConfig = new EntityBuilder(integrationId)
         .identifier("settings")
         .property("settings", AccessMod.RW)
-        .valueType(EntityValueType.STRING)
+        .valueType(EntityValueType.OBJECT)
         // highlight-next-line
         .children()           // Set sub-entity
             .valueType(EntityValueType.STRING).property("accessKey", AccessMod.RW).end()
@@ -227,7 +227,7 @@ Entity entityConfig = new EntityBuilder(integrationId)
 Entity parentEntity = new EntityBuilder(integrationId)
       .identifier("settings")
       .property("settings", AccessMod.RW)
-      .valueType(EntityValueType.STRING)
+      .valueType(EntityValueType.OBJECT)
       // highlight-next-line
       .children(() -> {
           Entity childEntity = new EntityBuilder()  // Define sub-entity
@@ -254,7 +254,7 @@ Entity childEntity = new EntityBuilder()  // Define sub-entity
 Entity parentEntity = new EntityBuilder(integrationId)
       .identifier("settings")
       .property("settings", AccessMod.RW)
-      .valueType(EntityValueType.STRING)
+      .valueType(EntityValueType.OBJECT)
       // highlight-next-line
       .children(childEntity)  // Set sub-entity, can be List<Entity> or a single entity
       .build();
@@ -459,7 +459,7 @@ integration:
     initial-entities: # Initial entities
       - identifier: 'connect' # Entity identifier
         name: connect         # Entity name
-        value_type: string    # Entity value type
+        value_type: object    # Entity value type
         type: service         # Entity type
         access_mod: RW        # Entity access mode
         children:             # Children entities
@@ -570,7 +570,7 @@ The methods `ExchangeEventPublisher.publishSync` and `ExchangeEventPublisher.pub
 
 To retrieve the value of `entity1`, use the `getValue` method:
 ```java
-String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1);
+String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1).orElse(null);
 ```
 
 To retrieve the values of both `entity1` and `entity2`, use the `getValues` method:

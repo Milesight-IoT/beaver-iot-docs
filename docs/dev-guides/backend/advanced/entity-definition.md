@@ -208,7 +208,7 @@ public class MyDeviceEntities extends ExchangePayload {
   Entity entityConfig = new EntityBuilder(integrationId)
           .identifier("settings")
           .property("settings", AccessMod.RW)
-          .valueType(EntityValueType.STRING)
+          .valueType(EntityValueType.OBJECT)
           // highlight-next-line
           .children()           //设置子实体
               .valueType(EntityValueType.STRING).property("accessKey", AccessMod.RW).end()
@@ -227,7 +227,7 @@ public class MyDeviceEntities extends ExchangePayload {
   Entity parentEntity = new EntityBuilder(integrationId)
         .identifier("settings")
         .property("settings", AccessMod.RW)
-        .valueType(EntityValueType.STRING)
+        .valueType(EntityValueType.OBJECT)
         // highlight-next-line
         .children(()->{
             Entity childEntity = new EntityBuilder()  //定义子实体
@@ -254,7 +254,7 @@ public class MyDeviceEntities extends ExchangePayload {
   Entity parentEntity = new EntityBuilder(integrationId)
         .identifier("settings")
         .property("settings", AccessMod.RW)
-        .valueType(EntityValueType.STRING)
+        .valueType(EntityValueType.OBJECT)
         // highlight-next-line
         .children(childEntity)  //设置子实体，可以是List<Entity>或是单个实体
         .build();
@@ -458,7 +458,7 @@ integration:
     initial-entities: # initial entities
       - identifier: 'connect' # entity identifier
         name: connect         # entity name
-        value_type: string    # entity value type
+        value_type: object    # entity value type
         type: service         # entity type
         access_mod: RW        # entity access mode
         children:             # children entities
@@ -569,7 +569,7 @@ wrapper.saveValues(Map.of(
 
 如果要获取`entity1`的值，可以使用`getValue`方法
 ```java
-String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1);
+String value = (String) wrapper.getValue(MyIntegrationEntities::getEntity1).orElse(null);
 ```
 
 如果要获取`entity1`和`entity2`的值，可以使用`getValues`方法

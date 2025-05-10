@@ -180,7 +180,10 @@ public class MyIntegrationBootstrap implements IntegrationBootstrap {
 
 ### (可选) 启动你的第一个集成<a id="start-app-with-dev-integration"></a>
 
-**在`beaver-iot-integrations`项目中**，将你的集成模块install。
+**在`beaver-iot-integrations`项目中**，将你的集成模块安装到本地:
+```shell
+mvn install -DskipTests -Ddeploy.skip
+```
 
 **进入`beaver-iot`项目**，将你的集成加入`application/application-standard`依赖列表dependencies中
 
@@ -588,7 +591,11 @@ public class MyIntegrationController {
 
 ## （可选）测试你的集成
 
-**在`beaver-iot-integrations`项目中**，将你的集成模块重新install。
+**在`beaver-iot-integrations`项目中**，将你的集成模块重新install:
+```shell
+mvn install -DskipTests -Ddeploy.skip
+```
+
 
 **进入`beaver-iot`项目**，确保你的集成已经加入到`application/application-standard`的依赖列表dependencies中，并且重新启动它。
 

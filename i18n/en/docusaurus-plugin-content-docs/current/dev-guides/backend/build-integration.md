@@ -182,7 +182,10 @@ when {ProjectName} initializes the integration at startup.
 
 ### (Optional) Launch Your First Integration <a id="start-app-with-dev-integration"></a>
 
-**In the `beaver-iot-integrations` project**, install your integration module.
+**In the `beaver-iot-integrations` project**, install your integration module locally:.
+```shell
+mvn install -DskipTests -Ddeploy.skip
+```
 
 **Go to the `beaver-iot` project** and add your integration to the dependencies list of `application/application-standard`.
 
@@ -583,7 +586,10 @@ public class MyIntegrationController {
 
 ## (Optional) Test Your Integration
 
-**In the `beaver-iot-integrations` project**, reinstall your integration module.
+**In the `beaver-iot-integrations` project**, reinstall your integration:
+```shell
+mvn install -DskipTests -Ddeploy.skip
+```
 
 **Go to the `beaver-iot` project** and make sure your integration has been added to the dependencies list of `application/application-standard` and restart it.
 
