@@ -8,6 +8,8 @@ import {
     IntegrationProjectRepoHttps,
     ProjectRepoSSH,
     ProjectRepoHttps,
+    CodeShellName,
+    CodeWinCmdName,
 } from '/src/consts';
 import { ProjectName, SampleBackendIntegration } from '/src/consts';
 import Tabs from '@theme/Tabs';
@@ -595,6 +597,8 @@ mvn install -DskipTests -Ddeploy.skip
 
 ### Register User
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/user/register' \
 --header 'Content-Type: application/json' \
@@ -604,9 +608,20 @@ curl --location 'http://localhost:9200/user/register' \
     "password": "12#$qwER"
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/user/register" ^
+--header "Content-Type: application/json" ^
+--data-raw "{\"email\": \"john.doe@example.com\", \"nickname\": \"JohnDoe\", \"password\": \"12#$qwER\"}"
+```
+  </TabItem>
+</Tabs>
 
 ### Login User
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://192.168.43.46:9200/oauth2/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -616,6 +631,19 @@ curl --location 'http://192.168.43.46:9200/oauth2/token' \
 --data-urlencode 'client_id=iab' \
 --data-urlencode 'client_secret=milesight*iab'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/oauth2/token" ^
+--header "Content-Type: application/x-www-form-urlencoded" ^
+--data-urlencode "username=john.doe@example.com" ^
+--data-urlencode "password=12#$qwER" ^
+--data-urlencode "grant_type=password" ^
+--data-urlencode "client_id=iab" ^
+--data-urlencode "client_secret=milesight*iab"
+```
+  </TabItem>
+</Tabs>
 
 The response data should look like this:
 
@@ -639,6 +667,8 @@ access_token=***.****.***
 
 ### Get Integration Information
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location --request GET 'http://localhost:9200/integration/[integration-id]' \
 --header 'Content-Type: application/json' \
@@ -646,11 +676,23 @@ curl --location --request GET 'http://localhost:9200/integration/[integration-id
 --data '{
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location --request GET "http://localhost:9200/integration/[integration-id]" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{}"
+```
+  </TabItem>
+</Tabs>
 
 ### Add Device
 
 For a device with IP `8.8.8.8` and name `Test Device`:
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/device' \
 --header 'Content-Type: application/json' \
@@ -663,9 +705,21 @@ curl --location 'http://localhost:9200/device' \
     }
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/device" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"name\": \"Test Device\", \"integration\": \"[integration-id]\", \"param_entities\": {\"[integration-id].integration.add_device.ip\": \"8.8.8.8\"}}"
+```
+  </TabItem>
+</Tabs>
 
 ### Search Devices
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/device/search' \
 --header 'Content-Type: application/json' \
@@ -674,9 +728,21 @@ curl --location 'http://localhost:9200/device/search' \
     "name": ""
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/device/search" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"name\": \"\"}"
+```
+  </TabItem>
+</Tabs>
 
 ### Call Benchmark Service
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/entity/service/call' \
 --header 'Content-Type: application/json' \
@@ -687,6 +753,16 @@ curl --location 'http://localhost:9200/entity/service/call' \
     }
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/entity/service/call" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"exchange\": {\"[integration-id].integration.benchmark\": \"\"}}"
+```
+  </TabItem>
+</Tabs>
 
 You should see logs in the console:
 
@@ -696,6 +772,8 @@ You should see logs in the console:
 
 ### Search Entities
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/entity/search' \
 --header 'Content-Type: application/json' \
@@ -705,21 +783,44 @@ curl --location 'http://localhost:9200/entity/search' \
     "page_size": 100
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/entity/search" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"keyword\": \"\", \"page_size\": 100}"
+```
+  </TabItem>
+</Tabs>
 
 ### Get Entity Value
 
 For example, if the `entity_key` for the entity `[integration-id].device.8_8_8_8.status` has the ID `1879410769126817793`, get this entity's value:
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location --request GET 'http://localhost:9200/entity/1879410769126817793/status' \
 --header "Authorization: Bearer $access_token" \
 --header 'Content-Type: application/json'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location --request GET "http://localhost:9200/entity/1879410769126817793/status" ^
+--header "Authorization: Bearer %access_token%" ^
+--header "Content-Type: application/json"
+```
+  </TabItem>
+</Tabs>
 
 ### Delete Device
 
 For example, if the device ID is `1879410769026154498`, delete this device:
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/device/batch-delete' \
 --header 'Content-Type: application/json' \
@@ -728,5 +829,15 @@ curl --location 'http://localhost:9200/device/batch-delete' \
     "device_id_list": ["1879410769026154498"]
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/device/batch-delete" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"device_id_list\": [\"1879410769026154498\"]}"
+```
+  </TabItem>
+</Tabs>
 
 You can search for devices again to verify if the deletion was successful.

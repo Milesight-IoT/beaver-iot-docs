@@ -8,6 +8,8 @@ import {
     IntegrationProjectRepoHttps,
     ProjectRepoSSH,
     ProjectRepoHttps,
+    CodeShellName,
+    CodeWinCmdName,
 } from '/src/consts';
 import { ProjectName, SampleBackendIntegration } from '/src/consts';
 import Tabs from '@theme/Tabs';
@@ -600,6 +602,8 @@ mvn install -DskipTests -Ddeploy.skip
 **进入`beaver-iot`项目**，确保你的集成已经加入到`application/application-standard`的依赖列表dependencies中，并且重新启动它。
 
 ### 注册用户
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/user/register' \
 --header 'Content-Type: application/json' \
@@ -609,8 +613,21 @@ curl --location 'http://localhost:9200/user/register' \
     "password": "12#$qwER"
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/user/register" ^
+--header "Content-Type: application/json" ^
+--data-raw "{\"email\": \"john.doe@example.com\", \"nickname\": \"JohnDoe\", \"password\": \"12#$qwER\"}"
+```
+  </TabItem>
+</Tabs>
+
 
 ### 登陆用户
+
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://192.168.43.46:9200/oauth2/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -620,6 +637,19 @@ curl --location 'http://192.168.43.46:9200/oauth2/token' \
 --data-urlencode 'client_id=iab' \
 --data-urlencode 'client_secret=milesight*iab'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/oauth2/token" ^
+--header "Content-Type: application/x-www-form-urlencoded" ^
+--data-urlencode "username=john.doe@example.com" ^
+--data-urlencode "password=12#$qwER" ^
+--data-urlencode "grant_type=password" ^
+--data-urlencode "client_id=iab" ^
+--data-urlencode "client_secret=milesight*iab"
+```
+  </TabItem>
+</Tabs>
 
 返回的数据如下
 ```json
@@ -641,6 +671,9 @@ access_token=***.****.***
 ```
 
 ### 获取集成信息
+
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location --request GET 'http://localhost:9200/integration/[integration-id]' \
 --header 'Content-Type: application/json' \
@@ -648,11 +681,23 @@ curl --location --request GET 'http://localhost:9200/integration/[integration-id
 --data '{
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location --request GET "http://localhost:9200/integration/[integration-id]" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{}"
+```
+  </TabItem>
+</Tabs>
 
 ### 添加设备
 
 设备的ip为`8.8.8.8`，名称为`Test Device`
 
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/device' \
 --header 'Content-Type: application/json' \
@@ -665,8 +710,20 @@ curl --location 'http://localhost:9200/device' \
     }
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/device" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"name\": \"Test Device\", \"integration\": \"[integration-id]\", \"param_entities\": {\"[integration-id].integration.add_device.ip\": \"8.8.8.8\"}}"
+```
+  </TabItem>
+</Tabs>
 
 ### 搜索设备
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/device/search' \
 --header 'Content-Type: application/json' \
@@ -675,8 +732,20 @@ curl --location 'http://localhost:9200/device/search' \
     "name": ""
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/device/search" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"name\": \"\"}"
+```
+  </TabItem>
+</Tabs>
 
 ### 调用Benchmark服务
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/entity/service/call' \
 --header 'Content-Type: application/json' \
@@ -687,6 +756,16 @@ curl --location 'http://localhost:9200/entity/service/call' \
     }
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/entity/service/call" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"exchange\": {\"[integration-id].integration.benchmark\": \"\"}}"
+```
+  </TabItem>
+</Tabs>
 
 看到控制台有日志输出
 ```
@@ -694,6 +773,8 @@ curl --location 'http://localhost:9200/entity/service/call' \
 ```
 
 ### 搜索实体
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/entity/search' \
 --header 'Content-Type: application/json' \
@@ -703,23 +784,46 @@ curl --location 'http://localhost:9200/entity/search' \
     "page_size": 100
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/entity/search" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"keyword\": \"\", \"page_size\": 100}"
+```
+  </TabItem>
+</Tabs>
 
 ### 获取实体值
 
 例如，搜索实体获取到列表，其中`entity_key`为`[integration-id].device.8_8_8_8.status`的id为`1879410769126817793`。
 
 获取这个实体的值：
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location --request GET 'http://localhost:9200/entity/1879410769126817793/status' \
 --header "Authorization: Bearer $access_token" \
 --header 'Content-Type: application/json'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location --request GET "http://localhost:9200/entity/1879410769126817793/status" ^
+--header "Authorization: Bearer %access_token%" ^
+--header "Content-Type: application/json"
+```
+  </TabItem>
+</Tabs>
 
 ### 删除设备
 
 例如，搜索设备获取到列表，其中刚刚添加的设备id为`1879410769026154498`
 
 删除这个设备
+<Tabs>
+  <TabItem value={CodeShellName} default>
 ```shell
 curl --location 'http://localhost:9200/device/batch-delete' \
 --header 'Content-Type: application/json' \
@@ -728,5 +832,15 @@ curl --location 'http://localhost:9200/device/batch-delete' \
     "device_id_list": ["1879410769026154498"]
 }'
 ```
+  </TabItem>
+  <TabItem value={CodeWinCmdName}>
+```batch
+curl --location "http://localhost:9200/device/batch-delete" ^
+--header "Content-Type: application/json" ^
+--header "Authorization: Bearer %access_token%" ^
+--data "{\"device_id_list\": [\"1879410769026154498\"]}"
+```
+  </TabItem>
+</Tabs>
 
 可以再次调用设备搜索，检查是否成功删除。
