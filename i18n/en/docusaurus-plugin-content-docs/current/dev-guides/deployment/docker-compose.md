@@ -16,6 +16,10 @@ services:
     restart: always
     ports:
       - "80:80"
+      # Websocket
+      - "8083:8083"
+      # If you want to use the built-in MQTT broker, you need to map port 1883
+      - "1883:1883"
     environment:
       # Configure database connection (using h2 as default)
       - "DB_TYPE=h2"
