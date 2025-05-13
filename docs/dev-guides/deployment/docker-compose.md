@@ -16,6 +16,10 @@ services:
     restart: always
     ports:
       - "80:80"
+      # Websocket
+      - "8083:8083"
+      # 如果要使用内置的MQTT服务, 则需要映射1883端口
+      - "1883:1883"
     environment:
       # 配置数据库文件 (默认使用H2)
       - "DB_TYPE=h2"
