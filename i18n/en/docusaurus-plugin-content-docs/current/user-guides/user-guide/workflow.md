@@ -17,8 +17,9 @@ A workflow is a logical process used to define, manage, and automate interaction
 | --------------- | ------------------------------------------------------------ |
 | Timer           | Trigger the workflow based on the schedule time or cycle. Example: schedule switch. |
 | Trigger         | Trigger the workflow by the Trigger widget on the Dashboards. Example: button switch. |
-| MQTT | Listen for MQTT messages as a server |
-| HTTP in | Listen for HTTP messages as a server |
+| Entity Listener | Trigger the workflow when any entity data changes. Example: threshold alarm. |
+| MQTT Listener   | Work as MQTT broker to listen for incoming MQTT messages to trigger a running workflow. |
+| HTTP Listener   | Work as HTTP server to listen for incoming MQTT messages to trigger a running workflow. |
 
 3. Add other nodes after the start node and connect each node together. 
 4. Double click every node to edit the node content. If delete, right click the desired node and click **Delete**.
@@ -91,6 +92,8 @@ Starting Node:
 | Timer           | Trigger the workflow based on the schedule time or cycle. Example: schedule switch. |
 | Trigger         | Trigger the workflow by the Trigger widget on the Dashboards. Example: button switch. |
 | Entity Listener | Trigger the workflow when any entity data changes. Example: threshold alarm. |
+| MQTT Listener   | Work as MQTT broker to listen for incoming MQTT messages to trigger a running workflow. |
+| HTTP Listener   | Work as HTTP server to listen for incoming MQTT messages to trigger a running workflow. |
 
 External Node:
 
@@ -98,20 +101,21 @@ External Node:
 | ------------------ | ------------------------------------------------------------ |
 | Email Notification | Send email notifications to recipients based on SMTP protocol, the subject and content of Email notifications can be customized. Besides, the Email contents support inserting variables of this workflow. Before sending emails, it is necessary to configure the SMTP client settings. |
 | Webhook Push       | Push the payload values to pre-configured Webhook URL address. If the payload is blank, the workflow will push all output contents from before nodes to the Webhook URL address. |
-| Output             | Allow variables to be output from the current workflow. When using the <b>Service Invocation</b> node in other workflows to call the current workflow, some of these can be set as output parameters (Output Variables). |
-| HTTP               | Allow calling external HTTP APIs. |
+| HTTP Request       | Call the external HTTP API.                                  |
+| Output             | Output the variables of the workflow. This node is available when the start node is Trigger. |
 
 :::info
-If the <b>Webhook Push</b> node has a `SecretKey` specified, the following fields will be included in the request header to verify the legitimacy of the request source:
+If the `SecretKey` is typed in  <b>Webhook Push</b> node, the header of the request will include below fields for legality verification:
 
 * `Signature`
 * `Timestamp`
 * `Nonce`
 
-Verification method:
-* Step 1: `Payload` = ```Timestamp string + Nonce string + Request body string```
-* Step 2: Use `SecretKey` and the **Hmac256** algorithm to calculate the result of `Payload`, and convert it to a Hex string.
-* Step 3: Expect the calculated result to be equal to `Signature` in HTTP header.
+Verification method: 
+
+* Step 1： `Payload` = ```Timestamp + Nonce + Request Body```
+* Step 2： Calculate the result of the `Payload` using `SecretKey` and **Hmac256** algorithm，then convert the result to Hex format strings.
+* Step 3： Check if the calculation result is the same as `Signature`. If yes, the request is judged as legal.
 
 :::
 
@@ -121,7 +125,7 @@ Action Node:
 | ------------------ | ------------------------------------------------------------ |
 | Entity Assigner    | Assign the output values from preceding nodes to selected entities. |
 | Entity Selection   | Select the entities to pass into this workflow to work as the arguments of subsequent nodes. |
-| Service Invocation | Invoke the services from entities. Also can invoke other workflows.                          |
+| Service Invocation | Invoke the services from entities or other workflows.        |
 | Code               | Write code to achieve flexible data process functions. Beaver IoT supports these languages: JavaScript (ES6), Python(2.7), Groovy(4.0.26), and MVEL(2.5.2). Before writing, it is necessary to define the input arguments used in the codes; if you are required to pass the output results to subsequent nodes, it is also necessary to define the output variables. |
 
 Control Node:
