@@ -12,7 +12,7 @@ import {
 # Installation
 
 1. Install [docker](https://docs.docker.com/engine/install/)(version 20.10 or later).
-2. Check if ports `80` and `1883` are occupied by other services on your machine. If they are, please pause these services.
+2. Check if ports `80` and `1883` are occupied by other services on your server. If yes, please pause these services.
 3. <a id="working-dir"></a> Open the command line, navigate to a *working directory*, and execute the following command:
 
 <Tabs>
@@ -34,7 +34,7 @@ It will take about 2 minutes to complete the installation and start the program.
 4. Type [http://[Your-IP-Address]](http://localhost) in your browser to visit the sign  up page to register an account.
 
 :::info
-It is recommended to replace **[Your-IP-Address]** with the current computer's IP address. If using a cloud service, please use the public IP address. Using *localhost* may result in inaccurate information on some pages.
+It is recommended to replace **[Your-IP-Address]** with the current server's IP address. If the cloud service is used, please type the public IP address. Using *localhost* may result in inaccurate information on some pages.
 :::
 
 5. Log in to the Beaver IoT platform using the newly registered account.
@@ -53,9 +53,9 @@ Please check the firewall settings to ensure that other computers can access por
 
 # Upgrade
 
-If a new version is released and you want to upgrade the currently installed version to the latest one while **retaining the original application data**, please follow these steps:
+Follow below steps to upgrade the Beaver IoT while **retaining the original application data**:
 
-1. Stop and remove the running Beaver IoT container.
+1. Stop and remove the running Beaver IoT docker.
 
 ```shell
 docker stop beaver-iot

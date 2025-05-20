@@ -34,7 +34,7 @@ import {
 4. 打开浏览器输入IP地址[http://[Your-IP-Address]](http://localhost)进入注册界面注册账号。
 
 :::info
-建议将这里的<b>[Your-IP-Address]</b>替换为当前计算机的IP地址，如果是云服务，请使用公网IP地址。使用*localhost*可能会导致某些页面的信息不准确。
+建议将这里的<b>[Your-IP-Address]</b>替换为当前服务器的IP地址，如果是云服务，请使用公网IP地址。使用*localhost*可能会导致某些页面的信息不准确。
 :::
 
 5.  使用新注册的账号登录Beaver IoT平台。
@@ -52,9 +52,9 @@ import {
 
 # 更新升级
 
-如果官方发布了新的版本，并且你想在<b>保留原来的应用数据</b>的同时，把原来安装的版本升级到最新版本，那么请参照以下步骤：
+如需升级到最新版本且<b>保留原来的应用数据</b>，请参照以下步骤：
 
-1. 停止并删除运行中的Beaver IoT容器。
+1. 停止并删除运行中的Beaver IoT docker。
 
 ```shell
 docker stop beaver-iot
