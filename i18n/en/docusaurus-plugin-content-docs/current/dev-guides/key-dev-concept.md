@@ -11,7 +11,7 @@ import { ProjectName } from '/src/consts';
 ### Identifier
 An `identifier` refers to the unique name of an object, which must be distinct within the same **namespace**.
 
-It can only contain the following characters: `A-Z`, `a-z`, `0-9`, `_`, `@`, `#`, `-`, `/`, `[`, `]`, and it is recommended to use **Snake Case (lowercase letters with underscores, such as `foo_bar`)** for naming.
+It can only contain the following characters: `A-Z`, `a-z`, `0-9`, `_`, `@`, `#`, `-`, `/`, `[`, `]`, `:`, and it is recommended to use **Snake Case (lowercase letters with underscores, such as `foo_bar`)** for naming.
 
 * For **integrations** the namespace is **global**, meaning that different integrations within a single {ProjectName} application instance cannot have duplicate integration `identifiers`. Generally, all {ProjectName} integration `identifiers` should be unique.
 * For **devices**, the namespace is the **integration to which the device belongs**, meaning that each device within an integration should have a unique `identifier`, but device `identifiers` can be duplicated across different integrations. If integrating with third-party platforms, it is recommended to use the third-party platform's device identifier as the `identifier` to facilitate mapping between the integration and the corresponding device on that platform.
