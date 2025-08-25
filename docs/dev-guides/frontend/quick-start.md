@@ -67,8 +67,12 @@ cat ~/.ssh/id_rsa.pub | pbcopy
 cd beaver-iot-web
 
 # 配置提交的用户名及邮箱
-# 若本地已配置，可跳过
-# 若需全局修改，可增加 --global 参数
+
+若本地已配置，可跳过
+
+若需全局修改，可增加 --global 参数
+
+```
 git config user.name xxx
 git config user.email xxx@milesight.com
 ```

@@ -68,8 +68,11 @@ Add the generated and copied SSH public key to Github under `Settings -> SSH and
 cd beaver-iot-web
 
 # Configure the commit username and email
-# Skip if already configured locally
-# Add --global parameter to modify globally
+
+Skip if already configured locally
+
+Add --global parameter to modify globally
+```
 git config user.name xxx
 git config user.email xxx@milesight.com
 ```

@@ -91,12 +91,13 @@ The `pom.xml` file for the module should be as follows:
     <parent>
         <groupId>com.milesight.beaveriot.integrations</groupId>
         <artifactId>integrations</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>${revision}</version>
     </parent>
 
     <!-- highlight-next-line -->
     <artifactId>[integration-id]</artifactId>
+    <name>[integration-name]</name>
+    <description>[integration-description]</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -117,14 +118,6 @@ The `pom.xml` file for the module should be as follows:
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -207,7 +200,7 @@ mvn install -DskipTests -Ddeploy.skip
         <dependency>
             <groupId>com.milesight.beaveriot.integrations</groupId>
             <artifactId>[integration-id]</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <!-- highlight-end -->
         <!-- ... -->
