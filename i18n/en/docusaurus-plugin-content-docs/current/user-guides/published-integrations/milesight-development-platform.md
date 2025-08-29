@@ -18,7 +18,29 @@ Beaver IoT has equipped with Milesight Development Platform integration to get d
 
 4. Enable the **Webhook** option of both platforms, paste the Secret key from the application of Milesight Development Platform to Beaver IoT, and paste the Webhook URL from Beaver IoT to Milesight Development Platform, then save the settings.
 
+   :::note
+
+   - Before configuration, ensure Beaver IoT supports external network access.
+     :::
+
    ![Integration-2](/img/en/integration-2.png)
+
+## Add Devices
+
+Beaver IoT supports adding devices to Milesight Development Platform while adding devices.
+
+1. Go to **Device** page of Beaver IoT platform, click **+Add** to add a device.
+
+2. Select the integration as **Milesight Development Platform**, and fill in a customized device name and device SN.
+
+   :::note
+
+   - Beaver IoT does not support to add demo devices.
+     :::
+
+3. Click **Confirm** to save the above settings.
+
+   ![Choose-an-app](/img/en/integration-platform-add-end-device.png)
 
 ## Sync Data
 

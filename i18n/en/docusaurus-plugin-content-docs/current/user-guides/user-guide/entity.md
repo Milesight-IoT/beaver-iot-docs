@@ -30,11 +30,11 @@ Beaver IoT supports to add and manage **Property** type entities for workflow ap
 
 ### Delete Entity
 
-**Delete one entity:** Click **Delete** icon of desired entity to delete this entity.
+**Delete an entity:** Click **Delete** icon of desired entity to delete this entity.
 
 ![Delete-single-entity](/img/delete-single-entity.png)
 
-**Delete entities in bulk:** check the boxes of desired entities, click **Delete** button on the top to delete these entities. 
+**Delete entities in bulk:** check the boxes of desired entities, click **Delete** button at the top to delete these entities. 
 
 ![Delete-entity](/img/delete-entity.png)
 
@@ -62,4 +62,18 @@ Click **Detail** icon of desired entity to view historical data.
 2. Select the time range of data, click **Confirm** to export the data as CSV format files.
 
    ![Export-entity-data-range](/img/export-entity-data-range.png)
+
+
+
+### Tag Management
+
+1. Check the box of desired entities, click **Tags** button.
+
+2. Choose to add, cover, remove, or replace tags on the target entities.
+
+3. Click <b>Confirm</b> to save the settings.
+
+   ![entity-tag](/img/en/add-tag-to-entity.png)
+
+
 

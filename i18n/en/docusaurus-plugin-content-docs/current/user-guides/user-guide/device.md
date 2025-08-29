@@ -6,21 +6,40 @@ sidebar_position: 2
 
 Before adding devices, ensure the Beaver IoT is integrated at least one Integration.
 
-1. Go to **Device** page, click **Add** to add a device.
+### Add a Device
 
-2. Select the Integration, customize the name of the device. 
+1. Go to **Device** page, click **+Add**.
+
+2. Select the Integration and enter the device name, then configure the parameters according to the integration type (refer to the corresponding integration documentation in details) . 
 
 :::note
 
-- For Milesight Development Platform integration, Beaver IoT supports to type device SN to add real physical devices to both Milesight Development Platform and Beaver IoT platform together. 
 - Beaver IoT does not support to add demo devices.
   :::
 
+3. (Optional) Select the device group to add.
+
 3. Click **Confirm** to save the settings.
 
-   ![Add-device](/img/add-device-1.png)
+   ![Add-device](/img/en/add-device-single.png)
 
-   
+### Add Devices in Bulk
+
+1. Go to **Device** page, click **+Batch Add**.
+2. Select the Integration, click **Download Template** to get the template file.
+3. Type and save the template file.
+
+:::note
+
+- Beaver IoT does not support to add demo devices.
+- The template file supports creating new device groups directly by filling in device group parameters.
+  :::
+
+4. Upload the template file, click **Confirm** to add devices in bulk.
+
+![Add-device-in-bulk](/img/en/add-device-in-bulk.png)
+
+5. After adding devices in bulk, the addition results will be displayed. If any devices fail to add, you can download a file containing error information to investigate the cause of failure.
 
 ## View Device Details
 
@@ -37,10 +56,35 @@ To view device details, go to the following tabs:
 
 ## Delete Device
 
-Click **Delete** icon of desired device to delete this device.
+**Delete a device:** Click **Delete** icon of desired device to delete this device.
 
 :::note
 If the integration defines the device not support to delete manually, the icon will not display.
 :::
 
 ![Delete-device](/img/delete-device.png)
+
+**Delete devices in bulk:** check the boxes of desired devices, click **Delete** button at the top to delete these devices. 
+
+![Delete-device-in-bulk](/img/en/delete-device-in-bulk.png)
+
+
+
+## Device Group Management
+
+**Add a Device Group**：Click **+** icon to add a new group, enter the group and click **Confirm** to save the settings.
+
+![Add-device-group](/img/en/add-device-group.png)
+
+**Rename and Delete Group**：Select target group, click below icon to rename or delete this group.
+
+![Delete-device-group](/img/en/rename-delete-device-group.png)
+
+
+
+## Change Device Group
+
+1. Click **Change Group** icon of desired device, or check the boxes of desired devices, click **Change Group** button at the top. 
+2. Select the device group to move, or mark the device as ungrouped. 
+
+![Change-device-group](/img/en/change-device-group.png)
