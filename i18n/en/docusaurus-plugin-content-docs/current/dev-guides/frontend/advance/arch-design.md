@@ -6,7 +6,7 @@ sidebar_position: 21
 
 Based on [Clean Architecture on Frontend](https://dev.to/bespoyasov/clean-architecture-on-frontend-4311) and concepts from Domain-Driven Design (DDD), this project has adopted the following layered architecture:
 
-![Frontend Layered Design](./arch-design-en.png)
+![Frontend Layered Design](/img/en/arch-design.png)
 
 Through data modeling, domain models are established. Based on these domain models, domain services are constructed. Application services and business logic belong to the application layer, which depends on domain services and domain models.
 
