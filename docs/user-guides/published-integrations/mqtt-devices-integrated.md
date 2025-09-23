@@ -134,42 +134,42 @@ Beaver IoT可通过设备模板将不同设备上报的数据格式解析为实�
    | 参数             | 是否必选 | 描述                                                         |
    | ---------------- | -------- | ------------------------------------------------------------ |
    | definition       | 是       |                                                              |
-   | input            | 是       | 定义上行数据的JSON格式                                       |
-   | type             | 是       | 固定为object                                                 |
-   | properties       | 是       |                                                              |
-   | key              | 是       | JSON数据项名称                                               |
-   | type             | 是       | JSON数据类型，可选项：object, long, double, boolean, string  |
-   | required         | 否       | 是否一定会上报，可选项：true, false                          |
-   | entity_mappingg  | 否       | 映射到实体的identifier值                                     |
-   | is_device_id     | 否       | 表示这个key是device id, 可选项：true, false                  |
-   | is_device_name   | 否       | 表示这个key是device name 可选项：true, false                 |
-   | properties       | 否       | 当这个key的数据类型是object时，定义下一级参数                |
-   | output           | 否       | 定义下行数据的JSON格式                                       |
-   | type             | 是       | 固定为object                                                 |
-   | properties       | 是       |                                                              |
-   | key              | 是       | JSON数据项名称                                               |
-   | type             | 是       | JSON数据类型，可选项：object, long, double, boolean, string  |
-   | entity_mappingg  | 否       | 映射到实体的identifier值                                     |
-   | value            | 否       | 这个key固定的值                                              |
-   | properties       | 否       | 当这个key的数据类型是object时，定义下一级参数                |
+   | &nbsp;&nbsp;&nbsp;&nbsp;input            | 是       | 定义上行数据的JSON格式                                       |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | 是       | 固定为object                                                 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | 是       |                                                              |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key              | 是       | JSON数据项名称                                               |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | 是       | JSON数据类型，可选项：object, long, double, boolean, string  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;required         | 否       | 是否一定会上报，可选项：true, false                          |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entity_mappingg  | 否       | 映射到实体的identifier值                                     |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_device_id     | 否       | 表示这个key是device id, 可选项：true, false                  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_device_name   | 否       | 表示这个key是device name 可选项：true, false                 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | 否       | 当这个key的数据类型是object时，定义下一级参数                |
+   | &nbsp;&nbsp;&nbsp;&nbsp;output           | 否       | 定义下行数据的JSON格式                                       |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | 是       | 固定为object                                                 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | 是       |                                                              |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key              | 是       | JSON数据项名称                                               |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | 是       | JSON数据类型，可选项：object, long, double, boolean, string  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entity_mappingg  | 否       | 映射到实体的identifier值                                     |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value            | 否       | 这个key固定的值                                              |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | 否       | 当这个key的数据类型是object时，定义下一级参数                |
    | initial_entities | 是       | 定义设备实体的格式                                           |
-   | identifier       | 是       | 实体的标识符                                                 |
-   | name             | 是       | 实体的名称                                                   |
-   | value_type       | 是       | 实体数据类型，可选项：object, long, double, boolean, string  |
-   | type             | 是       | 实体类型，可选项：property, service, event                   |
-   | access_mod       | 是       | 实体的访问类型，可选项：R，W，RW                             |
-   | attributes       | 否       | 实体属性值                                                   |
-   | unit             | 否       | 单位                                                         |
-   | fraction_digits  | 否       | 小数位数，仅double类型使用                                   |
-   | max              | 否       | 最大值，仅long或double类型使用                               |
-   | min              | 否       | 最小值，仅long或double类型使用                               |
-   | max_length       | 否       | 最大长度，仅string类型使用                                   |
-   | min_length       | 否       | 最小长度，仅string类型使用                                   |
-   | enum             | 否       | 枚举映射，值为`key: value`形式的列表                         |
-   | format           | 否       | 该值为`HEX`时，内容为Hex字符；该值为`IMAGE: BASE64`或`IMAGE: URL`时，内容为图片 |
-   | default_value    | 否       | 默认值                                                       |
-   | optional         | 否       | 可选项：true, false                                          |
-   | children         | 否       | 子实体列表                                                   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;identifier       | 是       | 实体的标识符                                                 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;name             | 是       | 实体的名称                                                   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;value_type       | 是       | 实体数据类型，可选项：object, long, double, boolean, string  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;type             | 是       | 实体类型，可选项：property, service, event                   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;access_mod       | 是       | 实体的访问类型，可选项：R，W，RW                             |
+   | &nbsp;&nbsp;&nbsp;&nbsp;attributes       | 否       | 实体属性值                                                   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit             | 否       | 单位                                                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fraction_digits  | 否       | 小数位数，仅double类型使用                                   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max              | 否       | 最大值，仅long或double类型使用                               |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min              | 否       | 最小值，仅long或double类型使用                               |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_length       | 否       | 最大长度，仅string类型使用                                   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min_length       | 否       | 最小长度，仅string类型使用                                   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum             | 否       | 枚举映射，值为`key: value`形式的列表                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format           | 否       | 该值为`HEX`时，内容为Hex字符；该值为`IMAGE: BASE64`或`IMAGE: URL`时，内容为图片 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default_value    | 否       | 默认值                                                       |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optional         | 否       | 可选项：true, false                                          |
+   | &nbsp;&nbsp;&nbsp;&nbsp;children         | 否       | 子实体列表                                                   |
 
    
 

@@ -134,42 +134,42 @@ Beaver IoT supports parsing data formats from devices with different reporting f
    | Parameter        | Required | Description                                                  |
    | ---------------- | -------- | ------------------------------------------------------------ |
    | definition       | Yes      |                                                              |
-   | input            | Yes      | Define the JSON format of the uplink content                 |
-   | type             | Yes      | The value is fixed as object                                 |
-   | properties       | Yes      |                                                              |
-   | key              | Yes      | JSON data item name                                          |
-   | type             | Yes      | JSON data type，Options: object, long, double, boolean, string |
-   | required         | No       | Whether is key definitely be reported，Options: true, false  |
-   | entity_mapping   | No       | The identifier value mapped to the entity                    |
-   | is_device_id     | No       | Whether this key value is device id, Options:：true, false   |
-   | is_device_name   | No       | Whether this key value is device name Options: true, false   |
-   | properties       | No       | When the key type is object, the define the next level parameters |
-   | output           | No       | Define the JSON format of the downlink content               |
-   | type             | Yes      | The value is fixed as object                                 |
-   | properties       | Yes      |                                                              |
-   | key              | Yes      | JSON data item name                                          |
-   | type             | Yes      | JSON data type，Options: object, long, double, boolean, string |
-   | entity_mapping   | No       | The identifier value mapped to the entity                    |
-   | value            | No       | The fixed value of this key                                  |
-   | properties       | No       | When the key type is object, the define the next level parameters |
+   | &nbsp;&nbsp;&nbsp;&nbsp;input            | Yes      | Define the JSON format of the uplink content                 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | Yes      | The value is fixed as object                                 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | Yes      |                                                              |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key              | Yes      | JSON data item name                                          |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | Yes      | JSON data type，Options: object, long, double, boolean, string |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;required         | No       | Whether is key definitely be reported，Options: true, false  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entity_mapping   | No       | The identifier value mapped to the entity                    |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_device_id     | No       | Whether this key value is device id, Options:：true, false   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_device_name   | No       | Whether this key value is device name Options: true, false   |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | No       | When the key type is object, the define the next level parameters |
+   | &nbsp;&nbsp;&nbsp;&nbsp;output           | No       | Define the JSON format of the downlink content               |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | Yes      | The value is fixed as object                                 |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | Yes      |                                                              |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key              | Yes      | JSON data item name                                          |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type             | Yes      | JSON data type，Options: object, long, double, boolean, string |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entity_mapping   | No       | The identifier value mapped to the entity                    |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value            | No       | The fixed value of this key                                  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;properties       | No       | When the key type is object, the define the next level parameters |
    | initial_entities | Yes      | Define the format of device entities                         |
-   | identifier       | Yes      | Entity unique identifier                                     |
-   | name             | Yes      | Entity name                                                  |
-   | value_type       | Yes      | Entity data type，Options: object, long, double, boolean, string |
-   | type             | Yes      | Entity type，Options: property, service, event               |
-   | access_mod       | Yes      | Type of access，Options: R，W，RW                            |
-   | attributes       | No       | Entity attributes                                            |
-   | unit             | No       | Unit                                                         |
-   | fraction_digits  | No       | Decimal places, double type use only                         |
-   | max              | No       | Maximum value, long or double type use only                  |
-   | min              | No       | Minimum value, long or double type use only                  |
-   | max_length       | No       | Maximum length, string type use only                         |
-   | min_length       | No       | Minimum length, string type use only                         |
-   | enum             | No       | Enumeration values，the value is a list which the format is `key: value` |
-   | format           | No       | When the value is `HEX`, the content is HEX characters; when the value is `IMAGE: BASE64` or `IMAGE: URL`, the content is picture |
-   | default_value    | No       | default value                                                |
-   | optional         | No       | Options: true, false                                         |
-   | children         | No       | Children entity list                                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;identifier       | Yes      | Entity unique identifier                                     |
+   | &nbsp;&nbsp;&nbsp;&nbsp;name             | Yes      | Entity name                                                  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;value_type       | Yes      | Entity data type，Options: object, long, double, boolean, string |
+   | &nbsp;&nbsp;&nbsp;&nbsp;type             | Yes      | Entity type，Options: property, service, event               |
+   | &nbsp;&nbsp;&nbsp;&nbsp;access_mod       | Yes      | Type of access，Options: R，W，RW                            |
+   | &nbsp;&nbsp;&nbsp;&nbsp;attributes       | No       | Entity attributes                                            |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit             | No       | Unit                                                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fraction_digits  | No       | Decimal places, double type use only                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max              | No       | Maximum value, long or double type use only                  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min              | No       | Minimum value, long or double type use only                  |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_length       | No       | Maximum length, string type use only                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min_length       | No       | Minimum length, string type use only                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum             | No       | Enumeration values，the value is a list which the format is `key: value` |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format           | No       | When the value is `HEX`, the content is HEX characters; when the value is `IMAGE: BASE64` or `IMAGE: URL`, the content is picture |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default_value    | No       | default value                                                |
+   | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optional         | No       | Options: true, false                                         |
+   | &nbsp;&nbsp;&nbsp;&nbsp;children         | No       | Children entity list                                         |
 
    
 
