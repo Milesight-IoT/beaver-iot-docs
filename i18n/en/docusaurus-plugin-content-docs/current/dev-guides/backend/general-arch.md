@@ -10,7 +10,7 @@ import { ProjectName } from '/src/consts';
 ![Functional Architecture](/img/en/functional-arch.png)
 > The image illustrates the conceptual architecture. Some components are continuously being refined.
 
-- **Data Layer**: The data storage layer, including relational databases and NoSQL (time-series databases). It supports out-of-the-box in-memory databases like H2 and Postgres SQL.
+- **Data Layer**: The data storage layer. It supports Postgres SQL and out-of-the-box databases like H2.
 - **Core Layer**:
     - **Data Exchange**: Core support capabilities, including rule engines, dynamic scripts, event buses, and other essential functionalities. It also includes connectors built on these core capabilities to support device data upstream and downstream business scenarios.
     - **Standards/Specifications**: The {ProjectName} platform defines standards and specifications for integrated development, including basic standards, integration standards, entity standards, SPI standards, and more, to standardize integrated service development.
