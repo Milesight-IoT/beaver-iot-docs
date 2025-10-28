@@ -1,0 +1,72 @@
+---
+id: update-group
+title: "编辑分组"
+description: ""
+sidebar_label: "编辑分组"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVc1uFDkQfhWrTiA1JOGy0twIARRpD6sscIlGUaVdmTZ028aunmRo+bZaceXCy+xq32YFj4HK7plpJZMwYi7TdlfVVz9ffT2AJh+oRiYNsytsI1WgKdbBeDbOwgygAsZFhNn5vAKPATtiCnIewGJHMINFcL2/MBoqMOLikRvYESfQx94EQeLQUwWxbqhDmA3AKy+BjGVaUICUqk3w5z03LphPmOOMCA2hprALg26w8604HhMGCmoYsK4pxgt2H8imBDtwIwdjFzncFfYtP+Cd0rwUQpGPnV5JlNpZJsvyiN63ps65HryPktQwgbvb2YLvLt9TzVCBD85TYENRzEsHdmV5K0xn7O9kF9zA7KiCDm82p2e/pTRt/HkJOq+ADec2vQiETCe0NDW9lkGeleIgpeIavbOxJPTs8HBnGXs34OF6NfI9U5ninY0ZqRMxTxVERu7jzx3XpajRIW0GKdzdwz3bKqPFk0Jw4aJ2eo8JvRRbJbbqUSDugyWtnG1X6rohq7ghdSs3ZaJ6haYl/XgL1lGMuNgbbzT/RUhNjKbdH/Mk25NWOVc1eamMvXKhK/srlFozbz1IWaN3bmxrWd88zaPMnb7rMKwKz5bY9rRlilyth7/Wl/U0sxZMZrQ9b0oCuFsmZNqnalQYySMfI9V9MLwqMiikzfWcClLvNXLZHdlF4sbJte8zw0ULZ3Cg84I9yVJ5MOS/U53FiMKy6Ol8C/OnbEzuQqpA1uhsqzgv1wq3kchxJEnE8crlWY0tPiZcUlCn7s0u2RDccjh6evj0UAJ4F7lDOwn+7d+v3//78v/nv7/989ftIBPpm6gZ0w0f+BaNlYh9aMWw9OEcpn2ACmZjJ0SRGhdZTIbhEiO9DW1Kcv2xpzD2fYnB4KVUdj6ANlGe7/luTVN7dDbq32N1X5bjJdrVlmZS0gdaTT9wab6hRs6hvH5RkJ68kSBb9ztSKF+14vG8rsnzg7bzCZX+eCvzuxw/N10hdMBr4Txel0xdLjwvTr4boEW76AurS0j5/QDpm8DF
+sidebar_class_name: "put api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"编辑分组"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/device-group/{groupId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"group_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":"","minLength":1,"maxLength":127}},"required":["name"],"title":"CreateDeviceGroupRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

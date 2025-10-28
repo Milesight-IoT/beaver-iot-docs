@@ -1,0 +1,72 @@
+---
+id: parse-batch-file
+title: "解析excel文件"
+description: ""
+sidebar_label: "解析excel文件"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVs2O2zYQfhWBpxbQ2t6gaFHfstkECBCgi2x6MgxjTM1azIqkQo4cqwbPvfbUYy899A166esEQR6jGFK2tStnbeRkU5yZb36+meFWFFg7lEBYiOkdVB5zUaCXTtWkrBFTIXJBsPJiOpvnogYHGgkdn7fCgEYxFc8bKq1Tv0FUyYVivRKhQCeOmMMN6LpixSsEhy7bbkFK9H5B9h5NCCIXXpaoQUy3gtqaRT05ZVbR3B00FT2hHcI8Fw4/NOjpyhYtW5HWEBriv7qpSNXgaHxnnb4ogCLOANEu36MkkYva2RodKfR8qwzhyqVQB+6FXNwpDm3oN4MBu71UBlwrQkhOKsepnz2w21mZh5CkfG2NT/DPJhP+GSS1FyDUdaVktDR+75Ob50a3y8ZD+287D7Jrvs5P2JAOgXBR4FpJXHSF8D1scA5a5gmh9kM0afVIqwq9WpU0WiKs0SlLo2RwpG2B1agzO3oRwa7j1dv07aSDibbHqPUoqRo2b9CsqBTTH38I+dO1H+iHXBDqugI6By3kYuVsUy++xbvLZz+FrjsXaEjtyzlo5ScTc4/tSYpwVIpi+95je/lzJPLuy8uNLMGs8AbaykIxIHmM7WEe5wftY7UMxxLl7MeFKp5iVPc9AqE7ZqXndUJ8ozzdloh0A87jjvKs6gmo8adrsmvUrFMI+zH00NuvqkfZTBWsic5Zt5C2OIMML1k2Y9nsO4fUOINFZk3VZh9LNBmVmD3yLVM+ewWqwuL7A5hG72F1Nl4n/o2QBRKo6nzM6yiPRRZ9zXqXmTJpuLJgv667GvISOFXjbinFKl/GidlozXM6ts0aqgb78/FrM+6wFB/RPHXffhzwqd/ufB62b+rHkBZax/nZZN6jJOv1ORb3a485h/M+0UIMk8/9EHdN2to+oebCo2ycojZtf54CMZrXjFRzCq+AZPmKl1UuNFJp442NQ7gGHk1inJJ0sWTRcdTiBY9unZ4R8wPMLW+p3ZThqkZadNW8iosge23fHRuGbCwdLkeT0YRLym5oMIeJL7788/fnv/7AjcTq85+/f/rv38eWeg+F3rQk3NC4rkAZNtu4igVTdDPRjy4V0SMPtZKTMJ2J7XYJHn91VQj8+UODrkvnGpyCJcc2m+9THykU6y5eJFcu3rEXew4efb+EfKf0XEqsqSc+eA0wmfaluvnlltO57J5JOpGGDRdp1e//spMh/A9vdI7M
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"解析excel文件"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device-batch/parse"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"multipart/form-data":{"schema":{"type":"object","properties":{"integration":{"type":"string"},"file":{"type":"string","format":"binary"}},"required":["integration","file"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"create_device_requests":{"type":"array","items":{"description":"com.milesight.beaveriot.device.model.request.CreateDeviceRequest","type":"object","properties":{"name":{"type":"string","description":"","maxLength":64},"integration":{"type":"string","description":""},"template":{"type":"string","description":""},"group_name":{"type":"string","description":"","maxLength":127},"param_entities":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key19"}},"title":"ExchangePayload"}},"required":["name","integration"],"title":"CreateDeviceRequest"},"description":""},"row_id":{"type":"array","items":{"type":"integer"},"description":""}},"title":"DeviceListSheetParseResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyDeviceListSheetParseResponse"},"examples":{"1":{"summary":"","value":{"data":{"create_device_requests":[{"name":"","integration":"","template":"","group_name":"","param_entities":{"key":{}}}],"row_id":[0]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

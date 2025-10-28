@@ -1,0 +1,72 @@
+---
+id: get-integration-detail
+title: "获取集成详情"
+description: ""
+sidebar_label: "获取集成详情"
+hide_title: true
+hide_table_of_contents: true
+api: eJytV0tv20YQ/ivEnBKAkOWiKArdrFgNVLhWIDsJAkMQVtyxtDHJZXaHahSCp6JFT2lPvfTea4/9RQ3Sf1HMLiVREmWzSU987Lznm8cWIDEzGAlCCb1bEVsMQaKNjMpI6RR6ACGQmFvo3YBKCedGuINJCJkwIkFCw4cFpCJB6NWJpkpCCIqlZIIW0CDa4JtcGVZOJscQbLTARECvAFplLM6SUekcyjLcaDjLaaGNeucNqRQsUEg0TSrwrUiymBn7KAyaoChEFKG1U9J3mJYlHFfL4m5FHtM93GU5YT9splOLlmV80e3y48CSSKeEKfGZyLJYRc6Dk9eWCYpDI/TsNUYEIWRGZ2hIefFSkDiUP64sCM75OHxAhpLNzu5YXIagIm/bw5Q+OW0od/60YRBSTiUuVYRTi8Y973DVVpmjj3TuA19xOJQ24+VWm0SQp/nqS5aBKSlafZ4MiTESfrIb9apy5lR5rDiFMWLFpUCY2ENsRDrpJCpGq+YL6sxQLNEoTZ2a1E6iJcadNY47w+3RwLn/v8Kqtd/tUeUpHqTkbOYJd7Nn49Gzwfj6FYRwNRi/GD4ZQAiDF4PLa5iUISxFnONUEBk1ywkbC/r+YOw62UzEhity3ekOV6dfc6Pb/PlOZCPPtbHnP3t5dT0eXj6FEC5G7nE+et6/YE/7o9HF4OyS34aXZ2MOw6j/7eCJ977qcYluk9CttjGE8BJCGL90UjJhcKdk7smf869NvD67odQi3IzyBiXNPOdIQsVrHkuCcvuwBesaCyqG0o9BtDRtUz8VbaCk603GaDONtGwBiwHTBkwbPDJIuUlRBjqNV8H3C0wDWmCwZ1ugbPCNUDHKx1tlCVor5q31VeSfqFK6ELfX6VOCMnC2BrXDQKW+LTNhPaHrydnXcnU0udUW4dJ76qZ1niTCrDz+N+Bdz2ZOJB/4+clv1fLSVD3H5psnrs+v7v4w6t47WZwFjZPjZmvihnJrYRViaOyCvq2Vey3J+VFrGvy9Lv96hBpqa1KrnfVOuC4G11xqEN9+bxDho7SLEq7Ykk30a6HrHPxpMcqNohX0biYhcF9xgRmypjnSQfYhhARpoatz5xMtoAcntbCeFLWPoXT7JJql34snW6VXvN+tuxiD0aG5AmHfDeVgqK+bEMLC/Mdpp9vpMiAzbSkRruFVifv4/q+/f/ntn99/+vDzrx///OPDDz/uiyq2K2gtzYRv6SSLhUpZbm5iJvR+7u78IfR2POVLwEJbYrqimAmLz01clvz7TY6mivJSGCVm7ORNAVJZfj9y2ajb92hcXQ0eB8dMXS8/6WoLsC2i9y4iDmbVLYEt8URnUYQZ1dgPFnPe7jcYeDq4hrL8F/wRiN4=
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取集成详情"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/integration/{integrationId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"integration_id","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"id":{"type":"string","description":""},"icon":{"type":"string","description":""},"name":{"type":"string","description":""},"description":{"type":"string","description":""},"add_device_service_key":{"type":"string","description":""},"device_count":{"type":"integer","description":"","format":"int64"},"entity_count":{"type":"integer","description":"","format":"int64"},"delete_device_service_key":{"type":"string","description":""},"integration_entities":{"type":"array","items":{"description":"com.milesight.beaveriot.integration.model.response.IntegrationEntityData","type":"object","properties":{"id":{"type":"string","description":""},"key":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"parent":{"type":"string","description":""},"value":{"type":"object","properties":{},"description":""},"description":{"type":"string","description":""}},"title":"IntegrationEntityData"},"description":""}},"title":"IntegrationDetailData"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyIntegrationDetailData"},"examples":{"1":{"summary":"","value":{"data":{"id":"","icon":"","name":"","description":"","add_device_service_key":"","device_count":0,"entity_count":0,"delete_device_service_key":"","integration_entities":[{"id":"","key":"","name":"","type":"","value_attribute":{"key":{}},"value_type":"","access_mod":"","parent":"","value":{},"description":""}]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

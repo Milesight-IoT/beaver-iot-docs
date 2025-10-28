@@ -1,0 +1,72 @@
+---
+id: set-home-dashboard
+title: "仪表盘置顶"
+description: ""
+sidebar_label: "仪表盘置顶"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVMFu00AQ/ZXVnFrJalKOubUqiJ5AbeFSRdXEO4m3tb3u7jg0WPsfSJx6Qxw4ckH8DVLhL9CsnThKUlrhi73rmXnzdt6+BjRVjlJk0jCaYu4pAU0+daZiY0sYASTAOPMwuhwnUKHDgpicrBsosSAYgUafTSw6fWU0JGAkrULOYEctR7e1cYLGrqYEfJpRgTBqgBeVFDMl04wchJCsAI5qzqwzHzHW6RAyQk1uFwbdYVHlknhM6MippsE0Je+v2N5QGQLswPXsTDmL5aZY5/yP7BDGQsRXtvTkpcaL4VBeW52ktmQqWf5hVeUmjQwG114Cmu0m7OSaUoYEKmcrcmza8hr5kVbX8c66jtSJhIcEPCPX/unEJRXVJYR2TORZBvqM9BirjJZMcs66q9RqejrzpcQqiVV7jrh2JWlly3yhPmRUKs5IbfSmjFev0OSk93uwgrzH2bPxuvD/hNTEaPLnY57EeNIq9qrWfipTTq0rWlGHkAAbjqpdDvLY6sV72x1rq+k4zcOonboo0C1anc0xr6lXimwth7+8dMtpxguyNqN+vaIEsE0TIMiTdNdO+ohLT2ntDC9afxDRRj6nguSJX9uCTpb2AAkUxJmVf5X1UediEyMYrCxk0Kw+T3UYZLYgIUNu3prOuIc8l9sTTySIJUxtHEZ3hseEc3Lq1F7scggp1i4OD4YHQzlgaajAeC071/n14+vv+y8Pnz89/Pz25/77Zp2mv93RJFsVMN3xoMrRlFK0drkEtiwve6OEBEZrPCGBSHQsb88S2jQT9PTO5SHI9m1NrjvjOTqDEyF52YA2Xr4fMe/1FvfOOufdV491221iueglJdRuaLHp8mG8kkLsow05SlOqeC15y/TEOVcaePvm/AJC+AsIM0Se
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"仪表盘置顶"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/dashboard/{dashboardId}/home"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"dashboard_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

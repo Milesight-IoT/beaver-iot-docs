@@ -1,0 +1,72 @@
+---
+id: get-children
+title: "Get Entity Children"
+description: ""
+sidebar_label: "Get Entity Children"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9V22P2jgQ/ivRfGqliGVPp9OJb8suXXHaWyqWtjohhEwyS9xN4tSecE1R/vtp7AQMpC2sqvuU2J7Xx/PmLcRYaIwEYQyDZ5EaDCFGE2lZkFQ5DABCILE2MJgvQiiEFhkSal5vIRcZwgAwJ0nVUsYQgmSeQlACHYI0fimlZlWkSwzBRAlmAgZboKpgSTInXKOGug530m9KSpSW34SV02hIUMSou3TgV5EVKTMOUWjUwXYrogiNWZJ6wbyuoUOvIS3ztRX3LMqUfsBd1wt2xBQqN2hYxm/9Pn9OLIlUTpgTn4miSGVkPbj6bJhge2qEWn3GiCCEQqsCNUknPhbkUwmtRcUwEGamU+9PxOFGRrh04HYBcCCtDt2daGv7BVz7mLiEvME6U+ewMVeZwWAOUwjhE4Qw/QSLvbAXrC5S7ggvUPt+Onk/ms7+gRCeRtOP49sRhDD6OHqc+WZcjFkhNOZ0Od9GpCUuBZGWq5LwFbFxiFg3UR0CSbIJ9oLV9Z+cq7udv0UxcVzHZl0M7tNsOn68hxAeJvZzN/kwfGCAh5PJw+jmkf/GjzdTRn8y/Gt0ewC6NMuoNKQy+Q39WFoplaLIfwRjpJHL4VJQR2HqMPhZ6YxpmeaP3z1BZRH/GkEHlBcERCoIDbkLOI+xKQ5rrcriFfFzbrafG9peZI2sS3fWvntrnpe4tj+dWyEjlfUymaKR64R6KxQb1FJRz5brr9TLVIxpz+mbifX/7vTRzjkMkUqVfhWg7OCxxi66adPwTonbk+CO+1QdgiFBpfm5NW0PDRqG2s0HHLHnQNrQBjK2kaC10stIxWdAPGLagGmDNxqp1DnGgcrTKvg3wTygBIMj2wJpgndCphi/3SvL0BixPltfQ/5KlTGSkOn5Ou8sPcaBtTXwDgOZu0LDhP5Ftxc5VHH1IA2dXnwzWtm7vbYjTJllQleuNOzKjBtY5kejBkDXKOEq/m5U8Jb+KOBt2xblrRsY4KjdehsH7dTb72iXrv/V3b3LN/WwuzRzc0f/6Hc2g353ZfcUHFZugNPK3KLVunVcDeenJB0tpykcAPWCx9o2ddtZvc1Fa5mXYfv1LiCd+MMg5UJSM5puWrfTAy8NRqWWVLk3BddSGxJj1rRGuk1kGmvkJp0hJarZ5sLL74oBXDlPr7buO47rq2jPY1Bv3ANlsVf1xMN2O79wBtgUaiJ/aHtAMFazLoxYmFtc9/q9PiNdKEOZsMW5AfceKXAJE3jmHxXy3YPA66Tccq6KVMicBZc6ZULn57y5UQhh0HrKd9bKX4SQKENMuN2uhMEPOq1r3v5Som7Q3QgtxYrd5ISUhv+/89TzDXwzbZ5qb4Pv2dp227zaJz875jJ0n9T1YhcB1gh3fhNFWJDHefJE4oDc3f/9aAZ1/R8rgwnM
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Entity Children"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/{entityId}/children"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"entity_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"device_name":{"type":"string","description":""},"integration_name":{"type":"string","description":""},"entity_id":{"type":"string","description":""},"entity_access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"entity_key":{"type":"string","description":""},"entity_type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"entity_name":{"type":"string","description":""},"entity_parent_name":{"type":"string","description":""},"entity_value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"entity_value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"entity_is_customized":{"type":"boolean","description":""},"entity_created_at":{"type":"integer","description":"","format":"int64"},"entity_updated_at":{"type":"integer","description":"","format":"int64"},"entity_description":{"type":"string","description":""},"entity_latest_value":{"type":"string","description":""},"device_group":{"description":"","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""}},"title":"EntityDeviceGroup"},"entity_tags":{"type":"array","items":{"description":"com.milesight.beaveriot.context.model.EntityTag","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""},"description":{"type":"string","description":""},"color":{"type":"string","description":""}},"title":"EntityTag"},"description":""}},"title":"EntityResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListEntityResponse"},"examples":{"1":{"summary":"","value":{"data":[{"device_name":"","integration_name":"","entity_id":"","entity_access_mod":"","entity_key":"","entity_type":"","entity_name":"","entity_parent_name":"","entity_value_attribute":{"key":{}},"entity_value_type":"","entity_is_customized":false,"entity_created_at":0,"entity_updated_at":0,"entity_description":"","entity_latest_value":"","device_group":{"id":"","name":""},"entity_tags":[{"id":"","name":"","description":"","color":""}]}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

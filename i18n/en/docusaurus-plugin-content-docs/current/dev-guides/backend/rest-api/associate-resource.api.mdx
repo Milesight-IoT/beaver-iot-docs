@@ -1,0 +1,72 @@
+---
+id: associate-resource
+title: "Add Resource Permission"
+description: ""
+sidebar_label: "Add Resource Permission"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVtFu2zoM/RWBTxvgJd199Fu6ZnfBLprBzTYMQVAoFptosy2Pkttlhv59oGQn7pK2wc1LLJniIXmoQ7egsCbMpUMF6Z0sLCag0Oaka6dNBSlAAk5uLKTLVQK1JFmiQ+J1C5UsEVIgU+CtVpCA5hO1dFs44YbwZ6OJgRw1mIDNt1hKSFtwu5r96MrhBgm8T/a+J43bGtK/ZfDTIWxRKqRTGPhLlnXBBy9REpJoW5nnaO2tMz+w8h5O4FpHutoEd3eyKdwzp71fxUTQukujduwlN5XDyvGjrOtC5yHW8XfLQbUDuOPCRnyz/o65gwRqMjWS02jZnNCahvK46EwlkdxxGRyW9thnbspRqQu0erN1ozXKeyRt3KixSKPSKCxGXfCjzBSYdQhZv9etXwxNq9Ple5Sf7728aJkAVk0J6RKm14vZ4hskcDX9Mns3hQRm14vpv9lkMZtf8/bk5sPlfJJdQQJf59nH9//Nv8LKM5R2gfd9Dv44oKHZcfrgPVsQ2tpUNib6z8XFSebO5vz5OirpnmjEIV7WRSSu2NwnYJ10jX35YJ+K6A74fe/ensNgZyu04pNIZOg2N+oMRqdsK9hWvCJ0DVWohKmKnXjYYiXcFsVfsQltxXupC1SvD2AlWis3Z+N15v8TUqGTujgf8yrYoxIhVjF4KXR1Z6iMkvVXb4YAWDm+mK6sUbECm29D7zRlKWkX++xeFg0eOoW3evJ7Se3ZDNdowNFhvU8J4DhNCG3vk05UOY6wtJg3pN0uCj83bchnxkjSWpNr6XAgGCW6reGXtbGh0XkKpDBm6RnzhLDjlv9myo/359/QwYFFuo+DZXVAv+GLFIrjE+DblR20d9pr/SOpXEZ1OrDWsdgpi195HiJ3JhDc8XIZhFLMzOKUNnFUcfF2dDG6YNI4x1KGq97PKaVEXw3xCanU1saJ9cjfYFoMBoDDX25cF1JX7Lyhgg1jAZfABWSquYSQQBqLCAmcqOIqgS2XP11C266lxc9UeM/bPxukjst7SVquOfFlC0pbfn5i+g/DfZV18/u1eCryfkhVu0Prcpo/cDf4TAgUdCOcQ4hv30WgNwv2cTh9pK78bRBPTPIca/es7WrQl5/mN0zvupvaZbwkJB+4uPIhRmpC4nH88l4Lhaw2Tbwp0Sf//gB2tyxn
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add Resource Permission"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/roles/{roleId}/associate-resource"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"resources":{"type":"array","items":{"description":"com.milesight.beaveriot.user.model.request.RoleResourceRequest.Resource","type":"object","properties":{"id":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["ENTITY","DEVICE","INTEGRATION","DASHBOARD","WORKFLOW"]}},"title":"Resource"},"description":""}},"title":"RoleResourceRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

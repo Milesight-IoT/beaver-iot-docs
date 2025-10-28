@@ -1,0 +1,72 @@
+---
+id: create-entity
+title: "Create Custom Entity"
+description: ""
+sidebar_label: "Create Custom Entity"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlV99v4kYQ/leseWol90Kq66niLRC3osqFyOHuVCGEFnuAvdi7vt1xEg75fz/Nrm1MoAm5a5+al2Azv/ab75sdtpBiYTARhCn0lyKzGEKKNjGyIKkV9AFCILGy0J/OQiiEETkSGn7eghI5Qh8uSlprI78K5xKCZL81ihQNHAmHjyIvMnYcoDBogu1WJAlaOyd9h6qqIASbrDEX0N8CbQo2tWSkWrlwS1Fm9Ix3Vc1CMPilREsDnW44SqIVoSL+KIoik4mr9eyz5aK2nXT71dZRggWHCZta9OIzJgQhFEYXaEiiZVeZoiK5lGiO1/0Ehlw8XqFa0Rr6v/WqEOpT5Do9yR1VmUN/CjGE8AlCiD/BrGpKfIX/TTy+ieLJ3xDCbRR/HA0jCCH6GF1PXDzf4tcd593bKoR7kZU4F0RGLkrCQ2xfxPMON53Mx434xJIcme5wc/47VJ0370Ux9l5tPa+G53YSj67/hBCuxu7f5fjD4IohGozHV9HFNX8aXV/EjN948Fc09LDdSysXWTfVQusMhTrMVTlZoaL5DxGoc+5IkaTN0KAgjD2DoarYwqAttLIe3197vaNdOVkrz7cvFXREUXFdQXDJX78sqU4eqQhXx0fKUptckLd595Yh3SfPP4F4OsH/A2n9O4L/f+ssKS3pXH7F9ESpJU4V6VzQ9zKrLNIfjLBn8jLzDpT9Hkk0OuJ4lgSV9uVQjfqD2qFqr8m5PIGDzWUoU/ZEY7SZJzo9oc8R2wZsG/xkkEqjMA20yjbBwxpVQGsMntQWSBv8IWSG6c+7ZDlaK1Yn56vNvzNliiRkdnrOS2ePaeBqDTpfBlJ5DrBht5tND3lJOd7ZelVyvT13w7fMc2E2nllOat1Ry13s1bOPDer9bDcBYH/qtEH254cfCNUTMburoSO3elvsCqq3r47eMQE2ZOVwXfa5YdDh1O65bQHAYVvA3WxVWO+bblbxo8WkNJI2fm/lSebwH3EmfzMG6CDnixRp7eAotHWTT/CdCmetgUVz73fe2S7yLd+DzXDkyzHerZxRs+Lub4U77ux1Id41qHNl1M1rXU5vVDtL2y2ETIlH14wmfMVb+1I7mtfsHKC4RxOM9OTYVGM8/MP5m96bnttitKVcuJFW114DPXSsCaIGzifzr903OkQlfKSzIhNSuZFrMjb0fZlC3ZdZCGtuWH8K2+1CWPxgsqri119KNHXn74WRwmEwnbUscT9evEqGPvkvE87bSupw8anCxuMiSbCgZ21nHU7djG8ZwEX9QyT35DbigfkvHvyptQPDydy920Im1Kr0DPcx+e8btT2c/g==
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create Custom Entity"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"request body","type":"object","properties":{"identifier":{"type":"string","description":"","maxLength":50},"access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"name":{"type":"string","description":"","maxLength":64},"value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"visible":{"type":"boolean","description":""},"parent_identifier":{"type":"string","description":"","maxLength":50}},"title":"EntityCreateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"id":{"type":"integer","description":"","format":"int64"},"key":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"customized":{"type":"boolean","description":""},"created_at":{"type":"integer","description":"","format":"int64"},"updated_at":{"type":"integer","description":"","format":"int64"},"description":{"type":"string","description":""}},"title":"EntityMetaResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityMetaResponse"},"examples":{"1":{"summary":"","value":{"data":{"id":0,"key":"","name":"","type":"","access_mod":"","value_attribute":{"key":{}},"value_type":"","customized":false,"created_at":0,"updated_at":0,"description":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

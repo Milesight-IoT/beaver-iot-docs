@@ -1,0 +1,72 @@
+---
+id: update-customized-entity
+title: "Update Custom Entity"
+description: ""
+sidebar_label: "Update Custom Entity"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVlFv2zgM/isCnzZAt6aHYTjkrWm9Qw5dU7jphkMRBIrNJlpty5Pktpmh/36gZCdO4rXZ9nJ5iS1TJPXxI/XVkGKpMREWUxjei8wghxRNomVppSpgCMDBiqWB4d2MQym0yNGipvcaCpEjDAELK+16LlPgIGlPKewK9h0FKza+AA4av1VSU0yrK+RgkhXmAoY12HVJLmVhcYkanOObMGeVXSktvwvvsAm1QpGiPggGHPBZ5GVGG0coNGpW1yJJ0Ji5VQ9YOAc9cY3Vslh6d/eiyuwLu52bhYOgsSOVrslLogqLhaVHUZaZTHyuJ18NJVV3wu1m23hhC3LD21zU4ismFjiUWpWorURDWwMafRnvAZCL50sslnYFww/vHYdHkVU4F9ZquagsHqbxaugHXHci9xs5DlZaj/sDrk//ohJuVj6JchJ2dVcjz4xPKpX36zhAAc6RhUZTqsKE6H8OBr05Hw36y4dLhe0pTdxkwC7o82sAybSHwz2luVc6FzbYfHgPju9B+6OiOn5s+V2b6hFEwaLKYXgH1/HkOoqn/wKHmyj+PD6PgEP0ObqawsxxaPifq/SnvMbA4QtwiL94L/8vFrb5/DRWN9N4fPU3cLic+L+Lye3okvAaTSaX0dkVPY2vzmICczL6JzoPGCaVsSqX37GL4UKpDEXRW8REIw3nubC/yqyqTH/Tw47J68w77Gy0ou0j8messJV53VXb/azZ4Dbzdi6P4GA7VWVKO1FrpeeJSo+oc0S2jGzZG4220gWmTBXZmj2tsGB2hWwvNyYN+yhkhunbbbAcjRHLo+M15r8YMkUrZHZ8zAtvjynzubLORyaLwAEy7FazrSHddv2Vbe5cX9tTP3yrPBd6HZjlW607aqmKg2b2kUFz0W8nAOxOnY2T3fkRBoLba2Z/NXTarVE33YYa7HbHoK8BW7IC7LLPD4MOp7bvmxIAHJYF/M3meCNc/KyiV4NJpaVdB51Fk8zjP6ZItz5Htj0MC1qK7ni0K49MWfkZSMJrCCfh+0kd/sep1zqoH4Nwm23D3dDl2E5MujHjraCJWgG1UWAbKr1QBEfC7F55Aja8GaF4RM3Gato3byip8HL6bvBuQJiXythcFJ3IDQTnHgIWtcffm0wbJdChkMVne1JmQhZ+GOqMDANOd7DBcdgiBTMOK2Usfa3rhTB4qzPnaPlbhbqpz6PQUizocHc1pNLQ8w8EdDerN3Gje9+yrhruzbRZFMV62zl0rNAsW8ntZhsy+WzC9/MQ848pednuP9BHJK/DjrMkwdK+aDvr8O36loq5aHRvHlpAiyfqEvEUUlUeAj8M/FoNmSiWVeiD4JJ+/wHxwkMh
+sidebar_class_name: "put api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update Custom Entity"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/entity/{entityId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"entity_id","in":"path","description":"entity ID","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"request body","type":"object","properties":{"name":{"type":"string","description":"","maxLength":64},"value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"}},"title":"EntityModifyRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"id":{"type":"integer","description":"","format":"int64"},"key":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"customized":{"type":"boolean","description":""},"created_at":{"type":"integer","description":"","format":"int64"},"updated_at":{"type":"integer","description":"","format":"int64"},"description":{"type":"string","description":""}},"title":"EntityMetaResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityMetaResponse"},"examples":{"1":{"summary":"","value":{"data":{"id":0,"key":"","name":"","type":"","access_mod":"","value_attribute":{"key":{}},"value_type":"","customized":false,"created_at":0,"updated_at":0,"description":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

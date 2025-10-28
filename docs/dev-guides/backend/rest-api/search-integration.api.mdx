@@ -1,0 +1,72 @@
+---
+id: search-integration
+title: "搜索集成"
+description: ""
+sidebar_label: "搜索集成"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVs1u20YQfhViTi3AykpR9KBbnB/AQIAWcXoSBGHEHYubkLvM7lCOSvAa5Jh7c8oz5Jkc5C2C2SUlWlItIvHFIvebv2++nWEDiipHGTIpmN1g4SkFRT5zumJtDcwAUmBce5jNQRumtcNwsEihQoclMTk5bMBgSTCDxzXn1ul/IywFLU5yQkUOTvimd1hWhRheEjpySdNglpH3S7ZvyLQtpOCznEqEWQO8rQTq2WmzDu5usC74Aeu2XaTg6G1Nni+t2oqXzBomw/ITq6rQWcj14rWXpJpBuGMmYny7ek0ZQwqVsxU51uQjfKMzWqJSuJKSdvmurC0IzXH9bdobKSqIR5u1KbDmQNs1ocvyq31rXsZioW0F5shX1viY4O/T6cmyRhNypn7kIQqdw60ogKn0x3EzW05KXZDX65wnK8INOW15MlDZpLSKiklfw+RErfHkqUQ+1x6tTkvosCM6i2WfR0bJj0HeezPGAJVadtLw5ML/N7QdGyzgM1vHnnYWgdjTt/DGuhI5Yv78Q3yQYc3bn/HxsEYHfTukB/rTpD/2jFz788X3Qkk6g3Z39Zdjmt9hE60CA85Zt8ysGtHiZ4JNBJv84ohrZ0gl1hTb5DYnk3BOyUFuifbJc9QFqV/3wUryHtej43XwHwypiFEX42M+DXhSScg1GRwm2sTmC3DY976RMnhfaM9nddBtg9DqR2H01GWJbhsVtsGipv2gmccrLSfxysqvbgudEuj/XakIHl6Z6aH+p7JFehUKfiirsMYGYtk/77iNIe7zDWFCt2m3HKXm8Ogpq53mLczmixRkgAWqriSSPyQQUiiJcyuHlfVh6CHnMIOLwRy9iHaySslt4sJe7CNdy3wPpLcpyNB/ud+Xz/r9fLze2NV0an/Jexmj5sYGVXViuAwTPrmyr041R7KKD48m08lUxCD1lBjmZdfVu4+fvn75/O2/93cfPh46Gaz1waZmescXVYHaiMfaFQKMDN3/nkk7buXDJhciZ3NomhV6+scVbSuv39bkuq5s0OlY7Hyx62BQZFTUk5jKb68ki51wj5drm/YWj7OMKn4Quxj0+u+/roXGVfdFU0bhObwVbeJt5MAGasJlCu8aKNCs66i+6FP+vgNzvoBt
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"搜索集成"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/integration/search"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"device_addable":{"type":"boolean","description":""},"device_deletable":{"type":"boolean","description":""}},"title":"SearchIntegrationRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"com.milesight.beaveriot.integration.model.response.SearchIntegrationResponseData","type":"object","properties":{"id":{"type":"string","description":""},"icon":{"type":"string","description":""},"name":{"type":"string","description":""},"description":{"type":"string","description":""},"add_device_service_key":{"type":"string","description":""},"device_count":{"type":"integer","description":"","format":"int64"},"entity_count":{"type":"integer","description":"","format":"int64"}},"title":"SearchIntegrationResponseData"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListSearchIntegrationResponseData"},"examples":{"1":{"summary":"","value":{"data":[{"id":"","icon":"","name":"","description":"","add_device_service_key":"","device_count":0,"entity_count":0}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: delete
+title: "Delete Tag"
+description: ""
+sidebar_label: "Delete Tag"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVcFu2zAM/RWBpw3wlnTH3Nq1A3ra0Ga7BEHB2kys1rZcik6bGfr3gZKTGEvXBsspUh5F8vHxpYeCWqYchQqYrbDylEFBPmfbinUNzAAyEFx7mC2WGbTIWJMQ67mHBmuCGZx3Ujq2vzGGZGA1riQsiOGV5+gF67bSwAtCJjZ9j3lO3t+Je6QmBMjA5yXVCLMeZNsq1AvbZh2fW2FXyRvRISwzYHrqyMuFK7b6Su4aoUb0K7ZtZfNY6+TBa1H9KN1x8ym/u3+gXCCDll1LLJa8wm3hR0UiM26VAKF6fG8boTUxhCM2QshArEQ2rhqxsp3j+pIqErpJHUAICmLyrWt8yvplOn211pO7fLupAuUf1I/z3QwVmUuFhwy8oHT+/cBdK2YICPtp3dnilPCINbbQSGJ2fJe7gt6PvFKsUaz5wCQdN1QY11Rb81xSY6Qk81dtxnrzDW1FxcdDspq8x/XJ+Qb4f6YsSNBWp+e8jHgqTKzVjH40tlk5rtOSjnW3G6Tuyi830Jp2NE7zLGqnq2vkbdLZBquODkrRq93w9ft4mnHhRzM6nPctARy3CVH2IRtsROuIR095x1a2yY5UtLGfa81UxLWBDGqS0ulN63xUN0oJM5hQXLCJ2tlkD/bEm+Rny8Pzt7opsfuQga7PzcFOrnb2NWz/YroM6nkrF6czkHpBuCE2127+mgVqxnQ4+zz9PFXGtdYa454OtppswMzxaMojPxtZlNCLTNoKbaPvdVwpMPW+gNT7zsyzHVnLDEolabaAvr9HTz+5CkGvnzrigeYNssV7bWux3I8k/gE8kiriayrm01zr2Kvj2IJCtos4z3Nq5U3scjTHH99vlcb7wczrpCTGZxUbPicWXCQnKjbe9VBhs+6SnNKb+vkDYkRmTQ==
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Tag"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity/tags/delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"ids":{"type":"array","items":{"type":"integer"},"description":""}},"title":"EntityTagDeleteRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

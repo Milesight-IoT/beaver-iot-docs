@@ -53,13 +53,21 @@ const config: Config = {
         id: "api", // plugin id
         docsPluginId: "classic", // configured for preset-classic
         config: {
-          beaver: {
-            specPath: "examples/beaver.openapi.json",
+          beaverCn: {
+            specPath: "open-api/beaver.openapi.zh-Hans.json",
             outputDir: "docs/dev-guides/backend/rest-api",
-            sidebarOptions: {
-              groupPathsBy: "tag",
-            },
-            showSchemas: true,
+            showSchemas: false,
+            hideSendButton: true,
+            // disableCompression: true,
+            // showExtensions: true,
+          } satisfies OpenApiPlugin.Options,
+          beaverEn: {
+            specPath: "open-api/beaver.openapi.en.json",
+            outputDir: "i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api",
+            showSchemas: false,
+            hideSendButton: true,
+            // disableCompression: true,
+            // showExtensions: true,
           } satisfies OpenApiPlugin.Options,
         }
       },

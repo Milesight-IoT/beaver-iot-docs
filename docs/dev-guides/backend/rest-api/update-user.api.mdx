@@ -1,0 +1,72 @@
+---
+id: update-user
+title: "更新用户信息"
+description: ""
+sidebar_label: "更新用户信息"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVb1uG0cQfpXFVDZwESUBQgBWsfwDCHARKFIagRCGdyPeWne7p905Scxhi3R5gMCNK3fp4sJAyryMQb+GMbtH8ixRMm1W3L2Z75vfbzsoqHGUI1MB4wusPGVQkM+dblhbA2OADBhnHsZnkwwadFgTk5NzBwZrgjG0nty5LiADLR4NcgkbYBxdtdoJEbuWMvB5STXCuAOeN4KjDdOMHISQrbCftVxap//AiNMzlIQFuU0cdIt1U4njIaEjp7oO85y8P2d7SSYE2MDr2Wkzi3AX2Fb8iHcIk5QIeT60xVxQcmuYDMtfbJpK5zHW0RsvQXUDuvuFTfx2+oZyhgwaZxtyrMmLOdWoq81h3sGptXlNZsYljA8yqPF2edo/OMjgwroaJakEGDIwOr9M9f0+8L2vwPf2fw5h2NaznmFAMMmANceGnDYFMp16csepfhBC8veNNT7lvL+7u7FSW9f48ZIWyA80fsh33EekXoh5yMAzcuu/7bhMRfUOYTUrsh5buEdbpQvxJOesO89tsUWbXoqtElv1xBG3zlChrKnm6qYko7gkdSc2pb16hbqi4umarCbvcbY1X2/+g5QFMepqe84X0Z4KFWNVg49KmzTjYigjtRy5ZSNlU3+3fVmTQsRu7sXZaesa3TzN2TVWLa0nRa6WzV9K2LKbUW4GPVqfVykB3E8T4tiHrBcxiSMePeWt0zxPQitDG/M5EqZ2tTqyj8SlldumjQMuajuGkYjwqKZ6Ss6POjkdFVHtyF0nvZ6sSX6TfYk1CBnIEh2vJe3lUkJXChQF/pe+cDu5rYcbvupXEHG+sLGRff0PCa/JqSN7sklYJKx02NvZ3dkVgMZ6rjGudA++ePdx8fbD57//Wfz136f/3y/+/Pcu1ECAB5rKdMujpkJtBLd1UUhTrc5iPrGSsVqQwTjVS+SqtJ7Fpuum6OnUVSHI9VVLru/NNTqNU0nwrINCe/n/wOs5jO3JcS+UT9VDYfaXaObrUZScLmk+eGbDZDU9MYT09Xki+ulEMNbe99RS3tbk8SzPqeFHbSeDcfv1VLo47R+9Os28wxtZC7xJgdqYd9yteNdBhWbWpsFPkPL7Avb67sc=
+sidebar_class_name: "put api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"更新用户信息"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/user/members/{userId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"email":{"type":"string","description":"","minLength":5,"maxLength":255,"format":"email"},"nickname":{"type":"string","description":"","minLength":1,"maxLength":127}},"required":["email","nickname"],"title":"UpdateUserRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

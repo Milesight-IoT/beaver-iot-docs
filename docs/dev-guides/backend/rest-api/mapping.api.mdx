@@ -1,0 +1,72 @@
+---
+id: mapping
+title: "实体标签变更"
+description: ""
+sidebar_label: "实体标签变更"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vc1uGzcQfpXFnFqAjdbtTTc7VgEDDRwojnsQFsJ4OZaY7JIbkitbWfDcYw+5FCgQ5AWSU67p0zTpaxRDrqSNrTpGg+i0HM3/fPNNB5IaSyV6kjC+xMqRAEmutKrxymgYAwjwuHAwnhUCGrRYkyfL7w401gRjOGz90lj1EqOJAMV2S0JJFva4o2usm4oNjwgt2azrsCzJubk3z0mHAAJcuaQaYdyBXzes6rxVehHdXWJb+TusQygEWHrRkvNHRq7ZS2m0J+35E5umUmXMdfTMcVLdINzt4lN8c/GMSg8CGmsasl6RY3X+TmXvTfVm5bqtYTyDw+NjEHB6Ppn+Oj05m4CA6eTR6Xn6ePzL4cMJFIHVvfLruZJu4B2txTU32VM9lCvtaUEWwq24gbtRmxXJucfFV7sTUCt9ktQPBNR43T9+yvMgAKX81oEO8hDShJVl3M4GY/isa4UAr3yE2iRKz3DxCJtG6cU04QNCSL5cY7RLM/0xz/ci4d4YuhsyEv1/AHsYb9pnlB2zehDgPPrWfdlwU0rWG4TtLsyVvI951M2UZEuy1th5aSR92XLCuhnrZt9Z8q3VJDOjq3V2tSSd+SVlN3LLlMt+RlWR/H4XrCbncHHveL36/wwpyaOq7h/zOOqTzGKu2eDPTOlLY+sEQobUBnibQTITnZu+rYkB4zQPInbauka7TjhbYdXSDiks2gyfv4fTjKQymNHuvS0J4HaZEGEfRE/SnEd8Oipbq/w6kf12qU44Up32hreS/NKwqDEuwhv9EsYwSos34msx2mk7sqt0L4pdgCe8K7H+IIAXaLqj68nmPHzGrj1nDilxlhd7mC1Kb5DQLGc65QnFEfeTOSJckc1OzNk+ruak0+PgQf4g57FxvTXGZe8v38d3r//+8OrTm9/+efvXx9//+PTn+5uuBqdncE08XftRU6HS7Le1FSumPs76Gjd3V2w7XwhYcsfHM+i6C3T01FYhsPhFS7Yf2gqtwguub1ZsBxyP9XNifD1M2fxwxolssXab0ILYWByWJTX+Tt1iAIrHp0+4nxf94a0TLi1eMXTxKrXBxO5E/EdZBxXqRZvAmXzy71+PsvvY
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"实体标签变更"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity/tags/mapping"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"operation":{"type":"string","description":"","enum":["ADD","OVERWRITE","REMOVE","REPLACE"]},"entity_ids":{"type":"array","items":{"type":"integer"},"description":""},"removed_tag_ids":{"type":"array","items":{"type":"integer"},"description":"","minItems":1,"maxItems":300},"added_tag_ids":{"type":"array","items":{"type":"integer"},"description":"","minItems":1,"maxItems":10}},"required":["operation","entity_ids"],"title":"EntityTagMappingRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

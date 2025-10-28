@@ -126,7 +126,7 @@ Action Node:
 | Entity Assigner    | Assign the output values from preceding nodes to selected entities. |
 | Entity Selection   | Select the entities to pass into this workflow to work as the arguments of subsequent nodes. |
 | Service Invocation | Invoke the services from entities or other workflows.        |
-| Code               | Write code to achieve flexible data process functions. Beaver IoT supports these languages: JavaScript (ES6), Python(2.7), Groovy(4.0.26), and MVEL(2.5.2). Before writing, it is necessary to define the input arguments used in the codes; if you are required to pass the output results to subsequent nodes, it is also necessary to define the output variables. |
+| Code               | Write code to achieve flexible data process functions. Beaver IoT supports these languages: JavaScript (ES6), Python 3, Groovy(4.0.26), and MVEL(2.5.2). Before writing, it is necessary to define the input arguments used in the codes; if you are required to pass the output results to subsequent nodes, it is also necessary to define the output variables. |
 
 Control Node:
 

@@ -1,0 +1,72 @@
+---
+id: generate-template
+title: "批量添加设备模版下载"
+description: ""
+sidebar_label: "批量添加设备模版下载"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNU01PFEEQ/Sukzg27eJwbqAdOGsDTZmJqe4qdhpnpprtmZZ3MGdGDf0ETD564qjH4awTxX5jq3oUFNsQ5TKZ66uPVe687KMh50shUQHaAVSAFBQXtjWNjG8gAFDBOAmSjXIFDjzUxeYk7aLAmyGCr5dJ68xZjiQIjdSVhQR5WtKMTrF0lhduEnvxa16HWFMJrtkfU9D0oCLqkGiHrgGdOUgN700xiuwNsK36kuu9zBZ6OWwq8bYuZdNG2YWpYPtG5yuiIdXAYBFS3NO7h8mm+HR+SZlDgvHXk2VCQdNMwTXxafCXYO936PgEzXuge3anOFbDhRAuyLp/R1Gjap9pVyLSb1oG+Tz2Cs01IEJ4MhyuB//fKc9DoPc5EPaY6LJ1HkOQj+Ll08fdm7NLWNfpZmjjFqiXIRsM8wUwWkOQYBtKtNzxLVhIWI6KdAjKYUCPhzb6goCYurfxzNkTikUvIYFBEYtbHQtKAb/MD+WkyZn47a0+2jHh7BbL67q0vni98eE/GhXy9OPnARioWyhBOya/t2P1VxpbxKdjcGG4MpYFgrzESPr8sV2c//p5+vPr28/L9p+vzX5dfTq++fv5z9u739w/XFxf32y45d8mMTCc8cBWaRma0vpLExM8IlvmRkgVDuYJSmMxG0HVjDPTKV30vx8ct+bkqU/QGx7LrKL9RMN71IxKVnyY06/sC5Ebxhwbr1aJiS2ty/GhuviT2yxd7wu14fm9rW0iNxzeg4jvSYCM70YXxrIMKm0mLE8lNPeX5BwcquB4=
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"批量添加设备模版下载"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device-batch/template"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"integration":{"type":"string","description":""}},"required":["integration"],"title":"BatchDeviceTemplateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"integer"}},"examples":{"1":{"summary":"","value":[0]}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

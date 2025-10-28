@@ -1,0 +1,72 @@
+---
+id: get-user-permission
+title: "获取用户权限"
+description: ""
+sidebar_label: "获取用户权限"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVc2O2zYQfhVhTgnAxpseffNmndRosQ68ToPCMAxamrWYSKQypHbjCjz10lPbQ1Ggh977Bnmi5uctiiFlS9n1btzqJJIz881889dAhhVhKh1mMLyUhUUBGdqUVOWU0TAEEODkxsJwsRRQSZIlOiQ+N6BliTCE2iKtVAYCFGtU0uVwwAzhm1oRAzmqUYBNcywlDBtw24rtKO1wgwTei73tUe1yQ+pHGey0CDnKDOkQBr6VZVWw4ilKQkqaRqYpWrty5jVq7+EArnWk9CaYu5R14e7R9n4ZA0HrTk22ZSup0Q61419ZVYVKg6+DV5adanpwt4mN+Gb9ClMHAioyFZJTaFmc0JqaUlxFsUPu3oxe1yUMFzA+n0/mP4CAs/H3kydjEDA5n4+fzUbzyfScr0cX35xOR7MzEPByOvv26XfTl7D0ooNU2RGA3gtwygW6X1ik50ilslYZPYsMgfc+Wq2MtjGqr09ODnJxNIv3k5ZJd4DrWetBcsbPXyJe2VUu7arah9ODXRtToNT/jYwIDl6AddLV9svc7ihLWgW/r7qjUtPKJipjTSQytEpNdkQVjVk2YdnkAaGrSWOWGF1sk+scdeJyTG74liibPJWqwOxhB1aitXJzNF4r/j8hM3RSFcdjngV5zJLga9J7TJS+NFTGYdPP6C6H3PN3Z7edPiG/j0PV1mUpaRsr/EoWNfZr9ECdhRHcq5Pd3NwlPnR5L53deR89wG1GIHSiF+3kZAfD0WJak3LbON25B0LoE0baoPs8UhBQossNP1bGhr7hUT+EAW+AQYnlGskOGj5NMj+o+qoW6SrujWWHe8FdHfjyArjVZ91oHe9G+a1J2M23z+bVLt2et8SlCXXQpu8U5RVSMjHzQ2OT/YqHx49OHp2wAY6vlKHx20X08Zd3//z6x4ff/37/87v3f/306c/fbprqbYLecHf41g2qQirNdmsqWDDytgibM9AamAMBw8gdU9uRtxSQM9/DBTTNWlp8QYX3fP2mRmqTdyVJyTVHu2ggU5b/79jpfUcfzNqt/DC5y+f2UuptV8Qc4Gvc9pa/X+7LK7gQX59EoK/mbKPTvjXheeNHjVGaYuXulV32CvH59IJzum53cRm7guQ1V4e8jp6aEHhcqnzXQCH1po6tEW3y9y94ZidR
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取用户权限"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/members/{userId}/permission"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"resource_type":{"type":"string","description":"","enum":["ENTITY","DEVICE","INTEGRATION","DASHBOARD","WORKFLOW"]},"resource_id":{"type":"string","description":""}},"title":"UserPermissionRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"is_has_permission":{"type":"boolean","description":""}},"title":"UserPermissionResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyUserPermissionResponse"},"examples":{"1":{"summary":"","value":{"data":{"is_has_permission":false},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

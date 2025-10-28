@@ -1,0 +1,72 @@
+---
+id: get-children
+title: "获取实体子节点"
+description: ""
+sidebar_label: "获取实体子节点"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9V0+P20QU/yrWO7WSlWQRQii3zW5YBS2bKpu2QlEUTey38XRtjzvzHJpGvvTIAZCQOPIN4Io48G1Y0Y+B3oydOInbJivEyZ6Z9/c379+sIcRMYyAIQ+jeidigDyGaQMuMpEqhC+ADiYWB7mTqQya0SJBQ83oNqUgQuoApSVrNZAg+SObJBEXQIEjj61xqVkU6Rx9MEGEioLsGWmUsSaaEC9RQFP5G+nlOkdLyrbBySg0RihB1kw58I5IsZsYeCo3aW69FEKAxM1L3mBYFNOg1pGW6sOLuRB7TR7iLYsqOmEylBg3L+KzT4c+BJYFKCVPiM5FlsQysB+1XhgnWh0ao+SsMCHzItMpQk3TiQ0F1KqG1WDEMhIlp1PsJcbiUAc4cuE0A7EgrfHcn2tp+Atc2Jk4hL7FO1DFszJUn0J3ACHx4CT6MXsJ0K+weVycpd4QnqH02Gj7rj8bfgg+3/dGLwUUffOi/6N+M62acjFkmNKZ0Ot9SxDnOBJGW85zwEbGxi1gzUeEDSbIJdo+rsy85Vzc734hs6Lj2zToZ3NvxaHBzBT5cD+3ncvi8d80A94bD6/75Df8Nbs5HjP6w93X/Ygd0aWZBbkgl8i3WY2muVIwi/RiMgUYuhzNBDYWpweA7pROmZZovPq8JyrPwvxG0Q3lCQMSC0JC7gOMYy+Kw0CrPHhE/x2b7saFdi6y+denS2ndlzaslru1Px1bIQCWtRMZo5CKi1hzFErVU1LLl+g21EhVi3HL6xmLxvzu9t3MMQ6BipR8FKDu4r7GJblQ2vEPi6sS75D5V+GBIUG4+bU3VQ72SoXDzAUfsMZCWtJ4MbSRorfQsUOEREPeZ1mNa74lGynWKoafSeOV9F2HqUYTenm2eNN5XQsYYPt0qS9AYsThaX0n+SJUhkpDx8TovLT2GnrXVqx16MnWFhgnrF11dZE+Fq2tp6PDiy9HK3u2ZHWHyJBF65UrDpsy4gWWyN2oANI0SruJvRoXasj4K1LZti6qtSxhgr93WNnbaaW2/oV26/lc09666qbvdpZybG/pHp7EZdJore03BbuUGOKzMFVqVW/vVcHJI0tByysIBUEx5rK1St5rVq1y0ltUybLveBKQTvxukXEgKRtNN63Z64KXBINeSVu5NwbXUhsSANS2QLiIZhxq5SSdIkSq3ufDyu6ILbedpe+2+g7BoB1seg3rpHijTrapbHrar+YUzwKZQGfk92wO8gRo3YcTC3OKs1Wl1GOlMGUqELc4luO9/+OPhx18efv/1779+fvjtp/ffv/vn3Z/70tbbJ0Gtl3LTaWexkCmLznXMhM7TSXmn4EO38pVvrXJ26kOkDDHhej0XBp/ruCh4+3WOusR3KbQUc3aUU1Ia/v/AY69u4JNR+Vh76n3I1qrfpqtt+rNjLke3aV1MNzFgjXDn50GAGdU4Dx5JHJKbCLjqj6Eo/gUGvhGa
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取实体子节点"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/{entityId}/children"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"entity_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"device_name":{"type":"string","description":""},"integration_name":{"type":"string","description":""},"entity_id":{"type":"string","description":""},"entity_access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"entity_key":{"type":"string","description":""},"entity_type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"entity_name":{"type":"string","description":""},"entity_parent_name":{"type":"string","description":""},"entity_value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"entity_value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"entity_is_customized":{"type":"boolean","description":""},"entity_created_at":{"type":"integer","description":"","format":"int64"},"entity_updated_at":{"type":"integer","description":"","format":"int64"},"entity_description":{"type":"string","description":""},"entity_latest_value":{"type":"string","description":""},"device_group":{"description":"","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""}},"title":"EntityDeviceGroup"},"entity_tags":{"type":"array","items":{"description":"com.milesight.beaveriot.context.model.EntityTag","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""},"description":{"type":"string","description":""},"color":{"type":"string","description":""}},"title":"EntityTag"},"description":""}},"title":"EntityResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListEntityResponse"},"examples":{"1":{"summary":"","value":{"data":[{"device_name":"","integration_name":"","entity_id":"","entity_access_mod":"","entity_key":"","entity_type":"","entity_name":"","entity_parent_name":"","entity_value_attribute":{"key":{}},"entity_value_type":"","entity_is_customized":false,"entity_created_at":0,"entity_updated_at":0,"entity_description":"","entity_latest_value":"","device_group":{"id":"","name":""},"entity_tags":[{"id":"","name":"","description":"","color":""}]}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: get-resource
+title: "获取资源"
+description: ""
+sidebar_label: "获取资源"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VE1v00AQ/SvVnEAyTcrRtyKhKte2nCKrmtiTeInt3c6Ooxprb5yBE/8EIfF/QP0ZaNbOR0nDDU7ZXc+8N2/mTXooyDHlKFRAusTKUwIF+ZyNE2MbSAESEFx5SOdZAg4ZaxJivffQYE2Qwpq6O59bR5CA0RyHUsIzQEz3rWGlEm4pAZ+XVCOkPUjnFMkLm2YFISRPwE1BjZilIf4XDJetlJbNB4wwI0FJWES6Iwp6wNpVmviGkInP+h7znLy/E7umJgQ4TatwS2wr+Ut2CJnq8M42nrxivJ5O9eeoktw2Qo3oN3SuMnlUMHnvNaA/LgKZsVOBQrU/eDeN0IpYm7JVFz9fRJS2rpG7gXGDVUuQzqdZCBo9dEmD49VT3rKRbjCLdcSxolkBKaxIrsnblnO1SU1S2vEZkmGcKUyKxSsegyb9mrobdVWIx9nOA7HBxJvBhdme9kYFx9KDTnFpo0Yj22FtiM9m9va5oSrYcLk4n55PISTgrJcaYydHozx++v7z89fHbx9//fjyJ0i/n0ZcmaGzQg8ycRWaRhFbrjRwEDuHA7GQQLqVO573eiFLoLReNKfvF+jpHVch6PN9Szx2e4NscKFS5z0Uxuv5xE4f1vrietyYl2enyt66p+n2DlCNa+qeLL+u1H8mPvhjCNnOj7EFQ9BlnpOTg/SjRdFt27nx6u0thPAbwDq+yw==
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取资源"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/db-resource/{keyScope}/{keyIdentifier}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"key_scope","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"key_identifier","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"integer"}},"examples":{"1":{"summary":"","value":[0]}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

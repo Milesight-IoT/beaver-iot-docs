@@ -11,7 +11,7 @@ import { ProjectName } from '/src/consts';
 ![Functional Architecture](/img/zh/functional-arch.png)
 > 图片为架构思路的示意图，部分组件仍在持续完善中
 
-- **数据层**：数据存储层，包含关系库和NoSQL（时序库），其中关系库支持开箱即用的内存数据库H2及Postgres SQL
+- **数据层**：数据存储层，关系库支持Postgres SQL以及开箱即用的数据库H2
 - **核心层**：
     - **数据交换**：核心支撑能力，包含规则引擎、动态脚本、事件总线等核心能力，以及基于核心能力构建的连接器（Connector），来支撑设备数据上行、下行业务场景
     - **规范/标准**：{ProjectName} 平台定义集成开发的标准规范，包括基础规范、集成规范、实体规范、SPI规范等，以规范化集成服务开发

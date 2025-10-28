@@ -1,0 +1,72 @@
+---
+id: status
+title: "获取用户注册状态"
+description: ""
+sidebar_label: "获取用户注册状态"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVM1uEzEQfhVrTiCtmpRjbq1aUK+0PVVRNVlPsm537a09GxpWK8EFIYTggniG3pHoEzXlMdB4t8mqiWjFybL9zTcz3/zUoKn0lCKThtEU80AJaAqpNyUbZ2EEkADjLMDobJxAiR4LYvJyr8FiQTCCvYoz5817jCYJGLHLCDV52EJH11iUuRjuE3ryqq4xTSmEc3aXZJsGEghpRgXCqAZelAIN7I2dRbopVjn/w7ppxgl4CqWzgYJwvBoO5diIJHWWybL8YVnmJo0ZDC6CAOrNINzkglKGBErvSvJsWnqNjJv8b7sI1IF8J09wGGu452niXE5oN+VrmgTYcJTvNJA/ZuQqPPiCJoEQX7ZL16d6UEh1Bo2IdlVR4HOjn2MescposSTvnT9PnaanLQ8FqwSrXnjiylvSytl8od5lZBVnpB7FpkxQr9HkpF+unRUUAs6e7a+D/6dLTYwmf77Pg4gnrWKsqvepjJ06X7Sz0q/mQw33nV5sr2w3OLG2u7FBq6JAv2ibeY55Rf12bFsqDnWvLQTar3OcyF711vdVsgCbAkgnNhJ+O+cSU7wGSitveNHuC+nwmOmRjlrFEBIoiDMnLzOKk4CcwQgGVSA/WIEC+Xm7aMZr2mMZyahAI3tm6mIpOgX3Cefk1ZE72bZ2hKy97O4Md4YiaOkCFxhnvVtlf77d3n3/ef/jZvn5dvnr5u7T1/svv5cfPj4mrNe7A9azzXTNgzJHY4W98rkA2+zOQLKDVR3GCWQusHzU9QQDnfq8aeT5qiLfyTdHb3AiuZ2NV1LHzXtJUvW9NKWS17Xf3GKyCldqvzk8gab5C0lYGKA=
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取用户注册状态"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user/status"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"init":{"type":"boolean","description":""}},"title":"UserStatusResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyUserStatusResponse"},"examples":{"1":{"summary":"","value":{"data":{"init":false},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

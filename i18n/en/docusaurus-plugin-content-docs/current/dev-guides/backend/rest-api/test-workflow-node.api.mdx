@@ -1,0 +1,72 @@
+---
+id: test-workflow-node
+title: "Test Node"
+description: ""
+sidebar_label: "Test Node"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVlFv20YM/isCnzpAjZ1gaze/NZkHBNiawk6xB8MwaIm2r5Hu1DsqiSvovxe8k2XZ8TLFfhB80scjj/zI7ypIqbCUIFMKoxVmjmJIySVWFayMhhFADIxrB6PZPIYCLebEZGVdgcacYASfSt4Yq36gN4lBid2GMCULJ7ajZ8yLTAyvCS3ZqKowSci5BZsH0nUNMbhkQznCqALeFgJ1bJVe++1WWGb8inVdz2Ow9L0kx9cm3couidFMmuUvFkWmEh/r4JuToKqOu5eHD/7N8hslDDEU1hRkWZETuDYpLRKjV2p9Otij3XJ8/pv0mjcwuhr+8fHyt6ta8lWUfIbzB9p2nJ4G1TGwYp/tB9pe/g51580/WNwFq+7be3L8r7EPq8w8fTYpTUIqoa4FZckVRrsQwdVweDLu3ul+/YAp8jlFyck5XNNCpT1qUsehiG8CZ7ik7A340Ch94I6RS9eLS6TLHEYzmH69uRlPpxDDeDK5m8C82yTjZ0pKsZn6jS924DoGstbYRZOs3tFZXrA6OI3STOvTrb4yNkcOmA+/gidZLg3j+NwN2mb5/2hNyb2xBVrSvGCLSV8udFpG2uReTG/1yryljLtuihqDup1cvYJosJFK9wVNTNqjmmPBRoKN3lni0mpKI6OzbfS0IR3xhqKj2CLlor9QZZT+cgZ7gr8GfqbLlBhV1t/nnx5PaeRjjTofI6UDswTYLeSkCUB040VRG+HyZb30c6zMc7TbQNVHzErqTq3uGBJAO2baRTNG2nWjp7Dnj+/zw0w3n9s+HB401bDtEMHtOkD+v2D4wbwRRJd5e8eBT/8RyHFJwKtEHTfy7xVIlo6S0irehmuEDGuf+1vxxEd6IzJJvDHyrZBDSeyimDB4amADebiBJG0g5pISso/hXjLfu5uK0Ox0UNRnsr8WjHfXkCMV37OpHTVBaP1BhDieeQ1hrgkfyUa35v7U+JKIwuLyYngx9IPGOM7Ry2BTbtHbqDn4wQ6da0tH9JieeVBkqLRsV1qvQyFBM9glSEanpKhhllhLmuYxbDxNZlBVS3T01WZ1La+/l2Sb6jyiVbiU083mbSX9fc/nAW5CUO/vJZ6W9y+Fvo53Fp+ShAp+FTvvFP3L3VSyuWzubnkgoEU5lTwDtX2SfC/6dxVkqNdlYGHYU34/ASS3uZQ=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Test Node"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/workflow/flows/node/test"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"node_config":{"type":"string","description":"","maxLength":2097152},"input":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"}},"title":"TestWorkflowNodeRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"","type":"object","properties":{"message_id":{"type":"string","description":""},"node_id":{"type":"string","description":""},"node_label":{"type":"string","description":""},"node_name":{"type":"string","description":""},"status":{"type":"string","description":"","enum":["SUCCESS","ERROR"],"default":"ExecutionStatus.SUCCESS"},"error_message":{"type":"string","description":""},"start_time":{"type":"integer","description":"","format":"int64"},"time_cost":{"type":"integer","description":"","format":"int64"},"input":{"type":"string","description":""},"output":{"type":"string","description":""},"parent_trace_id":{"type":"string","description":""}},"title":"NodeTraceInfo"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyNodeTraceInfo"},"examples":{"1":{"summary":"","value":{"data":{"message_id":"","node_id":"","node_label":"","node_name":"","status":"","error_message":"","start_time":0,"time_cost":0,"input":"","output":"","parent_trace_id":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -154,18 +154,24 @@ import org.springframework.stereotype.Component;
 public class MyIntegrationBootstrap implements IntegrationBootstrap {
     @Override
     public void onPrepared(Integration integration) {
-        // do nothing
+        // NO tenant context
     }
 
     @Override
     public void onStarted(Integration integrationConfig) {
+        // NO tenant context
+    }
+
+    @Override
+    public void onEnabled(Integration integrationConfig) {
+        // WITH tenant context
         // highlight-next-line
         System.out.println("Hello, world!");
     }
 
     @Override
     public void onDestroy(Integration integration) {
-        // do nothing
+        // NO tenant context
     }
 }
 ```

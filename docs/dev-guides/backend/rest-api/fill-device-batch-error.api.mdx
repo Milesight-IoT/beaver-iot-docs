@@ -1,0 +1,72 @@
+---
+id: fill-device-batch-error
+title: "下载错误信息文件"
+description: ""
+sidebar_label: "下载错误信息文件"
+hide_title: true
+hide_table_of_contents: true
+api: eJx9Uz1vE0EQ/SvR1OfYobwuAYpUICVUloXGd+PcJne3m9k5K+a0BRUFLUKi5BekQ0goyp+xovAv0OxeHIMtqtu9nffmvfnooSTHVKBQCfkCa08ZlOQLNk6MbSEHyEDwwkM+nWXgkLEhIdZ7Dy02BDkcd1JZNh8wQjIwiqsIS2LYQ0c32LhagSeETHzQ91gU5P17sVfUhgAZ+KKiBiHvQVZOQ72waS8i3QK7Wv6DDmGWAdN1R15ObLlSlsK2Qq3oselqMQ5ZxgvLzahEiXl2Mtr5JRUCGTi2jlgMeX01rdAFJ6s78kIGC6PWdnVrMlTZc9MirzSUmC37PSwh6TesXZn+lXJIsAHPQkjh3tnWJ4kvJhP97BR+qwjoXG2KSDm+9MnKTgWQGVfaT6FmW2bUQxx1Ds2Mz0eRpWsa9RczLrHuCPLpZJCZhkKD49VT0bGRVRourXJUdFpCrjbrV7Q0BZ2gFNVrtQsZNCSV1XdnfWwOSgU5jMsYOppr7FixIxoQnniZBnb2nPFMvUbVQed1YaM9I09juSQ+OLXn+8ZXydLl6HByONFGqpYGYxGHlVj//Px4d/f7y7fH29v1/feHj7cPXz+tf/34l3BrMuOmpQIL3cjY1WhaZe+41sDkdArbTtM4PHmdZVBpVfIp9P0cPb3jOgT9fd0RD1VeIhucq8/pbNORuM1XpF17mfSMzlXKpoN7tyZkT6DjoiAnW+E786U7uend2zdnWtr5sJyNLRWjxJE3ez6qyBD+AMLPocg=
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"下载错误信息文件"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device-batch/fill-error"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"multipart/form-data":{"schema":{"type":"object","properties":{"integration":{"type":"string"},"file":{"type":"string","format":"binary"},"errors":{"type":"string"}},"required":["integration","file","errors"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"integer"}},"examples":{"1":{"summary":"","value":[0]}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

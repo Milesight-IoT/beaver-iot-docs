@@ -1,0 +1,72 @@
+---
+id: create-role
+title: "Create Role"
+description: ""
+sidebar_label: "Create Role"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVdtq20AQ/ZVlnlpQaycQCn7LrRAotDjpkzFhLE3sTaRdZXblxBX772V2ZVk4bmKqJ+1qrufMHLVQUM2Uo6cCJg9YOsqgIJezrr22BiYAGXhcOpjM5hnUyFiRJ5ZzCwYrggmcN35lWf/B6JKBFr8VYUEMB8LRK1Z1KY4XhEys2hbznJy79/aJTAiQgctXVCFMWvCbWkydZ22WMdwDNqV/xzuEeQZMzw05f2GLjUTJrfFkvLxiXZc6j7WOHp0U1Q7SvW0+5beLR8o9ZFCzrYm9JifmCYFDVe6FqbT5QWbpVzA5yaDC1/50+i3s2R8Tbhfg9OwshNSwZqFxlqqaZ+C1jzhfMqGnqS1pmmCBEJKPq61xqZXT8fggAEdD9z5SBfoDAE+7CtSVfP4IbbYl3eviCISku0Pdp2wQMnAefeM+DrXFSHUOoZ+toyrpbJUuxJOYLd/ntjhiaK7FVomt+sTkGzZUKGvKjXpZkVF+RWqvNqWd+o66pOLzLllFzuHy6Hyd+X+mLMijLo/PeRXtqVCxVjX4qLR5sFwlSRmyueVQNvsws52+RG5P4og2VYW8SeO8xrKh4UD2QwXDsRDTIc9RuAbs7c59swBvAYC4aSHr5FBqikdHecPab5KsyozHTm8kU953JYtOfmXltrYuLgTKzsOoccQjKd2JWhKvkybPd6FvZTEjCiED2dbpThKvtxLca/g/COqug4j6g42EdjxcEK6J1Y29O6RPUk46nHwdfx1LAGmgQjPImehTXad7EtjLzkCEPb36UV2iNhKw4VIMEyIzEESEtIjJPIOVADaZQdsu0NFvLkOQ6+eGuIN9jaxxId3M5j1F8cf2RDItl6mEL3eSvZ+ctyoYsq3HeZ5T7d+1nQ84/fXzVtBbdD+pKk0W44v0gS+pdxshSfondy2UaJZNGq8UU56/Y5CxHg==
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create Role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/roles"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":"","minLength":1,"maxLength":127},"description":{"type":"string","description":"","maxLength":255}},"required":["name"],"title":"CreateRoleRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"role_id":{"type":"string","description":""}},"title":"CreateRoleResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyCreateRoleResponse"},"examples":{"1":{"summary":"","value":{"data":{"role_id":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: get-menus
+title: "Get All Function Permissions"
+description: ""
+sidebar_label: "Get All Function Permissions"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1P20AQ/SurOYFkkdBjbtACQiq0auEUWWixJ/GCvTazsymptf+9mrXzQRKBVXFK1vvm872ZbSHHhjDTjDlMZrp0mECOLiPTsKktTAASYD13MJmmCTSadIWMJOcWrK4QJnDmuajJ/NXRJAEjdgXqHAkOuMNXXTWlGJ6jJiTVtjrL0LkHrp/RhgAJuKzASsOkBV42AnVMxs6ju5n2Jb9jHUKaAKFrauvQiY8v47H87GWS1ZbRstzppilNFisYPTkBtPtJ1I9PmDEk0FDdILHp3Oeat1GaSC+lDYyVOxj3fXcVWv9g8sPFv/EUpIQchyE7soYgO8SHyATQ+gomU7i5uL2HBC7vb7/eXf+4hTREqaDl4XUUpswJ7af1ETJDmS81HR0L0nBU3A1a/6uXhoTdTSQMha5u1DchPyTgWLN3Hxe7EqbqDYJo9cWjG9arHqtMLpZIVNPDMA1cCFYJVh0RsieLuaptuVR/CrSKC1Q7uSnj1KU2JebHm2AVOqfng+P18P8MmSNrUw6P+S3iMVcxV7V1qYyd1VR1K2qb5hWR53W+/G4c79Leb6vI7GncCr6qNC07BS506XGzA6Zb09stGGFG/vWrciNaeDMiEbwegc9yk4ZUduFKmnK7rbU4wlsK2pzXDQfYJ0HGJEgLuxUvnYlHh5knw8vuqZBJjN2+lkhzjI11kECFXNT9t5g9FzCBkXdIo6rHOKRF98ikG7+/ZR1HIoK8MbM66qGn8Rz1Akld13eHFpU46w6nJ+OTsfDa1I4rHfdN39QrZHVWlurS2yxK5idSZZwYul2n7ebt2CKD8ZVHTamNlQieSgF2BU5BCozlS4lpAkXtWL637aN2eE9lCPL5xSP1LVxoMvpRypum63ZHdTyj6O8sy7DhjQr3HzFhf93vq4s7COEfcyqz4g==
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get All Function Permissions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user/menus"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"menu_id":{"type":"string","description":""},"code":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["MENU","FUNCTION"]},"parent_id":{"type":"string","description":""},"children":{"type":"array","items":{"description":"","type":"object","properties":"circular()","title":"MenuResponse"},"description":""}},"title":"MenuResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListMenuResponse"},"examples":{"1":{"summary":"","value":{"data":[{"menu_id":"","code":"","name":"","type":"","parent_id":"","children":[{"menu_id":"","code":"","name":"","type":"","parent_id":"","children":[]}]}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

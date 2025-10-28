@@ -1,0 +1,72 @@
+---
+id: delete-dashboard
+title: "Delete Dashboard"
+description: ""
+sidebar_label: "Delete Dashboard"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SsCTy1gtOmOubVIBhTYqet2KYKCsZhYrW25FJ01M/TfB8pOnDXpWiyXWBLJ9/j1OrDUMOUoZGG6wjJQBpZCzq4R52uYAmQguA4wfVhk0CBjRUKs5w5qrAimYDEUS49sH52FDJy6NSgFnIjF9NI6VjThljIIeUEVwrQD2TYazNVCa2KIMdsDXLdSeHa/McUZEApCS3wKg16xakp1vCFkYtN1mOcUwqP4Z6pjhBO4QdjV6xRuhW0p//COcaGJhMbXgYLG+DKZ6N8Rk9zXQrXoGzZN6fKUweVTUIPumIRfPlEukEHDviEW14e3KO9QPcS7GxiZmZrHDIKgtOFjx10qZnCIfZsoiDb0E+7J1jirnsTs+TH3lj72nKutUVtzxiQt12SNr8ut+VVQbaQg84abccF8RVeSPR/BKgoB15/GG8z/E9KSoCs/jzlL9mRN4moOHo2rV56rfqhjzECcpKndNfLG2+1PP5S1n+nUzas0O21VIW/7Odtg2dI4KXq1a/5u6XbdTAty0KPxvE8J4DhNgKi/bFg75ZGOgfKWnWx7fdChTfncKpKlkoRmO3WADCqSwo9POuiqE1O43GvIZbf/vLVpU4k3veAsRrjvujmpGlHlYOVTI4b63RBuiM2tvz+lDhqsP1xdTC4mWtzGB6kwreSgOLPEzxxy/ytQN652Ush+BIRe5bIp0dUateVSDfsMH0aVhAymBznCIoPCB1GbrltioB9cxqjXLy3xUNkNssOlpvfQgXVBv9+R7ENuZ3eD3p6b92gOl1hvx0HSnJ5p+1bb42I/AIlHb3Kd59TIgfOR1Kle7ls/m3+b388hxj9TDTw6
+sidebar_class_name: "delete api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Dashboard"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/dashboard/{dashboardId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"dashboard_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

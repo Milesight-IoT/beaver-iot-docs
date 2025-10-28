@@ -1,0 +1,72 @@
+---
+id: request-http-in
+title: "Workflow HTTP Entry"
+description: ""
+sidebar_label: "Workflow HTTP Entry"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1VE1v1DAQ/SuWT1Cl3S3HPUHVIvbCoSAu1Wo1xLMbt4ntjictIfJ/R+Nkm4XtF0icEtsz783n67XBQFgCo9GLDdQRC20wlmQDW+/0QutCM2yjXlytCh2AoEFGknOvHTSoF7okNOjYQr3ON4W24hmAK/0IHOFta0kImVosdCwrbEAves1dELzIZN1Wp1Q8UDA6cLy25n+A32C3g71tkbrncccqHQD/Bvmh5cqT/QkZYQSvEAzSY+j4A5pQi+MZAiGpvoeyxBjX7G/QpaSfzkTgNtDW/Ix3SqshBYx85k0nKKV3jI7lF0KobZljnV1HCao/pAMiyHVibOLevXWMWySdDvJKKSWhjcG7iNnn3Xwun4MC/G0w/vs1lqwLHcgHJLYDvAF+okL7fJdjROpczFOhIwO38WXHXSpqdEgPRZXJfIV7tlXWiCcSeVqX3uDLnhdiq8RWvSHklhwa5V3dqfsKneIK1R+xKRvVR7A1mrcTWYMxwvbVfKP5P1IaZLD16znPsz0alWNVe4/Kuo2nZtglGSm2nJdl10gZ6W9+LOuwSrmbp3l22qYB6oY5u4O6xWlS5GrX/N2W77qZ93KvR9P5ISWtD9Mcxj4V47ZLHPkYsWzJcjcIqQxtzmdppsH4xByWohYNcuXlIfiYh1zEbqFn955uNrW/P66Yw7F1s36S3s/QYHrfD0K5NGl2dCTJId0Nar2aQvgi25QrlAotK3Y5KcPFTomu5iuRrY3PnRsLfoZwh6SW/utjKiZMw+H0ZH4y1yn9Al+kNcM=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Workflow HTTP Entry"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/workflow-http-in/{credentialName}@{tenantId}/**"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"credential_name","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"tenant_id","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"key","in":"query","description":"","required":false,"schema":{"type":""}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"array","items":{"type":"integer"},"description":""}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

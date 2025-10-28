@@ -1,0 +1,72 @@
+---
+id: disassociate-user
+title: "移除成员权限"
+description: ""
+sidebar_label: "移除成员权限"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVc1OG0EMfpWRTyAtTegxNyhU4tQqQC9RhJxdkwzs7iyeWSBdzamXHumtHHqr1Ifo85SKt6g8syErEn5ULmF2bH/2Z/ubBjKqmFJ0lMHgFHNLCWRkU9aV06aEAUACDqcWBqNxAhUyFuSI5dxAiQXBANjkdKIzSECLR4VuBmvCMF3UmgXIcU0J2HRGBcKgATevJI4uHU2JwfvkIfZO7WaG9WcMcVqEGWFGvA6DrrGocnHcJWRi1TSYpmTtiTPnVHoPa3CtY11OQ7hTrHP3jLf341gIWbdrsrlESU3pqHTyL1ZVrtOQa+/MSlJNB26V2IhvJmeUOkigYlMRO01WzGtLfKIz28kUmXEuLDgq7DrmVijxPgGnXaDk2BIPTU7DmD94L7dMtjKljZhv+/21mb66xudLytA9QXwXb9hmpPbE3CdgHbravuy4KEW1Dv6hVzKer3APtkpn4knMhk9Sk9HLnvtiq8RWbTC5mkvKlCnzubqaUancjNSj3JS26j3qnLLNJVhB1uL01Xit+X9CZuRQ56/H3Av2lKmQq+pcKl2eGi7iinYHbtFI2ZRPpqU1bmjo5naYnbookOdxzi4xr2k5KfJp0fyFhCy6Gda906Pl+aEkgNUyIYy9T1oRkTzC0VJas3bzKHQytKGeA0HKtEVrTarRkSwRJFCQmxm5q4wNcy6iN4CeLG1PBNH2Gvk5yHyv675VR39LfBlldLzEPpQ1CtT4BGS3hkul2V8oW1cYRv2xF008NaF/Le27hJfE6sAcrZNIgY2H7Tf9N33pidRQYNjkVnb//vp9f/vz7uvNn2/f7358ub+9eRyqo3sdKXN07XpVjrqUuDXnYhi5GUFbemAHEhhEfiTwCkHjBGZC7GAETTNBS8ecey+fL2ritkmXyBonUvKoCTEm+VPPWDfbjWH7EG2qpxJfyG05X86kVHlO885758cPYxRSiLfvItDWkcRYeq/Ipjxy0WMnTalyz9qOOxP38cOhNHbSPj9FnH7GK+EWr2KmJhQetix8ayDHclrHFYgx5e8fbWfJmg==
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"移除成员权限"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/roles/{roleId}/disassociate-user"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"user_ids":{"type":"array","items":{"type":"integer"},"description":""}},"title":"UserRoleRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

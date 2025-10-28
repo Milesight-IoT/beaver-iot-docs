@@ -1,0 +1,72 @@
+---
+id: get-resource-upload-config
+title: "Get Resource Upload Config"
+description: ""
+sidebar_label: "Get Resource Upload Config"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVctu2zAQ/BViTy2gxE6PvuXVIqcGTnIyDGEjrSUmEqmQlBNX0L8XS8qyHLuOUJ9Map+zw9kGUqoMJegohdkKC0sRpGQTIysntYIZQAQOMwuzxTKCCg2W5MjwuQGFJcEMLmuXayP/oHeJQLJfTpiSgSPh6APLqmDHK0JDRjQNJglZGzv9SqptIQKb5FQizBpwm4pNrTNSZT7cCuvCnfBu22UEht5qsu5KpxuOkmjlSDn+i1VVyMTXOnmxXFQzSHfYfMivn18ocRBBZXRFxkmybB4QOFblXpg2gpUsKB5vvnczxsFRWcWGrK5NQnEh1xSXUtUu1Nn5S+UoOzaVliNI56cyD9A9VYXG9FqrlcygbdnCkK20siHkj+n0KGCjoT6NbIruyEDmXQXihj9/NZ3atxDXphiHYQ/faI9X2owxHKB7b+hBZmpOllncRmAdutp+HWULvugc2p7ksUzHuHtbIVP2JGO0iROdjqDjLdsKthXfDLnaKEqFVsVGvOekhMtJfKpNSCt+oiwo/b5LVpK1mI3O15n/Z8qUHMpifM4bb0+p8LWKwUch1UqbMmjb/jMJBbDEHAy10zg/1gtP+7os0WzCE1ljUdOQ5EOissE+EfnGEw2GfAl2OwJ4aR2MdXfuUQA4RAb8226jTrC5Yn+0lNRGuk0Qfn5VHoI7zpSRm3cV7qlEBCW5XLNJpa1/j+hymMFk29AkdHqWbB0smXVYJ8tdzgfWCA9eGwELx3yn5rfb7dGvn36kA4n915z761NyOW15h620p0037SvCNRlxpx+PrTRuIRwuzqfnUx4TA1CiGtT5i5zYwiYCbqIH7pPe9yI6WEGOPtykKlAqjt9JVAB40TMGItiHeBlBzrOYLaBpntHSkynalq/fajLdeNdoJD5zo4tlTwW/4gPvrkM5Z49cSc/fQ31vo63HZZJQ5U7aLgd0uf/9wMA+d+u6DAw2+M4kx/eAg/bw+Dfl7xooUGV1oHGIyb+/7/kRew==
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Resource Upload Config"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/resource/upload-config"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":""},"file_name":{"type":"string","description":""},"description":{"type":"string","description":""},"temp_resource_live_minutes":{"type":"integer","description":""}},"title":"RequestUploadConfig"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"upload_url":{"type":"string","description":""},"resource_url":{"type":"string","description":""},"key":{"type":"string","description":""}},"title":"PreSignResult"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyPreSignResult"},"examples":{"1":{"summary":"","value":{"data":{"upload_url":"","resource_url":"","key":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

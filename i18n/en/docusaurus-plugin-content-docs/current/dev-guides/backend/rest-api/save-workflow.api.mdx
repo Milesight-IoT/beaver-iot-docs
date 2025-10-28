@@ -1,0 +1,72 @@
+---
+id: save-workflow
+title: "Save Workflow"
+description: ""
+sidebar_label: "Save Workflow"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVt9r2zAQ/lfEPW3gNWmhjOWtXTsoDDbajj2UEC72JVZjS64kp82M/vdxkmM7a9pmY3kIkX0/v+/TXRrIqDKUoqMMJgssLCWQkU2NrJzUCiYACThcWpjcTROo0GBJjgyfG1BYEkzgrHa5NvIXBpcEJPvlhBkZ2BOOnrCsCnY8JzRkRNNgmpK1M6dXpLyHBGyaU4kwacBtKja1zki1DOEWWBfuFW/vpwkYeqjJunOdbThKqpUj5fgnVlUh01Dr6N5yUc0g3fPmY349v6fUQQKV0RUZJ8myucz217gTxCctUm9aJlDi01dSS5fD5HTsuY8SzervXdmXFM4LGlY417ogVPu8O1yDCnywkEs1y9C9wMPL6U/Gnz4en574BNZkrIwYtwGkcrTcJwzvE3DSBWHc4Jp+arNaFPrxOjIJ3vuAh620shH9k/F4L2cHs/06udvWd+NftxWIC379lkC4g9mhKvkvaMXqOJx16Gr7duotpqJ18N31Oajy1lbIjD3JGG1mqc4O0Psl2wq2Fe8MudooyoRWxUY85qSEy0n8UZuQVnxBWVD2vk9WkrW4PDhfa/6PKTNyKIvDc14Ee8pEqFUMXgqpFtqUcWoO+dxyyMPrJW7bIRrYPQ6irssSzSZegDUWNQ0l3MkwvN3KbDwQCb8Ysh4m9YDL/ty1HsfGLhwQ7qlP2vnP9YWjpbQ20m3iHuEbEvq+4kx20CMPEnK55ueVtuFCIc8UGD22JiP+sqM4n3hXkFnHjTTt89zwHQ/w+AT44l/3C+Fyu4Di/O6Za/dZd94O3/5JN1L7XdkPyd5sB2GmOeikpfeccE1GXOnbfWO0c4Xjo/HRmLlmHEoMY6GtkFUhBpDtRBlsu8ECc/TkRlWBUnHI2hRsGKG9g8c+VAAXtp3BNIGcaZjcQdPM0dIPU3jPjx9qMi2dazSSceFTR334h7AiVuTnWM+HWy6lU+fz2eyTrcdZmlLlXrWdDpTy/dsNgzlvt30ZFWuQG+LvAIQO+IQbE541UKBa1lG2MSZ/fgPf5CE0
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Save Workflow"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/workflow/flows/design"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":"","maxLength":50},"remark":{"type":"string","description":"","maxLength":500},"enabled":{"type":"boolean","description":"","default":false},"design_data":{"type":"string","description":"","maxLength":2097152},"version":{"type":"integer","description":""}},"title":"SaveWorkflowRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"flow_id":{"type":"string","description":""},"version":{"type":"integer","description":""}},"title":"SaveWorkflowResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodySaveWorkflowResponse"},"examples":{"1":{"summary":"","value":{"data":{"flow_id":"","version":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

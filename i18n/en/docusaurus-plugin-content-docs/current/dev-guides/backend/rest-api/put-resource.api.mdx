@@ -1,0 +1,72 @@
+---
+id: put-resource
+title: "Upload Resource"
+description: ""
+sidebar_label: "Upload Resource"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VU1v3DgM/SsCTy3gNtM9zq1pu0Bui7TZSzAIOBZnRo1tqRSd1GvovxeU7IzTadp0gd25WNKQfPx8HMFSYKpRyMJ6h02kCizFml0Q5ztYA1QguI+wvt5UEJCxJSHW+wgdtgRruKXhJtY+EFTgVCegHOAHhpi+9I4VSrinCmJ9oBZhPYIMQS1FYdftIaXqkXFnqRO3c8T/BcLbXg6e3T+YzUwAB0Kb4U4g6Cu2oVHFc0ImNuOIdU0x3oi/pS4leBpWze2wb+Qn2iltShwU5dzbQa3UvhPqRI8YQuPq7OvZ56hOjadwyIyDhiLUxsW764T2xJBO4kopJYWNwXeRss4fq5V+ThLwu8747WeqBSoI7AOxuGLeojyRoSXe5eSRea/iqYIoKH38teIcipkU0kNSb5x9jnqWNc6qJjF7vqm9pV9rflBZo7LmBZP03JE1vmsGc3+gzsiBzHe+GRfNn+gasi+PYC3FiPtn403i/xLSkqBrno/5PsuTNdlXs/jTuG7nuS2zpC0lTvKwzIXUlv7bT2kto5Sr+Sb3Tt+2yEPpsztsejp2ij7NxZ9Hfa5mnstFjY73h5AATsMsbZ+qadrVj3yNVPfsZCikp02b47lQpNDLJUXfc61015Ic/PSsHa60tIYzu33Fk9DZeEvDR2XHlI8XD1yWiYL4rrDp5gj7UScoZyVVoGN1eWSDDzP7XK82SlU7n6s1Jfmc8I7YXPhPP2IuRSqXN69Xr1dageCjtJjndmLDq9B4tGYR4yM7Cy7Kq6G0idBXOQsNuk6N9tyoYEnGNSySARWs53RM52M+YFPBwUdRnXHcYqQrblLS5y898VSNO2SH25yBEayLen5idy19fXE5bYaX5im3Z+7shmPzaYy3NDxacro6/mfgxQJMm4d+zSkoQu8K3qtPQ07sbOSEn9X3ovG2rinIT2U3i/7+60pbajvto7ZMGeO9DiLeF399Dj9Pc34bocFu35dRKyb19w2HQ+n6
+sidebar_class_name: "put api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Upload Resource"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/db-resource/{keyScope}/{keyIdentifier}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"key_scope","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"key_identifier","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"array","items":{"type":"integer"},"description":""}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

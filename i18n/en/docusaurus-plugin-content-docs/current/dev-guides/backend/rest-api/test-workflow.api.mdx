@@ -1,0 +1,72 @@
+---
+id: test-workflow
+title: "Test Workflow"
+description: ""
+sidebar_label: "Test Workflow"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVt9r40YQ/leWeboDNXZKKcWUQpLzQaBtip2jD8aYtTS29yLt6nZHcVyj/73MrmSvEl+i+KHUD8Irze/5ZvbbQ4alxVQSZjBaydxhAhm61KqSlNEwAkiA5NrBaDZPoJRWFkho+bwHLQuEEVxVtDFW/SO9SgKK9TYoM7Rwwhw+yaLMWfEapUUr9nuZpujcgswD6rqGBFy6wULCaA+0K1nUkVV67c2tZJXTK9p1PU/A4rcKHV2bbMdWUqMJNfFfWZa5Sn2sg6+Og9pH7l4mH/yb5VdMCRIorSnRkkLH4kqXFZ2h94C7KLnTQnUCpMgX6gF3l79AHb35Q5Z3Qav2JVZrvcgkfadkndhiM/fo6G9jH1a52U5CyaCuWcKiK412Idwfh8OTSfYu6+vVaAPv2p80EYhP/PmtijqSVLke6SeAuipgNIPpl5ub8XQKCYwnk7sJzGN0jZ8wrVhn6g1ftMJ1Alyshcr6lDrhuCwtSPGkHOSVJlyfno6VsYWkIPPzT+B7VeAiNY7ONVCgc3KN/eIlK1NcKL0ycTGltXLHo01YuDPw3oTQu2raZO8UzuUS83fIh93Vs4P/FbLQWmMX7+rX/wBfhyX4drSmot6ypbSoadEAshcWos32p8nwnlVv9co0S7KbyLEjGrfiihH+u3L0628fPnYsfc7NtmOpLyDaFSoahfpwLfVKp5EVKjtCIzVZD1yMWVawrPhgkSqrMRNG5zux3aAWtEHxLDahnPgsVY7ZxzNwGPw14me6zJCkyvv7/OTlMRM+VhF9FLy8GKMsGDeyvVCYFLxoasNKfFsv/YVSFYW0u4CVR5lXGF9VLQb8RLT3AR/ieRx2hmsYbWK/MeNNO+vuSP5+2IGHQ7PjDueGf0HSCedZ894MqhlflmvHk/+/GD+Ael53XcVwProOIP1OKM/7DJ5v1ElDGD3x4aPDtLKKdoF48l3iG3rLnihiLcBVpY3h9yWnxJHTBkYw2DYiA364QWBJA1bmkqB9DDx2fnQ2ZcLSki9mMZMjjRy3tDVifYHG1c8pWItZvxtXxoO5weA1yke04tbcn9qtHFE4XF4ML4Z+CxpHhfR0qmk3czYRpd+xElHd6FYmfKJBmUul2WRl/UUZyjSD7dGULxS02bA+F2uewMaDZQb7/VI6/GLzuubX3yq0TYcepVVyyTnO5oduelz7IsFNCOuHe47oMFAvaWOdtBpXaYolvSo7j5r/192Ua7psGH8RQGgl58XPAHBfJj/k/t0ecqnXVUBisMm/fwGuBXfr
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Test Workflow"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/workflow/flows/design/test"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"input":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"design_data":{"type":"string","description":""}},"title":"TestWorkflowRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"status":{"type":"string","description":"","enum":["SUCCESS","ERROR"],"default":"ExecutionStatus.SUCCESS"},"flow_id":{"type":"string","description":""},"start_time":{"type":"integer","description":"","format":"int64"},"time_cost":{"type":"integer","description":"","format":"int64"},"message":{"type":"string","description":""},"trace_infos":{"type":"array","items":{"description":"","type":"object","properties":{"message_id":{"type":"string","description":""},"node_id":{"type":"string","description":""},"node_label":{"type":"string","description":""},"node_name":{"type":"string","description":""},"status":{"type":"string","description":"","enum":["SUCCESS","ERROR"],"default":"ExecutionStatus.SUCCESS"},"error_message":{"type":"string","description":""},"start_time":{"type":"integer","description":"","format":"int64"},"time_cost":{"type":"integer","description":"","format":"int64"},"input":{"type":"string","description":""},"output":{"type":"string","description":""},"parent_trace_id":{"type":"string","description":""}},"title":"NodeTraceInfo"},"description":"","default":"new ArrayList<>()"}},"title":"FlowTraceInfo"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyFlowTraceInfo"},"examples":{"1":{"summary":"","value":{"data":{"status":"","flow_id":"","start_time":0,"time_cost":0,"message":"","trace_infos":[{"message_id":"","node_id":"","node_label":"","node_name":"","status":"","error_message":"","start_time":0,"time_cost":0,"input":"","output":"","parent_trace_id":""}]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

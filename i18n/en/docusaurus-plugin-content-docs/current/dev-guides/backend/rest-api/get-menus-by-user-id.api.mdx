@@ -1,0 +1,72 @@
+---
+id: get-menus-by-user-id
+title: "Get User Menu List"
+description: ""
+sidebar_label: "Get User Menu List"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1P4zAQ/SvWnECKaNljb7B8CGlhJRZOVYXcZNoYEieMxyzZyP99NU7aBOhCtafG9fPMvHnj5xYyrAlTzZjBbKULhwlk6FIyNZvKwgwgAdZrB7P5IoFaky6RkWTdgtUlwgy8Q3owGSRg5EStOYcdYQifvSFJxOQxAZfmWGqYtcBNLXGMZVwjQQjJNvaJ57wi80fHOH2GHHWGtCsHvuqyLuTgKWpCUm2r0xSde+DqCW0IsCOvYzJ2HcOttC/4k9MhLISIqyvr0EmMb9Op/HyoJK0so2XZ03VdmDQymDw6AbQfi6iWj5gyJFBTVSOx6cJnmscoTaQbaQNj6Xbm/TxcidaLVDvJv4kUhEKG+yE7sfZBdogvkQmg9SXM5nB9fnMPCVzc33y/u/p5A4sQxxAt78lDkhqOM3HvkK7R+tteQCnoLXyzo86k7yEBx5q9+zrPZiZUfyB0845uvzJ7rDKZnESiih72a/+5YJVg1QEhe7KYqcoWjfqdo1Wco3pXmzJOXWhTYHY4JCvROb3eO18P/8+UGbI2xf45zyIeMxVrVaNNZeyqorJzh7HUGyFPq6z5YRzvkr43i6jucbyUviw1Nd0AvujC43AF56PL091vUUe+eqca7h68mVAA8YzNHG2McDMYcdRHcg/rbXcAPnZM5joI384KhUJcOkw9GW46u5abH1tzJZnWyNIBd9pIM67Er0vkvOr3YtWcwwwmYuiTEsslkpu0PqLDROg78U+kl+4FWAwJf4mfxVYGMelVFVXtxThF/YKkrqq7XTddgnWL46Pp0VSUqSvHpY5G2Xf3EllJ2UooKFH0fah2sNyRFoyvPKkLbazE9VQIsOM5jw9X7EJkCgnM/NAZIbtIIK8cC7Ztl9rhPRUhyN/PHqnv8osmo5dCdN5CZpx8/+M1Hdd4cNu/h4fqX+VuTN82wzwKtydsRs9uWGznIJbQ7Z6kKdY8OvfhFZKx3A7A5fkdhPAXZL7AiA==
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get User Menu List"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user/members/{userId}/menus"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"menu_id":{"type":"string","description":""},"code":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["MENU","FUNCTION"]},"parent_id":{"type":"string","description":""}},"title":"UserMenuResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListUserMenuResponse"},"examples":{"1":{"summary":"","value":{"data":[{"menu_id":"","code":"","name":"","type":"","parent_id":""}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

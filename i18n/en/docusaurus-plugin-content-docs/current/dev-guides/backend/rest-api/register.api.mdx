@@ -1,0 +1,72 @@
+---
+id: register
+title: "User Registration"
+description: ""
+sidebar_label: "User Registration"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVV1P2zAU/SvWfdokj1ImtqlPg8EkpEmbYOylqtBtctsaEjvYTksX+b9P107aAB0r60ti936fc08ayKmylKGnHEYzLBxJyMllVlVeGQ0jAAke5w5G44mECi2W5MnyuQGNJcEITmq/MFb9xugiQbHfgjAnCzvC0QOWVcGOp4SWrGgazDJy7sabO9IhgASXLahEGDXg1xWbOm+VnsdwM6wL/4J3CBMJlu5rcv7U5GuOkhntSXt+xaoqVBZrHdw6LqrppXvefMpvpreUeZBQWVOR9Yocm1OJqthd5pM4pdLfSM/9AkbHEkp86E5Hx8cSZsaWyE2lgEGCVtldmu/rgg8fBR8efQwMm3MrY/PXxvr0KNaH9yGkwSrLdBm3xfZq7aWaSPDKR5ivHdlLmivn+RlxgRBSMFcZ7dIsjw4PdyKwN3YvQ5Wj/wuh+vku24rEGZsHCc6jr92/HbtWROsQNhy8UXsMvrUVKmdPstbYm8zke8B/zraCbcUbS762mnJhdLEWqwVp4RckntQmlBNfURWUv90mK8k5nO+drzX/z5Q5eVTF/jnPoj3lItYqen8KpdPusCFTqiNdByQrwC/TjjUpT0RzGLlTlyXadeLZEouatkzhqw58fu+jGWWsh9H2vGkJ4HmbEGkfZCuOXEc8Ospqq/w6iSyTNvZzkUdipMXhzSS/MHxXGRf5jbyWMKgd2UHPzpFdJomebGNf8ZrE1oME3p3LrUKed4q8ETTgmJ/beR1kpuxveQ+mrbJ0d4H1f2Yipi0Up4RLsuLC/NylN1xqOgwPDg8OOQD3V2Lc7jYhS4hIGmK7z8yjSD2J76m2pwc/qApUmsPWNkp1Gts4thhxbQc3kbDgwY7G0DRTdHRtixD4+r4m24KzRKtwym2NJxsg48fwjphHX1IV735yARtOPReuIDuPkyyjyr9oO+lh/+P7FY9x2n7YysQ/iytuBVepfROnEnke7xooUM/rRMIUk39/APW+wXc=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"User Registration"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/register"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"email":{"type":"string","description":"","minLength":5,"maxLength":255,"format":"email"},"nickname":{"type":"string","description":"","minLength":1,"maxLength":127},"password":{"type":"string","description":"","minLength":8,"maxLength":63}},"required":["email","nickname","password"],"title":"UserRegisterRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

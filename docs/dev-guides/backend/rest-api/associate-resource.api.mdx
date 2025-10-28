@@ -1,0 +1,72 @@
+---
+id: associate-resource
+title: "添加资源权限"
+description: ""
+sidebar_label: "添加资源权限"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVsFu20YQ/RViTgnASE6PvMmxkgotrEJWEwSCYKzIsbgJyWVml3ZUYk/tKadceyjQnygKtN9To/2LYHZXImPJtlBdxF3OzpuZN/uGLWRYE6bCYAbJlSg0xpChTknWRqoKEoAYjFhrSBbLGGpBokSDxOsWKlEiJECqwEuZQQyST9TC5HDADeGHRhIDGWowBp3mWApIWjCbmv3IyuAaCayNd75HjckVyZ+E8xMQchQZ0iEM/CjKuuCDpygIKWpbkaao9aVR77GyFg7gakOyWjt3V6IpzAOnrV36RFCbU5Vt2EuqKoOV4UdR14VMXazDd5qDantw+4X1+Gr1DlMDMdSkaiQjUbM5oVYNpX4RTAWR2HAZDJZ632eqykEpC9RynZvBCsU1klRm0GikQakyLAYh+MFMFTgLCLPtXlg/GprMDpfvq/zs1sujljFg1ZSQLGB8Pp/M30IMZ+PXkxdjiGFyPh+/mo3mk+k5b48uvj2djmZnEMOb6ey7l99P38DSMpQ0jvddDnY/oL7ZfvpgLVsQ6lpV2if6zcnJQeaO5vzhOmbC3NOIfbxZiCg6Y3MbgzbCNPrxg9tUonDA7nr38hgGg20kMz6JRIouU5UdweiYbSO2jZ4QmoYqzCJVFZvoJscqMjlGd2KLpI5eCllg9rQDK1FrsT4aL5j/T8gMjZDF8Zhnzh6zyMUa9V5GsrpSVHrJutObLgBWjtcqlNUrlmPzueudpiwFbXyfXYuiwa5TeGtL/lZSt2y6a9TjqFvvUgLYTxNc29s4iCrH4ZYa04ak2Xjh56Z1+UwYSWitUikM9gSjRJMrflkr7Rqdp0ACQ5aeIU8IPWz5b5LZ4e78M+ocaKRrP1iWHfoFXyRXHBsD365Zp73jrdZ/JZULr04da4HFoCx2aXmIXClHcODl1AllNFHzQ9rEUfnF88HJ4IRJ4xxL4a56mFO3f/79z6ff//3jl9u/Pt/+9vN/v36+66o3KHrab/CjGdaFkBX7bahgQ1+7BXDtmGWuHsSQ+PpBDAcKuIwh58onC2jbldD4IxXW8vaHBinQeC1IihXnvGghk5qf7xn8/XCfzMLofhrdF/l2PlWbrms5zfe46X0huOqH6c0h+LcvPNCzOfvoTu8JK38W+BOjNMXaPGi77LXkD9MLZnYVBnbp7weJGy6uuPGRKpe4n7y810IhqnXjL4n3yb8veOcwfQ==
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"添加资源权限"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/roles/{roleId}/associate-resource"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"resources":{"type":"array","items":{"description":"com.milesight.beaveriot.user.model.request.RoleResourceRequest.Resource","type":"object","properties":{"id":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["ENTITY","DEVICE","INTEGRATION","DASHBOARD","WORKFLOW"]}},"title":"Resource"},"description":""}},"title":"RoleResourceRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

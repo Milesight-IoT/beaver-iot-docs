@@ -1,0 +1,72 @@
+---
+id: batch-delete-workflow
+title: "批量删除工作流"
+description: ""
+sidebar_label: "批量删除工作流"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVc1u00AQfpXVnEByScoxt5YWqSdQW+AQRdHEnsTb2l53d502WHvgBJw4I3HgAI+AEAfehlbqW6DZtRPThBLhg+W15++bb+ZzDQmVmmK0lMBgipmhCBIysZallaqAAUAEFmcGBsNRBCVqzMmS5nMNBeYEA9irbKq0fI3eJQLJfilhQho2hKMrzMuMHfcJNWlR1xjHZMzYqnMqnIMITJxSjjCowS5KNjVWy2Lmw02xyuw93s6NItB0UZGx+ypZcJRYFZYKy49YlpmMfa29M8NF1Z106+BDfjU5o9hCBKVWJWkrybD5pdLn00xdjmUyzqSxnYpRa1xwNyzlZh2JW+uMcxFYaUNn0MbpAWVk6VWT4jggAufYUJMpVWFCFY/7/Y21b436fpAJ2r9Q0c133FQkDtjcRWAs2moD8ruOLRTROLgle2OZbOPubYVM2JO0Vnocq4T+7XnItoJtxQNNttIFJUIV2UJcplQIm5K4U5uQRjxFmVHycJUsJ2NwtnW+xvw/UyZkUWbb5zzw9pQIX6vofBSymCqdh6Xtzl5LJO/OS9W0NeysZ3PXz06V56gXYc7mmFW0mhR+1ZLPz102vQB0OFqdl5AA1mGCH3sXNbLCdfijobjS0i6CPPHQejxHnGmyvkMQQU42Vfy5VMaPOtoUBtBrN7nHN9PzzjuJ92Y4pOdB9UarpCe8P74nLgJequOV6By2IrdJI4YtWyPHajlVnsd29QnnpMWROt0knlxFOOw+6j/qMzcMJEe/0Y0g37z/cfv2w/W7z7cfv1x///rr56ebb2/uRuuIYkfnLF3ZXpmhLDh0pTM2DD0aLpFABL5LEMEffRpFkKoAsK4naOiFzpzj1xcV6YakOWqJE4Y6HC0J9b+Tc+J5ehKq2jnlgpaztS5gLmo99uKYSnuv7ahD/PNnJ9zaSfNryMMcamRYfPftUL5Lft79uxoyLGZVGMYQk6/fce6M/Q==
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"批量删除工作流"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/workflow/flows/batch-delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"workflow_id_list":{"type":"array","items":{"type":"string"},"description":""}},"title":"BatchDeleteWorkflowRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

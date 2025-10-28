@@ -1,0 +1,72 @@
+---
+id: get-user-info
+title: "User Details"
+description: ""
+sidebar_label: "User Details"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVk1v2zgQ/SvCnFpAUNI9+tZs00UOTYE2ORmGMaYmFhuKVIejbL2G/vtiKNlSYu9GLYocHIqPw+GbNx97KKlhMihUwuIBXaQcSoqGbSM2eFgA5CC4jbBYrnJokLEmIdb1HjzWBAt430oV2P6D6UgOVs9VhCUxnDFHP7BunB68ImTibL9HYyjGtYRH8l0HOURTUY2w2IPsGoVGYeu3ydwDtk7+53TXrXJgik3wkaLa+OPyUn9OPDHBC3nRPWwaZ016wcW3qID9qRNh842MQA4Nh4ZYbG++RMFT+18GD7IPup2/YkPIo5e1Lc+/+ZnjXQ5tJJ4N9tY89qGag6YarZsH5eAG73soMuNOBSBUx1NGTKiL2jqKdltJsSF8IrZBCn1MUYeSXHEIW3EfiW/8QziwWHwJjl5lUR2aTUsCz+Wly0GsJNUmT7pzFm1cx7YhXmNZWz8xuwnBEfqzbhgmTb81yjy3a/LtT5D+KmdqbzZnJpQzZTRfcD3iVWQO5NsaFkv4dH17Dzl8vL/98+7m8y2sulSZ6Cfyx1TWlUz+t/EIxrJpHfKbtzBK5RP59qDgc5Lpfgn6MjcUHgXlmSz+4/GHBMuGA5oH9L2lOI+7AZvZMpUK5sDreZq4Vmym2OwNk7TsqcyCd7vs74p8JhVlL3zLbMw+onVUvh0vqylG3M6+b4D/4pUlCVo3/84PCU9llnzNJpuZ9Q+B675DPismgwNXodydi+vQLFNk36Wm1NY18q5X5BO6lqYtaNJGdP/YJnQxtoGUTH2Z13+HMr6c1M/D5/XhgPbUl+VtmBemBUzPDQVqOSktfbMth6tHJwY64Vn+JvAxP3+XmVWnf2OipBdOlJ84meh5XB/DD3AqCc3MTgPazzsap7SMZFq2suvnJq0TKfY3etOW5BDqRJdUYficXiAVLOBCQ6eDEPFTP26tRqNfdTBJmtCmo2Y09IOirlJfzW7C3bkaqsb6xbvisrhUiTUhSo2pFA6UqndZL+b40sh+nJom1Av9kIvGofVpOuE0QPRPWSYVwiqHKkTR9X6/wUj37LpOP39viQeenpAtbvQZy9WR06SBR1LJvzeGGhmFfzq2qU6PjP51fQdd9y807bR1
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"User Details"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"tenant_id":{"type":"string","description":""},"user_id":{"type":"string","description":""},"nickname":{"type":"string","description":""},"email":{"type":"string","description":""},"roles":{"type":"array","items":{"description":"com.milesight.beaveriot.user.model.response.UserInfoResponse.Role","type":"object","properties":{"role_id":{"type":"string","description":""},"role_name":{"type":"string","description":""}},"title":"Role"},"description":""},"is_super_admin":{"type":"boolean","description":""},"created_at":{"type":"string","description":""},"menus":{"type":"array","items":{"description":"","type":"object","properties":{"menu_id":{"type":"string","description":""},"code":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["MENU","FUNCTION"]},"parent_id":{"type":"string","description":""},"children":{"type":"array","items":{"description":"","type":"object","properties":"circular()","title":"MenuResponse"},"description":""}},"title":"MenuResponse"},"description":""}},"title":"UserInfoResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyUserInfoResponse"},"examples":{"1":{"summary":"","value":{"data":{"tenant_id":"","user_id":"","nickname":"","email":"","roles":[{"role_id":"","role_name":""}],"is_super_admin":false,"created_at":"","menus":[{"menu_id":"","code":"","name":"","type":"","parent_id":"","children":[{"menu_id":"","code":"","name":"","type":"","parent_id":"","children":[]}]}]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

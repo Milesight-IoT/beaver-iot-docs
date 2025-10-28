@@ -1,0 +1,72 @@
+---
+id: create-user
+title: "Add User"
+description: ""
+sidebar_label: "Add User"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVdtu2zAM/RWBTxvgNUmHbkOe1tuAAgM29LKXICgYm4nVWpYryUkzQ/8+ULITt826dHmyFPLwcg6pBjKqDKXoKIPxHAtLCWRkUyMrJ3UJY4AEHC4sjCfTBCo0qMiR4XMDJSqCMRzXLtdG/sbgkoBkv5wwIwM74OgRVVWw4wmhISOaBtOUrL11+p5K7yEBm+akEMYNuHXFptYZWS4C3Bzrwr3i7f00AUMPNVl3orM1o6S6dFQ6/sSqKmQach3cWU6q6YV7WXyMr2d3lDpIoDK6IuMkWTYnhbLYneYzHCXL71QuXA7jowQUPnanw6OjBObaKOSiIqBPoJTpfezv28BHT8BHh58902btSpvsrVhfnmB9+uh9bKw0LJdJm2wv116oaQJOukDzqSF0dGPJXEZWwPsIZStd2tjJw+FwZ//3Zu51ojJ0f5FTP95lm5E4Y3OfgHXoavtvx64U0Tr4jQJv5R5tb22FzNiTjNHmNtXZHuSfs61gW/HOkKtNSZnQZbEWq5xK4XISz3IT0opvKAvK3m+DKbIWF3vHa83/M2RGDmWxf8yzYE+ZCLmK3p9ClnFy2JAl1UmuI5Ln/5du2xr3TmBzFLRTK4VmHXW2xKKmrVL4qiOfv/tshiXW42h73pQE8LJMCLL3SbsaOY9wtJTWRrp1XLEs2lDPBUdKN6PDk0ku13xbaRsUjjyWMKgtmYEiNWNQxjPLuKGnW/ArnpNQu0+Ah+dyuyDPu4W82WfAkF/bhh2kWvWHvMfTdrF0d57X/1wHUlsuTgiXZMSFvt61bjjVeBgdDA+GDMDlKQzj3b0wWSbaJjwB6C323q529OgGVYGyZLTahAUdmzUJlYVexnZNE8i5m+MJNM0MLd2Ywnu+fqjJtJws0UiccTGT6Ya/8ALeE8vnNCbx4Zrjb6T0cl/5pPM4TlOq3Ku20x7hP39ccfNm7WumouwMrliZuIrV69CUIO9w10CB5aKO2ouY/PsDvz+8Tg==
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add User"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/members"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"email":{"type":"string","description":"","minLength":5,"maxLength":255,"format":"email"},"nickname":{"type":"string","description":"","minLength":1,"maxLength":127},"password":{"type":"string","description":"","minLength":8,"maxLength":63}},"required":["email","nickname","password"],"title":"CreateUserRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

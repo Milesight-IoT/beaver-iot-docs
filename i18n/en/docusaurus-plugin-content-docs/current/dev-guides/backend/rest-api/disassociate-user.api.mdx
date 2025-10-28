@@ -1,0 +1,72 @@
+---
+id: disassociate-user
+title: "Remove Member Permission"
+description: ""
+sidebar_label: "Remove Member Permission"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVVFP20AM/isnP4EU1rLHvMFgEg/TUIG9VBVyE7c9SHLBdylk0f33yXdpm60FqvFSLmf7sz/b33WQU82UoaMc0gUWlhLIyWasa6dNBSlAAg6XFtLpLIEaGUtyxHLuoMKSIAU2BT3qHBLQ4lGjW8GBMEwvjWYBctxQAjZbUYmQduDaWuLoytGSGLxPtrEvGrcyrH9jiNMjrAhz4kMY9IZlXYjjJSETq67DLCNrH515psp7OIBrHetqGcItsCncB97ez2IhZN2lyVuJkpnKUeXkX6zrQmch19GTlaS6Adw+sRHfzJ8oc5BAzaYmdpqsmDeW+FHndpApMmMrLDgq7SHm9ijxPgGnXaDkwRJPTEGTmD94L7dMtjaVjZhfx+ODmR5d48cl5ejeIX6IN+kzUldi7hOwDl1jP3fclKJ6B7/tlYznEe7BVulcPInZ8GNmcvrc81psldiqEybXcEW5MlXRqtcVVcqtSP2Tm9JWfUddUH66AyvJWlwejdeb/ydkTg51cTzmVbCnXIVc1eBS6WphuIwrOhy4TSNlU36Znta4oaGb52F2mrJEbuOcrbFoaDcp8mnT/I2EbLoZ1n3Qo915WxLAfpkQxt4nvYhIHuFoKWtYuzYKnQxtqOdGkHJt0VqTaXQkSwQJlORWRu5qY8Oci+ilMJKlHYkg2lEnPze5Hw3dz5rob4nXUUZnO+w7WaNAjU9AdmuyU5rrjbINhWE6nnnRxIUJ/etpvyRcE6sbc39IIgU2Hs6/jL+MpSdSQ4lhk3vZnVBp1qR+UDknVrfEpbY2KvBfAQfqNxA0R29uVBeoK4necCGGkaEp9AQEjiCBNLIkgfdomiWwEnrTKXTdHC09cOG9fH5piPtWrZE1zqXwaRdizIv3HrNhtieT/jk6Ve8lvhHdqt1NplT5TO3g1fOz7TCFFOLttwh0di8xdt574ilPXfS4yDKq3Ye2s8Hc3f68k/bO+0eojDvA+Crc4mvM1ITCw66Fbx0UWC2buAgxpvz9AeU8xjY=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Remove Member Permission"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/roles/{roleId}/disassociate-user"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"user_ids":{"type":"array","items":{"type":"integer"},"description":""}},"title":"UserRoleRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

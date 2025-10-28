@@ -1,0 +1,72 @@
+---
+id: get-dashboards
+title: "获取所有仪表盘"
+description: ""
+sidebar_label: "获取所有仪表盘"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVcFu00AQ/ZXVnECy2pRjbq1aUCVOUE5RVE3sSb2t7XVnx6HBssS1F7ghJLhwQ/wAB34HSj8DzdqJ0yZqI07JZt/M7Lx581JDQiVTjEIJDKeYeYogIR+zLcW6AoYAEQieeRiOxhGUyJiTEOu5hgJzgiHsV5I6tu8whERgNS4lTIhhQzq6wrzMNPCAkIlNXWMck/en4i6oaBqIwMcp5QjDGmReKtQL2+IspJtilckD0U0zjoDJl67w5DXHs8FAP9ZeErtCqBC9w7LMbBw62D33CqjXH+Em5xQLRFCyK4nFtukTlFUUMuNcaRDK/ca6j6Xz6cQhJ6c22czAnXRNBJUn3hrcDm0bZOruICfOZYTFRmjMpBo6RdkmdROBWAkSOFw0+9J6ORbKX3WD06x34xY35lD5biLwglL5xwsutGC6gEblcVmRl61I67DGJhpJzI5PY5dsQeKRYo1izRMmqbigxLgim5u3KRVGUjL33masN8/RZpQ87Yvl5D2ebV2vg/9nyYQEbbZ9zcOAp8SEt5qVS2OLqeO8dYXVmS8GeeCSuY79QQ10bhHGvBe2sspz5Hm7STPMKup3cHR/exSz3A49dJYFC3V3nreqXwA1kIW4FLqqluBgKxroz0vKANZpVNU3SkLri9pOOHqKK7Yyb/1VbSDwdayVzqinxkMEOUnqugt1DZQUhrC77Lj/pmhPPGuNetyXea2WFshs1KenLgy4m8sB4YzYHLuTTbatydrD3s5gZ6CzKZ2XHINXdrzefvj55+Onm+v3N1+vf//6cfvt+98vn+9nq3vjXXFDoSvZLTO0RbA0zhTY9jjqp6q5+i7HOkYviqjrCXp6w1nT6M+XFXFH6gzZ4kQ7HI2XAwhauSCV0X4cUym9mNb/C1QPS/JfHJ1A0/wDgWiFGg==
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取所有仪表盘"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/dashboard/dashboards"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"dashboard_id":{"type":"string","description":""},"user_id":{"type":"string","description":""},"name":{"type":"string","description":""},"home":{"type":"boolean","description":""},"created_at":{"type":"string","description":""}},"title":"DashboardListItemResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListDashboardListItemResponse"},"examples":{"1":{"summary":"","value":{"data":[{"dashboard_id":"","user_id":"","name":"","home":false,"created_at":""}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

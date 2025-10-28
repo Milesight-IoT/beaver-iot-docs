@@ -1,0 +1,72 @@
+---
+id: get-entity-meta
+title: "Get Entity Details"
+description: ""
+sidebar_label: "Get Entity Details"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1v2zYQ/ivEfWoBonaGYRj8LW60wEMaF4rbYggMg5YuNhtJVMlTVlXQfx+OlG05Vhu3+6QX3hvvuXvuGkixtJgowhQmDypzKCFFl1hdkjYFTAAkkNo4mNwvJZTKqhwJLX83UKgcYQJYkKZ6pVOQoFmnVLSFAUMWv1TasiuyFUpwyRZzBZMGqC7Zki4IN2ihbeXe+mVFW2P1N+XtdB62qFK0Qz7wq8rLjBWnqCxa0TQqSdC5FZlHLNoWBvw6srrYeHMPqsroB9ptu+SLuNIUDh3b+G085sdJJIkpCAviM1WWmU78DUafHQs0p0GY9WdMCCSU1pRoSQfzqSJ1aj/uIhBXfCxfsKHTgSQPJO/B2FxRkPnjd2glPGI9nKcjzVZ2aJ0jGSRelJSARZXD5B7ex/P3Ubz4ByTcRfHH2dsIJEQfo9sFLFsJHUC5SX/KagwSPoGE+JO38qSyCleKyOp1RTiI6I+TfJyqYSG+viZfno9YX/zJlb7/806V86C1j+enc3W3iGe31yDhZu4fV/MP0xvO13Q+v4kub/ltdnsZczLn07+jtyGHSeXI5Pob9nO4NiZDVQyCmFhk0lgp+tXKqsr0f1o4Enm58nqZjjxjvUNSuz5ie44UVe5lU7vuF51CG5gNHa30GTXYyQqdsiZaa+wqMekZOEcsK1hWvLJIlS0wFabIavHvFgtBWxTPYhPaib+UzjB9fXCWo3Nqc7a/TvwXXaZISmfn+7zy8pgKH6voHQpdhBpgwT6aOwynJq2Hke2Ggsf2wpNvlefK1qGyfKv1qZZRHHfcxwLdJDowAByzzt7IMX8EQmifNbMfDb1266Zuv6HGx90xHmrAXbHu5uqu+jwZ9Grq8L2HAOAUFu6PlkMNk9VzFX86TCqrqQ7zn5nM53/GnjZIh3SDhBxpa7oDJj7eAiYwCuvBqAnPWdqO8iDv0D6FVWJ5cHTHY3HHlYy4L5kO6SmqJ7RiZhZDDMHGwsfFm/GbMWepNI5y5emhA/EaSYSoRSg199xUc5jcPcgJv9KozJQuPHnZjAXDFe+7DQgkTHaXDOlQsJSwNY5YqGnWyuEHm7Ut//5Soe3S+qSsVmu+4X0DqXb8/p19rB/cq7jbp16L78XZ/VRFfahzvlQo7cPi1i730PsgwvllkmBJPc2TPYaXoT3s19EC2vY/zzl+WQ==
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Entity Details"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/{entityId}/meta"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"entity_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"id":{"type":"integer","description":"","format":"int64"},"key":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"customized":{"type":"boolean","description":""},"created_at":{"type":"integer","description":"","format":"int64"},"updated_at":{"type":"integer","description":"","format":"int64"},"description":{"type":"string","description":""}},"title":"EntityMetaResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityMetaResponse"},"examples":{"1":{"summary":"","value":{"data":{"id":0,"key":"","name":"","type":"","access_mod":"","value_attribute":{"key":{}},"value_type":"","customized":false,"created_at":0,"updated_at":0,"description":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

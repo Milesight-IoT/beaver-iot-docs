@@ -1,0 +1,72 @@
+---
+id: get-dashboards
+title: "Get All Dashboards"
+description: ""
+sidebar_label: "Get All Dashboards"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVcFu2kAQ/ZXVnFrJSkiP3BIljZB6atMTQmjwDngT2+vMjmmo5X+vZm0wBJRYPcGyb97svnn7aMBSxZSikIXpGvNACVgKKbtKnC9hCpCA4CbAdL5IoELGgoRY1w2UWBBM4baWzLP7i7EkAad1GaElhgt09IZFlWvhHSETm6bBNKUQluJfqGxbSCCkGRUI0wZkVyk0CLtyE+nWWOfyQXXbLhJgCpUvAwXl+DaZ6MfZSVJfCpWie1hVuUvjDa6fgwKa80P41TOlAglU7CticR29RTlGITPuVAahIlzs+xldyFYe2S6dvazACV2bQB2IR4O7oY1BZv4EufI+JywvQlMm9dASZQx1m4A4iRa431/2hwsyEyp+9oNT1tO6/Y65V73bBIKg1OHzhnsvmL6gVXu81hRklGg91jirlcTseZl6O0LEB8UaxZovTFJzSdb4Mt+ZPxmVRjIy785mXDDf0eVkvw7NCgoBN6P79fD/bGlJ0OXje95HPFkTz2qONo0r156LLhWOZ74f5J23Ox37hx7o0yKO+Sa+yrookHfdS9piXtPwBufvX49iDq9DF31kwd7dfeYd+xdAA2RvLoUeuyUm2JEHhvVBMoBzGdX1rYrQ5aJeJy4DpTU72XX5qjEQ9Zpppw0N0gRIoCDJfL+hqYGSwRSuDzcevik6EG+7oF4MbX5ppEUxW83ptY8D7udyR7glNjP/dCm2laxb3FxNriY6m8oHKTBmZa/rI4m5zXNzcu4TqmZI3aMoFHqT6ypHV8Y841yB3QXnw0iVayBe6AyDKKJpVhjoN+dtqz+/1sS9oltkhyu93nxxUD8a5YXUQ7dpSpUMTjr/I1AzHJR/fHiCtv0Hp3h8yQ==
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get All Dashboards"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/dashboard/dashboards"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"dashboard_id":{"type":"string","description":""},"user_id":{"type":"string","description":""},"name":{"type":"string","description":""},"home":{"type":"boolean","description":""},"created_at":{"type":"string","description":""}},"title":"DashboardListItemResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListDashboardListItemResponse"},"examples":{"1":{"summary":"","value":{"data":[{"dashboard_id":"","user_id":"","name":"","home":false,"created_at":""}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      
