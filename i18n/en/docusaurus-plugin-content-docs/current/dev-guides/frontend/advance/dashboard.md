@@ -18,7 +18,7 @@ The Dashboard plugin is used to display data of device entities, including histo
 
 ## Dashboard Plugin Directory Structure
 
-The plugin directory is located in the `apps/web/src/plugin` directory of the project. The internal structure of the plugin is as follows:
+The plugin directory is located in the `apps\web\src\components\drawing-board\plugin` directory of the project. The internal structure of the plugin is as follows:
 
 ```
 plugin
@@ -58,74 +58,70 @@ plugin
 
 ## Development Steps
 
-- Create a new Dashboard plugin directory under `apps/web/src/plugin/plugins`.
+- Create a new Dashboard plugin directory under `apps\web\src\components\drawing-board\plugin\plugins`.
 
-- After creating your plugin directory, **the first thing to do is to create `config.json`. You can skip `configure` and `view`, but you must have `config.json`. A `config.json` alone can complete the plugin's form configuration and preview configuration.**
+- After creating your own plugin directory, **the first step is to create a `control-panel` directory and establish an index.ts file within it as the unified entry point. You may omit configure and view components, but `control-panel\index.ts` is mandatory**. A single `control-panel\index.ts` file suffices for both plugin form configuration and configuration preview.
 
-- After creating `config.json`, configure the `config.json` file's `type`. The `type` serves as the unique identifier for the plugin and must not be duplicated. Avoid simple names to prevent conflicts with other plugins.
+- In extremely exceptional circumstances (not recommended), it is only advised to create a `configure` directory within the project and establish an `index.tsx` file as the unified entry point within this directory when complete customization of the plugin's control panel configuration rendering is required. Under normal circumstances, please refrain from employing this approach.
 
-- Configure the `config.json` file's `name` attribute and the icon path. The `name` will be displayed as the plugin name in the Dashboard configuration dialog, and the icon will be displayed as the plugin icon in the Dashboard configuration dialog.
+- After creating `control-panel\index.ts`, configure the `control-panel\index.ts` file's `type`. The `type` serves as the unique identifier for the plugin and must not be duplicated. Avoid simple names to prevent conflicts with other plugins.
 
-- After completing the above steps, you will see your plugin on the Dashboard. However, it will not be usable yet. You need to configure the `configProps` and `view` attributes to make the plugin configurable and displayable. For detailed configuration instructions, refer to [config.json Configuration Item Description](#configjson-configuration-item-description).
+- Configure the `control-panel\index.ts` file's `name` attribute and the icon path. The `name` will be displayed as the plugin name in the Dashboard configuration dialog, and the icon will be displayed as the plugin icon in the Dashboard configuration dialog.
 
-- Configure other items in `config.json`. All required types in `typings.d.ts` must be filled out, otherwise, it will affect the final plugin effect.
+- After completing the above steps, you will see your plugin on the Dashboard. However, it will not be usable yet. You need to configure the `configProps` and `view` attributes to make the plugin configurable and displayable. For specific configuration details, please refer to the following instructions.
 
-## config.json Configuration Item Description
+- Configure other items in `control-panel\index.ts`. All required types in `types.ts` must be filled out, otherwise, it will affect the final plugin effect.
 
-### Detailed Explanation of config.json Configuration Items
+## `Control-panel\index.ts` Configuration Item Description
 
-| Attribute       | Description                                                                                                                                                                                       | Required                                                                                    | Default |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------- |
-| **name**        | Plugin name, used to display the plugin name in the form                                                                                                                                          | Yes                                                                                         | -       |
-| **type**        | Plugin type, used as the unique identifier for the plugin. It must not be duplicated. It is used to find the corresponding configuration file in actual use.                                      | Yes                                                                                         | -       |
-| **class**       | Plugin category, used to categorize the plugin. When adding a plugin on the dashboard, it will be displayed based on the category. If not filled, it defaults to the "other" category.            | No                                                                                          | -       |
-| **icon**        | Plugin icon, optional. The value can only be `icon.png` or left blank. It is used to display the plugin icon when adding a plugin on the dashboard. If not filled, the default icon is displayed. | No                                                                                          | -       |
-| **defaultCol**  | Default number of columns occupied by the plugin on the dashboard                                                                                                                                 | Yes                                                                                         | -       |
-| **defaultRow**  | Default number of rows occupied by the plugin on the dashboard                                                                                                                                    | Yes                                                                                         | -       |
-| **minCol**      | Minimum number of columns occupied by the plugin on the dashboard                                                                                                                                 | Yes                                                                                         | -       |
-| **minRow**      | Minimum number of rows occupied by the plugin on the dashboard                                                                                                                                    | Yes                                                                                         | -       |
-| **configProps** | Configurable properties of the plugin                                                                                                                                                             | Yes                                                                                         | -       |
-| **view**        | Display configuration of the plugin on the dashboard                                                                                                                                              | If the `view` file under the plugin has custom configuration, this attribute can be omitted | -       |
+### Detailed Explanation of `control-panel\index.ts` Configuration Items
+
+| Attribute            | Description                                                                                                                                                                                       | Required                                                                                    | Default | Stored |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------- | ------ |
+| **name**             | Plugin name, used to display the plugin name in the form                                                                                                                                          | Yes                                                                                         | -       | No     |
+| **type**             | Plugin type, used as the unique identifier for the plugin. It must not be duplicated. It is used to find the corresponding configuration file in actual use.                                      | Yes                                                                                         | -       | Yes    |
+| **class**            | Plugin category, used to categorize the plugin. When adding a plugin on the dashboard, it will be displayed based on the category. If not filled, it defaults to the "other" category.            | Yes                                                                                         | -       | No     |
+| **icon**             | Plugin icon, optional. The value can only be `icon.png` or left blank. It is used to display the plugin icon when adding a plugin on the dashboard. If not filled, the default icon is displayed. | No                                                                                          | -       | No     |
+| **defaultCol**       | Default number of columns occupied by the plugin on the dashboard                                                                                                                                 | Yes                                                                                         | -       | No     |
+| **defaultRow**       | Default number of rows occupied by the plugin on the dashboard                                                                                                                                    | Yes                                                                                         | -       | No     |
+| **minCol**           | Minimum number of columns occupied by the plugin on the dashboard                                                                                                                                 | Yes                                                                                         | -       | No     |
+| **minRow**           | Minimum number of rows occupied by the plugin on the dashboard                                                                                                                                    | Yes                                                                                         | -       | No     |
+| **maxCol**           | Maximum number of columns occupied by the plugin on the dashboard                                                                                                                                 | Yes                                                                                         | -       | No     |
+| **maxRow**           | Maximum number of rows occupied by the plugin on the dashboard                                                                                                                                    | Yes                                                                                         | -       | No     |
+| **configProps**      | Configurable properties of the plugin                                                                                                                                                             | Yes                                                                                         | -       | No     |
+| **view**             | Display configuration of the plugin on the dashboard                                                                                                                                              | If the `view` file under the plugin has custom configuration, this attribute can be omitted | -       | No     |
+| **config**           | The current component has configured value                                                                                                                                                        | No                                                                                          | -       | Yes    |
+| **fullscreenable**   | Can it be displayed in fullscreen                                                                                                                                                                 | No                                                                                          | -       | No     |
+| **fullscreenIconSx** | Plugin fullscreen icon sx custom style                                                                                                                                                            | No                                                                                          | -       | No     |
+| **pos**              | Current plugin position information within the layout                                                                                                                                             | No                                                                                          | -       | Yes    |
 
 **Description of configProps Attributes**
 
-| Attribute      | Description                                                | Type                                      | Required | Default |
-| -------------- | ---------------------------------------------------------- | ----------------------------------------- | -------- | ------- |
-| **title**      | Title of the form plugin                                   | string                                    | No       |         |
-| **style**      | Direct style of the plugin, using CSS string configuration | string                                    | No       |         |
-| **class**      | Class name of the plugin                                   | string                                    | No       |         |
-| **theme**      | Style of the plugin                                        | Record\<'default' \| 'dark', ThemeProps\> | No       |         |
-| **components** | Collection of plugins                                      | ComponentProps[]                          | No       |         |
+| Attribute           | Description                                  | Type             | Required | Default |
+| ------------------- | -------------------------------------------- | ---------------- | -------- | ------- |
+| **label**           | Configured tab label                         | ReactNode        | Yes      |         |
+| **description**     | Configured tab description                   | ReactNode        | No       |         |
+| **controlSetItems** | Configuration items under the configured tab | ControlSetItem[] | Yes      |         |
 
-**Description of configProps.component Attributes**
+**Description of configProps.ControlSetItem Attributes**
+| Attribute | Description | Type | Required | Default |
+| ------------------- | -------------------------------------------- | ---------------- | -------- | ------- |
+| **name** | Configuration item name | ReactNode | Yes | |
+| **groupName** | Name of the group to which the configuration item belongs | ReactNode | No | |
+| **config** | Configuration data for configuration items | BaseControlConfig[] | Yes | |
 
-| Attribute          | Description                                                                                                                                                                                                                                                                                                                                                           | Type                                                     | Required | Default  |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- | -------- | -------- |
-| **type**           | Supports MUI form plugins. The value is consistent with the MUI form plugin name; supports plugins in the components directory. The value is consistent with the plugin name exposed in `index.ts`. If there is a conflict between an MUI plugin name and a plugin name defined in the components directory, the plugin in the components directory takes precedence. | string                                                   | Yes      |          |
-| **key**            | Bound field of the plugin                                                                                                                                                                                                                                                                                                                                             | string                                                   | Yes      |          |
-| **title**          | Title of the form plugin                                                                                                                                                                                                                                                                                                                                              | string                                                   | No       |          |
-| **valueType**      | Value type. Optional types are: string \| number \| boolean \| array \| object                                                                                                                                                                                                                                                                                        | string                                                   | No       | 'string' |
-| **defaultValue**   | Default value                                                                                                                                                                                                                                                                                                                                                         | string \| number \| boolean \| Array\<string \| number\> | No       |          |
-| **style**          | Style of the plugin                                                                                                                                                                                                                                                                                                                                                   | string                                                   | No       |          |
-| **styleDepended**  | Style dependent on other plugin values. Refer to the configuration example for details.                                                                                                                                                                                                                                                                               | Record\<string, string\>                                 | No       |          |
-| **componentProps** | Built-in properties of the plugin. The specific configuration depends on the filled type.                                                                                                                                                                                                                                                                             | Record\<string, any\>                                    | No       |          |
-| **options**        | Dropdown options configuration                                                                                                                                                                                                                                                                                                                                        | OptionsProps[]                                           | No       |          |
-| **rules**          | Validation rules. Refer to the react-hook-form plugin validation rules configuration for details.                                                                                                                                                                                                                                                                     | rulesType                                                | No       |          |
+**Description of ControlSetItem.config.BaseControlConfig Attributes**
 
-**Description of configProps.theme Attributes**
-
-| Attribute | Description          | Type   | Required | Default |
-| --------- | -------------------- | ------ | -------- | ------- |
-| **class** | Class name setting   | string | No       | -       |
-| **style** | Direct style setting | string | No       | -       |
-
-**Description of configProps.component.options Attributes**
-
-| Attribute   | Description    | Type                | Required | Default |
-| ----------- | -------------- | ------------------- | -------- | ------- |
-| **label**   | Label          | string              | Yes      | -       |
-| **value**   | Value          | string \| number    | No       | -       |
-| **options** | Nested options | OptionsProps\<T\>[] | No       | -       |
+| Attribute                 | Description                                    | Type            | Required | Default |
+| ------------------------- | ---------------------------------------------- | --------------- | -------- | ------- |
+| **type**                  | Configuration form type                        | string          | No       | -       |
+| **label**                 | Configuration form label                       | ReactNode       | No       | -       |
+| **description**           | Configuration form description                 | ReactNode       | No       | -       |
+| **controllerProps**       | Configuration react form hook controller props | ControllerProps | No       | -       |
+| **componentProps**        | Configuration form component props             | ComponentProps  | No       | -       |
+| **visibility**            | Configuration form should be visible           | Function        | No       | -       |
+| **mapStateToProps**       | Configuration form map state to props          | Function        | No       | -       |
+| **setValuesToFormConfig** | Configuration form update config data          | Function        | No       | -       |
 
 **Description of view Attributes**
 
@@ -143,167 +139,141 @@ plugin
 | **styleDepended** | Style dependent on other plugin values                                         | Record\<string, string\>                      | No       |         |
 | **themes**        | HTML tag styles                                                                | Record\<'default' \| 'dark', ViewThemeProps\> | No       |         |
 
-### config.json Configuration Example
+### `control-panel\index.ts` Configuration Example
 
 ```
-{
-    "type": "trigger",      // Unique identifier for the plugin
-    "name": "Trigger",      // Plugin name
-    "class": "operate",     // Plugin type
-    "icon": "./icon.png",   // Plugin icon
-    "defaultRow": 4,        // Default width occupied by the plugin on the Dashboard, 24 divisions
-    "defaultCol": 4,        // Default height occupied by the plugin on the Dashboard, 24 divisions
-    "minRow": 3,            // Minimum width occupied by the plugin on the Dashboard, 24 divisions
-    "minCol": 3,            // Minimum height occupied by the plugin on the Dashboard, 24 divisions
-    "configProps": [
-        {
-            "style": "width: 100%",     // Form style, indicating full width
-            "components": [
-                {
-                    "type": "entitySelect",     // `entitySelect` indicates the entity single selection plugin in components
-                    "title": "Entity",          // Title displayed on the form for the plugin
-                    "key": "entity",            // Key value of the plugin in the form, used as the form key
-                    "style": "width: 100%",     // Style of the current plugin, indicating full width
-                    "valueType": "object",      // Value type of the current plugin, `object` indicates the value of the current plugin is an object
-                    "componentProps": {         // Properties passed to the plugin, only properties supported by the plugin will take effect
-                        "size": "small",        // Property of the current plugin, `small` indicates the plugin uses small size
-                        "entityType": ["SERVICE"],          // The entity single selection plugin filters only SERVICE type entities
-                        "accessMods": ["W", "RW"],          // The entity single selection plugin filters only entities with W, RW permissions
-                        "entityExcludeChildren": true       // The entity single selection plugin filters out parent entities
-                    },
-                    "rules": {              // Validation rules for the current plugin, only rules supported by react-hook-form will take effect
-                        "required": true    // Indicates the current form item is required
-                    }
-                }
-            ]
-        },
-        {
-            "components": [
-                {
-                    "type": "input",            // `input` indicates the input plugin in components
-                    "title": "Title",          // Title displayed on the form for the plugin
-                    "key": "title",            // Key value of the plugin in the form, used as the form key
-                    "defaultValue": "Title",    // Default value of the plugin in the form
-                    "componentProps": {
-                        "size": "small",
-                        "inputProps": {
-                            "maxLength": 15        // Property of the current plugin, `maxLength` indicates the maximum input length for the plugin is 15
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "components": [
-                {
-                    "type": "input",
-                    "title": "Label",
-                    "key": "label",
-                    "defaultValue": "Label",
-                    "componentProps": {
-                        "size": "small",
-                        "inputProps": {
-                            "maxLength": 15
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "title": "Appearance of status",
-            "style": "display: flex;",
-            "components": [
-                {
-                    "type": "iconSelect",
-                    "key": "icon",
-                    "style": "flex: 1;padding-right: 12px;",
-                    "defaultValue": "WifiTetheringIcon",
-                    "componentProps": {
-                        "size": "small"
-                    },
-                    "rules": {
-                        "required": true
-                    }
-                },
-                {
-                    "type": "iconColorSelect",
-                    "key": "iconColor",
-                    "style": "flex: 1;",
-                    "defaultValue": "#A9AEB8",
-                    "componentProps": {
-                        "size": "small"
-                    }
-                }
-            ]
-        }
-    ],
-    "view": [
-        {
-            "tag": "div",
-            "themes": {
-                "default": {
-                    "class": "trigger-view",
-                    "style": "background: #fff"
-                }
-            },
-            "children": [
-                {
-                    "tag": "Tooltip",
-                    "class": "trigger-view-title",
-                    "style": "white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-weight: 600;",
-                    "params": [
-                        "title"
-                    ],
-                    "themes": {
-                        "default": {
-                            "style": "color: #272E3B"
-                        },
-                        "dark": {
-                            "style": "color: rgba(247, 248, 250, 0.86)"
-                        }
-                    },
-                    "props": {
-                        "autoEllipsis": true
-                    }
-                },
-                {
-                    "tag": "div",
-                    "style": "display: flex;justify-content: center;flex: 1;align-items: center;flex-direction: column;",
-                    "children": [
-                        {
-                            "tag": "icon",
-                            "style": "font-size: 56px",
-                            "class": "trigger-view-icon",
-                            "styleDepended": {
-                                "color": "iconColor"        // Color style depends on the value of the `iconColor` field in the form
-                            },
-                            "params": [
-                                "icon"                      // Value displayed comes from the `icon` field in the form
-                            ]
-                        },
-                        {
-                            "tag": "Tooltip",       // Use the Tooltip plugin from view-components
-                            "class": "trigger-view-title",
-                            "style": "white-space: nowrap;overflow: hidden;text-overflow: ellipsis;;text-align: center;margin-top: 8px;",
-                            "params": [
-                                "label"                // Value displayed comes from the `label` field in the form
-                            ],
-                            "themes": {
-                                "default": {
-                                    "style": "color: #6B7785"  // Text color in the default theme is #6B7785
+/**
+ * The Image Control Panel Config
+ */
+const imageControlPanelConfig = (): ControlPanelConfig<ImageConfigType> => {
+    return {
+        class: 'data_card',
+        type: 'image',
+        name: 'image',
+        icon: ImageIcon,
+        defaultRow: 4,
+        defaultCol: 4,
+        minRow: 1,
+        minCol: 2,
+        maxRow: 12,
+        maxCol: 12,
+        configProps: [
+            {
+                label: 'image config',
+                controlSetItems: [
+                    {
+                        name: 'input',
+                        config: {
+                            type: 'Input',
+                            label: t('common.label.title'),
+                            controllerProps: {
+                                name: 'label',
+                                defaultValue: 'Title',
+                                rules: {
+                                    maxLength: 35,
                                 },
-                                "dark": {
-                                    "style": "color: rgba(247, 248, 250, 0.62)"         // Text color in the dark theme is rgba(247, 248, 250, 0.62)
-                                }
                             },
-                            "props": {      // Configure properties of the Tooltip plugin
-                                "autoEllipsis": true    // This property indicates that text is automatically truncated when it exceeds the display range
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}
+                        },
+                    },
+                    {
+                        name: 'radio',
+                        config: {
+                            type: 'ToggleRadio',
+                            controllerProps: {
+                                name: 'dataType',
+                                defaultValue: 'entity',
+                            },
+                            componentProps: {
+                                options: [
+                                    {
+                                        label: t('common.label.select_entity'),
+                                        value: 'entity',
+                                    },
+                                    {
+                                        label: t('common.label.local_upload'),
+                                        value: 'upload',
+                                    },
+                                    {
+                                        label: t('common.label.url'),
+                                        value: 'url',
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                    {
+                        name: 'entitySelect',
+                        config: {
+                            type: 'EntitySelect',
+                            label: t('common.label.entity'),
+                            controllerProps: {
+                                name: 'entity',
+                                rules: {
+                                    required: true,
+                                },
+                            },
+                            componentProps: {
+                                required: true,
+                                entityType: ['PROPERTY'],
+                                entityValueType: ['STRING', 'LONG', 'DOUBLE', 'BOOLEAN'],
+                                entityAccessMod: ['R', 'RW'],
+                            },
+                            visibility(formData) {
+                                return (
+                                    !formData?.dataType || Boolean(formData?.dataType === 'entity')
+                                );
+                            },
+                        },
+                    },
+                    {
+                        name: 'upload',
+                        config: {
+                            type: 'Upload',
+                            controllerProps: {
+                                name: 'file',
+                                rules: {
+                                    required: true,
+                                },
+                            },
+                            componentProps: {
+                                label: t('common.label.upload_image'),
+                                multiple: false,
+                                required: true,
+                                matchExt: true,
+                            },
+                            visibility(formData) {
+                                return Boolean(formData?.dataType === 'upload');
+                            },
+                        },
+                    },
+                    {
+                        name: 'input',
+                        config: {
+                            type: 'Input',
+                            label: t('common.label.url'),
+                            controllerProps: {
+                                name: 'url',
+                                rules: {
+                                    required: true,
+                                    pattern: {
+                                        value: /^https?:\/\//,
+                                        message: t('valid.input.url'),
+                                    },
+                                },
+                            },
+                            componentProps: {
+                                required: true,
+                                placeholder: t('common.placeholder.input'),
+                            },
+                            visibility(formData) {
+                                return Boolean(formData?.dataType === 'url');
+                            },
+                        },
+                    },
+                ],
+            },
+        ],
+    };
+};
+
 ```
