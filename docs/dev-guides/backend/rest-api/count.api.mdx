@@ -1,0 +1,72 @@
+---
+id: count
+title: "获取标签总数"
+description: ""
+sidebar_label: "获取标签总数"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVLFuE0EQ/ZXVVCCdYgchCneJYlAaCjCVZUXju7Fvk7vdy+6ciTmtREcHFdT8ABIdBRJ/Q+Az0Oyd41NsJRFurL1982bmzc5rIKPKUYpMGYwWWHhKICOfOl2xtgZGAAkwLj2MprMEKnRYEpOTcwMGS4IRHNWcW6ffYQxJQEtcTpiRgz10dIVlVUjgMaEjp5oG05S8P2N7QSYESMCnOZUIowZ4XQnUs9NmGekWWBd8R3QIswQc+coaT144ngyH8rdTSWoNk2G5w6oqdBo7GJx7ATS7Rdj5OaUMCVTOVuRYt/QZMu7yv+oqUCdyndzDYepyTq6XSxum5X4BF9aVyC3m2VMIIQHWHBUdG9a8nuDyZeTb1AAhAc/Itd8vaT/BRjnVBQQR87Imz2c6e0h4xCqdSSQ5Z91ZajO6P3IsWCVY9cgR185Qpqwp1uptTkZxTupWbUp79Rx1QdnjbbKSvMflg/N18P9MmRGjLh6e8yTiKVOxVtW7VNq0cxVgf6SbGR7bbH3HeLutigM+jK+3Lkt06/bJrLCoqf9WN+9t2HsZAuyPOi5rb4Db802/ALsaAAT5JZ0FSEXx6CmtneZ1ayXy+GOzp5IptbWRpSiJcysflhR3BDmHEQwo9j0QIxp0lQufW7VONNuSv5adjSoEMaKFjTPppDwmXJFTp3ayb62ErD0cHgwPhiJqZT2XGM2g87q/H3/8/vTl+uuHP99+Xb//ef35+22qZmsrsF17piseVAVqI7y1KwTYtjeFtr2N0yab4cwSyK1nQTTNHD29cUUI8vmyJtfpuEKncS7tTWc3mkd3viAZ/lGaUsXbJ7DrdGKXN7q/GE8ghH8oRyKM
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取标签总数"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/tags/number"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"number":{"type":"integer","description":"","format":"int64"}},"title":"EntityTagNumberResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityTagNumberResponse"},"examples":{"1":{"summary":"","value":{"data":{"number":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

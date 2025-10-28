@@ -1,0 +1,72 @@
+---
+id: generate-template
+title: "Batch Add Device Template Download"
+description: ""
+sidebar_label: "Batch Add Device Template Download"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNU01T2zAQ/SuZPQsSevQNSg+c2oH0lPF0NvISC2xLrNaB1KP/3lkpgQAZpj54vPJ+vH3vaYKGApNFoQaqe+wiGWgoWnZBnB+gAjAguIlQrWoDARl7EmKNJxiwJ6jgcpTWs/uLucSA07qWsCGGE+3oBfvQaeEVIRPPpgmtpRj/iH+kISUwEG1LPUI1geyCpkZhN2xyu3scO/miOqXaANPTSFGufLPTLtYPQoPoJ4bQOZuxzh+igpqOxn1evsz36weyAgYC+0AsjqKmu0Fow2Xxk2DfdUupAHOsdK/eVdcGxEmhBcW217R1lpbUhw6Fbss6kFLpEYMfYoHwbbE4Cfy/V96DRmbcqXpCfTw6zyCJM/i9dPn3Re4y9j3yrkzcYjcSVKtFXWAWC2hyDiPZkZ3sipWUxYzopoEKNjRo+LovGOhJWq//go+ZeJQWKpg3mZiztZI0l7f8SLwtxqzfZt3plhlvMqCr37754sfBhx9kPMiX1Mn3PlNxUIZwSzy78ctTxtbxJbg4X5wvtIFi7zETvr8sWdzZZdPMisKzw8qza/88dB6bj62P3HtkSKEXmYcO3aBzRu40sXC0gmOOtOTAUm2gVTarFUzTGiP95i4lPX4aiffKbJEdrnXfVf2qYr7vj6RKfy9ozpYK5FX1zyZL5lBxaS0F+TK3PhL818875Xe9v7u9b7SG8RlMfmcafGYnOzGfTdDhsBlxo7mlpz7/AANErqs=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Batch Add Device Template Download"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device-batch/template"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"integration":{"type":"string","description":""}},"required":["integration"],"title":"BatchDeviceTemplateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"integer"}},"examples":{"1":{"summary":"","value":[0]}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

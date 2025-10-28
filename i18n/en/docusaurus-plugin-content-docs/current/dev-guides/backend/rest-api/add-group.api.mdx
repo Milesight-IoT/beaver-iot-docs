@@ -1,0 +1,72 @@
+---
+id: add-group
+title: "Add Group"
+description: ""
+sidebar_label: "Add Group"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1v2zAM/SsCTxvgrmkvA3Lr14YCAza03S5BUDAWm6i1JZeS02aG/vtAyUncNuuC+WTJ/Hrk43MHmhqmEgNpGN9h5akATb5k0wTjLIwBCgg49zCeTAtokLGmQCznDizWBGM4acPCsfmNyaUAI34LQk0MO8LRM9ZNJY6nhEysug7Lkry/De6BbIxQgC8XVCOMOwirRkx9YGPnKdwdtlV4xzvGaQFMjy35cOr0SqKUzgayQV6xaSpTploP770U1Q3SvQWf87vZPZUBCmjYNcTBkBfz3IFdVb4KUxv7jew8LGB8VECNz5vT8ecYc72GZQqTHHRaQDAhtemMCQOd09KU9JVd21xlcBBjdvWNsz4XdDwa7YSxdwPex6sx/GUqw3xXfUXqXMxjAT5gaP2/HddQVO8QN4O8NXof92SrjBZPYnZ8Wzq9x4QuxFaJrfrAFFq2pJWz1Uo9LciqsCD1qjZlvPqCpiL9cZusJu9xvne+3vw/U2oKaKr9c54ne9Iq1aoGH5Wxd47rvL9CqTXz1oOUNfrl+rbm9U3TPErcaesaeZV5tsSqpS1T5Go9fHkfTjNpwWBG2/MGEsBbmJBoH4teYaSOdPRUtmzCKiuVkDbhuZRMqHVaHFlECgsnd43zid8oWwiHOq3Xwbw388TLLHPTbehr2ZKEPBYgq3O1VZmLtaptZLEfQxRBvHNpPn1bTwmXxOrS3eySCsmbD0efRp9GEkBqrdEOgp9ordaQXkQYaN1AvgI9h8OmQmMlXMuVGGboE3gBfVrAQjoznkDXzdDTT65ilOvHlrjv7hLZ4EywTKabSaRfwgMJEc5yCQc3kn1DirfKE4u1x0lZUhPetZ0Ohvfj+7X0btbLe50JxPgkHMOnjN2lliSiprsOKrTzNrMox5TnD/IJbGA=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add Group"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device-group"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":"","minLength":1,"maxLength":127}},"required":["name"],"title":"CreateDeviceGroupRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

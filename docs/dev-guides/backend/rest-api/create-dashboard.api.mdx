@@ -1,0 +1,72 @@
+---
+id: create-dashboard
+title: "添加仪表盘"
+description: ""
+sidebar_label: "添加仪表盘"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVUtu2zAQvQoxqxZQG6dL7fIrkFWLJF0ZRjAWxxYTSVRIyokr8AI9QYFu2l3RC3SR6/R3jGJI2ZYTwzFar0xpPm/mPT61IKk2lKEjCekEC0sJSLKZUbVTuoIUIAGHUwvpcJRAjQZLcmT43EKFJUEKB43LtVHvMaQkoDgvJ5RkYEM5usOyLjjxkNCQEW2LWUbWXjp9TZX3kIDNcioR0hbcvOZQ64yqpqHcBJvCbcn2fpSAoZuGrDvUcs5VMl05qhz/xbouVBaw7l1ZBtX22j0ePvbX4yvKHCRQG12TcYosh8cNbEK5Vsb7BJxyYegjQ+joGG0+1mjkWQQK3nOQIVvrysbirwaDjZB2HmY7doluw8hnHQJxzK+fml8uxrhU8n/3EPuCT8A6dI19ut5iW6JL8Eved4LTxQolOZOM0eYy03IHQk84VnCseGbINaYiKXRVzMVtTpVwOYkH2ISy4jWqguTzVbOSrMXpzv268H9sKcmhKnbveRziSYqAVfReClVNtCnjde9TuuCQb90WejsDCATvB8U2ZYlmHtU9w6KhNX2uaQz6AuH4PuPBXno8rs7LsQEerwLC7fNJZ1oMLBwtZY1Rbh7Nj3UfZj7lTtn6fJBASS7X/KrWNtwUdDmksCd7MZbMLLrnaFX+nC9sWIdPgG/x2cq8ThZmuXTbji7PPjvRgcdu/YeEMzLiVF9ssl3uGw/7LwcvB1yAgZZY9Yr/+n7/88PnH/ff/nz5+vvTx4d1ekba80ZHd26vLlBVXLQxBQfG6Ycr9mCUQM6bSYfQtmO09M4U3vPjm4ZMt+QZGoVjHmc4WhISPjbXxAI5iv1fXHDrpVge+6BPFhkHWUa12xo76pH39s05r2/cfTjKqCODtyw1vI2D67CPIODwrIUCq2kTxRRr8u8vNraUoQ==
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"添加仪表盘"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/dashboard"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":""}},"title":"CreateDashboardRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"dashboard_id":{"type":"string","description":""}},"title":"CreateDashboardResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyCreateDashboardResponse"},"examples":{"1":{"summary":"","value":{"data":{"dashboard_id":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

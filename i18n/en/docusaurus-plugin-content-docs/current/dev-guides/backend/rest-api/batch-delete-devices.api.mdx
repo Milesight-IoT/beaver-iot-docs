@@ -1,0 +1,72 @@
+---
+id: batch-delete-devices
+title: "Batch Delete Devices"
+description: ""
+sidebar_label: "Batch Delete Devices"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVcFu2zAM/RWBpw1Ql3TH3NqlA3ra0Ha7BEHA2Eyt1rZciU6bGfr3gZKTuE3WBsspsknxPfLxuYOcGkcZMuUwWWHpSUNOPnOmYWNrmABoYLz3MJnNNTTosCImJ+cOaqwIJnDRcmGd+YMxRYORvIIwJwdHrqMXrJpSEi8JHTnVdZhl5P2C7SPVIYAGnxVUIUw64E0joZ6dqe/jdStsS34nO4S5BkdPLXm+tPlGbslszVSz/MWmKU0WsY4evIDqBuUOyaf6dvlAGYOGxtmGHBvyKXxtMlqYfFEazwO86BxupBdMlT/kEQ76EoIGNpz6gpwVUyqJaRoL3CQ2EIKEOfKNrX1C8HU8Por7ZMYfEET+xxiG9W56RGoq4UGDZ+T2CO+3iVsqqk8Iu8ktTH5KeoxVJpdMcs66RWZz+jjzSmKVxKpPjrh1NeXK1uVGPRdUKy5IvcGmjFff0ZSUf94Xq8h7vD+5Xh/+nyVzYjTl6TWnMZ5yFbGqwUtl6pV1VVrYofK2g5S9+W37tqZ9jdM8j9ppqwrdJulsjWVLe6XIo+3w5f9wmnH5BzPan3eUAA5pQpR90L2lCI549JS1zvAmWZOINvK5lkrLtxvkQUNFXFh521gflY5cwARGaYlHMecsj0nCgtw6Gd18X+tW1ia2ImiQXbrZ+8zV1tcObWG2HdE8iD2ubBzedtsJ1+TUtb075paCIR3Ov4y/jGUgAr/CuMa9A0fDUImv2hN+ddnABAe+xvTCo6ZEU8vNrSslMDVm1tMADa9aM9dQ2MSq65bo6ZcrQ5DHTy25fhxrdAaXwm82340ufjQeSZTzLWE5uxMYOxUdWlXQ24yLLKOG342dD2b888et9HPZfwCqpDiHzyJKfE5NsLE3UdnxWQcl1vdtkl26U35/AS//en0=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Batch Delete Devices"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device/batch-delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"device_id_list":{"type":"array","items":{"type":"string"},"description":""}},"title":"BatchDeleteDeviceRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: get-resource-upload-config
+title: "获取上传资源配置"
+description: ""
+sidebar_label: "获取上传资源配置"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVctu00AU/RXrrkByScoyu76QuqJK21UUWRP7xp7WnnFnxmmD5R1skHisWPMF7BAIwd8UKH+B7ozjOE1ILbLKjO/z3DPnlhBhrjBkBiMYTFmq0YcIdah4brgUMADwwbBYw2A09iFnimVoUNG5BMEyhAHsFSaRir9g1sUHTn4JsggVbAiHNyzLU3LcR6ZQeWXJwhC1Doy8RFFV4IMOE8wYDEow85xMtVFcxDbclBWp2eJdVWMfFF4VqM2+jOYUJZTCoDD0l+V5ykNba+9CU1FlK9168y6/nFxgaMCHXMkcleGoydwhsKnKlTCVD1OeYtDdfOWmi4PBLA8UalmoEIOUzzDIuCiMq7P258JgvGkqFUXgxk5l6KA7z1PJogMppjyGqiILhTqXQruQT/v9jYB1hno7shEzGwYyrCvwDunzQ9MpbAtBodJuGDbwdfa4xHkXwxa6JwpPeSyGqInFlQ/aMFPoh6MswPdqh6ohecCjLu7W1uMReaJSUgWhjDrQ8YhsPbL1Hik0hRIYeVKkc+86QeGZBL17tXlce88YTzF6vEyWodYs7pyvNv/PlBEaxtPuOQ+tPUaerdVrffS4mEqVOW1bfSauAJKYtaHWGmfHumtpX2QZU3P3RGYsLbBN8jZRyWCViHRjiQZtvji7JQGstLbGujw3KACsIwP2bVd+LdhUsT1qDAvFzdwJP70qC8ExZYrRDOsKV1TChwxNIskkl9q+R2YSGEBv0VDPdboTLhw0qplbJ+NlzlPSCAte5QMJx3Cp5keL7dGsn2akLYn915yb621y2a9oh02lpU097X1kM1TesTzbtNKoBXfYfdJ/0qcxEQAZE606795++fnuw+3X17ffP959fvnr2/s/r978/vHpfsDWtmotIIM3ppenjAuKXguUg3fU8AV8WAV47ENCkxiMoCwnTOO5SquKrq8KVPVwZ0xxNqE2R+OGCHbBO9YduHJ2zqiShr3r6l75C4+9MMTcbLUdt8hy8vyUYJ3Uyzpz/FXsmijOrh0O0sJjX5S9KyFlIi4ciV1M+v0FLZ0ZMw==
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取上传资源配置"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/resource/upload-config"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":""},"file_name":{"type":"string","description":""},"description":{"type":"string","description":""},"temp_resource_live_minutes":{"type":"integer","description":""}},"title":"RequestUploadConfig"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"upload_url":{"type":"string","description":""},"resource_url":{"type":"string","description":""},"key":{"type":"string","description":""}},"title":"PreSignResult"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyPreSignResult"},"examples":{"1":{"summary":"","value":{"data":{"upload_url":"","resource_url":"","key":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

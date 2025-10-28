@@ -1,0 +1,72 @@
+---
+id: get-dashboard
+title: "获取仪表盘详情"
+description: ""
+sidebar_label: "获取仪表盘详情"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFWE1r40YY/iviPe2CcJxSSvEtXrvBJY0Xx7uhGGPG0htrNpJGOzPKrtfotPTa3kqhp15K6aXHHvp3+pGfUd7Rh0e2ksghtCdbo2fe709twMdEosc0+tC7YqFCF3xUnuSJ5iKGHoALmq0U9GZzFxImWYQaJT1vIGYRQg98poKlYNJfcB9c4HQtYTqABloS36ZcEjctU3RBeQFGDHob0OuEiPFY4wolZJlbMThJdSAk/8AMnYJDgMxH2cQD37MoCeliH5lE6Ww2zPNQqYUW1xhnGTTwVVryeGXIXbE01PfczrI5KaISEStUROOTbpd+9iTxRKwx1vSOJUnIPaPB0RtFgM2+EGL5Bj0NLiRSJCg1z8n7TLN9+pNCAmdAr90HaVhOalS7JnvmQqpQtgbnnmqDDEQNuRQiRBY3Qj2JFJkLptuRfsf9FWplgZmUbE0RozFSjS6632o5xdZWaHbUg1yucf1gEGQuaK5NVF/j+vhzSpDq5CuWjPNb9umgdPml0WIwHRsZ96TGWHO9XnD/XsvVtb+bUKHTEznAxxvu4aJ9eJn6IU2eHXCrMsFB8KIuRKLNNbqVRtCbwQRcuAQXJpcw3xKrB8HDzHPgAWxfTsYvh5Pp1+DCxXDyevRiCC4MXw/Pp7YYB9ssYRJjffi9GxamuGBaS75MNf7PabMj1sHGvZhORuen4MLZ2PwMxq/6Z2Tg/nh8Njw5p3+j85MJWX/c/3L4omZ0rhZeqrSI+Af0WxbH4mpjjSybaIPAV0JGhCXMZ59ahNLEfxpCNeQBAREyjUrnDmhZbvPisJIiTR4RP0/d26zIGhqVBka+UyOelbhmnGpbIT0RdSIeouKrQHeWyG5QcqE7ZrR4rzuR8DHs5PymbPWfK71z0uaCJ0IhH2VQUrCh8+zhytHoAXDVIG280kynDR1vl1I5ADrFhSwfbimE29i4wDrcN6EhpZALT/gtbD4krENY55lEncoYfUfE4dp5F2Ds6ACdHdkcrpwvGA/Rf75lFqFSbNWaXwF/JEsfNeNhe54Dg0ffMbI61kuHx3nlIaDtzNKHfeGvGx1brAXGtcdm/E6jiMl1XiqqslPNcLWBmSDVQEwPxWoC5UBbLE92OaaX1Ug6qw2T9KpklLexzGwV9ig2A5jbM9VsZxoCaJp28qZUTTPWoz2tWMeGvfVcOAZ2JgLroNbxrfOGjl7q1thebVHrDbAwZkOL6zb2q25z87EY1JuLMf9O89h17G7Bnu1DGrpiUdsAsnk2t6pJufuW5cGIZiX99rnKkZx+PW+ofmVkznz7VXnguKDQSyXX63xNp3pvYmJEnGj0L2MZXIhQB6I4p+5Ai3oPjqpwP9pUf0e+WZVR3uQb/3zL6IJW13LCopQ0OV2kYt90KWckpk0mImL5w3Gn2+mSoROhdMRM+yhse/vt73999/2ff/x6+9Mv//z4w+1vP//98Ztdapvtgm11e2qLR0nIeGy2WBkSMFdzts1qcKFnKUqpFgilCbPZLJnCVzLMMjp+m6IsDHvDJGdL0pGSkSv6f8eHE1u2Z5Piq8dz5y4xy2EgXm9rEemUZ2etFpm4Kr5+kBw55MTzMNHW5b0PDlRfKuefDqeQZf8CnZYvLA==
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取仪表盘详情"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/dashboard/{dashboardId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"dashboard_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"dashboard_id":{"type":"string","description":""},"user_id":{"type":"string","description":""},"name":{"type":"string","description":""},"home":{"type":"boolean","description":""},"created_at":{"type":"string","description":""},"widgets":{"type":"array","items":{"description":"","type":"object","properties":{"widget_id":{"type":"string","description":""},"data":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"}},"title":"DashboardWidgetDTO"},"description":""},"entity_ids":{"type":"array","items":{"type":"string"},"description":""},"entities":{"type":"array","items":{"description":"","type":"object","properties":{"device_name":{"type":"string","description":""},"integration_name":{"type":"string","description":""},"entity_id":{"type":"string","description":""},"entity_access_mod":{"type":"string","description":"","enum":["R","W","RW"]},"entity_key":{"type":"string","description":""},"entity_type":{"type":"string","description":"","enum":["PROPERTY","SERVICE","EVENT"]},"entity_name":{"type":"string","description":""},"entity_parent_name":{"type":"string","description":""},"entity_value_attribute":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"},"entity_value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"entity_is_customized":{"type":"boolean","description":""},"entity_created_at":{"type":"integer","description":"","format":"int64"},"entity_updated_at":{"type":"integer","description":"","format":"int64"},"entity_description":{"type":"string","description":""},"entity_latest_value":{"type":"string","description":""},"device_group":{"description":"","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""}},"title":"EntityDeviceGroup"},"entity_tags":{"type":"array","items":{"description":"com.milesight.beaveriot.context.model.EntityTag","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""},"description":{"type":"string","description":""},"color":{"type":"string","description":""}},"title":"EntityTag"},"description":""}},"title":"EntityResponse"},"description":""}},"title":"DashboardResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyDashboardResponse"},"examples":{"1":{"summary":"","value":{"data":{"dashboard_id":"","user_id":"","name":"","home":false,"created_at":"","widgets":[{"widget_id":"","data":{"key":{}}}],"entity_ids":[""],"entities":[{"device_name":"","integration_name":"","entity_id":"","entity_access_mod":"","entity_key":"","entity_type":"","entity_name":"","entity_parent_name":"","entity_value_attribute":{"key":{}},"entity_value_type":"","entity_is_customized":false,"entity_created_at":0,"entity_updated_at":0,"entity_description":"","entity_latest_value":"","device_group":{"id":"","name":""},"entity_tags":[{"id":"","name":"","description":"","color":""}]}]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

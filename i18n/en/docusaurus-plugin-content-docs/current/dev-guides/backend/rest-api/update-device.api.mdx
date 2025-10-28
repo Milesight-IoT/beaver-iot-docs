@@ -1,0 +1,72 @@
+---
+id: update-device
+title: "Change Device Group"
+description: ""
+sidebar_label: "Change Device Group"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1v2zAM/SsCTxvgrd0w7JDb+rGhwA5D1+5SBAVrsbE2W1IlOm1m6L8PlJzEa9MuWC6xZZKPH49PA2jygWpk0jC7xTZSBZpiHYxn4yzMACpgXESYXc0r8BiwI6Yg7wNY7AhmoGlparo2Giow4uORG9gRKNBdb4JAceipglg31CHMBuCVl0jGMi0oQErVJvqnnhsXzG/McUaEhlBT2IVBD9j5VhyPCAMFNQxY1xTjNbtfZFOCHbiRg7GLHO4W+5Zf8E5pXgqhyEdOryRK7SyTZXlE71tT51wPfkZJapjAPW1twXc3P6lmqMAH5ymwoSjmpQO7snwUpsOHr2QX3MDs44eUpp2+KlHmFbDh3JdLr5HpJA/tvBQCKRWv6J2NBfz94eHOlPcu9uXaNPIzE5jinY8ZqRMxTxVERu7jvx3XpajRIW2GJjzdwz3bKqPFk0Jw4bp2eo9pnIqtElv1KhD3wZJWzrYrdd+QVdyQepSbMlF9RtOSfr0F6yhGXOyNN5r/J6QmRtPuj3mS7UmrnKuafFTG3rrQlV0VSq1Jtx6krMwPN7a1rGqe5rvMnb7rMKwKz5bY9rRlihyth7/WkvU0895PZrR935QE8LRMyLRP1agmkkd+jVT3wfCqaJ6QNtdzJkj9ZHlk8YgbJ+e+zxQX4ZvBQVHEg6H8n+ksOhSWRTjnW4jvsi25A6kCWaHzrbKcrpVsI4XjOJKI4K3Lcxrbe0S4pKDO3MUueRDc8vLu7eHbQwngXeQO7ST4cYN2QaqUpr4E1/vHsSZKNxEvpgc+8C0aK4H70Iph6cTVeDdABbN1L0SKGhdZvg7DDUa6DG1KcnzXUxi7vsRg8EZquxpAmyjPz1xR06xenY/C91o9l+B4iHa1JZlU84tWf91lab5hRk6ifD8uUG8uJMrW/4kSygVWPD7VNXl+0XY+IdK3SxnhzXizdIXPAe+F8nhfUnW58rw3+WyAFu2iL6QuIeX3BxH+tQs=
+sidebar_class_name: "put api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Change Device Group"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/device/{deviceId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"device_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":"","maxLength":64}},"required":["name"],"title":"UpdateDeviceRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

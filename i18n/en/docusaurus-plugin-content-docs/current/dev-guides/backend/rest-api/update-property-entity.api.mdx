@@ -1,0 +1,72 @@
+---
+id: update-property-entity
+title: "Update Property"
+description: ""
+sidebar_label: "Update Property"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVUtP20AQ/iurObWSS0JPVW68KnGoQDx6iSI0sYd4wfYuu+OAa/m/V7NrJy6kEOGTdz3Pb7753EJG1lGKTBnM7rHwlEBGPnXasjYVzAASYFx5mM0XCVh0WBKTk3MLFZYEMziqOTdO/8HgkoAWv5wwIwc7wtELlrYQx2NCR061LaYpeX/H5pGqroMEfJpTiTBrgRsrpp6drlYh3D3WBb/j3XWLBBw91eT52GSNRElNxVSxvKK1hU5DrZMHL0W1o3Rvm4/5zfKBUoYErDOWHGvyYk4vaY7Vij7h+kjNqL/dRl0CrDlg9UjN4Q/oRje/0F5Er/Htrc2Q6TJGac4q1txcRTCg68TSkbem8rGK79Ppztr3Buz9JjPk/0xxnO+qr0idinmXgGfk2n/sOLSieoduM/g7ne3jHmyVzsSTnDPuLjUZfex5JrZKbNUXR1y7ijJlqqJRzzlVinNSr2pT2qufqAvKvm6TleQ9rvbO15t/MmVGjLrYP+dpsKdMhVrV6KPS1b1xZdz3MfmGQcra/TY9rHHdwzQPA3fqskTXRJ6tsahpyxS5GoYv7+NpBu0YzWh73rQE8LZNCLTvkl6RwlrJ0VNaO81NVDYhbejnXDLVO5YIEiiJcyPfrfGB68g5zGBCwWDSU7+ZRHdphdw6iuVim/BadmdYb1moq61WnQ3a+K+0RK0IZQv0YXY95MeEa3Lq3Nzs0lrJHg+HB9ODqcxDai8xbHGv31Ey1NDu6zgj9RypGtMLT2yBupKgtSvEMAIyBxoQs9uYPSiLBHJBbzaHtl2ip1tXdJ1cP9Xk+mms0WlcSn/zxWZy4ZcTkICTWNC3G6llQ6K3StUlg8dRmpLld20XowFfXlwLnsv+91FGwjl8Fk7ic0TCBIACscNdCwVWqzqyLsaU5y+gL5GT
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update Property"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity/property/update"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"exchange":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"}},"title":"UpdatePropertyEntityRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

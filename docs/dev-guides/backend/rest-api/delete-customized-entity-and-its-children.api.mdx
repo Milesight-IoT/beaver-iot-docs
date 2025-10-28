@@ -1,0 +1,72 @@
+---
+id: delete-customized-entity-and-its-children
+title: "删除自定义实体"
+description: ""
+sidebar_label: "删除自定义实体"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVT1v1EAQ/SurqUAyyYXyOkKClAqUBJrTKZrzzp03sb3O7jjhsLYGaiooEAUVBT0F/4ZI8C/Q7PpyJoEkwpV3PR9v5s08d6CpcZQjk4bxHEtPGWjyuTMNG1vDGCADxoWH8WSaQYMOK2Jycu6gxopgDI9aLqwzrzC6ZGDEryDU5OAv4eglVk0pjtuEjpzqOsxz8v6I7QnVIUAGPi+oQhh3wMtGTD07Uy9iuDm2Jd/gHcI0A0enLXnetnopUXJbM9Usr9g0pckj1s1jL6C6Qbo/0fZR1EzCZCssdnZMOUMGjbMNOTbkxZVqNrw8MtoPcKNzKK6GqRrem5ppQQ7C1QYdFqT2dryyc8UFqRjUkFds1YyUppKY9AaEkAEbjm3cjYl34qf9hBhCEAtHvrG1T/gejkbXK4Ts7r25uXyN/A/Chvn2e0RqR8xDBp6RW3+746oU1TuES46PjL6Le2LSaPEk56w7yq2m2z13xVaJrbrniFtXk1a2LpfqvKA6knQFmzJePUFTkr6/TlaR97i4c77e/D9TamI05d1z7kR70ipiVYOPytRz66q02sOhWxEpG/bC9m1Nmx3Z3Iqz01YVumWaszMsW1pPilytyJf3IZtRJgYcrc+XJQFcLxPi2IesFx/BEY+e8tYZXiYRk6GN9ezpWLqsjcpbz7Yyr6QHcZ0U1loZ9iovTKkdibBVxIUVp8b6uADIBYxhM3lspuWUssidJY2crpMfyB7F3oQMZLn21xK1u5LEP1VkMpoGkdO5jRT2nd8mPCOn9uzh39RVEqfD1sZoYyS0CNoK4zL3in3x5tOv959/vv5y8fXDj29vL75+/PH93dVoA9WEtfgxveTNpkRTS+jWlWKYGjHpwcdAsRXTDApp1XgCXTdDT89dGYJcn7bkej7O0BmcSWmT6SV38f9yQjI6jxOKB4cC4HKMrmtVyFYej/KcGr7Rdjpg89nTA2nlrP9XVGnkHJ7LVOJ5Kt/GrsTRjncdlFgv2jR3KaY8vwG8xZHT
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"删除自定义实体"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity/delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"request body","type":"object","properties":{"entity_ids":{"type":"array","items":{"type":"integer"},"description":"The IDs of the entities to be deleted."}},"title":"EntityDeleteRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

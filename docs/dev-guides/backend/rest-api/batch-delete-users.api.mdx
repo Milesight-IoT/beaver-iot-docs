@@ -1,0 +1,72 @@
+---
+id: batch-delete-users
+title: "批量删除用户"
+description: ""
+sidebar_label: "批量删除用户"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVb1O3EAQfhVrqkQy3JHyOghEokrETxp0Os3Zc+cF22tmx8DF2jqkSpMmXYoUeYMoDxQi3iKatY8zPwEUV971N//ffG4gpYopQaEURjPMHcWQkkvYVGJsCSOAGATnDkZH4xgqZCxIiPXcQIkFwQg2a8ksmw8YTGIwapcRpsTwgDu6wKLK1XCLkImjpsEkIecmYk+o9B5icElGBcKoAVlUCnXCppwHdzOsc3nE2vtxDEynNTnZsulCvSS2FCpFX7GqcpOEXAfHTpNqeuHuF9/Gt9NjSgRiqNhWxGLIKbx2xBOTTnLjpJctMuNCOyFUuN69KYXmxODvtcX7GMRI2xaUJNumnIQOHfFeWwp4ryAmV9nSteFfDYcPJv3sch+vLkX5xwz68fa6jKJthfsYnKDU7mnDZSlRZ+BvxjYx6XPMAzYyqVoSs+VJYlN62nJHsZFioxdMUnNJaWTLfBGdZ1RGklF0J7fIuOgNmpzSl6tgBTmH82fH6+D/GTIlQZM/P+Z2wFMahVyj3sfIlDPLRbutfd4tB6lL8952bW2XNUxzI3CnLgrkRcuzM8xrWjFFr5bD1/f+NMPm92a0Ot+UBHC/TAi093GnJ5pHODpKajayaHVJSRvq2dVI09v74yCGgiSz+q2yLvAcJYMRDHR/BwG/lgYDrYD4rFW48SrOvq5MaIOPQfdobyUwO0tBu6sHR8OxVzmc2TCv5XoTnhFHu/bgIXXU0O1hY324PtQZaM4Fhs3tFPfq06/rj59/X367/vr9z5cfV5c/77rqSV5PxYQuZFDlaEr1W3OuwLYXRyF3iOFWN8YxZDaUAk0zRUeHnHuv16c1cdf9M2SDU63taHwzqfCDOCElyus2k7UDTeKGNPeVycdLi80koUoexY57Q333dl97Oe3EvmgJxniuHMTztgU2dCYQOdw1kGM5r1uWtT71+QsyBXlt
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"批量删除用户"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/batch-delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"user_id_list":{"type":"array","items":{"type":"integer"},"description":""}},"title":"BatchDeleteUserRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

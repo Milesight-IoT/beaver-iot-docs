@@ -1,0 +1,72 @@
+---
+id: get-menus-by-role-id
+title: "获取当前角色的权限"
+description: ""
+sidebar_label: "获取当前角色的权限"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1v1DAQ/SvWnFopYgvHvbVQUCUoUmlPq1XlJtONS2KH8aQQIp/g0gMfAgkJJM7cuXDi5xTKv0DjZLvbdktXnDZeP8+bNzN+biHDijDVjBkMD3XhMYEMfUqmYuMsDAESYD3xMByNE6g06RIZSdYtWF0iDIFcgfsmgwSMnKg057AgDOGz2pAQMdWYgE9zLDUMW+CmkjjGMk6QIITkPPZ6zbkj81LHOD1DjjpDWsSBL3RZFXJwAzUhqbbVaYre77N7ijYEWMDrmYydxHCHui74H6dDGIsQXznr0UuMO2tr8nMlk9RZRsuyp6uqMGlUMDjyAmivJuEOjjBlSKAiVyGx6cJnmudRmkg3UgbG0i/k/Xe4Em0trVoo/kKkIBIyXA7ZNWsZZIe4EZkA2rqE4QgebW7vQQL397bv7m493oZxiGOIlpfUIaSG40zsuAIfoa13+gZKQhfh0x11T+oeEvCsufY380xnQvUHQjfv6JdLs8cqk8lJJHK0v1z5NwWrBKtWCLkmi5lytmjU8xyt4hzVpdyU8eq+NgVmqzOyEr3Xk6X5evh/UmbI2hTLc96LeMxUzFXNbSpjDx2VnTtcaHWfwIbLmofG86LW92YRu3s7Xsq6LDU13QAe66LG2RUczV2e7n5Ld+Srd6rZ3YMLEwognjGdo6kRTgcjjvpcu2fr8+oAXK2YzHUQvZ0VioS49JjWZLjp7FpufizNljBNkKUCfqORYmyJX5fIuev3YtacwxAGtUcaiKv7QUsRGwYi3ot7Ih13/j+e0T0RN4uFDGLRhy72tG/FBupjJLXldhfdcwnWLW7fWru1Jn2pnOdSR5vsa3v29sfpu0+nPz+enrw5+/bh7OT77y+vf3199efz+8sx25nzzrWE8QUPqkIbKwQ1FQLs5I5A5EpbRDAkMKRZeUTzOIHceRZk2x5oj3tUhCB/P6uR+lIfazL6QPSOWsiMl+9rntT5DFd2+kdxVV2X7NT5bTMbSlH2FJu5tzeMz4chptDtrqcpVjx37spTJLN5PgUPNnchhL/QqssZ
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取当前角色的权限"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user/roles/{roleId}/menus"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"menu_id":{"type":"string","description":""},"code":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["MENU","FUNCTION"]},"parent_id":{"type":"string","description":""}},"title":"RoleMenuResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListRoleMenuResponse"},"examples":{"1":{"summary":"","value":{"data":[{"menu_id":"","code":"","name":"","type":"","parent_id":""}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

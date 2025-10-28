@@ -1,0 +1,72 @@
+---
+id: count-group
+title: "Get Group Count"
+description: ""
+sidebar_label: "Get Group Count"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SsCTxugNekw7JBbu3ZBLzts3SkICsZiYrW2pEp01szwfx8oO43RBG0xXwxJj4/k40cLhkKkApkMzNZYJdJgKBXRBrbewQxAA+MmwWyx1BAwYk1MUc4tOKwJZnDRcOmj/YvZRIMVu5LQUIQTdPSEdajE8JIwUlRti0VBKd2xfyDXdaAhFSXVCLMWeBcEmjhat8l0a2wqfsW665YaIqXgXaIkHJ+nU/kdRVJ4x+RY3jCEyhY5g8l9EkB7HIRf3VPBoCFEHyiy7ekNMh7z/xwiUFfyrN/gcE29ojjyZR3T5rSAax9r5B7z9Qt0nQa2nBW9oq0taB59E35kxn0U0GlIjNyk06KOXey1U4NBJ3I+NpT4zpr3mGesskYsKUYf7wpv6G3La8EqwaoPkbiJjozyrtqpPyU5xSWpF7Epm9R3tBWZjwdnNaWEm3f7G+D/6dIQo63e7/Mq48moHKsaPSrr+soKcFzUfQ0vvdm9WuBhsnKJz3MHN3WNcde3zRarhsb9uu+56ag3BDgudh7YUQkP5+eMAY5VAOjk08MakIjyMVHRRMu7fp3IAOR0b8RT4RvHOTPQUBOXXm43lIcFuYQZTExO/9NGUJMhfmGN234nLQ8ufsn0Zi06WUlrn2szSHpJuKWobvztqQETsv5wfjY9m4q0wSeuMa+FYevNiVWOVn2TwF/ytIftAofpZ3riSajQOiFtYiXAPrkFjJMDvS/PUkPpEwugbVeY6Hesuk6uHxuKg5JbjBZXktpi+ax63tEPJOW/KAoKfGiC430nS/NZ9Pn1LXTdP5I1HxI=
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Group Count"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/device-group/number"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"number":{"type":"integer","description":"","format":"int64"}},"title":"DeviceGroupNumberResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyDeviceGroupNumberResponse"},"examples":{"1":{"summary":"","value":{"data":{"number":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: get-menus-by-role-id
+title: "Get Permissions of Current Role"
+description: ""
+sidebar_label: "Get Permissions of Current Role"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1P4zAQ/SvWnECKaNljb8ACqrSwKxZOVYVMMm0MiR3Gky7ZyP99NU76RQtUe2pcP8+bNzN+biHDijDVjBmMZrrwmECGPiVTsXEWRgAJsJ57GE2mCVSadImMJOsWrC4RRkCuwEeTQQJGTlSac9gThvC1NiRETDUm4NMcSw2jFripJI6xjHMkCCFZxT6rOXdk/uoYp2fIUWdI+zjwTZdVIQfPUROSaludpuj9I7sXtCHAHl7PZOw8hpvpuuBPTocwFSG+ctajlxjfhkP52ckkdZbRsuzpqipMGhUMnr0A2t0k3NMzpgwJVOQqJDZd+EzzJkoT6UbKwFj6vbyfhyvR1tKqveK3IgWRkOFhyK5ZhyA7xJfIBNDWJYwmcHN5+wAJXD3cXtyPf97CNMQxRMsH6hBSw3Em7lyBN2jru76BktA2fLmjvkvdQwKeNdf+a57lTKj+QOjmHf1hafZYZTI5iUSOHg8r/6VglWDVESHXZDFTzhaN+pOjVZyjepebMl5daVNgdrwmK9F7PT+Yr4f/J2WGrE1xOOf3iMdMxVzVxqYyduao7Nxhq9V9Aucua34Yz/ta35tF7O5pvJR1WWpqugFc6KLG9RWcbFye7n5Ld+Srd6r13YOtCQUQz1jO0dIIl4MRR32j3ev1qjoAuxWTuQ6it7NCkRCXHtOaDDedXcvNj6UZC9McWSrgzxspxlj8ukTOXb8Xs+YcRjCoPdJAXN0PWorYMBDxXtwTadH5/3RN91vcLBYyiEXPXOxp34pz1AskNXb3++65BOsWpyfDk6H0pXKeSx1tsq/tNbL6hVQaL1iv3Exd1CQlVqLlfdx27b4bbWF840FVaGOFpKZCgJ3kCYhkaY2IhgRGtC6R6J4mkDvPgmzbJ+3xgYoQ5O/XGqkv90KT0U+iedJCZrx8f/CsbmZ4dNc/jMfqo2SX7m+b9WCKshdsNt7fMF0NREyh2z1LU6x449zOcyTzuZqE68t7COEfBeLD1w==
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Permissions of Current Role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user/roles/{roleId}/menus"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"menu_id":{"type":"string","description":""},"code":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["MENU","FUNCTION"]},"parent_id":{"type":"string","description":""}},"title":"RoleMenuResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListRoleMenuResponse"},"examples":{"1":{"summary":"","value":{"data":[{"menu_id":"","code":"","name":"","type":"","parent_id":""}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: delete-user
+title: "Delete User"
+description: ""
+sidebar_label: "Delete User"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SsCTy1gNOmOubVIBgTYqWt3KYKCsZhYrW25FJ01M/TfB8rOx5Z0LZaLQ4kf74nk68BSw5SjkIXJCstAGVgKObtGnK9hApCB4DrA5HGRQYOMFQmx2h3UWBFMoA3ET85CBk4jGpQCzqRhem0dayHhljIIeUEVwqQD2Taax9VCa2KIMdvnvmml8Ox+YcozVCgILfG5GvSGVVNq4C0hE5uuwzynEJ7Ev1AdI5ypG4RdvU7pVtiW8o/oGBdKJDS+DhQ0x5fxWD8nSHJfC9Wid9g0pcsTg9FzUIfuFIRfPlMukEHDviEW16e3KO9APa53NyAyU3WPGQRBacPHgTsqZgiIfZsoiDb0E+HJ1zirkcTs+Sn3lj6OnKmvUV9zwSQt12SNr8ut+VlQbaQg8xc244L5iq4ke3koVlEIuP50vcH9P0taEnTl52tOkz9Zk7Cao0vj6pXnqh/qGDMQJ2lqd4289Xb7ww/P2s906uZ1mp22qpC3/ZxtsGzpMCl6tGv+bul23UwLctSjg72nBHBKEyDqLxvWTnEkM1DespNtLw06tInPXCtZKknoIaQtrUgKfzjVGVeJmMBIlWNUUbUkDqNOrblNK0q86UVmcajzXVcmPUNUHVj51IHh4W4JN8Rm7u/PyYIm643rq/HVWF+18UEqTLs4SM00oTMD6D9ydId1ToLYt13oTUZNia7WhC2X6thTe0yimLgncpDBpKcHiwwKH0R9um6JgR64jFGPX1vi4TU3yA6XyuyxA+uC/n9HoY+xXdwNGntp3oM5HGK9PQyPcnqh7ZGUx8W+3wlCf3uT59TIUdyJsqk87ts9nX2b3c8gxt/nfTNn
+sidebar_class_name: "delete api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete User"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/user/members/{userId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

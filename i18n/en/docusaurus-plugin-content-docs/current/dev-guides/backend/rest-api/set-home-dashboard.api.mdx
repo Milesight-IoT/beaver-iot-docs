@@ -1,0 +1,72 @@
+---
+id: set-home-dashboard
+title: "Set Home Dashboard"
+description: ""
+sidebar_label: "Set Home Dashboard"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1P20AQ/SurOYFkkdBjbiBalVMroL2gCE28k3jB9prZcUpq7X+vZu0kLgkF1Rd71/Px3s7b14GlhilHIQuzJZaBMrAUcnaNOF/DDCADwVWA2f08gwYZKxJiXXdQY0UwA4uhWHhk++AsZOA0rUEp4EgtpufWsXYTbimDkBdUIcw6kE2jxVwttCKGGLNdg4tWCs/uN6Y6Q4eC0BIf60EvWDWlJl4SMrHpOsxzCuFB/BPVMcKRvkHY1atUboltKf/IjnGuRELj60BBa3yaTvV1gCT3tVAt+g+bpnR5YjB5DBrQHYLwi0fKBTJo2DfE4vryFuUNqON+NwMic6XhMYMgKG14P3FLxQwJsR8TBdGBfiA9xRpnNZOYPT/k3tL7mZ811misOWGSlmuyxtflxvwqqDZSkHmFzbhgvqAryZ7um1UUAq4+3G8I/8+WlgRd+fGeVymerElYzeincfXSc9WLOsYMxElS7XaQl95ufvrhWHtNp2meJ+20VYW86XW2xrKlvVJ0azv87aXbTjNdkNGM9usdJYBDmgBRn2y4doojLQPlLTvZ9P6gok18rrVTIPnqK7ra2gNkUJEUXv81PiSdq03MYLKzkEm3+7y2cVL4ipQM8bo3nfm+5a3ennQiUS1h6dMwhjO8JFwTm2t/d8whtFi/OD+bnk31gBVQhelaDq5zS2IUvxkT+KtUt7/gySd7IQi9yKQp0dVat+VSA3ui93uvhAxmI6qQQeI613cQDe26BQb6wWWMuv3cEg/HvEZ2uFCe9x1YF/T7Df8eQzy5Gcz31LyFdtjEerNXlVJ7os1ro4/znRoSjj7kIs+pkVHyge+pee5k8P3b7R3E+AfyQT/1
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set Home Dashboard"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/dashboard/{dashboardId}/home"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"dashboard_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

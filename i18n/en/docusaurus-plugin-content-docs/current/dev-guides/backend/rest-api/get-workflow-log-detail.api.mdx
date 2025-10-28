@@ -1,0 +1,72 @@
+---
+id: get-workflow-log-detail
+title: "Workflow Log Detail"
+description: ""
+sidebar_label: "Workflow Log Detail"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VsFu2zgQ/RViTi0gxG6x2INvTesuAhRdwE7Rg2EYjDiW2EikSo6ceAX9ezEUZcuxkyo97MWSzOGbGb43w2lAYeUwlYQKZltZeExAoU+drkhbAzOABEhmHmardQKVdLJEQsffDRhZIsygsNlGK0hA84ZKUg4XUBz+rLVjP+RqTMCnOZYSZg3QvmIYbQgzdNC2yQH6Q025dfo/GXCihxylQnfJBz7Ksip44zVKh040jUxT9H5D9h5N28IFv56cNlmA28q6oBd2t+2aE/GVNR49Y7yfTvlxFklqDaEhXpNVVeg0ZDD54dmgOQ/C3v3AlCCBytkKHekOXkmS5/iLGIH4xMvJbzC0upzsScRtAp6kow1pPvgzUi4c9ta6UlJn8/dfjMB7N6n1NAag80i1HxfdDp3X3eGNQC7Re5nhOGhyMsWNNls7sJfOyT0rjrD0Fyl++dRjBJuxp2+seqVxIe+weIV9V1IjlTCOlwTQ1CXMVrD89vHjfLmEBOaLxb8LWA/Laf6Iac17lgH4qjduE0DnrNu8iq7/WaeXALSpahoXra1ptG0lHRraRD2O0kLIhkLL+2oV3vLWG1Zy+6Ltd+vut4V9+GKzT0hSF31LeQ39fSMUcUPbNXn0NCr4aCu0OgohtWqECuZsK9hWvHFItTOohDXFXjzkaATlKJ7EJrQXn6UuUL39A9V1/qL5H7pU4ZjH++xoQSVCrGKwKLhTsSLZcEhqz+G1VfsXCY7XZKD4XbiO6rKUbt/JfSeLGoeXD5PJC8PCm55U0fQomoDQ9+rpoBOHljnotKvTHsnLhx54+Ig97vAdxwI49feEzt/GGsuX7fry5Pez8gNo1+2pq6HAj6472T4TylPmuRJb5q2bY5iF8OkxrZ2mfTdq8V0SKL5hTxnSGaPAh0u5jeshAcphBpOHaDrhHz8pbOYnTWGzGxUGIHS7boJbH50ueSAJigjtLV6FUVjXKHfoxI29vdQeD2zDu6vp1TQ0MuuplOGyjoz10YsvNhOH+E+wmuPQNLheCR9pUhVSGwauXbjxukRX0CfKTZpThYSHUX7MQrp8DeWB9RU0zZ30+M0Vbct//6zRxaPeSaflHWe6akBpz+/PjMPDGN8s4kT7VjwXbj9LmP2xrji3e9wf5+agsTjTcgTd4oc0xYoG287GSJ5FDwL4Z34LbfsLAcUGew==
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Workflow Log Detail"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/workflow/flows/logs/{logId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"log_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"id":{"type":"string","description":""},"start_time":{"type":"integer","description":"","format":"int64"},"time_cost":{"type":"integer","description":""},"status":{"type":"string","description":""},"version":{"type":"integer","description":""},"message":{"type":"string","description":""},"trace_info":{"type":"array","items":{"description":"","type":"object","properties":{"message_id":{"type":"string","description":""},"node_id":{"type":"string","description":""},"node_label":{"type":"string","description":""},"node_name":{"type":"string","description":""},"status":{"type":"string","description":"","enum":["SUCCESS","ERROR"],"default":"ExecutionStatus.SUCCESS"},"error_message":{"type":"string","description":""},"start_time":{"type":"integer","description":"","format":"int64"},"time_cost":{"type":"integer","description":"","format":"int64"},"input":{"type":"string","description":""},"output":{"type":"string","description":""},"parent_trace_id":{"type":"string","description":""}},"title":"NodeTraceInfo"},"description":""}},"title":"WorkflowLogDetailResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyWorkflowLogDetailResponse"},"examples":{"1":{"summary":"","value":{"data":{"id":"","start_time":0,"time_cost":0,"status":"","version":0,"message":"","trace_info":[{"message_id":"","node_id":"","node_label":"","node_name":"","status":"","error_message":"","start_time":0,"time_cost":0,"input":"","output":"","parent_trace_id":""}]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

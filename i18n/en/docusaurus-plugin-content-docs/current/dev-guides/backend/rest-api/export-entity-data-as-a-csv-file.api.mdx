@@ -1,0 +1,72 @@
+---
+id: export-entity-data-as-a-csv-file
+title: "Export Entity Data as CSV"
+description: ""
+sidebar_label: "Export Entity Data as CSV"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFlU1v2zAMhv+KwLPRZMOwgzEM6Jpi6Lkfly4oFJuJ1dqSStFFUsP/faDspF7Spim6dadADkm9jyi+aiBHT5hpxhzSuS4DJpBjyMh4Ns5CCpAA60WA9HqagNekK2QkWTdgdYWQgskDJGAk+r5GWsF2jYsC1dkkKDdXXKBCy4YNBsVOzVDh0jtizI8gAcL72tBATMgKrDSkDfDKy2aaSMsOhrEKg+/GMi6QoG3bZKMssCa+YVNhYF3511XGBLVJWCvONettterbjL7/spfWLAcJxqrKlKUJmDmbh3XUBOe6LjlV44Mg1zAJzB1VmrtPX7/AEA5t/hY0tPm/BMtqIrSDs/t7oFLy5tFZfB1SQpWEKpPLNZsbpANYewr1oMsalQkx/qlWXyAgPSAddk0Dk7GLPzCOay4cmUcd9fYoBeo88u9MHS515UtJ/IGakFTT6CzDEG7Y3aFtW3h5WykXifZkt+1UQIJ3NmCcpM/jsfzsKMmcZbQs/2nvS5NFgtFtkIBmV4Sb3WLGkIAn55Fk1CFtWpnMnrdfJxAwq8nwqrMXiY61z3JI4TQ2qXOLVdc9HZRWJ+dXam5KuQ0VcuEkdoFxP80FpDDqUkZdl+WYYuN6D1tveS6yO2XSi7mLBIbXR/6ApM7cxXOtkWLd4tPR+GgMbQLeBa50PI++3b38007+pJd/cn61XbF5OuDott0hMi555EttrJSvqZTADvAaOsB4SSLiNIHCBZa/mmamA15S2bbyuRsVMevcBD0rX/L5oYjD7fpZrXe42jwKcaCES+bgbQo+xIr3AOy+He+A+Q/muwdt++V4B9gHGe4emOHr8AQylQUZIZGx3zhPHIUu8TjL0PMga8fcpMrGYn6eXkDb/gbaWi31
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Export Entity Data as CSV"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/export"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"ids","in":"query","description":"The IDs of the entities to be exported.","required":false,"schema":{"type":"array","items":{"type":"integer"}}},{"name":"start_timestamp","in":"query","description":"The start timestamp of the data to be exported. <br>\nUnix timestamp in milliseconds. <br>\nDefault: 0","required":false,"schema":{"type":"integer","format":"int64"}},{"name":"end_timestamp","in":"query","description":"The end timestamp of the data to be exported. <br>\nUnix timestamp in milliseconds. <br>\nDefault: current timestamp","required":false,"schema":{"type":"integer","format":"int64"}},{"name":"time_zone","in":"query","description":"The time zone identifier of the data to be exported. <br>\nDefault value is the time zone of the server.","required":false,"schema":{"type":"string"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

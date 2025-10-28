@@ -1,0 +1,72 @@
+---
+id: status
+title: "Get User Registration Status"
+description: ""
+sidebar_label: "Get User Registration Status"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVEtv2zAM/isCTxtgNOmOubVoV/Tax6kICsZiYrW25FJ01szQfx8o5+E1wVrsJEgiP378+OjBUstUopCF2RLrSAVYiiW7VlzwMAMoQHAVYfY0L6BFxoaEWO89eGwIZnDRSRXY/cbsUoBTv4rQEsMJOHrHpq3V8ZKQiU3fY1lSjM8SXsmnBAXEsqIGYdaDbFo1jcLOrzLcErta/uGd0rwAptgGHykqxo/pVI8jJmXwQl70D9u2dmXOYPIS1aA/JhEWL1QKFNByaInFDfAWBY/x77YMzJV+F59gOO9kFGkRQk3oj+VLqQBxkuV7jMT3gtLFXSxIBcT8clq6MdROIbN1SCraW0dRnp39inu2Nc6qJzEHfi6Dpc89r9XWqK35xiQde7Im+HpjflXkjVRkPnAzLpqf6Gqy3w/BGooRV1+OtzX/z5CWBF399ZhX2Z6syVzN6NM4vwzcDLMyruauhpfBbk5Xdjs4ubbnuUG7pkHeDM28xrqjcTsOLZWHetQWajquc57IUfUO932yAMcCaCcmpT/MuXLK10hlx042w77QDs+Z3tqsVaZQQENSBX1ZUZ4ElApmMOki8WRvFInXw6KZH2DvdSSzAkn3zDLkUmwVvCRcE5vb8HBq7SjYcDk/m55NVdA2RGkwz/p2ld2QGBXf3NHKRRnIm/sdp79A+8P+gMN8C73LpK3ReY3Qca2GQ4ZPoBnCvhbzAqoQRT/6foGRHrlOSZ/fOuKthGtkhwvN72m+lztv31fSyl+UJbVyqP/xJtN1uFf85voBUvoDNJgSeQ==
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get User Registration Status"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user/status"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"init":{"type":"boolean","description":""}},"title":"UserStatusResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyUserStatusResponse"},"examples":{"1":{"summary":"","value":{"data":{"init":false},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

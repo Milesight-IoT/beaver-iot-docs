@@ -1,0 +1,72 @@
+---
+id: search-group
+title: "Search Group"
+description: ""
+sidebar_label: "Search Group"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWN+P2zYM/lcEPbWA63OKYQOCYUDuR4cDDm1xSfcSBIFiM4l6suRK8qVp4P99oOQ4cuJLfH3ZMCxPkUWRNPnxo+gdzaDQkDILGR0umTAQ0QxMqnlhuZJ0SGlELVsZOpzOIlowzXKwoHG9o5LlQId0VNq10vwHc0ciyvHcGlgGmnaog+8sLwQevAamQZPdjqUpGDO36glkVdGImnQNOaPDHbXbAkWN1VyunLolK4U9c7qqZhHV8K0EY69VtkUtqZIWpMW/rCgET52vV18NOrULzJ2+vLevFl8htTSihVYFaMvBoLhaLg3YwE8uLay633updM6sl/n1F1pFVPCc9zpcYehXMDf8B/Qz1oRpkOwPyzJfgH7t8SqiRmlrgnNMa7bFPFvIzWnQUpXHORdg+Gpt4wWwZ9Bc2XjBDMToSTxGhfEn7QFyPsIZ15B6zV1gOMaWLHM6nNLR+IZG9PZufENnVaNy20NHVUXUcuvw6T2szsWHStiQEQbkgRv7+x9v3qK8VZaJHpGeoBzxiYnJ/ZLYNZC01BqkJSAzYspFzq0hTmHkthcsfXJ7Gy4EkcqSAjRii6SqlJakTKSlcPiOO1Hnq7ZHMHP2/QHkyq7pcPD+tzAwY2A6Xd/CM0/hT63K4tGXG60qFNNgCiWNT+D7JOksrN4leQEfzHYU7mPtAbnF7UsYC1zpB/HWm3tLaIikghkTX7THsz5A7J2pMDMveNYB4poW2ELATxAfHg3fYqGUACZRaynPbJ5nogs8V0XnCPcU6Uhc/ZOq9Co2BYZ4iV1uo/RTjOiKM5UzLh1r/fvoKqJ8JZWGecoMdMS8E1elEPM1k5lAna9x9ONocv/XHY3oxy8PD+P5h/vH8aRZPYzGE+c/MynIrK07wABqf3k/pBmMeBU++bxH7CtIthMakBet+AbunUPny8D0p+ZqOQcBOchWxww1/I/J/wImI7rk2thuZYK9tOMwO0eOewEeXuAMhE7BfFQeZzqAscyW5nJw9/2b1Aeq5j4979O6alnCM1dpWis9T1XWo5XdoSxBWfJGgy21hIwoKbZkswbprj9HvhFuyAfGBWRvD8ZyMIateturxX/SZAaWcdHf5q2Th4w4X0mwSbj0uUXBMK37POI0cyHF9XDlkjxw96gyz5ne+pJ5ZqKE8NbU3Hym/laCQvVUR6tZ+4ZQd/V6Smy6fL1uNfak1ceTQ9tO9gQ4bdESpSHB4KpFILWJI4pAsaCqg+m19aiaHXpF0hB/o7JxuPG1i8n/Eb8bjqlFPK3UixaTJKfEkQT1jhbDAnbsGZTlYd2g2A85bWRTd72vonq2R4y5pYG01BwjgN8IMBoOwvdoybhJwUEVJwqwa4WPC2Vcn2I4XNCrzAH63QrFrvwR/AgA+tl/apgdjIxxLnD4riKKw8LjYdK/239Z2IWAq6fsNiYHyRFkB82ce5Ri3weDLNd1jfk5wKoumv0efgRZKkcGdQ1fuzmY3KtJVy/D9/SLQZzEibsIK2Nz5np2rdxPXWQfzJaSoJSDy7uF7/aqEIz7i7kWvo4x6FMaBt1F24V9FtE1Jmc4pbsdjuxftKgqfPytBF3n+Jlp7mlhOmvw4CL3BBiiG+/Luwm60dDO6ZxXRfsTozSFwp6VnQX4+fzJ9fhF/Xkn9zDWbINIZxsfBOVi46jQPdtRweSq9Fj2OvH3N4hXgT0=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Search Group"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device-group/search"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"offset":{"type":"integer","description":"","format":"int64"},"limit":{"type":"integer","description":""},"page_size":{"type":"integer","description":"","default":10},"page_number":{"type":"integer","description":"","default":1},"sorts":{"type":"array","items":{"description":"com.milesight.beaveriot.base.page.Sorts.Order","type":"object","properties":{"direction":{"type":"string","description":"","enum":["ASC","DESC"]},"property":{"type":"string","description":""}},"title":"Order"},"description":"","default":"new ArrayList<>()"},"total":{"type":"integer","description":"Total number. If the current end submits total, the back end will not perform count calculation.","format":"int64"},"name":{"type":"string","description":"","maxLength":127}},"title":"SearchDeviceGroupRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"content":{"type":"array","items":{"description":"DeviceGroupResponseData class.","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""}},"title":"DeviceGroupResponseData"},"description":""},"pageable":{"description":"","type":"object","properties":{"paged":{"type":"boolean"},"unpaged":{"type":"boolean"},"page_number":{"type":"integer"},"page_size":{"type":"integer"},"offset":{"type":"integer","format":"int64"},"sort":{"type":"array","items":{"description":"org.springframework.data.domain.Sort","type":"object","properties":{"direction":{"type":"string","description":"","enum":["ASC","DESC"]},"property":{"type":"string","description":""},"ignore_case":{"type":"boolean","description":""},"null_handling":{"type":"string","description":"","enum":["NATIVE","NULLS_FIRST","NULLS_LAST"]},"ascending":{"type":"boolean"},"descending":{"type":"boolean"}},"title":"Sort"}}},"title":"Pageable"},"total":{"type":"integer","description":"","format":"int64"},"empty":{"type":"boolean"},"number":{"type":"integer"},"size":{"type":"integer"},"number_of_elements":{"type":"integer"},"sort":{"type":"array","items":{"description":"org.springframework.data.domain.Sort","type":"object","properties":{"direction":{"type":"string","description":"","enum":["ASC","DESC"]},"property":{"type":"string","description":""},"ignore_case":{"type":"boolean","description":""},"null_handling":{"type":"string","description":"","enum":["NATIVE","NULLS_FIRST","NULLS_LAST"]},"ascending":{"type":"boolean"},"descending":{"type":"boolean"}},"title":"Sort"}},"first":{"type":"boolean"},"last":{"type":"boolean"},"total_pages":{"type":"integer"},"total_elements":{"type":"integer","format":"int64"}},"title":"PageDeviceGroupResponseData"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyPageDeviceGroupResponseData"},"examples":{"1":{"summary":"","value":{"data":{"content":[{"id":"","name":""}],"pageable":{"paged":false,"unpaged":false,"page_number":0,"page_size":0,"offset":0,"sort":[{"direction":"","property":"","ignore_case":false,"null_handling":"","ascending":false,"descending":false}]},"total":0,"empty":false,"number":0,"size":0,"number_of_elements":0,"sort":[{"direction":"","property":"","ignore_case":false,"null_handling":"","ascending":false,"descending":false}],"first":false,"last":false,"total_pages":0,"total_elements":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

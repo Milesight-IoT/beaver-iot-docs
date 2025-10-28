@@ -1,0 +1,72 @@
+---
+id: delete-group
+title: "Delete Group"
+description: ""
+sidebar_label: "Delete Group"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SsCTyvgNemOvrVINhTYqet2KYJCtZhYrW2pFJ01M/TfB8pO7C3pWiwXRxLJ9/j1OjDoCQvNaCBf6ypgBgZDQdazdQ3kABmw3gTI71YZeE26RkaScweNrhFy2JBr/b01kIEVF6+5hBNxCJ9bS4LE1GIGoSix1pB3wDsvgWzDuEGCGLND8MuWS0f2l05xBoQStUE6hYEvuvaVOF6hJiTVdbooMIR7dk/YxAgncAOTbTYp3Fq3Ff/DO8aVJBK8awIGifFpPpfPEZPCNYwNy5v2vrJFymD2GMSgOybhHh6xYMjAk/NIbPvwRvMrVKd4NwMjtRDzmEFgzW1423GfihocYt8mDCwNfYd7slXWiCcSObovnMG3PZdiq8RWfSDklho0yjXVTv0ssVFcovqLm7JBfda2QnM2gtUYgt68G28w/09Ig6xt9X7MRbJHoxJXNXlUtlk7qvuhjjEDtpymdt/IK2d2P9xQ1n6mUzcv0uy0da1p18/ZVlctjpMiV/vm75du3820IJMejedDSgDHaQJE+WXD2gmPdAxYtGR512uDDG3K51qQDFbI+EWUATKokUs3XsuQi0bkMDO4tQV+TBIy69Ln2qQlRdr2OrMakb7J0qRCRFGCtUs9GEp3hXqLpK7d7SlhkGD94eJ8fj6XunoXuNZpGwexWSR6ak/7jyDduNFJFPvOM77wzFfaNhKxpUoM++TuYJocZJAP6cEqg9IFFpOue9ABv1MVo1w/t0hDPbearH6QzO46MDbI/1dEekrtw82gsmfqNZbDpW524/hISk+4m6p5XB1anjj0z5dFgZ4njkfiJgp5aPhi+XV5u4QYfwMf/jWc
+sidebar_class_name: "delete api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Group"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/device-group/{groupId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"group_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

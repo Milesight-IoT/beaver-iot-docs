@@ -1,0 +1,72 @@
+---
+id: get-mqtt-broker-info
+title: "Get MQTT Information"
+description: ""
+sidebar_label: "Get MQTT Information"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1v2zAM/SsCTxvgNemOuTVoV+TQw7bsFASBYjOxWltSKDppZvi/D5Td2m2KtsvJkPkeKX491ZChJ0w1YwaTjS4CJpBhSMl4Ns7CBCAB1tsAk8UyAa9Jl8hIcq7B6hJhAlcV547MXx0pCRjh5agzJHjDHT7q0hdCnKImJFXXOk0xhBW7B7RNAwmENMdSw6QGPnqBBiZjt9HdRlcFv8NummUChME7GzCIj+/jsXxObpI6y2hZbNr7wqQxg9F9EEB9egm3vseUIQFPziOxad1nmvWp/1/dDdS1mJMPfOQucB9p0edrq6KA5UkZmwTKHfPKO3rBM5ZxG+v+PjGcxTyEldec/+dFD+cGO4fXJMCG43jd7Zin5B6QZnbjxGVgzVV4e6yGbp6mR3WERgZqV2Hglck+Q49YZTJhIpGjVeoy/Jh5I1glWPWFkCuymClni6M65GgV56he3U2ZoH5oU2D2tQ9WYgh6++l4HfzMkBmyNsXnY15HPGYq3lUNjMrYjaOy1ZFhJ592aeqy42lXO0GJfb2Mi1uVpaZju+R7XVQ4XNN21cQ02KDxy7UYD2ZdkIcXhufDYKQENZyRqHSDzvfn50IBnBZPJriR1Fv9lJziMWBakeFjq8OiHLFKM4m0RX5VlARK5Nx1RhGbNpOR5DhaR+A30yID0r4V9GUf5rdIX6xoI3q+cbGtXTemqPdIaubmb8m7OGsPlxfji7E0yLvApY6a2j0Zt8jq7ud8rmaDjr9yVvf6DL1+Mj7yyBfaWPFcUSHANr1FbCEkMExwmXQNX0Bdr3XAP1Q0jfzeVUhdPfeajF5Lcovlc+3jE/eAMkZXaYqe+2E6fS7kzXmu+e3NHJrmHxFYiTE=
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get MQTT Information"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/mqtt/broker-info"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"host":{"type":["string","null"],"description":""},"mqtt_port":{"type":["integer","null"],"description":""},"mqtts_port":{"type":["integer","null"],"description":""},"ws_path":{"type":["string","null"],"description":""},"ws_port":{"type":["integer","null"],"description":""},"wss_port":{"type":["integer","null"],"description":""}},"title":"MqttBrokerInfo"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyMqttBrokerInfo"},"examples":{"1":{"summary":"","value":{"data":{"host":"","mqtt_port":0,"mqtts_port":0,"ws_path":"","ws_port":0,"wss_port":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: cancel-set-home-dashboard
+title: "取消仪表盘置顶"
+description: ""
+sidebar_label: "取消仪表盘置顶"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVD1v1EAQ/SurqRLJ5C6U1yUKiFSgJNCcTtHEO3fexPY6u+Mjh7U9HR1CoqJDFJRpEP8GCPwLNGvfh3IXEnHNee2ZefN23rwGNFWOUmTSMBhj7ikBTT51pmJjSxgAJMA48TAYjhKo0GFBTE7ODZRYEAxAo8/OLDp9ajQkYCStQs5gQy1Hl7VxgsaupgR8mlGBMGiAZ5UUMyXThByEkCwA9mrOrDNvMNbpEDJCTW4TBl1hUeWSuE/oyKmmwTQl70/ZXlAZAmzA9exMOYnlxljn/I/sEEZCxFe29OSlxuN+X/7WOkltyVSyfMOqyk0aGfTOvQQ0603Ys3NKGRKonK3IsWnLa+Q7Wl3FO+o6UgcSHhLwjFz7+xPnVFSXENoxkWcZ6APSY6wyWjLJOetOU6vp/swnEqskVm054tqVpJUt85l6nVGpOCN1qzdlvHqKJie9vQQryHucPBivC/9PSE2MJn845kGMJ61ir2rlozLl2LqiFXUICbDhqNr5IPetnr2y3bW2mo7T3I3aqYsC3azV2RTzmpZKkVfz4c+Xbj7NuCArM1qeF5QA1mkCBPkl3dpJH/HoKa2d4VnrDyLayOdQkFIsU8qPiZ/Zgg7mJgEJFMSZlYjK+qh2MYsB9BZG0msWj4c69NpCjzJbkDAjN20daLTEP5ZVitcTxB/GNk6mu9B9wik5dWhPNtmFFGsPuzv9nb7ctvRVYNzRzoJ+vnv/6/rtj29ffn/6fPPxw833r38+Xd+u1iwXPvpmKwymK+5VOZpSStcul8CW8nDpnZDAYIW0mMcK61ECmdzVYAhNc4aeXro8BHl9WZPrbn+KzuCZMB42oI2X5ztsfbXTraPOk7fVXU13L7GcLcUmDC9odtv/w2ghkthHG7KXplTxSvKaHYqnLnTx4vnxCYTwF2wwUDg=
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"取消仪表盘置顶"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/dashboard/{dashboardId}/cancel-home"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"dashboard_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: get-workflow-components
+title: "获取工作流节点列表"
+description: ""
+sidebar_label: "获取工作流节点列表"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVL1u1EAQfpXVVCBZuQsVui4hAUWCBoIoolM0Z8+dN2d7nd3xJcZyQSpEAR00NBRIvACKKHgbAnkMNGvf2cpFXERlreebv2++mQoiyi2FyBTBaIqJowAicqHVOWuTwQggAMaZg9HROIAcLabEZOVdQYYpwQh2Co6N1a/RuwSgxS8mjMjCLeHoHNM8EcddQktWVRWGITl3zGZOWV1DAC6MKUUYVcBlLlDHVmczH26KRcL/8K7rcQCWXG4yR05iPBgO5bNWSWgypozFhnme6NB3MDhxAqjWizCTEwoZAsitycmybsJHyLge/3lbgdoTc7AhxpzKXiK0Fkthkil1GwuoA2DNntE5lQ+hrnt/nmH+VDt+Zex8mpizRybNTUYZ+6rqABwjF+52pvvtLAlVrUMtHJ8W5PhYR3dx91ilI/Eka409Dk1Emz33BasEq+5Z4sJmFCmTJaU6iylTHJO6UZvSTj1GnVB0v0uWknM4u3O+Fv6fKSNi1Mndc+55PEXK16p6RqWzqbFps1r9uS7ltWuictOM243zU972yi7SFG3ZbMECk4L6OvZa7NYbuqRSuAcB1OOeeMTQV4Nf896Mu/eKEh/rBk0g0pUmm+PhtS1PR2FhNZfNERLlez4OJNOM1vt2EEBKHJsWIAuDHMMIBmctdhD2wY7sojlq4y7bC1n/5YLJGPwcWyZ2CRdk1YE5vO3ESbDmsb013BrKDHLjOEV/V1per99fXn34eHX59dfPz7+/v7l+d/Hn4sfV20/XX77djFl1pwq6U8J0zoM8QZ1JgsImAmwaPYJlo/7MrVodBxAbxwKoqgk6emmTupbfpwXZluAFWo0TafNovBqGV4RXBuyEIeXcKWf9eMoFXg3gyf4h1PVfR/NDJg==
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取工作流节点列表"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/workflow/components"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"key":{"type":"array","items":{"type":"object","properties":{},"title":"key8"}}},"title":"MapListWorkflowComponentData"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyMapListWorkflowComponentData"},"examples":{"1":{"summary":"","value":{"data":{"key":[{"name":"","title":"","data":""}]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

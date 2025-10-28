@@ -1,0 +1,72 @@
+---
+id: fill-device-batch-error
+title: "Download Error File"
+description: ""
+sidebar_label: "Download Error File"
+hide_title: true
+hide_table_of_contents: true
+api: eJx9U8Fu2zAM/ZWAZ6dJd/StWTegpw1odzKCgZaZWK1tqRSdNTP07wMlN02RYCdLFvn4Hh85QUOeyaBQA+UOu0AFNBQMWy/WDVACFCC4D1BW2wI8MvYkxHqfYMCeoIS7UVrH9i+mlAKs5rWEDTFcgaM37H2niRtCJl5MExpDIfwW90JDjFBAMC31COUEcvQaGoTtsE9wOxw7+U92jNsCmF5HCrJxzVFRjBuEBtFjP3ZiPbKsdo77ZYOS6lxUdPUzGYECPDtPLJaCvtpBaM9Z6gW9WMDOqrRL3loMlXZtB+SjhhKz43AFJWb+ltWV6lPJucApeRtjDg/eDSFT/LJe6+ei8WdNQO87axLk6jlkKRcdQGY8qp9C/TnNxIc48ZzNTM+3CWXse9WXKh6wGwnKaj3TzEOhwekayIxs5ZiHS7ucGD00UKrM7p4O1tAGxbTfVC4U0JO0Tt+9C8kclBZKWDUpdFlr7EpzlzRnBOJDHtjtR8VH1ZpYR53XnUvyrLyP5YF48eCero2vguXL7c36Zq1GKpceUxPnlbh3f4bOYbNIvBffs2efsM6GMi1Z7q3Qm6x8h3ZQ4JE7DcwiKzgXmSfhXea2gFYbUlYwTTUG+sVdjPr7dSSeG3xAtlirxGp7MiMt8gupYV8zn+WTUjmZd3VhYvGedGcMeTkLvxgtXceTbT9/PGpX63kve9dojgIn3OLjqCRj/AeVVZcz
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Download Error File"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device-batch/fill-error"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"multipart/form-data":{"schema":{"type":"object","properties":{"integration":{"type":"string"},"file":{"type":"string","format":"binary"},"errors":{"type":"string"}},"required":["integration","file","errors"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"integer"}},"examples":{"1":{"summary":"","value":[0]}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

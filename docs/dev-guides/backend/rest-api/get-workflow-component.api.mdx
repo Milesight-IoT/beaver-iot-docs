@@ -1,0 +1,72 @@
+---
+id: get-workflow-component
+title: "获取工作流节点详情"
+description: ""
+sidebar_label: "获取工作流节点详情"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVLFOG0EQ/ZXVVCCdsEnpDgKJaIEoBbLQcjf2LdztLrtzBue0RYjSpEi6VGmTNlWEUuRvAuEzotm7sy2MA4ob397NzJu38+bVkKF1mErCDAYjWXhMIEOfOmVJGQ0DgARIjj0MjoYJWOlkiYSOzzVoWSIMIDWlNRo1HasMElCcZiXl8EAth+eVcoxGrsIEfJpjKWFQA00tF/PklB5DCMms/lZFuXHqjYxlWoAcZYbuIQi8lKUtOHEbpUMn6lqmKXp/TOYMdQiwGpbLjWRV0D+yQxgyD2+N9ui5xrN+n/+WOkmNJtTE36S1hUojg96p54B6uQlzcoopQQLWGYuOVFM+k7Si1UW8/bYjscPhIQFPkir/eGJHRbQJoZkS+jjPJ6THWKEyzkTnjDtOTYaPZ+5yrOBYseaQKqcxE0YXU3GRoxaUo7jXm1BevJCqwGx9Dlai93L8ZLw2/D8hMySpiqdj7sR4zETsVSx8FEqPjCsbUYeQACmKqu0GuW2y6UG7DTNVx3luRvVUZSndtFHaRBYVzrXCr7rxd1vXzTOuyMKU5ucZKYBlogCBf0m7eNxHPHpMK6do2hgEyzYy2mOkMdJr485Ghbl43nkEJFAi5ab9zmJnqxhA76IN7c38xPfq2fNeFvcW3aRxn+Ec+oD3KN5MYHMYmTiW9ja3UU7QiT1z+JBXcLHmsLnR3+jzRVvjqZRxQVv/uft4ffPp883119+/vtz+eHv34erP1c+7799u372/X7Oe73x0zkYbhJfUs4VUmgEqV3BgQ/sIOtrRLzrikMBggToME8iNJ46v6xPp8ZUrQuDX5xW69vIn0il5wqyPasiU5+cVtr7Y59p+68nrYlXL7Uupp3OtMb8znN73/zCcaST20YRspSlaWkhe8kM21ZkwXu4eQgh/AelmU6k=
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取工作流节点详情"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/workflow/components/{componentId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"component_id","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyString"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

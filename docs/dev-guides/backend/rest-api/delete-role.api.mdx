@@ -1,0 +1,72 @@
+---
+id: delete-role
+title: "删除角色"
+description: ""
+sidebar_label: "删除角色"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVD1v2zAQ/SvETQ0gxE5HbQniAgE6pWmXwAgY8WwxkUTleHKjCtzbtVu3DgW69z8VSP9FcZRsGbHTBPUik7y7d+8+XgcGa8JMMxpIF7rwmIBBn5Gt2boKUoAEWC89pJfzBGpNukRGknMHlS4RUiBX4JU1kIAVj1pzDnvCEN41lgSIqcEEfJZjqSHtgNta4tiKcYkEISSb2McN547sJx3jDAg5aoO0DwPvdVkX4niCmpBU1+ksQ++v2N1iFQLswfVMtlrGcAvdFPwP7xDmQsTXrvLoJcbr6VQ+O5lkrmKsWN50XRc2iwwmN14Mut0k3PUNZgwJ1ORqJLZ9eKP5iVS38c6HjNSpmIcEPGtu/POOaypqcAh9m9CzNPQF7tFWWSOeSOToKnMGn/ecia0SW/WKkBuq0ChXFa36mGOlOEf1KDdlvXqjbYHmYAQr0Xu9fDHeYP6fkAZZ2+LlmKfRHo2KuaqtR2WrhaOyH+oQEmDLcWrXjTxxpv3ghrL2Mx27eRRnpylLTW0/ZytdNDhOilytm79eunU344Js9Wg8bygB7NIECPJLhrWTPOLRY9aQ5baXBhnayOdMkAwWyHjuCoQESuTcjbcy4yIRKUwajzQR+fCTTj5nJi4o0qqXmPmI8k4WJhYhiAosXKz/ULYT1CskdeYu9omCBOsPR4fTw6nUtHaeSx03cRCa35+///n24+Hn14cvvx4H6cZtjnrYd53xnid1oW0lERsqxLBndgnCTMov3CCBtGcH8wRy51ksuu5ae3xPRQhyfdcgDaVcabL6WohddmCsl/9PyPN2Zq/OB4E9UE8lOVzqqh0nRxjdYrul42G+aXZMoX89zjKsectvR9ZEGze9Pp29nV3MIIS/0so1/w==
+sidebar_class_name: "delete api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"删除角色"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/user/roles/{roleId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

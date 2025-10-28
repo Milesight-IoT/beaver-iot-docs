@@ -1,0 +1,72 @@
+---
+id: export-entity-data-as-a-csv-file
+title: "导出实体数据"
+description: ""
+sidebar_label: "导出实体数据"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFlcFu00AQhl9lNWerCQhxsBBSoRXquS2XElUbexJva++6s+MqqeUzJ06IK48AnBG8De1zoFknqUnaNFWhnKJ1Zmb/b2fn3xpSLAkTzZhCPNK5xwhS9AmZko2zEANEwHrsIT4aRFBq0gUykqxrsLpAiMGkHiIwEn1WIU1hucZBhmpvxys3UpyhQsuGDXrFTg1R4aR0xJhuQQSEZ5WhjhifZFhoiGvgaSmbaSItOxjGwne+G8s4RoKmaaKFMs+a+JhNgZ51Ud6tMiSoRcJccapZL6tVL4b08p09tGbSSTBWFSbPjcfE2dTPo3ZwpKucY9XfCHIOE8HIUaG5/fT8GXTh0Kb3QUOb/kuwpCJC2zm7vwcqJY8vnMW7ISVUSagyqVyzkUHagHVGoc51XqEyPsRf15oV8EjnSJtdU89k7PgPjO2KM0fmQge9M5QMdRr4V6YOJ7ooc0l8hZqQVF3rJEHvj9mdom0auH1bKReI1mQ3zUBAfOmsxzBJT/t9+VlRkjjLaFn+02WZmyQQ9E68BNSrItzwBBOGCEpyJZKMOsR1I5M5452tI/CYVGR42tqLRIfaeynEsBua1LrFtO2e9kqr1/tv1cjkchsK5MxJ7BjDfpoziKHXpvTaLssxhcbNPGy+5b7IbpVJL0YuEBieH/k5ktpzBze1Roq1iydb/a0+NBGUznOhw3nM2n359cfl+++XXz7/+vnx6tO3qw9flkvV1ycbbLY9PcYJ98pcGyt1K8olsCU7gpYs3I7ANoggc57lr7oeao+HlDeNfG5nRFw6NV4P89sMvitic5++UespThevQZgk4ZIBuJ+CR/HgNQCrj8YDYP6D665BW34yHgD2SE67Bqb7LFyDDGRBRkhk3heWE0ahTdxOEiy5k7XialJl4S1vdg+gaX4DfmQyYw==
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"导出实体数据"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/export"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"ids","in":"query","description":"The IDs of the entities to be exported.","required":false,"schema":{"type":"array","items":{"type":"integer"}}},{"name":"start_timestamp","in":"query","description":"The start timestamp of the data to be exported. <br>\nUnix timestamp in milliseconds. <br>\nDefault: 0","required":false,"schema":{"type":"integer","format":"int64"}},{"name":"end_timestamp","in":"query","description":"The end timestamp of the data to be exported. <br>\nUnix timestamp in milliseconds. <br>\nDefault: current timestamp","required":false,"schema":{"type":"integer","format":"int64"}},{"name":"time_zone","in":"query","description":"The time zone identifier of the data to be exported. <br>\nDefault value is the time zone of the server.","required":false,"schema":{"type":"string"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

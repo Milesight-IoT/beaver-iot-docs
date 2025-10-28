@@ -1,0 +1,72 @@
+---
+id: create-role
+title: "创建角色"
+description: ""
+sidebar_label: "创建角色"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVc1q20AQfpVlTi2osRMIBd/yVwgUWpz0ZEyYSGNrG2lX2V05ccXe22uvfYDee2yfJ5DHKLMry8JxE1OdtKv5/b6ZTw1kVBlK0VEGoxkWlhLIyKZGVk5qBSOABBzOLYwm0wQqNFiSI8PnBhSWBCM4ql2ujfyCwSUByX45YUYGtoSjeyyrgh2PCQ0Z0TSYpmTtldM3pLyHBGyaU4kwasAtKza1zkg1D+FmWBfuGW/vpwkYuq3JumOdLTlKqpUj5fgVq6qQaah18NlyUU0v3dPmY359/ZlSBwlURldknCTL5hGBbVVuhCmlek9q7nIY7SdQ4n13OnjrN+x3CbcOcHB46H1sWBqmcRKrmibgpAs4nxhCR2Nd0DjCAt5HH1tpZWMrB8PhVgB2hu55pDJ0WwAetxWIU/78EtpGF3Qlsx0Q4u62dR+zgU/AOnS1fTnUCiPROvhutnaqpLUVMmNPMkabq1RnOwzNGdsKthWvDLnaKMqEVsVS3OWkhMtJbNQmpBXvUBaUvV4nK8lanO+crzX/z5QZOZTF7jlPgz1lItQqeh+FVDNtyigpfTZXHPJmb2e21ZfA7X4Y0bos0SzjOC+wqKk/kN1QQX8s2LTPcxCuHnvrc9cswFMAIGyaT1o55JrC0VJaG+mWUVZ5xkOn55wp7briRSeXa76ttA0LgbzzMKgtmQGXblktySyiJk/XoS94MQMKPgHe1vFaEs9WEtxp+D8Iaq89i/pMB0JbHo4JF2TEub7cpk9cTjzs7w33hhyAGyhR9XI+fP3x8Of348/vj99+bQbpSXZPhR3du0FVoFQcsTYFG0ZIJsCQMGsBlGkCOSM2mkDTXKOlT6bwnq9vazIt7gs0Eq+5ncm04yj82W6Ix+UklvDmkrN3o/NUBn2y8jhKU6rcs7bTHqkfP1wwfNftX6qMo2XwjvvAu9i7DpBEAeS7BgpU8zrOV4zJz1+XpLW+
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"创建角色"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/roles"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":"","minLength":1,"maxLength":127},"description":{"type":"string","description":"","maxLength":255}},"required":["name"],"title":"CreateRoleRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"role_id":{"type":"string","description":""}},"title":"CreateRoleResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyCreateRoleResponse"},"examples":{"1":{"summary":"","value":{"data":{"role_id":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

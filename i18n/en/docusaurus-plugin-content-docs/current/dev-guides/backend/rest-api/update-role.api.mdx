@@ -1,0 +1,72 @@
+---
+id: update-role
+title: "Edit Role"
+description: ""
+sidebar_label: "Edit Role"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVVFP20AM/isnP4GUUUBCk/oGg0lIe5g62AuqkMmZ5iC5C3cO0EX33yffpW0EhVXrS3MX25/92f7Sg6bWU4lMGqb3WAcqQFMovWnZOAtTgAIYFwGmN/MCWvTYEJOXcw8WG4IpeFfTrdFQgBGPFrmCLWE8PXXGCxD7jgoIZUUNwrQHXrYSx1imBXmIsVjHPu24ct78wRRnQKgINfltGPSKTVuL4xmhJ6/6HsuSQrhl90g2RtiCG9gbu0jh7rGr+RPvGOe5EAp85vRSopTOMlmWR2zb2pQp18lDkKT6Edx7YjO+u3ugkqGA1ruWPBsKYp4Z2JblmzCNsT/ILriC6VEBDb6uT8df4xv7XcJtAhyfnMQ47txNzmpeABtOPF+3GplmrqZZpgVizD6hdTbkUo4PD7cSsDN1nzOlkT/o5xhvNmSkzsU8FhAYuQv/dlyVogaHuB4Bmfod3JOtMlo8yXvnb0und+jthdgqsVV7nrjzlrRytl6ql4qs4orUm9yUCeo7mpr0/gasoRBwsTPeYP6fkJoYTb075nmyJ61Srmr0Uhl773yTN19GajVyq0bKAv52A6158VM3j9LsdE2Dfpnn7BnrjjaTIler5q+UadXNpCKjHm3O65IA3pcJaexjMWiT5JGOgcrOG15m/ZShTfVcClK3Xh3ZOuLKyW3bpQEXEZ3CpAvkJyKwYdLL36VOEkb+OYvwfAPxS7YlMRALkBWabXTqYqWLa2H9oB3DdRSlvXepfQPrZ4TP5NWlu9omGpJOPhwdHB4cSoDWBW7QjjAvtGE11PtGldZKMNJFpleetDUaK+E6X4thJuYGhBhpnVADBUwzOaJMlQssFn1/h4GufR2jXD915Ic2PKM3eCdV3fSgTZDnD75/48z2ZoMO7quPkhwu0S43UycVPdJy9KGM8/WgpBTy228Z6MuVxNh4vxNG+Tpmj9OypJY/tZ2PJuvntbTubvhsNXm8Pb4IjfiSE3Wp7rRG6a6HGu2iyzOeQ8rvLxA10y4=
+sidebar_class_name: "put api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Edit Role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/user/roles/{roleId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":"","minLength":1,"maxLength":127},"description":{"type":"string","description":"","maxLength":255}},"required":["name"],"title":"UpdateRoleRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyVoid"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

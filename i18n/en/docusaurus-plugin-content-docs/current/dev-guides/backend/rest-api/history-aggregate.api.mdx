@@ -1,0 +1,72 @@
+---
+id: history-aggregate
+title: "Historical Data Aggregation"
+description: ""
+sidebar_label: "Historical Data Aggregation"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVt9v4kYQ/leseWqlLXBV1QfeIKEtVS60hFStEEKDPcF7Z3t9u+PkKPL/Xs2uDU7gEnp9Kw/A2jM7M983v/aQUGkpRqYEhg+YOVKQkIutLlmbAoYAChi3DobLlYISLebEZOW8hwJzgiGMKk6N1X+jV1GgRS8lTMjCmevoM+ZlJopjQks22u8xjsm5NZuPVNQ1KHBxSjnCcA+8K0XUsdXF1l/3gFXGr2jX9UqBpU8VOR6bZCe3xKZgKlj+YllmOva+9j84cWrfMXcafLBvNh8oZlBQWlOSZU1OxKlgzbu1Tjqu6oJpez70B2Nz5CDz4w9QK8Dt1tIWmdZB+1zAL/ErqhyGS7gZ3S1AwfvprXyP/gQFoz9+BgV39+9BwdXs/nYBq1qBY7S8Zp2TY8zLr3WViuS/XlIrYM2e+4lHbtSG/3tFdgd1LSKWXGkKFxD+fjA4y8vFjL5OYIJ8hvd540F0La/fSoJHzCp601R9gk+tguq/p/5uMZ/eCtU3M/9zPbsf30xAwXg2u5mMJCHG09vR/C9QMBv/OrkKiRCbquC1JecL6GAPrcWd1C1T7k7BiE3ey3VGTm9T7m0IH8lqw72Q+73cJJT1Ws56L3htkexdie15MP3/AvSSUuhmfheJMzF8uUZaLCHUNFfu7RhbXqJGoT60xudN64vqXjbSie8A1hq7jk1yAbgTkY1ENvrGEle2oCQyRbaLnlIqIk4peuFbpF30E+qMkm+PxnJyDrcX22vEv9JkQow6u9zmtZenJPK+Rp2XkS5C7xPBLqUthzKYXqG3mZGe4He+n1V5jnYXsvZQH233ah+8KIDQJ7s1v3xbFoaDetXJMHnRTRlfNp1EOJ4PuAGcYgm+udeqWQx8AcvRUVxZzbuwYEh5e9CmYinVjo09IgQKcuLUyLvSON8RkFMYQj80o36j0ceOiiP7GDaW1dHcncyHto3I0JgfF4ZJu6A8m++D02HdjuCTATs4mZaDWvaiB+OTqsmFsW+l0dQszrUm8Tkc3vUGvYFkhcSco59vzer1i49Xx5j5URW1UIVF7NmdnSWos9cwfeZ+maEuxEBlMxEMoC6b6EG1REAHAlgpSIWD4RL2+w06urdZXcvjT36We7gf0WrcSLTL1YF7n4Yfaed7oXfpu4V4c0js04leq1ZjFMdU8quyq06a/DbzDG2aPTAPKWvxSbIanwIWxkPki80/20OGxbYKeRvulM8/jjTUpQ==
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Historical Data Aggregation"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity/history/aggregate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"entity_id":{"type":"integer","description":"","format":"int64"},"aggregate_type":{"type":"string","description":"","enum":["LAST","MIN","MAX","AVG","SUM","COUNT"]},"start_timestamp":{"type":"integer","description":"","format":"int64"},"end_timestamp":{"type":"integer","description":"","format":"int64"}},"title":"EntityAggregateQuery"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"value":{"type":"object","properties":{},"description":""},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"count_result":{"type":"array","items":{"description":"com.milesight.beaveriot.entity.model.response.EntityAggregateResponse.CountResult","type":"object","properties":{"value":{"type":"object","properties":{},"description":""},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]},"count":{"type":"integer","description":""}},"title":"CountResult"},"description":""}},"title":"EntityAggregateResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityAggregateResponse"},"examples":{"1":{"summary":"","value":{"data":{"value":{},"value_type":"","count_result":[{"value":{},"value_type":"","count":0}]},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

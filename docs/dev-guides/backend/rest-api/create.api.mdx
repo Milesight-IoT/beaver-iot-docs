@@ -1,0 +1,72 @@
+---
+id: create
+title: "添加标签"
+description: ""
+sidebar_label: "添加标签"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVsFu2zgQ/RVhTi2gdZx0twffmm4WKLDALtL0ZBjGWJpIbCVSJUdJvALPC/Qr8gM972GB/k3b3yiGlGw1VVO39cmkZt4M3xvOsIOcGksZMuWwuMTKUQo5ucyqhpXRsABIgbFwsFiuUmjQYk1MVtYdaKwJFvCk5dJY9Q8GlxSU+JWEOVmYgKMbrJtKHE8JLdmk6zDLyLk1m1ekvYcUXFZSjbDogLeNmDq2ShcB7hLbiu/x9n6VgqXXLTk+NflWUDKjmTTLX2yaSmUh16OXTpLqRuG+PHyMbzYvKWNIobGmIcuKnJhHBqayvANTK/0n6YJLWBynUOPNsDr5zd8xPwRt7//4kU8hM5WxP5fHoxPvI23KSjEs49kG7FUKrDiodqZZ8fYCixdNjkznkWnwPgK4xmgX2TmZzyc5PViN+8nPkSc0y0w9q1VFThUlzzaEV2SV4RmFtGe1yamaDWnOdoc573e+KbnKDyDap4eWxner/x1yi6kludxr5JG90kzF9OW8NLYWW7F5/KsgtEHln0FgLArK10EARW6dmVb/IJifKMOdcj4Fx8it+zY1g/5J7+B3HWN9iL69baJy8SRrjV1nJj9A7zOxTcQ2eWCJW6spT4yutsl1STrhkpI7uSXKJX+gqih/uA9Wk3NYHByvN//BkDkxqurwmL8He8qTkGsy+pgoHRUVw7GYg4bSryeF7YdGkPY4NIm2rtFuY5lcYdXSuCWIiPKhn1BTpdVfovB3dEnmn1f8/KvlOx+Vm4CM6yeMuVFV7Nc7EmNOnxMLoYn6tB+ectiwdJS1VvE2DmFpRoHBZxIp5i6dnbg0stMYF7oWSluHo9j3jsIQFyh7Fcf3ao/7XBpu4NanIF34fD89z4ZpvRv3X1F9tz0Q2294eRBcmlA2vdqnoSknz8zFlDCSX1wcz+azuQDIkWrUoyQ+/Pf/+ze3H27//fj23V2Q0bgfTXCmGz5qKlQ6dDVbiWEkaQmRpOGts0qhFBIXS+i6DTp6YSvvZft1S7aX4Qqtwo2cZ7naSRaeRa9IyvJpzOGXCwm/K9EvB55PB48nWUYN32u7Gun891/Phb9N/8SpY6VZvJZixOt4eBM4Cdcm7HVQoS7aWG4RU36fAEzheC8=
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"添加标签"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity/tags"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"name":{"type":"string","description":"","minLength":1,"maxLength":25},"description":{"type":"string","description":"","maxLength":63},"color":{"type":"string","description":"","minLength":1,"maxLength":32}},"required":["name","color"],"title":"EntityTagUpdateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"com.milesight.beaveriot.entity.model.response.EntityTagResponse","type":"object","properties":{"id":{"type":"string","description":""},"name":{"type":"string","description":""},"description":{"type":"string","description":""},"color":{"type":"string","description":""},"created_at":{"type":"integer","description":"","format":"int64"},"updated_at":{"type":"integer","description":"","format":"int64"},"tagged_entities_count":{"type":"integer","description":"","format":"int64"}},"title":"EntityTagResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityTagResponse"},"examples":{"1":{"summary":"","value":{"data":{"id":"","name":"","description":"","color":"","created_at":0,"updated_at":0,"tagged_entities_count":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: count
+title: "Get Tag Total"
+description: ""
+sidebar_label: "Get Tag Total"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVMFu2zAM/RWBpw0wmnQYdsitRbuilx227FQEBWMztlpbcik6a2bo3wfKTmM0QVssl0DW4yP5KL4eCmqZchQqYLHBOlAGBYWcbSvWO1gAZCBYBljcrTJokbEhIdZzDw4bggVcdFJ5tn8xhWRgNa4iLIjhBB09Y9PWGnhJyMSm7zHPKYR78Y/kYoQMQl5Rg7DoQXatQoOwdWWi22BXyxvRMa4yYAqtd4GCcnyZz/XvqJLcOyEneodtW9s8dTB7CAroj4vw6wfKBTJo2bfEYgf6AgWP+X+OFZgrvc7e4XBdsyae5LJOqDwt4MZzgzJgvn2FGDMQK0nRaydWdkssfyS+fQ0QMwiC0oXTkk4T7JUzY0BUMZ86CnJvi4+EJ6yxhUYSs+f73Bf0fuS1Yo1izScm6dhRYbyrd+ZPRc5IReZVbcYG8x1tTcXnQ7KGQsDyw/lG+H+mLEjQ1h/PeZXwVJhUq5lcGuuGuSpwOtL9DC99sXtjvONWpQGfp9fbNQ3ybngyW6w7mr7V/XubT16GAqejTss6GeDh/NIvwLEGAFF/2WgBWlE6Bso7trIbrEQff2r2VjPlvnO6FA1J5fVDSWlHUCpYwIxS3zM1otlYufLxdnCi1YH8l+5sUiGqEW18msko5SXhltjc+uWptVKy4XB+Nj+bq6itD9JgMoPR625IzBJLs/SC9WuW/uAocNh4oWeZtTVap5Qd1wocOruDobO9yWb7uawyqHwQRfT9GgP95jpG/fzUEY8SbpEtrrWzu9WL3MmYH0nnfpHn1Mph+scmp075IvnN9RJi/AfQXRoq
+sidebar_class_name: "get api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Tag Total"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/tags/number"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"number":{"type":"integer","description":"","format":"int64"}},"title":"EntityTagNumberResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityTagNumberResponse"},"examples":{"1":{"summary":"","value":{"data":{"number":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

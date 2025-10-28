@@ -1,0 +1,72 @@
+---
+id: login
+title: "User Login"
+description: ""
+sidebar_label: "User Login"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVMFu4jAQ/ZVqjqtQ2B5za/dUaaVdqe0JRcg4A3GbxO54AmUj//tq7AIJtLQnsD3z/Oa9+PVQoiPUirGEfKVqjxmU6DUZx8a2kANkwGrtIZ8XGThFqkFGknUPrWoQcrjtuLJk/qnYkoGRvgpViQQfwOGbalwtjXeoCOmq75XW6P2C7Qu2IUAGXlfYKMh74J2TUs9k2nWEW6mu5gvdIRQZEL526PnOljtB0bZlbFn+KudqoyPX6dtku91OVpaaSUc1ttqWIkR/fr9dPqNmyMCRdUhs0MvpmlTLi1RzzlXb1gtTp7zfWipHwx82QwadR0pi9oMKkX6EGLJj15eVujbY8sKUl5gZtRyRkvWx16Mm5Ev9janRm3XFP06RxichJEsMib7zoW6D6bOhUkf+p3yKEBKed7b1yYib2Ux+zj62T4x/9lLwfZ9Lxd+oGn6I56oFkccZQr8ww+O2a5ZIECdaEfrqAkA8+fJ7Sy/jTPQRvdPbRtgjpkXIwLPizn9A6eSKqNOhvIg+pSSQ5rj0qDsyvEuJIvJFS+5LyOG3XRuh0iBXVjac9VFmxRXkMLWq4+pmumfskTYpi4oj7oNYGv0IEkUrG1kb3ifOBunq3j5+lEwClhY/r2fXs/jerOdGRTPe0+7JI13tiY4gBjEzeJGMbzx1tTJtfOlUS2EaaA5poL34UGRQycT5HPp+qTw+UR2CbL92SO+SbRQZtZRx5sVB3pjHL7iDHH4lEpPH5ORG1Z3w+Dr3QraHuNUaHX/SHN+OZOzBpb9/HkTP5XvYNraUngFyNlwI7RD+A4a5PUY=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"User Login"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/oauth2/token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"grant_type":{"type":"string","const":"password","example":"password"},"username":{"example":"","type":"string"},"password":{"example":"","type":"string"},"client_id":{"type":"string","const":"iab","example":"iab"},"client_secret":{"type":"string","const":"milesight*iab","example":"milesight*iab"}},"required":["grant_type","username","password","client_id","client_secret"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"object","properties":{"access_token":{"type":"string"},"expires_in":{"type":"number"},"refresh_token":{"type":"string"},"token_type":{"type":"string","const":"Bearer"}},"required":["access_token","refresh_token","token_type","expires_in"]},"status":{"type":"string"}},"required":["data","status"]}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

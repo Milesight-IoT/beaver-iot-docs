@@ -1,0 +1,72 @@
+---
+id: count-group
+title: "获取分组数量"
+description: ""
+sidebar_label: "获取分组数量"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v00AQ/SurOYFkmhQhDrk1aql64QDlVEXVxDuJt7V33d1xaLB8Q8CJnsrv4MaB31M+/gWatdNYTdRW5BKt982bmTezrwZNpacUmTSMZpgHSkBTSL0p2TgLI4AEGOcBRieTBEr0WBCTl3MNFguCEexVnDlvPmAMScBIXEaoycMWOrrEoswlcEzoyau6xjSlEE7ZnZNtGkggpBkVCKMaeFkKNLA3dh7pZljlfE9000wS8BRKZwMF4Xg+HMrfRiWps0yW5Q7LMjdp7GBwFgRQbxbhpmeUMiRQeleSZ9PSa2Tc5H/TVaD25Tp5gMNWxZR8L5exTPPtAs6cL5BbzMsX0DQJsOGo6D4tTEqH3lXl68i4qgKaBAIjV2G7qP0UK+1UF9CInBcVBT41+jHhEauMlkjy3vnT1Gl6OPJAsEqw6oknrrwlrZzNl+p9RlZxRupObcoE9QpNTvrpOllBIeD80fk6+H+m1MRo8sfn3I940irWqnqXyth2sgLsD3U1w7HTy3sH3L2sOOLduMFVUaBftmuzwLyi/r6udm7Y2w0B9ocdH2xvhOvzbccAmyoANPJLOhuQiuIxUFp5w8vWTuQBxHaPJFPqKsuxM0igIM6cfJ1TfCzIGYxgoGP7z+aCGnT1C6tftJ40Wad4K683atGIJc1cnE0n6ZhwQV4dueNtD0zI2sPuznBnKNKWLnCB0RY61/vz9cfN1bebL59+//z46/r7389Xd6nqtcHA2gCYLnlQ5mis8FY+F2Db3wn0+4NkNaFJApkLLIC6nmKgdz5vGvl8UZHvxFygNziV7k4mt8JHmz4n2YC9NKWS13uwaXnim7e6Hx4cQ9P8AyGsJhY=
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取分组数量"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/device-group/number"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"number":{"type":"integer","description":"","format":"int64"}},"title":"DeviceGroupNumberResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyDeviceGroupNumberResponse"},"examples":{"1":{"summary":"","value":{"data":{"number":0},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: validate-workflow
+title: "Validate Workflow"
+description: ""
+sidebar_label: "Validate Workflow"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVd9r2zAQ/lfEPW3gNWlhjOWtWTsoDDbabnsIIVzsS6zWllxJTpoZ/e/jJDtxk6wN84Ox7Pv13X33uYGMKkMpOspgtMDCUgIZ2dTIykmtYASQgMOlhdFkmkCFBktyZPjcgMKSYASXtcu1kX8wuCQg2S8nzMjAkXD0jGVVsOOY0JARTYNpStbOnH4k5T0kYNOcSoRRA25Tsal1RqplCLfAunCveHs/TcDQU03WjXW24SipVo6U40esqkKmodbBg+Wiml66Q/Axv54/UOoggcroioyTZFtzuVSzDN0/it2LVuLzN1JLl8PoYvj50/nHC+8TcNKFfvzCQmbo6Lc2j4tCr28jCPCerQzZSisbE18Mh0fLPRnoG7heApprXRCqA0S3bUniiu19Atahq+3breiwiNbBbyc2k9kp7sFWyIw9yRhtZqnO6G3Pa7YVbCveGXK1UZQJrYqNWOekhMtJ7NUmpBVfURaUvd8lK8laXJ6crzX/z5QZOZTF6Tmvgj1lItQqeh+FVAttyriofeZ1g+R9GbfD9ttVDQM9D/ypyxLNJnJthUVNO7a08tFRgC36Mw2r35vU7rwFBnAIFgL7fdIKCpcSjpbS2ki3icLE3A2objjTam+PePHI5Zq/VdoGuiPvIAzWrcmAb3YQ93nQBWAlIrOKejfdJb3jNQpt8Qnwbt3u5Oa6k7c9deim5VkgFzqMse3+mHBFRtzo+2Oawenj4fxseDbkAAyixLDRrQZ30iF6mF9E6mlgT9YcPbtBVaAM465NwYaxNxNY70KF7sSQcqni7GOHpgnk3NLRBJpmjpZ+msJ7fv1Uk2nHs0Ijcc5YJ9PtKMMv5JGYTF9iaR/uuaotsQ4VzCedx2WaUuVetZ32pv7j+x33dt7+DsrIQIOMje+hJzq0KpA9vGugQLWsIw1jTL7+ApL3gLg=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Validate Workflow"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/workflow/flows/design/validate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"design_data":{"type":"string","description":"","maxLength":2097152}},"title":"ValidateWorkflowRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"boolean","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyBoolean"},"examples":{"1":{"summary":"","value":{"data":false,"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

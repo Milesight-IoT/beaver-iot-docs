@@ -1,0 +1,72 @@
+---
+id: service-call
+title: "Service Call"
+description: ""
+sidebar_label: "Service Call"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v2zAM/SsCTxvgNelOg2/9GtDD0KHtTkFQMDITq7UlV5LTeob++0DJSdwl6IJiOUXyo0g+Pj31UFBjSaKnAvIlVo4yKMhJqxqvjIYcIAOPKwf5bJ5BgxZr8mR53YPGmiCHs9aXxqrfGEMyUBxXEhZk4cBx9Ip1U3HgOaElK/oepSTnHrx5Ih0CZOBkSTVC3oPvGoY6b5VexeOW2Fb+negQ5hlYem7J+XNTdHyKNNqT9vwXm6ZSMtY6eXRcVD9Kt998ym8WjyQ9ZNBY05D1ihzD6VWWqFf0gdAn6kb9HQaFDLzykasn6k6/QRjt/MDmJkWNd+/IrpWkC6yq28QBhMAAS64x2qXkX6fTgyUfzdP7vRXoD7B5O1QgLvnz/+fnLT1Xa9J+kxJCBs6jb91hTY3L3BAlhoCwVdODKo4Jj1ihCo4ka419kKagf0deMVYwVnyy5FurqRBGV514KUkLX5L4qzahnPiOqqLi8y5ZTc7h6uh8A/yDKQvyqKrjc15GPBUi1ipGH4XSS2PrZCLjQW5myHd5b6iDmcSxnkaJtnWNtktyXmPV0liQSVRhpAaGjccbHWo0tN162yPAft8Qb1nIBt+L4oxpSLZW+S75J0s3NnjNmdzuqkIGNfnS8HZjXBQ6+hJymJD2yneTATyRCc3LZMPzXZI7vp6bi8F39nbnglcb131rWhtCAtv20sQBDryfE67Jimtzf8jFOXtanJ5MT6Y8Cy68xmgUw8swmJEYWnxzyMiUR2bp6dVPmgqV5hNbWzEwUTGDRMXQvZLEhsUnzzMombR8Bn2/QEe/bBUCbz+3ZAfu12gVLriz2Xw7p/iMRQ7gIlXz5Z4L2Upn3wZDtok4k5Ia/y52Pprrz5s7ZnIxPEl1kpfFF1YgviQaTGQnyjnu9VChXrVJY+lM/v0Bec2szg==
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Service Call"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/entity/service/call"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"exchange":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key18"}},"title":"MapObject"}},"title":"ServiceCallRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key8"}},"title":"EventResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEventResponse"},"examples":{"1":{"summary":"","value":{"data":{"key":{}},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

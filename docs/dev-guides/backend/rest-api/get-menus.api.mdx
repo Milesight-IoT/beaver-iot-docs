@@ -1,0 +1,72 @@
+---
+id: get-menus
+title: "获取所有功能权限"
+description: ""
+sidebar_label: "获取所有功能权限"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVc1O20AQfpXVnECyIPSYGxSokAqVWjhFEVrsSbxg75rZdUpqrVSJEz20PVWq1KqP0VMfB0Tfopq180MSgVVxStb7ze/3zWwFCRaEsXSYQHcgM4sRJGhjUoVTRkMXIAInhxa6vX4EhSSZo0PicwVa5ghd2C5dakh9kMEkAsV2KcoECVa4wyuZFxkb7qAkJFFVMo7R2lNnLlB7DxHYOMVcQrcCNy4Yah0pPQzuBrLM3CPW3vcjILSF0RYt+3jR6fDPUiax0Q614ztZFJmKQwWb55YB1XIS5uwcYwcRFGQKJKdq94l08yhJJMfcBoe5XRn3cXc56vJUJauLf+DJcwkJtkPWZLVB1ognkRGgLnPo9uBw7+gEItg/OXp5fPDmCPo+SAW1a19HqrKEUD9bHyFWFJeZpLV1RioXFHeIunzbSIPDLibi20InN2KXyfcRWCddaZ8udiJM0Rh41uplibZdrxqsUAlbIpGh03Ya2GOsYKxYI3QlaUyE0dlYvE9RC5eiWMhNKCv2pcowWZ8Fy9FaOWwdr4H/Z8gEnVRZ+5i7AY+JCLmKuUuh9MBQXq+oeZonRO6YZPxaWbdIe7OtArNbYSuUeS5pXCtwJLMSZzugNze99YJhZvhfsypnooUHIxLA0xF4Ljd93+ddOJEm385rLYzwnIJm52nDAZZJ4DHx3MJ6xXNnwtFiXJJy4/qp4EkM3T7gSEMMjbUQQY4uNc23kL1LoQubpUXazBuMRRrVj0x/5vcdr+NAhOc3ZmCCHhoad1COkMSBOV61qNhZfdja6Gx0mNfCWJfLsG+apt5//n375dvdzce7Hze3n37dX/+5+3n99/vXRYfV7N2YI8LhldssMqk0ey8pY2BdXA+4uFA6l9ePIDXW8feqOpMWTyjznj9flkhN+0aSlDzj0nr9aauDMi6Qtbcdx1i4mQKXHzBmftrrV3vH4P0/3Ve55g==
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取所有功能权限"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/user/menus"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"","type":"object","properties":{"menu_id":{"type":"string","description":""},"code":{"type":"string","description":""},"name":{"type":"string","description":""},"type":{"type":"string","description":"","enum":["MENU","FUNCTION"]},"parent_id":{"type":"string","description":""},"children":{"type":"array","items":{"description":"","type":"object","properties":"circular()","title":"MenuResponse"},"description":""}},"title":"MenuResponse"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListMenuResponse"},"examples":{"1":{"summary":"","value":{"data":[{"menu_id":"","code":"","name":"","type":"","parent_id":"","children":[{"menu_id":"","code":"","name":"","type":"","parent_id":"","children":[]}]}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: create-device
+title: "添加设备"
+description: ""
+sidebar_label: "添加设备"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVc1u20YQfhViTi3AynZQtKhucewCAQo0sNOTIAgj7pjcmNxldoeyVWLPBfoUPfTcaw8F+jYJ8hjF7FIibauOEJ20w/mfb77pQVHrqEAmBfMbrD3loMgXTresrYE5QA6MpYf5YplDiw4bYnLy7sFgQzCHlx1X1ulfMZrkoMWuIlTk4IA7usemrcXwnNCRy/oei4K8X7G9JRMC5OCLihqEeQ+8bUXVs9OmjO5usKv5GesQljk4et+R53OrtuKlsIbJsPzFtq11EXM9eeclqX4S7mG2hW1mja7J67Li2ZpwQ05bnina6IJmjVVUz4ZQs1eOkOkifrpKMmleyt+u31Eh79bZlhxr8hIudfBQlY+a1uD9T2RKrmD+3bdBesxUutTxz9uHHJiatkY+JlrIoXS2a1dfkt3Zi+/DAJQVGda7Sp+i6tnG3NJ2EvmwklSlOSLplrZnP0CYSC7viwpNSW9wW1tU8ZtMSjuB+iJ1/mEfl6P1oVmGkHz41hqfsnxxenqwtqPh9nwTFPL/7MA03tWQUXYh6iEHz8id/7zhrpRsMAj7tVlpdYx51M20EktyzrpVYdURiLkU3Ux0s68ccecMqcyaepvdVWQyrih7lFumffYj6prU12OwhrzH8uh4g/oXhlTEqOvjY15EfVJZzDWbfMy0ubGuSZibQnY3SCGt6+Q17OkyzvMsoqdrGnTbhLQN1h2NWBHRbvzyfzrPyL2TKY3vfVEATwuFCPyQD4weF0+enorOad6myyCwjRW9lkjFZH2EHogrK/LWRk5sUZgCTtROwZPbpKOyHB1fy5bsFl1W52rk9MvdDdkfof0YHjDjKB75b5RNWW6UPuWuREaxapldHP4ws/N4E7LX9u0hXpSi0uNsdjo7lXFKCxo0k8w//v3Ph9//+PTXvx/+/O2xk8nlmnAm0z2ftDVqIx47V4tiauoChqYuc6ik2/MF9P0aPf3i6hBE/L4jN0xtg07jWgpZLPcTjqc9lgyvUvBv3krcPdieclrIdxYvi4JaflZ3OQHEm5+vpXHr4Uw3CZgO7wS7eJeqtrEZcRJR1kONpuwSOpNP+f0HDTkRXg==
+sidebar_class_name: "post api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"添加设备"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/device"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"com.milesight.beaveriot.device.model.request.CreateDeviceRequest","type":"object","properties":{"name":{"type":"string","description":"","maxLength":64},"integration":{"type":"string","description":""},"template":{"type":"string","description":""},"group_name":{"type":"string","description":"","maxLength":127},"param_entities":{"description":"","type":"object","properties":{"key":{"type":"object","properties":{},"title":"key19"}},"title":"ExchangePayload"}},"required":["name","integration"],"title":"CreateDeviceRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string","description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyString"},"examples":{"1":{"summary":"","value":{"data":"","status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

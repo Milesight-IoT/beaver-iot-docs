@@ -1,0 +1,72 @@
+---
+id: get-entity-status
+title: "获取实体状态"
+description: ""
+sidebar_label: "获取实体状态"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVc1uEzEQfhVrTlSympZjbgkNVVDUSGl6QFEUubvTxO3+1Z4NDStLcOUABySOPAJHOPE2FHgMNN7dJDQpidiL1/Y3/9+MCwgxMxgowhCaVyqyKCFEGxidkU4TaAJIIDW10ByNJWTKqBgJDe8LSFSM0ARMSNNiokOQoFkmUzSDLYoM3ubasCkyOUqwwQxjBc0CaJGxJp0QTtGAc3KpvZXTLDX6tfJ6KgszVCGabTbwTsVZxIJtVAaNKAoVBGjthNIbTJyDLXYtGZ1MvborlUf0D2nnxhyIzdLEomUdT4+OeNnwJEgTwoT4TmVZpAMfQePaMqDYdCK9vMaAQEJm0gwN6VJ9qEht6h9UHogTvpY7dMxVlONOU24jnU5CnoXMjomi7fl6iPemJiVuJ14CJnkMzRGcDwfds1OQ0Ov75aR/0e51QEK73+91Wmf81z1rDV6ChH77RefZEMbOSSBNvtgdz8GeIrRU54bdsaQot7tdqSsqKgFXshUtMa/3EPdYoUOWRGNSMwnScI8cdBgrGCueGKTcJBiKNIkW4tUME0EzFA98E9qK50pHGB6sjMVorZruba+C/6fJEEnpaH+bJx6PofC+irVLoZOr1MRlb6/Xs65hOw0Xj9W2anVf3WPfUnkcK7MombXkfN1A9cEDUi+xFWlhnTb11Kp54Cm7Vt3VfpkMgM0EATj+ZDW3fLPx1mKQG02LcrpyK/pMdNnSFKkM/Lz0RUKMNEurK+5dnrJNaJTjt1GUazd0DVtLWDTzcliPV8bOefDUDc/59wWs8t5GNUcjuulwW7eysnJzfHh0eMSZylJLsfITrRrYv99/u//w6f7L5x/fP/569/Xnm7cPVRWr2Qir2UV4R40sUjrxc8dEDCyDHFVvDEho1mHCskpjCbPUEsOK4lJZvDCRc3x8m6OpkjtXRqtLjnFUQKgt/z/y5q2792RQvVkH4jFPq0OVLFas47BucPHX4+jGSwJ4J8r7VhBgRmuSG28FPzjL0p92huDcH2xgq9g=
+sidebar_class_name: "get api-method"
+info_path: docs/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"获取实体状态"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/entity/{entityId}/status"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"entity_id","in":"path","description":"","required":true,"schema":{"type":"integer"}},{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"description":"Response Data","type":"object","properties":{"value":{"type":"object","properties":{},"description":""},"updated_at":{"type":"string","description":""},"value_type":{"type":"string","description":"","enum":["STRING","LONG","DOUBLE","BOOLEAN","BINARY","OBJECT"]}},"title":"EntityLatestResponse"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyEntityLatestResponse"},"examples":{"1":{"summary":"","value":{"data":{"value":{},"updated_at":"","value_type":""},"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      

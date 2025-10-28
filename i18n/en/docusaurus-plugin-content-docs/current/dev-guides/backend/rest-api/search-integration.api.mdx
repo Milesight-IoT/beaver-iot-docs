@@ -1,0 +1,72 @@
+---
+id: search-integration
+title: "Search Integration"
+description: ""
+sidebar_label: "Search Integration"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVsGO2zgM/RWDpxZwM+li0UNunU4XGGCBXXTaUxAEjMSJ1dqSK9GZpob/vaBkJ54kOzG2ucSWHkXy8Yl0C5pqTwqZNCwesQyUg6agvKnZOAsLgBwYtwEWSzCWaesxbqxyqNFjRUxeNluwWBEs4H3DhfPmZ4LlYOSQglCThwtn0w+s6lIMbwk9+axtUSkKYc3uG9mugxyCKqhCWLTA+1qggb2x23jcIzYlv2DddascPH1vKPCt03s5RTnLZFkesa5Lo2KsN1+DBNWO3J0zkfy7zVdSDDnU3tXk2VBI8J1RtEatcSMpHeLdOFcS2vP8u3ww0lQSTzbrcmDDkbYHQq+K+2NpPqVkoesE5inUzoYU4B/z+cW0JhNyJX/kMQq9x70ogKkK536Vq2aVKSmYbcGzDeGOvHE8G6lsVjlN5WzIYXYh17RzJ56vlcfoyxI6rYhRKe3ryCT5KchnK1MMUOt1L41APv5/o/1UZxGvXJNq2ltEYi/fwkfnK+SEefennEGWDe9/54yXNTqq2yk9MOxmw3Zg5CZcT34QStYbdIerv55S/B6bGR0Z8N75tXJ6Qok/CjYTbPbKEzfeks6cLffZU0E244Kyk9gyE7K/0JSkXx+dVRQCbif76+H/06UmRlNO93kX8aSzGGs22syMTcUX4LjuQyGl8f5tAl/VQT8NYqnfxtbTVBX6fVLYDsuGjo1mma607KQrK0/9FLok0P+6Ugk8vjLzU/3PZYoMKhT8WFZxjI3Ecnw/cJtcPOcbYofu8n44Ss7xNZBqvOE9LJarHKSBRaruxVM4JRByqIgLJ5u1C7HpIRewgJtRH71JdjJKye/SwF4dPT1If4+kdzlI0/90nJcfh/l8Pt7YN3Rpfsm6tFH76KKqejHcxg6f3bvPl4ojUaWXt7P5bC5ikHwqjP2yr2rST/Y8/5PWephlo3nN9INv6hKNlXMbXwow8fT8qybvGZbPm0LoXCyhbTcY6Isvu06Wvzfk+9rs0JuU8nJ1qGPUZdLVhxTKm88SxUG+5yO2yweL90pRzS9iV6OK//vPg5C56b9rqiQ/j0+iUHxKHLhITbxSca2FEu22SRpMZ8rvF+/xfxA=
+sidebar_class_name: "post api-method"
+info_path: i18n/en/docusaurus-plugin-content-docs/current/dev-guides/backend/rest-api/beaver-iot
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Search Integration"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/integration/search"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Authorization","in":"header","description":"","example":"Bearer {{access_token}}","schema":{"type":"string","default":"Bearer {{access_token}}"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"","type":"object","properties":{"device_addable":{"type":"boolean","description":""},"device_deletable":{"type":"boolean","description":""}},"title":"SearchIntegrationRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"description":"com.milesight.beaveriot.integration.model.response.SearchIntegrationResponseData","type":"object","properties":{"id":{"type":"string","description":""},"icon":{"type":"string","description":""},"name":{"type":"string","description":""},"description":{"type":"string","description":""},"add_device_service_key":{"type":"string","description":""},"device_count":{"type":"integer","description":"","format":"int64"},"entity_count":{"type":"integer","description":"","format":"int64"}},"title":"SearchIntegrationResponseData"},"description":"Response Data"},"status":{"type":"string","description":"response status"},"request_id":{"type":"string","description":"request id"},"error_code":{"type":"string","description":"Error code (returned only when the response status is Failed)"},"error_message":{"type":"string","description":"Error message (returned only when the response status is Failed)"},"detail_message":{"type":"string","description":"Detailed error description information"}},"title":"ResponseBodyListSearchIntegrationResponseData"},"examples":{"1":{"summary":"","value":{"data":[{"id":"","icon":"","name":"","description":"","add_device_service_key":"","device_count":0,"entity_count":0}],"status":"","request_id":"","error_code":"","error_message":"","detail_message":""}}}}},"headers":{}}}}
+>
+  
+</StatusCodes>
+
+
+      
