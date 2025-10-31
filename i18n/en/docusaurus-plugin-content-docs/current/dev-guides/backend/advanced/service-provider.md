@@ -197,12 +197,6 @@ Paginated search for device templates
 Page<DeviceTemplateResponseData> search(SearchDeviceTemplateRequest searchDeviceTemplateRequest);
 ```
 
-### searchCustom
-Paginated search for custom device templates
-```java
-Page<DeviceTemplateResponseData> searchCustom(SearchDeviceTemplateRequest searchDeviceTemplateRequest);
-```
-
 ---
 
 ## DeviceTemplateParserProvider Interface Documentation
