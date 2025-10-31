@@ -197,12 +197,6 @@ void batchDelete(List<Long> ids);
 Page<DeviceTemplateResponseData> search(SearchDeviceTemplateRequest searchDeviceTemplateRequest);
 ```
 
-### searchCustom
-分页搜索自定义设备模板
-```java
-Page<DeviceTemplateResponseData> searchCustom(SearchDeviceTemplateRequest searchDeviceTemplateRequest);
-```
-
 ---
 
 ## DeviceTemplateParserProvider 接口文档
