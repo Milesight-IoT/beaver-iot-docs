@@ -45,7 +45,7 @@ Before adding devices, ensure the Beaver IoT is integrated at least one Integrat
 
 Click **Detail** icon of desired device to view details.
 
-![View-device-detail](/img/view-device-detail.png)
+![View-device-detail](/img/en/view-device-detail.png)
 
 To view device details, go to the following tabs:
 
@@ -53,6 +53,37 @@ To view device details, go to the following tabs:
 | ----------------- | ------------------------------------------------------------ |
 | Basic Information | This tab contains the basic information of this device and supports to modify the device name. |
 | Entity Data       | This tab displays the supported property, event and service of this device. |
+| Device Canvas     | Add this device or custom entity widget to generate a dedicated dashboard for the device. |
+
+### Device Canvas
+
+1. Click the desired widget button or click **Edit** and then click **+Add widget** to add widgets.
+
+   ![Device-carve](/img/en/device-carve.png)
+
+2. Select the entity which needs to show and customize the name and other parameters of the widget, click **Confirm** to save the setting.
+
+   ![Add-widget-2](/img/add-widget-2.png)
+
+3. Click **Edit** button to achieve below operations of widgets:
+
+   **Edit the widget:** edit the entity, name and other parameters of the widget.
+
+   ![Edit-widget](/img/edit-widget.png)
+
+   **Delete the widget:** delete the widgets.
+
+   ![Delete-widget](/img/delete-widget.png)
+
+   **Adjust the size:** Zoom up or down the widget.
+
+   ![Zoom-widget](/img/zoom-widget.png)
+
+   **Adjust location:** drag the widgets to adjust the layouts of dashboard.
+
+4. Click **Save** to save all settings.
+
+   
 
 ## Delete Device
 

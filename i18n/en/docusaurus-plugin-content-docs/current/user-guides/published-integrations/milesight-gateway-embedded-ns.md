@@ -81,6 +81,10 @@ Beaver IoT supports syncing devices from gateway embedded network server.
 
 ## Custom Codec
 
+:::note
+This feature is only available in Beaver IoT versions prior to V1.3.0. For V1.3.0 and later versions, please refer to **Setting > Device Blueprint Source Management** for custom Codec functionality.
+:::
+
 Beaver IoT supports importing custom codecs for decoding and encoding of third-party end devices. After import, users can select the customized model when adding or syncing devices. 
 
 1. Fork the [Milesight Codec Repository](https://github.com/Milesight-IoT/codec) to your own repository (Github, Gitlab, etc.).

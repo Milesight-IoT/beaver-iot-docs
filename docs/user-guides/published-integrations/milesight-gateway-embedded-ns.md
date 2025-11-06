@@ -81,6 +81,11 @@ Beaver IoT支持从网关内置NS同步节点设备。
 
 ## 自定义Codec
 
+:::note
+
+该功能仅适用于Beaver IoT V1.3.0之前的版本。如使用V1.3.0以及后续版本，自定义Codec功能请参见**设置>设备蓝图来源管理**。
+:::
+
 Beaver IoT支持导入自定义Codec用于第三方节点设备的编码和解码。导入该Codec后，在添加或同步节点设备时，可选择自定义的model。
 
 1. 将Milesight的[Codec仓库](https://github.com/Milesight-IoT/codec)fork至自己的仓库（github, gitlab等）。
