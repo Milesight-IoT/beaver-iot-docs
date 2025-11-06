@@ -26,6 +26,7 @@ sidebar_position: 3
    ![Integration-2](/img/zh/integration-2.png)
 
 
+
 ## 步骤2：添加设备
 
 1. 在星纵物联开放平台的**应用**页面里添加[演示设备](https://www.milesight.com/development-platform/docs/zh-cn/user-guide/add-device-to-application.html#add-device-to-application__section_ift_kpq_zcc)，并使用[设备调试面板](https://www.milesight.com/development-platform/docs/zh-cn/user-guide/device-simulate-and-debug.html)模拟上报和下发数据。
@@ -40,13 +41,13 @@ sidebar_position: 3
 
 ## 步骤3：添加仪表板
 
-1. 打开**仪表板**页面，点击"+"添加仪表板。
+1. 打开**仪表板**页面，点击"+添加"添加仪表板。
 
-2. 输入自定义的仪表板名称，点击**确认**保存设置。
+2. 输入自定义的仪表板名称，设置封面和描述，点击**保存**。封面要求：不大于5M，格式为jpg，jpeg或png。
 
 ![Add-dashboard](/img/zh/add-dashboard.png)
 
-3. 点击需要添加的组件按钮或点击**编辑**按钮，然后点击 **+添加组件**。
+3. 点击需要编辑的仪表板后，点击需要添加的组件按钮或点击**编辑**按钮，然后点击 **+添加组件**。
 
 ![Add-widget](/img/zh/add-widget.png)
 

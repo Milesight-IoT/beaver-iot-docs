@@ -38,14 +38,15 @@ This topic will take Milesight Development Platform integration as example to de
 
 ## Step 3: Add Dashboard
 
-1. Go to **Dashboard** page, click "+" to add a dashboard.
-2. Customize the name of dashboard, click **Confirm** to save the setting.
+1. Go to **Dashboard** page, click "+Add" to add a dashboard.
 
-![Add-dashboard](/img/add-dashboard.png)
+2. Enter a custom dashboard name, set the cover image and description, then click **Save**. Cover image requirements: no larger than 5MB, in jpg, jpeg or png format.
 
-3. Click **Edit** and then click **+Add widget** to add widgets.
+   ![Add-dashboard](/img/en/add-dashboard.png)
 
-![Add-widget](/img/add-widget.png)
+3. After clicking the desired dashboard, click the desired widget button or click **Edit** and then click **+Add widget** to add widgets.
+
+![Add-widget](/img/en/add-widget.png)
 
 4. Select the entity which needs to show and customize the name and other parameters of the widget, click **Confirm** to save the setting.
 
