@@ -481,37 +481,37 @@ void saveValuesAndPublishAsync(ExchangePayload exchangePayload, String eventType
 ### saveLatestValues
 保存实体最新值
 ```java
-void saveLatestValues(ExchangePayload exchangePayload);
+Map<String, Long> saveLatestValues(ExchangePayload exchangePayload);
 ```
 
 ### saveValues
 保存实体值（指定时间戳）
 ```java
-void saveValues(ExchangePayload exchangePayload, long timestamp);
+Map<String, Pair<Long, Long>> saveValues(ExchangePayload exchangePayload, long timestamp);
 ```
 
 ### saveValues
 保存实体值（当前时间）
 ```java
-void saveValues(ExchangePayload exchangePayload);
+Map<String, Pair<Long, Long>> saveValues(ExchangePayload exchangePayload);
 ```
 
 ### saveHistoryRecord
 保存实体历史值（指定时间戳）
 ```java
-void saveHistoryRecord(Map<String, Object> recordValues, long timestamp);
+Map<String, Long> saveHistoryRecord(Map<String, Object> recordValues, long timestamp);
 ```
 
 ### saveHistoryRecord
 保存实体历史值（当前时间）
 ```java
-void saveHistoryRecord(Map<String, Object> recordValues);
+Map<String, Long> saveHistoryRecord(Map<String, Object> recordValues);
 ```
 
 ### mergeHistoryRecord
 合并实体历史值（指定时间戳）
 ```java
-void mergeHistoryRecord(Map<String, Object> recordValues, long timestamp);
+Map<String, Long> mergeHistoryRecord(Map<String, Object> recordValues, long timestamp);
 ```
 
 ### existHistoryRecord
@@ -679,4 +679,28 @@ String getFullTopicName(String topicSubPath);
 获取MQTT Broker信息
 ```java
 MqttBrokerInfo getMqttBrokerInfo();
+```
+
+---
+
+## ResourceServiceProvider 接口文档
+
+`ResourceServiceProvider` 提供资源中心交互的能力。
+
+### linkByUrl
+绑定资源 URL 到指定的资源引用对象（对象ID、对象类型）
+```java
+void linkByUrl(String url, ResourceRefDTO resourceRefDTO);
+```
+
+### unlinkRef
+解除资源引用对象（对象ID、对象类型）的资源绑定
+```java
+void unlinkRef(ResourceRefDTO resourceRefDTO);
+```
+
+### putTempResource
+上传临时资源到资源中心，返回资源 URL （持久化存储需绑定到资源引用对象，见 `linkByUrl` 接口）
+```java
+String putTempResource(String fileName, String contentType, byte[] data);
 ```

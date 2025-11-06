@@ -481,37 +481,37 @@ void saveValuesAndPublishAsync(ExchangePayload exchangePayload, String eventType
 ### saveLatestValues
 Save the latest entity values
 ```java
-void saveLatestValues(ExchangePayload exchangePayload);
+Map<String, Long> saveLatestValues(ExchangePayload exchangePayload);
 ```
 
 ### saveValues
 Save entity values (with specified timestamp)
 ```java
-void saveValues(ExchangePayload exchangePayload, long timestamp);
+Map<String, Pair<Long, Long>> saveValues(ExchangePayload exchangePayload, long timestamp);
 ```
 
 ### saveValues
 Save entity values (current time)
 ```java
-void saveValues(ExchangePayload exchangePayload);
+Map<String, Pair<Long, Long>> saveValues(ExchangePayload exchangePayload);
 ```
 
 ### saveHistoryRecord
 Save entity historical values (with specified timestamp)
 ```java
-void saveHistoryRecord(Map<String, Object> recordValues, long timestamp);
+Map<String, Long> saveHistoryRecord(Map<String, Object> recordValues, long timestamp);
 ```
 
 ### saveHistoryRecord
 Save entity historical values (current time)
 ```java
-void saveHistoryRecord(Map<String, Object> recordValues);
+Map<String, Long> saveHistoryRecord(Map<String, Object> recordValues);
 ```
 
 ### mergeHistoryRecord
 Merge entity historical values (with specified timestamp)
 ```java
-void mergeHistoryRecord(Map<String, Object> recordValues, long timestamp);
+Map<String, Long> mergeHistoryRecord(Map<String, Object> recordValues, long timestamp);
 ```
 
 ### existHistoryRecord
@@ -679,4 +679,28 @@ String getFullTopicName(String topicSubPath);
 Get MQTT Broker information
 ```java
 MqttBrokerInfo getMqttBrokerInfo();
+```
+
+---
+
+## ResourceServiceProvider Interface Documentation
+
+`ResourceServiceProvider` interface provides capabilities for interacting with the Resource Center.
+
+### linkByUrl
+Links a resource URL to a specified resource reference (reference ID and reference type).
+```java
+void linkByUrl(String url, ResourceRefDTO resourceRefDTO);
+```
+
+### unlinkRef
+Unlinks the resource associated with the specified resource reference (reference ID and reference type).
+```java
+void unlinkRef(ResourceRefDTO resourceRefDTO);
+```
+
+### putTempResource
+Uploads a temporary resource to the Resource Center and returns its URL. (To persist the resource, it must be linked to a resource reference by calling the `linkByUrl` method.)
+```java
+String putTempResource(String fileName, String contentType, byte[] data);
 ```
