@@ -132,5 +132,5 @@ Control Node:
 
 | Node    | Description                                                  |
 | ------- | ------------------------------------------------------------ |
-| IF/ELSE | When the logical condition is met (IF) or not met (ELSE), the subsequent nodes of this workflow are triggered to execute. One node supports the addition of 5 logical conditions at most, and one logical condition supports multiple sub-conditions and these sub-conditions can be connected by an AND or OR relationship. In addition, Beaver IoT supports writing the logical conditions by these languages: JavaScript (ES6), Python(2.7), Groovy(4.0.26), and MVEL(2.5.2). |
+| IF/ELSE | When the logical condition is met (IF) or not met (ELSE), the subsequent nodes of this workflow are triggered to execute. One node supports the addition of 5 logical conditions at most, and one logical condition supports multiple sub-conditions and these sub-conditions can be connected by an AND or OR relationship. In addition, Beaver IoT supports writing the logical conditions by these languages: JavaScript (ES6), Python 3, Groovy(4.0.26), and MVEL(2.5.2). |
 

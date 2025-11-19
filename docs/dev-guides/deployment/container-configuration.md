@@ -62,6 +62,9 @@ sidebar_position: 2
 | MQTT_EMQX_INTERNAL_REST_API_ENDPOINT        | http://$\{MQTT_BROKER_HOST}:18083                         | EMQX REST API端点                                        |
 | MQTT_EMQX_INTERNAL_REST_API_USERNAME        |                                                           | EMQX REST API Key                                      |
 | MQTT_EMQX_INTERNAL_REST_API_PASSWORD        |                                                           | EMQX REST API 密钥                                       |
+| APP_LOG_MAX_FILE_COUNT                      | 14                                                        | 最大日志文件数量                                           |
+| APP_LOG_TOTAL_CAP_SIZE                      | 10GB                                                      | 最大日志文件总大小                                          |
+| APP_LOG_MAX_FILE_SIZE                       | 100MB                                                     | 最大单个日志文件大小                                       |
 
 ### 端口
 
@@ -83,38 +86,7 @@ sidebar_position: 2
 
 ### 环境变量
 
-| Name                                        | Default                                                   | Description                                            |
-|---------------------------------------------|-----------------------------------------------------------|--------------------------------------------------------|
-| BEAVER_IOT_API_HOST                         | localhost                                                 | Nginx HTTP 代理的目的地址, 即后端服务的IP或FQDN                      |
-| BEAVER_IOT_API_PORT                         | 9200                                                      | API 服务的 HTTP 端口号                                       |
-| BEAVER_IOT_WEBSOCKET_PORT                   | 9201                                                      | API 服务的 Websocket 端口号                                  |                  |
-| JAVA_OPTS                                   |                                                           | JVM 配置参数                                               |
-| SPRING_OPTS                                 |                                                           | Spring 配置参数                                            |
-| DB_TYPE                                     | h2                                                        | 数据库类型, 可选项: `postgres`, `h2`                           |
-| SPRING_H2_CONSOLE_ENABLED                   | false                                                     | 是否启用, 可选项: `true`, `false`                             |
-| SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS | false                                                     | 是否允许其他主机访问, 可选项: `true`, `false`                       |
-| SPRING_DATASOURCE_URL                       | jdbc:h2:file:~/beaver-iot/h2/beaver;<br/>AUTO_SERVER=TRUE | 数据库 jdbc 连接                                            |
-| SPRING_DATASOURCE_USERNAME                  | sa                                                        | 数据库用户名                                                 |
-| SPRING_DATASOURCE_PASSWORD                  |                                                           | 数据库密码                                                  |
-| SPRING_DATASOURCE_DRIVER_CLASS_NAME         | org.h2.Driver                                             | 数据库驱动类名, 可选项: `org.h2.Driver`, `org.postgresql.Driver` |
-| CLUSTER_ENABLED                             | false                                                     | 是否开启集群模式, 可选项: `true`, `false`                         |
-| REDIS_HOST                                  |                                                           | Redis 服务器地址                                            |
-| REDIS_PORT                                  | 6379                                                      | Redis 服务器端口                                            |                                                 |
-| REDIS_PASSWORD                              |                                                           | Redis 密码                                               |
-| REDIS_SSL                                   | false                                                     | Redis 是否启用 SSL                                         |
-| REDIS_DB                                    | 0                                                         | Redis DB                                               |                                                 |
-| MQTT_BROKER_HOST                            |                                                           | MQTT Broker的IP或FQDN, 供MQTT客户端连接使用                      |
-| MQTT_BROKER_MQTT_PORT                       | 1883                                                      | MQTT Broker TCP端口                                      |
-| MQTT_BROKER_MQTTS_PORT                      | 8883                                                      | MQTT Broker SSL/TLS端口                                  |
-| MQTT_BROKER_WS_PORT                         | 8083                                                      | MQTT Broker Websocket端口                                |
-| MQTT_BROKER_WSS_PORT                        | 8084                                                      | MQTT Broker Websocket SSL/TLS端口                        |
-| MQTT_BROKER_WS_PATH                         | /mqtt                                                     | MQTT Broker Websocket路径                                |
-| MQTT_EMQX_INTERNAL_MQTT_ENDPOINT            | tcp://$\{MQTT_BROKER_HOST}:1883                           | EMQX MQTT端点, 供Beaver API服务器连接使用 (注意: EMQX配置仅在集群模式下生效)  |
-| MQTT_EMQX_INTERNAL_MQTT_USERNAME            |                                                           | EMQX MQTT用户名, 需要所有主题的订阅和发布权限                           |
-| MQTT_EMQX_INTERNAL_MQTT_PASSWORD            |                                                           | EMQX MQTT密码                                            |
-| MQTT_EMQX_INTERNAL_REST_API_ENDPOINT        | http://$\{MQTT_BROKER_HOST}:18083                         | EMQX REST API端点                                        |
-| MQTT_EMQX_INTERNAL_REST_API_USERNAME        |                                                           | EMQX REST API Key                                      |
-| MQTT_EMQX_INTERNAL_REST_API_PASSWORD        |                                                           | EMQX REST API 密钥                                       |
+见[beaver-iot-web](#beaver-iot-web)和[beaver-iot-api](#beaver-iot-api)。
 
 ### 端口
 
