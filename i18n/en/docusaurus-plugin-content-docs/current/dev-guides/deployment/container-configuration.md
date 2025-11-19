@@ -62,6 +62,10 @@ sidebar_position: 2
 | MQTT_EMQX_INTERNAL_REST_API_ENDPOINT        | http://$\{MQTT_BROKER_HOST}:18083                         | EMQX REST API endpoint.                                                                                                                      |
 | MQTT_EMQX_INTERNAL_REST_API_USERNAME        |                                                           | EMQX REST API key.                                                                                                                           |
 | MQTT_EMQX_INTERNAL_REST_API_PASSWORD        |                                                           | EMQX REST API secret key.                                                                                                                    |
+| APP_LOG_MAX_FILE_COUNT                      | 14                                                        | Max log file count.            |
+| APP_LOG_TOTAL_CAP_SIZE                      | 10GB                                                      | Max total size of log files.                                                                                                                     |
+| APP_LOG_MAX_FILE_SIZE                       | 100MB                                                     | Max size of individual log files.                                                                                                           |
+
 
 ### Ports
 
@@ -83,38 +87,7 @@ sidebar_position: 2
 
 ### Environment Variables
 
-| Name                                        | Default                                                   | Description                                                                                                                                  |
-|---------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BEAVER_IOT_API_HOST                         | localhost                                                 | Destination address for Nginx HTTP proxy, i.e., the backend service's IP or FQDN                                                             |
-| BEAVER_IOT_API_PORT                         | 9200                                                      | HTTP port number for the API service                                                                                                         |
-| BEAVER_IOT_WEBSOCKET_PORT                   | 9201                                                      | WebSocket port number for the API service                                                                                                    |
-| JAVA_OPTS                                   |                                                           | JVM configuration parameters                                                                                                                 |
-| SPRING_OPTS                                 |                                                           | Spring configuration parameters                                                                                                              |
-| DB_TYPE                                     | h2                                                        | Database type, options: `postgres`, `h2`                                                                                                     |
-| SPRING_H2_CONSOLE_ENABLED                   | false                                                     | Enable H2 console, options: `true`, `false`                                                                                                  |
-| SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS | false                                                     | Allow access from other hosts, options: `true`, `false`                                                                                      |
-| SPRING_DATASOURCE_URL                       | jdbc:h2:file:~/beaver-iot/h2/beaver;<br/>AUTO_SERVER=TRUE | JDBC connection for the database                                                                                                             |
-| SPRING_DATASOURCE_USERNAME                  | sa                                                        | Database username                                                                                                                            |
-| SPRING_DATASOURCE_PASSWORD                  |                                                           | Database password                                                                                                                            |
-| SPRING_DATASOURCE_DRIVER_CLASS_NAME         | org.h2.Driver                                             | Database driver class name, options: `org.h2.Driver`, `org.postgresql.Driver`                                                                |
-| CLUSTER_ENABLED                             | false                                                     | Enable cluster mode.                                                                                                                         |
-| REDIS_HOST                                  |                                                           | Redis server host name or IP address.                                                                                                        |
-| REDIS_PORT                                  | 6379                                                      | Redis server port                                                                                                                            |                                                 
-| REDIS_PASSWORD                              |                                                           | Redis password                                                                                                                               |
-| REDIS_SSL                                   | false                                                     | Enable SSL/TLS for Redis connection.                                                                                                         |
-| REDIS_DB                                    | 0                                                         | Redis Database id.                                                                                                                           |                                                 
-| MQTT_BROKER_HOST                            |                                                           | MQTT Broker host name or IP address.                                                                                                         |
-| MQTT_BROKER_MQTT_PORT                       | 1883                                                      | MQTT Broker TCP port.                                                                                                                        |
-| MQTT_BROKER_MQTTS_PORT                      | 8883                                                      | MQTT Broker SSL/TLS port.                                                                                                                    |
-| MQTT_BROKER_WS_PORT                         | 8083                                                      | MQTT Broker websocket port.                                                                                                                  |
-| MQTT_BROKER_WSS_PORT                        | 8084                                                      | MQTT Broker websocket secure port.                                                                                                           |
-| MQTT_BROKER_WS_PATH                         | /mqtt                                                     | MQTT Broker websocket path.                                                                                                                  |
-| MQTT_EMQX_INTERNAL_MQTT_ENDPOINT            | tcp://$\{MQTT_BROKER_HOST}:1883                           | EMQX MQTT endpoint. Used to bridge MQTT messages with the Beaver-IoT API server. Note: EMQX configuration only takes effect in cluster mode. |
-| MQTT_EMQX_INTERNAL_MQTT_USERNAME            |                                                           | EMQX MQTT username. Subscription and publish permissions for all topics are required.                                                        |
-| MQTT_EMQX_INTERNAL_MQTT_PASSWORD            |                                                           | EMQX MQTT password.                                                                                                                          |
-| MQTT_EMQX_INTERNAL_REST_API_ENDPOINT        | http://$\{MQTT_BROKER_HOST}:18083                         | EMQX REST API endpoint.                                                                                                                      |
-| MQTT_EMQX_INTERNAL_REST_API_USERNAME        |                                                           | EMQX REST API key.                                                                                                                           |
-| MQTT_EMQX_INTERNAL_REST_API_PASSWORD        |                                                           | EMQX REST API secret key.                                                                                                                    |
+Please refer to [beaver-iot-web](#beaver-iot-web) and [beaver-iot-api](#beaver-iot-api)。
 
 ### Ports
 
