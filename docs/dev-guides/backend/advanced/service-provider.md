@@ -704,3 +704,15 @@ void unlinkRef(ResourceRefDTO resourceRefDTO);
 ```java
 String putTempResource(String fileName, String contentType, byte[] data);
 ```
+
+---
+
+## DelayedQueueServiceProvider 接口文档
+
+`DelayedQueueServiceProvider` 提供延时队列的管理。
+
+### getDelayedQueue
+根据名称获取延时队列，`T` 为延时任务的 Payload 数据类型
+```java
+<T> DelayedQueue<T> getDelayedQueue(String queueName);
+```

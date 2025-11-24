@@ -704,3 +704,15 @@ Uploads a temporary resource to the Resource Center and returns its URL. (To per
 ```java
 String putTempResource(String fileName, String contentType, byte[] data);
 ```
+
+---
+
+## DelayedQueueServiceProvider Interface Documentation
+
+`DelayedQueueServiceProvider` provides management of delayed queues.
+
+### getDelayedQueue
+Retrieves a delayed queue by name. `T` represents the payload type of the delayed tasks.
+```java
+<T> DelayedQueue<T> getDelayedQueue(String queueName);
+```
